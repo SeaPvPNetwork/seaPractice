@@ -75,8 +75,8 @@ public class LobbyScoreboardImpl implements Scoreboard {
                     .replace("{level_progress_bar}", levelService.getProgressBar(currentElo))
                     .replace("{level_progress_details}", levelService.getProgressDetails(currentElo))
                     .replace("{rank}", coreAdapter.getCore().getRankColor(Bukkit.getPlayer(profile.getUuid())) + coreAdapter.getCore().getRankName(Bukkit.getPlayer(profile.getUuid())))
-                    .replace("{playing}", String.valueOf(profileService.getProfiles().values().stream().filter(p -> p.getState() == ProfileState.PLAYING).count()))
-                    .replace("{in-queue}", String.valueOf(profileService.getProfiles().values().stream().filter(p -> p.getState() == ProfileState.WAITING).count()));
+                    .replace("{playing}", String.valueOf(safeCountState(profileService, ProfileState.PLAYING)))
+                    .replace("{in-queue}", String.valueOf(safeCountState(profileService, ProfileState.WAITING)));
 
             if (profile.getParty() != null) {
                 processedLine = CC.translate(processedLine)

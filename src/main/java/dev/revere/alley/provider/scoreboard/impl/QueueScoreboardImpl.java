@@ -32,8 +32,8 @@ public class QueueScoreboardImpl implements Scoreboard {
         for (String line : configService.getScoreboardConfig().getStringList("scoreboard.lines.waiting")) {
             scoreboardLines.add(CC.translate(line)
                     .replaceAll("\\{online}", String.valueOf(Bukkit.getOnlinePlayers().size()))
-                    .replaceAll("\\{playing}", String.valueOf(profileService.getProfiles().values().stream().filter(profile1 -> profile1.getState() == ProfileState.PLAYING).count()))
-                    .replaceAll("\\{in-queue}", String.valueOf(profileService.getProfiles().values().stream().filter(profile1 -> profile1.getState() == ProfileState.WAITING).count()))
+                    .replaceAll("\\{playing}", String.valueOf(safeCountState(profileService, ProfileState.PLAYING)))
+                    .replaceAll("\\{in-queue}", String.valueOf(safeCountState(profileService, ProfileState.WAITING)))
                     .replaceAll("\\{wins}", String.valueOf(profile.getProfileData().getTotalWins()))
                     .replaceAll("\\{queued-type}", profile.getQueueProfile().getQueue().getQueueType())
                     .replaceAll("\\{level}", String.valueOf(levelService.getLevel(profile.getProfileData().getGlobalLevel()).getDisplayName()))

@@ -47,7 +47,6 @@ public class KitCreateCommand extends BaseCommand {
         }
 
         kitService.createKit(kitName, inventory, armor, icon);
-        this.plugin.getService(ProfileService.class).loadProfiles(); // to update the kits in the database
         this.plugin.getService(ReflectionService.class).getReflectionService(ActionBarReflectionServiceImpl.class).sendMessage(player, KitLocale.KIT_CREATED.getMessage().replace("{kit-name}", kitName), 5);
 
         player.sendMessage(CC.translate(KitLocale.KIT_CREATED.getMessage().replace("{kit-name}", kitName)));

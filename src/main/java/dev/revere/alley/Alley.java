@@ -13,6 +13,7 @@ import lombok.Getter;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Alley – A modern, modular Practice PvP knockback built from the ground up for Minecraft 1.8.
@@ -33,11 +34,11 @@ import java.util.*;
  */
 @Getter
 public class Alley extends JavaPlugin {
-
     @Getter
     private static Alley instance;
-    private AlleyContext context;
+
     private final AlleyAPI api;
+    private AlleyContext context;
 
     public Alley() {
         this.api = new AlleyAPI();
@@ -45,10 +46,10 @@ public class Alley extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        final long startTime = System.currentTimeMillis();
         instance = this;
-        long start = System.currentTimeMillis();
 
-        this.checkDescription();
+        this.validatePluginMetadata();
 
         try {
             this.context = new AlleyContext(this);
@@ -59,12 +60,10 @@ public class Alley extends JavaPlugin {
             return;
         }
 
-        this.runTasks();
+        this.scheduleTasks();
 
-        long end = System.currentTimeMillis();
-        long timeTaken = end - start;
-
-        PluginLogger.onEnable(timeTaken);
+        final long durationMillis = TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - startTime);
+        PluginLogger.onEnable(durationMillis);
 
         this.api.runOnEnableCallbacks();
     }
@@ -88,6 +87,7 @@ public class Alley extends JavaPlugin {
      * @throws IllegalStateException if the service is not found.
      */
     public <T extends Service> T getService(Class<T> serviceInterface) {
+        Objects.requireNonNull(serviceInterface, "Service interface cannot be null");
         if (this.context == null) {
             throw new IllegalStateException("AlleyContext is not available. The plugin may be disabling or failed to load.");
         }
@@ -95,7 +95,7 @@ public class Alley extends JavaPlugin {
                 .orElseThrow(() -> new IllegalStateException("Could not find a registered service for: " + serviceInterface.getSimpleName()));
     }
 
-    private void checkDescription() {
+    private void validatePluginMetadata() {
         List<String> authors = this.getDescription().getAuthors();
         List<String> expectedAuthors = Arrays.asList("Emmy", "Remi");
         if (!new HashSet<>(authors).containsAll(expectedAuthors)) {
@@ -103,7 +103,7 @@ public class Alley extends JavaPlugin {
         }
     }
 
-    private void runTasks() {
+    private void scheduleTasks() {
         final Map<String, Runnable> tasks = new LinkedHashMap<>();
 
         tasks.put(RepositoryCleanupTask.class.getSimpleName(), () -> new RepositoryCleanupTask(this).runTaskTimer(this, 0L, 40L));
