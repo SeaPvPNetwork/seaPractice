@@ -1,6 +1,6 @@
 package dev.revere.alley.feature.item;
 
-import dev.revere.alley.plugin.lifecycle.Service;
+import dev.revere.alley.bootstrap.lifecycle.Service;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
@@ -18,9 +18,9 @@ public interface ItemService extends Service {
     ItemStack getGoldenHead();
 
     /**
-     * Performs the consume action for a golden head item when used by a player.
+     * Performs the consume action for a golden head item when used by a model.
      *
-     * @param player The player who is consuming the item.
+     * @param player The model who is consuming the item.
      * @param item The ItemStack representing the golden head being consumed.
      */
     void performHeadConsume(Player player, ItemStack item);

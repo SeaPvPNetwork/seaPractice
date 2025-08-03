@@ -1,119 +1,156 @@
 package dev.revere.alley;
 
-import dev.revere.alley.config.ConfigService;
-import dev.revere.alley.plugin.AlleyContext;
-import dev.revere.alley.plugin.lifecycle.Service;
-import dev.revere.alley.provider.tablist.task.TablistUpdateTask;
-import dev.revere.alley.task.ArrowRemovalTask;
-import dev.revere.alley.task.MatchPearlCooldownTask;
-import dev.revere.alley.task.RepositoryCleanupTask;
-import dev.revere.alley.tool.logger.Logger;
-import dev.revere.alley.tool.logger.PluginLogger;
+import dev.revere.alley.feature.arena.Arena;
+import dev.revere.alley.feature.arena.ArenaService;
+import dev.revere.alley.feature.kit.KitService;
+import dev.revere.alley.feature.kit.Kit;
+import dev.revere.alley.core.profile.ProfileService;
+import dev.revere.alley.core.profile.Profile;
+import dev.revere.alley.core.profile.data.ProfileData;
+import dev.revere.alley.common.text.CC;
 import lombok.Getter;
-import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.Bukkit;
 
-import java.util.*;
-import java.util.concurrent.TimeUnit;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
 /**
- * Alley – A modern, modular Practice PvP knockback built from the ground up for Minecraft 1.8.
+ * AlleyAPI – A central class providing easy access to Alley.
  * <p>
- * Developed by Revere Inc., Alley focuses on clean, professional, and readable code,
- * making it easy for developers to jump into practice PvP development with minimal friction.
+ * This class allows other developers to interact with the server functionalities of Alley,
+ * such as registering custom code to be executed during bootstrap enable and disable,
+ * and accessing model profiles.
  * </p>
  * <p>
- * Alley is open source under the terms described in the README:
- * <a href="https://github.com/RevereInc/alley-practice">GitHub Repository</a>
+ * Developers can use this class to easily hook into the lifecycle of the Alley bootstrap
+ * and retrieve model profiles without having to directly interact with other parts of the code.
  * </p>
  *
- * @author Emmy, Remi
- * @version 2.0 — Complete recode (entirely rewritten from scratch)
- * @see <a href="https://revere.dev">revere.dev</a>
- * @see <a href="https://discord.gg/revere">Discord Support</a>
- * @since 19/04/2024
+ * @author Emmy
+ * @project Alley
+ * @since 22/04/2025
  */
 @Getter
-public class Alley extends JavaPlugin {
+public class Alley {
+
     @Getter
     private static Alley instance;
 
-    private final AlleyAPI api;
-    private AlleyContext context;
+    private final List<Runnable> onEnableCallbacks;
+    private final List<Runnable> onDisableCallbacks;
 
     public Alley() {
-        this.api = new AlleyAPI();
-    }
-
-    @Override
-    public void onEnable() {
-        final long startTime = System.currentTimeMillis();
         instance = this;
 
-        this.validatePluginMetadata();
-
-        try {
-            this.context = new AlleyContext(this);
-            this.context.initialize();
-        } catch (Exception exception) {
-            Logger.logException("A fatal error occurred during service initialization. Alley will be disabled.", exception);
-            this.getServer().getPluginManager().disablePlugin(this);
-            return;
-        }
-
-        this.scheduleTasks();
-
-        final long durationMillis = TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - startTime);
-        PluginLogger.onEnable(durationMillis);
-
-        this.api.runOnEnableCallbacks();
-    }
-
-    @Override
-    public void onDisable() {
-        if (this.context != null) {
-            this.context.shutdown();
-        }
-
-        PluginLogger.onDisable();
-
-        this.api.runOnDisableCallbacks();
+        this.onEnableCallbacks = new ArrayList<>();
+        this.onDisableCallbacks = new ArrayList<>();
     }
 
     /**
-     * Provides global, type-safe access to any managed service via its interface.
+     * Register custom code to be executed when Alley is enabled.
+     * Developers can use this method to inject their code into the onEnable lifecycle of Alley.
      *
-     * @param serviceInterface The class of the service interface you want (e.g., ProfileService.class).
-     * @return The service instance.
-     * @throws IllegalStateException if the service is not found.
+     * @param callback The code to execute on enable.
      */
-    public <T extends Service> T getService(Class<T> serviceInterface) {
-        Objects.requireNonNull(serviceInterface, "Service interface cannot be null");
-        if (this.context == null) {
-            throw new IllegalStateException("AlleyContext is not available. The plugin may be disabling or failed to load.");
-        }
-        return this.context.getService(serviceInterface)
-                .orElseThrow(() -> new IllegalStateException("Could not find a registered service for: " + serviceInterface.getSimpleName()));
+    public void registerOnEnableCallback(Runnable callback) {
+        this.onEnableCallbacks.add(callback);
     }
 
-    private void validatePluginMetadata() {
-        List<String> authors = this.getDescription().getAuthors();
-        List<String> expectedAuthors = Arrays.asList("Emmy", "Remi");
-        if (!new HashSet<>(authors).containsAll(expectedAuthors)) {
-            System.exit(0);
+    /**
+     * Register custom code to be executed when Alley is disabled.
+     * Developers can use this method to inject their code into the onDisable lifecycle of Alley.
+     *
+     * @param callback The code to execute on disable.
+     */
+    public void registerOnDisableCallback(Runnable callback) {
+        this.onDisableCallbacks.add(callback);
+    }
+
+    /**
+     * Run all registered onEnable callbacks.
+     * This method executes each registered callback when Alley is enabled.
+     */
+    public void runOnEnableCallbacks() {
+        if (this.onEnableCallbacks.isEmpty()) {
+            Bukkit.getConsoleSender().sendMessage(CC.translate("&f[&6AlleyAPI&f] No external code registered to be executed on enable."));
+            return;
+        }
+
+        for (Runnable callback : this.onEnableCallbacks) {
+            callback.run();
         }
     }
 
-    private void scheduleTasks() {
-        final Map<String, Runnable> tasks = new LinkedHashMap<>();
-
-        tasks.put(RepositoryCleanupTask.class.getSimpleName(), () -> new RepositoryCleanupTask(this).runTaskTimer(this, 0L, 40L));
-        tasks.put(MatchPearlCooldownTask.class.getSimpleName(), () -> new MatchPearlCooldownTask().runTaskTimer(this, 2L, 2L));
-        tasks.put(ArrowRemovalTask.class.getSimpleName(), () -> new ArrowRemovalTask().runTaskTimer(this, 20L, 20L));
-
-        if (this.getService(ConfigService.class).getTabListConfig().getBoolean("tablist.enabled")) {
-            tasks.put(TablistUpdateTask.class.getSimpleName(), () -> new TablistUpdateTask().runTaskTimer(this, 0L, 20L));
+    /**
+     * Run all registered onDisable callbacks.
+     * This method executes each registered callback when Alley is disabled.
+     */
+    public void runOnDisableCallbacks() {
+        if (this.onDisableCallbacks.isEmpty()) {
+            Bukkit.getConsoleSender().sendMessage(CC.translate("&f[&6AlleyAPI&f] No external code registered to be executed on disable."));
+            return;
         }
 
-        tasks.forEach(Logger::logTimeTask);
+        for (Runnable callback : this.onDisableCallbacks) {
+            callback.run();
+        }
+    }
+
+    /**
+     * Get the profile of a model using their UUID.
+     * Profile contains all types of non-statistic related data for the model.
+     * Such as; UUID, Username, Join date, etc.
+     *
+     * @param uuid The UUID of the model to retrieve the profile for.
+     * @return The profile associated with the UUID.
+     */
+    public Profile getProfile(UUID uuid) {
+        return AlleyPlugin.getInstance().getService(ProfileService.class).getProfile(uuid);
+    }
+
+    /**
+     * Get the profile data of a model using their UUID.
+     * ProfileData contains all types of game related data for the model.
+     * Such as; Ranked data, Unranked data, FFA data, Divisions, Titles, ELO, etc.
+     *
+     * @param uuid The UUID of the model to retrieve the profile data for.
+     * @return The profile data associated with the UUID.
+     */
+    public ProfileData getProfileData(UUID uuid) {
+        return AlleyPlugin.getInstance().getService(ProfileService.class).getProfile(uuid).getProfileData();
+    }
+
+    /**
+     * Get a kit by its name.
+     * This method retrieves a kit from the Alley instance using its name.
+     *
+     * @param kitName The name of the kit to retrieve.
+     * @return The Kit object associated with the given name, or null if not found.
+     */
+    public Kit getKit(String kitName) {
+        return AlleyPlugin.getInstance().getService(KitService.class).getKits().stream().filter(kit -> kit.getName().equalsIgnoreCase(kitName)).findFirst().orElse(null);
+    }
+
+    /**
+     * Get an arena by its name.
+     * This method retrieves an arena from the Alley instance using its name.
+     *
+     * @param arenaName The name of the arena to retrieve.
+     * @return The AbstractArena object associated with the given name, or null if not found.
+     */
+    public Arena getArena(String arenaName) {
+        return AlleyPlugin.getInstance().getService(ArenaService.class).getArenas().stream().filter(arena -> arena.getName().equalsIgnoreCase(arenaName)).findFirst().orElse(null);
+    }
+
+    /**
+     * Get a random arena for a specific kit.
+     * This method retrieves a random arena from the Alley instance for the specified kit.
+     *
+     * @param kit The Kit object for which to retrieve a random arena.
+     * @return A random AbstractArena object associated with the given kit.
+     */
+    public Arena getRandomArena(Kit kit) {
+        return AlleyPlugin.getInstance().getService(ArenaService.class).getRandomArena(kit);
     }
 }

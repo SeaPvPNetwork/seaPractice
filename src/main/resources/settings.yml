@@ -5,7 +5,7 @@ command:
   # Allows you to execute for example alley:alley (syntax)
   syntax-bypass-perm: "alley.owner"
   # The dispatched/executed command by console when the players buy a cosmetic
-  grant-cosmetic-permission-command: "permission set {player} {permission}"
+  grant-cosmetic-permission-command: "permission set {model} {permission}"
 
 spawn:
   # The spawn location of the server
@@ -16,7 +16,7 @@ game:
     - "kill"
     - "gamemode"
     - "troll"
-  # The amount of lives each player will have in a lives match.
+  # The amount of lives each model will have in a lives match.
   lives: 3
   # The radius of the portal in blocks.
   portal-radius: 5
@@ -56,7 +56,7 @@ blocked-crafting-items: []
 
 profanity-filter:
   add-default-words: false # Alley has a built-in list of rude and toxic words, set this to true if you want them to apply (The list below will be used in addition to the built-in list).
-  staff-notification-format: "&6[S] &f(&6Alley: &fProfanity Detected) &c{player}&f: &7{message}"
+  staff-notification-format: "&6[S] &f(&6Alley: &fProfanity Detected) &c{model}&f: &7{message}"
   filtered-words:
     - "shit"
     - "fuck"

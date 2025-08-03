@@ -1,8 +1,8 @@
 package dev.revere.alley.feature.tip;
 
-import dev.revere.alley.Alley;
-import dev.revere.alley.config.ConfigService;
-import dev.revere.alley.tool.logger.Logger;
+import dev.revere.alley.AlleyPlugin;
+import dev.revere.alley.core.config.ConfigService;
+import dev.revere.alley.common.logger.Logger;
 import lombok.Getter;
 import org.bukkit.configuration.file.FileConfiguration;
 
@@ -20,7 +20,7 @@ public class Tip {
     private final List<String> tips = new ArrayList<>();
 
     public Tip() {
-        FileConfiguration config = Alley.getInstance().getService(ConfigService.class).getMessagesConfig();
+        FileConfiguration config = AlleyPlugin.getInstance().getService(ConfigService.class).getMessagesConfig();
 
         if (!config.contains("tips")) {
             Logger.info("Tips section not found in messages config.");

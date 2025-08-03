@@ -1,6 +1,6 @@
 package dev.revere.alley.feature.filter;
 
-import dev.revere.alley.plugin.lifecycle.Service;
+import dev.revere.alley.bootstrap.lifecycle.Service;
 import org.bukkit.entity.Player;
 
 /**
@@ -29,7 +29,7 @@ public interface FilterService extends Service {
      * Sends a notification to all online staff members about a profane message.
      *
      * @param message  The original message that was sent.
-     * @param offender The player who sent the message.
+     * @param offender The model who sent the message.
      */
     void notifyStaff(String message, Player offender);
 }

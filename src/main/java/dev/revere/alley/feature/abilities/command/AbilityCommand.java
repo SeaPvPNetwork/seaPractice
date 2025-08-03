@@ -1,12 +1,12 @@
 package dev.revere.alley.feature.abilities.command;
 
-import dev.revere.alley.Alley;
-import dev.revere.alley.api.command.BaseCommand;
-import dev.revere.alley.api.command.CommandArgs;
-import dev.revere.alley.api.command.annotation.CommandData;
-import dev.revere.alley.config.ConfigService;
+import dev.revere.alley.AlleyPlugin;
+import dev.revere.alley.library.command.BaseCommand;
+import dev.revere.alley.library.command.CommandArgs;
+import dev.revere.alley.library.command.annotation.CommandData;
+import dev.revere.alley.core.config.ConfigService;
 import dev.revere.alley.feature.abilities.AbilityService;
-import dev.revere.alley.util.chat.CC;
+import dev.revere.alley.common.text.CC;
 import lombok.Getter;
 import lombok.Setter;
 import org.bukkit.Bukkit;
@@ -17,7 +17,7 @@ import org.bukkit.entity.Player;
 @Setter
 public class AbilityCommand extends BaseCommand {
 
-    private Alley plugin = Alley.getInstance();
+    private AlleyPlugin plugin = AlleyPlugin.getInstance();
 
     @CommandData(name = "ability", permission = "hypractice.command.ability")
     @Override
@@ -32,7 +32,7 @@ public class AbilityCommand extends BaseCommand {
         switch (args[0].toLowerCase()) {
             case "give":
                 if (args.length < 4) {
-                    CC.sender(player, "&cUsage: /" + "ability" + " give <player> <ability|all> <amount>");
+                    CC.sender(player, "&cUsage: /" + "ability" + " give <model> <ability|all> <amount>");
                     return;
                 }
 
@@ -61,7 +61,7 @@ public class AbilityCommand extends BaseCommand {
 
                 Integer finalAmount = amount;
                 plugin.getService(AbilityService.class).getAbilityKeys().forEach(ability -> {
-                    String displayName = Alley.getInstance().getService(ConfigService.class).getAbilityConfig().getString(ability + ".ICON.DISPLAYNAME");
+                    String displayName = AlleyPlugin.getInstance().getService(ConfigService.class).getAbilityConfig().getString(ability + ".ICON.DISPLAYNAME");
                     if (args[2].equalsIgnoreCase(ability)) {
                         plugin.getService(AbilityService.class).giveAbility(player, target, ability, displayName, finalAmount);
                         return;
@@ -87,7 +87,7 @@ public class AbilityCommand extends BaseCommand {
         CC.sender(sender, "&7&m-----------------------------");
         CC.sender(sender, "&c&lAbility Help");
         CC.sender(sender, "");
-        CC.sender(sender, "&4/" + label + " give <player> <ability|all> <amount>");
+        CC.sender(sender, "&4/" + label + " give <model> <ability|all> <amount>");
         CC.sender(sender, "&4/" + label + " list");
         CC.sender(sender, "&7&m-----------------------------");
     }

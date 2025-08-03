@@ -1,6 +1,6 @@
 package dev.revere.alley.adapter.core;
 
-import dev.revere.alley.plugin.lifecycle.Service;
+import dev.revere.alley.bootstrap.lifecycle.Service;
 
 /**
  * @author Remi
@@ -12,7 +12,7 @@ public interface CoreAdapter extends Service {
     /**
      * Gets the active core implementation that was detected during startup.
      *
-     * @return The Core implementation for the currently enabled core plugin.
+     * @return The Core implementation for the currently enabled core bootstrap.
      */
     Core getCore();
 }

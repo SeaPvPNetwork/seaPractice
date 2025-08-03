@@ -1,11 +1,11 @@
 package dev.revere.alley.feature.layout.menu;
 
-import dev.revere.alley.Alley;
-import dev.revere.alley.api.menu.Button;
-import dev.revere.alley.api.menu.Menu;
-import dev.revere.alley.base.kit.enums.KitCategory;
-import dev.revere.alley.base.queue.QueueService;
-import dev.revere.alley.base.queue.Queue;
+import dev.revere.alley.AlleyPlugin;
+import dev.revere.alley.library.menu.Button;
+import dev.revere.alley.library.menu.Menu;
+import dev.revere.alley.feature.kit.KitCategory;
+import dev.revere.alley.feature.queue.QueueService;
+import dev.revere.alley.feature.queue.Queue;
 import dev.revere.alley.feature.layout.menu.button.LayoutButton;
 import dev.revere.alley.feature.layout.menu.button.LayoutModeSwitcherButton;
 import lombok.AllArgsConstructor;
@@ -34,7 +34,7 @@ public class LayoutMenu extends Menu {
 
         int slot = 10;
 
-        for (Queue queue : Alley.getInstance().getService(QueueService.class).getQueues()) {
+        for (Queue queue : AlleyPlugin.getInstance().getService(QueueService.class).getQueues()) {
             if (!queue.isRanked() && !queue.isDuos() && queue.getKit().getCategory() == this.kitCategory && queue.getKit().isEditable()) {
                 slot = this.skipIfSlotCrossingBorder(slot);
                 buttons.put(slot++, new LayoutButton(queue.getKit()));

@@ -1,8 +1,8 @@
 package dev.revere.alley.feature.division.menu;
 
-import dev.revere.alley.Alley;
-import dev.revere.alley.api.menu.Button;
-import dev.revere.alley.api.menu.Menu;
+import dev.revere.alley.AlleyPlugin;
+import dev.revere.alley.library.menu.Button;
+import dev.revere.alley.library.menu.Menu;
 import dev.revere.alley.feature.division.Division;
 import dev.revere.alley.feature.division.DivisionService;
 import org.bukkit.entity.Player;
@@ -26,7 +26,7 @@ public class DivisionsMenu extends Menu {
         final Map<Integer, Button> buttons = new HashMap<>();
 
         int slot = 10;
-        for (Division division : Alley.getInstance().getService(DivisionService.class).getDivisions()) {
+        for (Division division : AlleyPlugin.getInstance().getService(DivisionService.class).getDivisions()) {
             buttons.put(slot++, new DivisionButton(division));
             if (slot == 17 || slot == 26 || slot == 35 || slot == 44 || slot == 53) {
                 slot += 2;

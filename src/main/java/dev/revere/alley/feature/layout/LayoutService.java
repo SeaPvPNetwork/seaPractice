@@ -1,7 +1,7 @@
 package dev.revere.alley.feature.layout;
 
-import dev.revere.alley.api.menu.Menu;
-import dev.revere.alley.plugin.lifecycle.Service;
+import dev.revere.alley.library.menu.Menu;
+import dev.revere.alley.bootstrap.lifecycle.Service;
 import dev.revere.alley.feature.layout.data.LayoutData;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -28,9 +28,9 @@ public interface LayoutService extends Service {
     ItemStack getLayoutBook(LayoutData layout);
 
     /**
-     * Gives a player all the layout selection books for a specific kit.
+     * Gives a model all the layout selection books for a specific kit.
      *
-     * @param player  The player to give the books to.
+     * @param player  The model to give the books to.
      * @param kitName The name of the kit.
      */
     void giveBooks(Player player, String kitName);

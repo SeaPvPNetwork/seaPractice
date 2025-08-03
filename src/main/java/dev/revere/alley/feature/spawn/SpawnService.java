@@ -1,0 +1,33 @@
+package dev.revere.alley.feature.spawn;
+
+import dev.revere.alley.bootstrap.lifecycle.Service;
+import org.bukkit.Location;
+import org.bukkit.entity.Player;
+
+/**
+ * @author Remi
+ * @project alley-practice
+ * @date 2/07/2025
+ */
+public interface SpawnService extends Service {
+    /**
+     * Gets the currently loaded spawn location.
+     *
+     * @return The spawn Location, or null if not set.
+     */
+    Location getLocation();
+
+    /**
+     * Sets or updates the spawn location and saves it to the configuration file.
+     *
+     * @param location The new spawn location.
+     */
+    void updateSpawnLocation(Location location);
+
+    /**
+     * Teleports a model to the configured spawn location.
+     *
+     * @param player The model to teleport.
+     */
+    void teleportToSpawn(Player player);
+}

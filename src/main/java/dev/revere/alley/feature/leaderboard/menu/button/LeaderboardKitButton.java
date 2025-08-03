@@ -1,11 +1,11 @@
 package dev.revere.alley.feature.leaderboard.menu.button;
 
-import dev.revere.alley.api.menu.Button;
-import dev.revere.alley.base.kit.Kit;
+import dev.revere.alley.library.menu.Button;
+import dev.revere.alley.feature.kit.Kit;
 import dev.revere.alley.feature.leaderboard.data.LeaderboardPlayerData;
-import dev.revere.alley.feature.leaderboard.enums.LeaderboardType;
-import dev.revere.alley.tool.item.ItemBuilder;
-import dev.revere.alley.util.chat.CC;
+import dev.revere.alley.feature.leaderboard.LeaderboardType;
+import dev.revere.alley.common.item.ItemBuilder;
+import dev.revere.alley.common.text.CC;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;

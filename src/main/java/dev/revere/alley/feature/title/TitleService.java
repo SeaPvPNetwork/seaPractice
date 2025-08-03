@@ -1,8 +1,8 @@
 package dev.revere.alley.feature.title;
 
-import dev.revere.alley.base.kit.Kit;
-import dev.revere.alley.plugin.lifecycle.Service;
-import dev.revere.alley.feature.title.record.TitleRecord;
+import dev.revere.alley.feature.kit.Kit;
+import dev.revere.alley.bootstrap.lifecycle.Service;
+import dev.revere.alley.feature.title.model.TitleRecord;
 
 import java.util.Map;
 

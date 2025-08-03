@@ -1,14 +1,14 @@
 package dev.revere.alley.feature.cosmetic.menu;
 
-import dev.revere.alley.Alley;
-import dev.revere.alley.api.menu.Button;
-import dev.revere.alley.api.menu.Menu;
-import dev.revere.alley.api.menu.impl.BackButton;
-import dev.revere.alley.feature.cosmetic.CosmeticType;
+import dev.revere.alley.AlleyPlugin;
+import dev.revere.alley.library.menu.Button;
+import dev.revere.alley.library.menu.Menu;
+import dev.revere.alley.library.menu.impl.BackButton;
+import dev.revere.alley.feature.cosmetic.model.CosmeticType;
 import dev.revere.alley.feature.cosmetic.menu.button.CosmeticButton;
-import dev.revere.alley.feature.cosmetic.BaseCosmeticRepository;
+import dev.revere.alley.feature.cosmetic.internal.repository.BaseCosmeticRepository;
 import dev.revere.alley.feature.cosmetic.CosmeticService;
-import dev.revere.alley.util.StringUtil;
+import dev.revere.alley.common.text.StringUtil;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.entity.Player;
 
@@ -36,7 +36,7 @@ public class CosmeticTypeMenu extends Menu {
         final Map<Integer, Button> buttons = new HashMap<>();
         buttons.put(0, new BackButton(new CosmeticsMenu()));
 
-        BaseCosmeticRepository<?> repository = Alley.getInstance().getService(CosmeticService.class).getRepository(this.cosmeticType);
+        BaseCosmeticRepository<?> repository = AlleyPlugin.getInstance().getService(CosmeticService.class).getRepository(this.cosmeticType);
         if (repository != null) {
             repository.getCosmetics().stream()
                     .filter(cosmetic -> cosmetic.getIcon() != null)

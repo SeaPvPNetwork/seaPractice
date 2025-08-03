@@ -1,8 +1,8 @@
 package dev.revere.alley.feature.division.command;
 
-import dev.revere.alley.api.command.BaseCommand;
-import dev.revere.alley.api.command.CommandArgs;
-import dev.revere.alley.api.command.annotation.CommandData;
+import dev.revere.alley.library.command.BaseCommand;
+import dev.revere.alley.library.command.CommandArgs;
+import dev.revere.alley.library.command.annotation.CommandData;
 import dev.revere.alley.feature.division.command.impl.data.DivisionSetDescriptionCommand;
 import dev.revere.alley.feature.division.command.impl.data.DivisionSetDisplayNameCommand;
 import dev.revere.alley.feature.division.command.impl.data.DivisionSetIconCommand;
@@ -13,7 +13,7 @@ import dev.revere.alley.feature.division.command.impl.manage.DivisionListCommand
 import dev.revere.alley.feature.division.command.impl.manage.DivisionViewCommand;
 import dev.revere.alley.feature.division.command.impl.player.DivisionsCommand;
 import dev.revere.alley.feature.division.menu.DivisionsMenu;
-import dev.revere.alley.util.chat.CC;
+import dev.revere.alley.common.text.CC;
 import org.bukkit.entity.Player;
 
 /**
@@ -46,7 +46,7 @@ public class DivisionCommand extends BaseCommand {
             player.sendMessage(CC.translate(" &f● &6/division create &8(&7divisionName&8) &8(&7requiredWins&8) &7| Create a division"));
             player.sendMessage(CC.translate(" &f● &6/division delete &8(&7divisionName&8) &7| Delete a division"));
             player.sendMessage(CC.translate(" &f● &6/division view &8(&7divisionName&8) &7| View division info"));
-            player.sendMessage(CC.translate(" &f● &6/division setwins &8(&7divisionName&8) &8(&7requiredWins&8) &8(&7tier&8) &7| Set required wins of a tier"));
+            player.sendMessage(CC.translate(" &f● &6/division setwins &8(&7divisionName&8) &8(&7requiredWins&8) &8(&7tier&8) &7| Set required wins of a model"));
             player.sendMessage(CC.translate(" &f● &6/division seticon &8(&7divisionName&8) &7| Set division icon"));
             player.sendMessage(CC.translate(" &f● &6/division setdisplayname &8(&7divisionName&8) &8(&7displayName&8) &7| Set division display name"));
             player.sendMessage(CC.translate(" &f● &6/division setdescription &8(&7divisionName&8) &8(&7description&8) &7| Set division description"));

@@ -1,10 +1,10 @@
 package dev.revere.alley.feature.tip.command;
 
-import dev.revere.alley.api.command.BaseCommand;
-import dev.revere.alley.api.command.CommandArgs;
-import dev.revere.alley.api.command.annotation.CommandData;
+import dev.revere.alley.library.command.BaseCommand;
+import dev.revere.alley.library.command.CommandArgs;
+import dev.revere.alley.library.command.annotation.CommandData;
 import dev.revere.alley.feature.tip.Tip;
-import dev.revere.alley.util.chat.CC;
+import dev.revere.alley.common.text.CC;
 import org.bukkit.entity.Player;
 
 /**

@@ -1,12 +1,12 @@
 package dev.revere.alley.feature.leaderboard.menu.button;
 
-import dev.revere.alley.Alley;
-import dev.revere.alley.api.menu.Button;
-import dev.revere.alley.feature.leaderboard.enums.LeaderboardType;
+import dev.revere.alley.AlleyPlugin;
+import dev.revere.alley.library.menu.Button;
+import dev.revere.alley.feature.leaderboard.LeaderboardType;
 import dev.revere.alley.feature.leaderboard.menu.LeaderboardMenu;
-import dev.revere.alley.profile.ProfileService;
-import dev.revere.alley.profile.Profile;
-import dev.revere.alley.tool.item.ItemBuilder;
+import dev.revere.alley.core.profile.ProfileService;
+import dev.revere.alley.core.profile.Profile;
+import dev.revere.alley.common.item.ItemBuilder;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.ClickType;
@@ -21,17 +21,17 @@ import java.util.List;
  * @date 5/26/2024
  */
 public class DisplayTypeButton extends Button {
-    protected final Alley plugin = Alley.getInstance();
+    protected final AlleyPlugin plugin = AlleyPlugin.getInstance();
 
     /**
      * Gets the item to display in the menu.
      *
-     * @param player the player viewing the menu
+     * @param player the model viewing the menu
      * @return the item to display
      */
     @Override
     public ItemStack getButtonItem(Player player) {
-        ProfileService profileService = Alley.getInstance().getService(ProfileService.class);
+        ProfileService profileService = AlleyPlugin.getInstance().getService(ProfileService.class);
         Profile profile = profileService.getProfile(player.getUniqueId());
         LeaderboardType currentType = profile.getLeaderboardType();
 
@@ -51,12 +51,12 @@ public class DisplayTypeButton extends Button {
     /**
      * Handles the click event for the button.
      *
-     * @param player    the player who clicked the button
+     * @param player    the model who clicked the button
      * @param clickType the type of click
      */
     @Override
     public void clicked(Player player, ClickType clickType) {
-        ProfileService profileService = Alley.getInstance().getService(ProfileService.class);
+        ProfileService profileService = AlleyPlugin.getInstance().getService(ProfileService.class);
         Profile profile = profileService.getProfile(player.getUniqueId());
 
         LeaderboardType currentType = profile.getLeaderboardType();

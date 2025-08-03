@@ -1,10 +1,10 @@
 package dev.revere.alley.feature.level.command;
 
-import dev.revere.alley.api.command.BaseCommand;
-import dev.revere.alley.api.command.CommandArgs;
-import dev.revere.alley.api.command.annotation.CommandData;
-import dev.revere.alley.api.command.annotation.CompleterData;
-import dev.revere.alley.api.constant.PluginConstant;
+import dev.revere.alley.library.command.BaseCommand;
+import dev.revere.alley.library.command.CommandArgs;
+import dev.revere.alley.library.command.annotation.CommandData;
+import dev.revere.alley.library.command.annotation.CompleterData;
+import dev.revere.alley.common.constants.PluginConstant;
 import dev.revere.alley.feature.level.command.impl.data.LevelAdminSetDisplayNameCommand;
 import dev.revere.alley.feature.level.command.impl.data.LevelAdminSetIconCommand;
 import dev.revere.alley.feature.level.command.impl.data.LevelAdminSetMaxEloCommand;
@@ -13,7 +13,7 @@ import dev.revere.alley.feature.level.command.impl.manage.LevelAdminCreateComman
 import dev.revere.alley.feature.level.command.impl.manage.LevelAdminDeleteCommand;
 import dev.revere.alley.feature.level.command.impl.manage.LevelAdminListCommand;
 import dev.revere.alley.feature.level.command.impl.manage.LevelAdminViewCommand;
-import dev.revere.alley.util.chat.CC;
+import dev.revere.alley.common.text.CC;
 
 import java.util.ArrayList;
 import java.util.Arrays;
