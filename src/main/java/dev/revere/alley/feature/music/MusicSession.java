@@ -1,6 +1,5 @@
 package dev.revere.alley.feature.music;
 
-import dev.revere.alley.feature.music.enums.MusicDisc;
 import lombok.Getter;
 import lombok.Setter;
 import org.bukkit.Location;

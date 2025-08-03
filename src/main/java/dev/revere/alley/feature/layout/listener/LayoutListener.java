@@ -1,9 +1,9 @@
 package dev.revere.alley.feature.layout.listener;
 
-import dev.revere.alley.Alley;
+import dev.revere.alley.AlleyPlugin;
 import dev.revere.alley.feature.layout.data.LayoutData;
-import dev.revere.alley.profile.ProfileService;
-import dev.revere.alley.util.chat.CC;
+import dev.revere.alley.core.profile.ProfileService;
+import dev.revere.alley.common.text.CC;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -30,7 +30,7 @@ public class LayoutListener implements Listener {
 
         String clickedName = ChatColor.stripColor(item.getItemMeta().getDisplayName());
 
-        for (List<LayoutData> layoutList : Alley.getInstance().getService(ProfileService.class)
+        for (List<LayoutData> layoutList : AlleyPlugin.getInstance().getService(ProfileService.class)
                 .getProfile(player.getUniqueId())
                 .getProfileData().getLayoutData().getLayouts().values()) {
 

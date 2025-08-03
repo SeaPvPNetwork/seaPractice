@@ -1,6 +1,6 @@
 package dev.revere.alley.feature.cosmetic.annotation;
 
-import dev.revere.alley.feature.cosmetic.CosmeticType;
+import dev.revere.alley.feature.cosmetic.model.CosmeticType;
 import org.bukkit.Material;
 
 import java.lang.annotation.ElementType;

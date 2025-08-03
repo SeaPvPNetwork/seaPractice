@@ -1,12 +1,12 @@
 package dev.revere.alley.feature.division.menu;
 
-import dev.revere.alley.Alley;
-import dev.revere.alley.api.menu.Button;
+import dev.revere.alley.AlleyPlugin;
+import dev.revere.alley.library.menu.Button;
 import dev.revere.alley.feature.division.Division;
 import dev.revere.alley.feature.title.menu.TitleMenu;
-import dev.revere.alley.profile.ProfileService;
-import dev.revere.alley.tool.item.ItemBuilder;
-import dev.revere.alley.util.chat.CC;
+import dev.revere.alley.core.profile.ProfileService;
+import dev.revere.alley.common.item.ItemBuilder;
+import dev.revere.alley.common.text.CC;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.bukkit.entity.Player;
@@ -48,6 +48,6 @@ public class DivisionButton extends Button {
     public void clicked(Player player, ClickType clickType) {
         if (clickType != ClickType.LEFT) return;
 
-        new TitleMenu(Alley.getInstance().getService(ProfileService.class).getProfile(player.getUniqueId())).openMenu(player);
+        new TitleMenu(AlleyPlugin.getInstance().getService(ProfileService.class).getProfile(player.getUniqueId())).openMenu(player);
     }
 }

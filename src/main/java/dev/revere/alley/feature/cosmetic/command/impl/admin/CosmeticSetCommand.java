@@ -1,16 +1,16 @@
 package dev.revere.alley.feature.cosmetic.command.impl.admin;
 
-import dev.revere.alley.api.command.BaseCommand;
-import dev.revere.alley.api.command.CommandArgs;
-import dev.revere.alley.api.command.annotation.CommandData;
-import dev.revere.alley.feature.cosmetic.BaseCosmetic;
-import dev.revere.alley.feature.cosmetic.CosmeticType;
-import dev.revere.alley.feature.cosmetic.BaseCosmeticRepository;
+import dev.revere.alley.library.command.BaseCommand;
+import dev.revere.alley.library.command.CommandArgs;
+import dev.revere.alley.library.command.annotation.CommandData;
+import dev.revere.alley.feature.cosmetic.model.BaseCosmetic;
+import dev.revere.alley.feature.cosmetic.model.CosmeticType;
+import dev.revere.alley.feature.cosmetic.internal.repository.BaseCosmeticRepository;
 import dev.revere.alley.feature.cosmetic.CosmeticService;
-import dev.revere.alley.profile.ProfileService;
-import dev.revere.alley.profile.Profile;
-import dev.revere.alley.util.StringUtil;
-import dev.revere.alley.util.chat.CC;
+import dev.revere.alley.core.profile.ProfileService;
+import dev.revere.alley.core.profile.Profile;
+import dev.revere.alley.common.text.StringUtil;
+import dev.revere.alley.common.text.CC;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
@@ -27,7 +27,7 @@ public class CosmeticSetCommand extends BaseCommand {
         String[] args = command.getArgs();
 
         if (args.length != 3) {
-            player.sendMessage(CC.translate("&cUsage: /cosmetic set <player> <type> <cosmetic>"));
+            player.sendMessage(CC.translate("&cUsage: /cosmetic set <model> <type> <cosmetic>"));
             return;
         }
 

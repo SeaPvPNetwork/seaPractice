@@ -1,9 +1,9 @@
 package dev.revere.alley.feature.layout.menu.button.editor;
 
-import dev.revere.alley.api.menu.Button;
-import dev.revere.alley.base.kit.Kit;
-import dev.revere.alley.tool.item.ItemBuilder;
-import dev.revere.alley.util.chat.CC;
+import dev.revere.alley.library.menu.Button;
+import dev.revere.alley.feature.kit.Kit;
+import dev.revere.alley.common.item.ItemBuilder;
+import dev.revere.alley.common.text.CC;
 import lombok.AllArgsConstructor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;

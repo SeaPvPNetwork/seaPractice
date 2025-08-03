@@ -1,13 +1,13 @@
 package dev.revere.alley.feature.title.menu;
 
-import dev.revere.alley.Alley;
-import dev.revere.alley.api.menu.Button;
-import dev.revere.alley.feature.title.record.TitleRecord;
-import dev.revere.alley.profile.Profile;
-import dev.revere.alley.profile.progress.ProgressService;
-import dev.revere.alley.profile.progress.PlayerProgress;
-import dev.revere.alley.tool.item.ItemBuilder;
-import dev.revere.alley.util.chat.CC;
+import dev.revere.alley.AlleyPlugin;
+import dev.revere.alley.library.menu.Button;
+import dev.revere.alley.feature.title.model.TitleRecord;
+import dev.revere.alley.core.profile.Profile;
+import dev.revere.alley.core.profile.progress.ProgressService;
+import dev.revere.alley.core.profile.progress.PlayerProgress;
+import dev.revere.alley.common.item.ItemBuilder;
+import dev.revere.alley.common.text.CC;
 import lombok.AllArgsConstructor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -79,7 +79,7 @@ public class TitleButton extends Button {
      * @return A list of strings representing the progress.
      */
     private List<String> progress() {
-        PlayerProgress progress = Alley.getInstance().getService(ProgressService.class).calculateProgress(this.profile, this.title.getKit().getName());
+        PlayerProgress progress = AlleyPlugin.getInstance().getService(ProgressService.class).calculateProgress(this.profile, this.title.getKit().getName());
 
         return Arrays.asList(
                 CC.MENU_BAR,

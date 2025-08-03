@@ -1,17 +1,17 @@
 package dev.revere.alley.feature.layout.menu.button;
 
-import dev.revere.alley.Alley;
-import dev.revere.alley.api.menu.Button;
-import dev.revere.alley.base.kit.Kit;
-import dev.revere.alley.base.kit.setting.impl.mode.KitSettingRaiding;
+import dev.revere.alley.AlleyPlugin;
+import dev.revere.alley.library.menu.Button;
+import dev.revere.alley.feature.kit.Kit;
+import dev.revere.alley.feature.kit.setting.types.mode.KitSettingRaiding;
 import dev.revere.alley.feature.layout.data.LayoutData;
 import dev.revere.alley.feature.layout.menu.LayoutEditorMenu;
-import dev.revere.alley.feature.layout.menu.role.LayoutSelectRoleKitMenu;
-import dev.revere.alley.profile.ProfileService;
-import dev.revere.alley.profile.Profile;
-import dev.revere.alley.tool.item.ItemBuilder;
-import dev.revere.alley.util.chat.CC;
-import dev.revere.alley.util.chat.Symbol;
+import dev.revere.alley.feature.layout.menu.LayoutSelectRoleKitMenu;
+import dev.revere.alley.core.profile.ProfileService;
+import dev.revere.alley.core.profile.Profile;
+import dev.revere.alley.common.item.ItemBuilder;
+import dev.revere.alley.common.text.CC;
+import dev.revere.alley.common.text.Symbol;
 import lombok.AllArgsConstructor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.ClickType;
@@ -45,7 +45,7 @@ public class LayoutButton extends Button {
 
     @Override
     public void clicked(Player player, ClickType clickType) {
-        Profile profile = Alley.getInstance().getService(ProfileService.class).getProfile(player.getUniqueId());
+        Profile profile = AlleyPlugin.getInstance().getService(ProfileService.class).getProfile(player.getUniqueId());
 
         if (clickType == ClickType.LEFT) {
             // This will be changed to open the selected layout within the editor button,

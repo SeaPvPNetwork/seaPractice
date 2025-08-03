@@ -1,16 +1,16 @@
 package dev.revere.alley.feature.explosives.listener;
 
-import dev.revere.alley.Alley;
-import dev.revere.alley.base.cooldown.Cooldown;
-import dev.revere.alley.base.cooldown.CooldownService;
-import dev.revere.alley.base.cooldown.enums.CooldownType;
-import dev.revere.alley.base.kit.setting.impl.mechanic.KitSettingExplosiveImpl;
+import dev.revere.alley.AlleyPlugin;
+import dev.revere.alley.feature.cooldown.Cooldown;
+import dev.revere.alley.feature.cooldown.CooldownService;
+import dev.revere.alley.feature.cooldown.CooldownType;
+import dev.revere.alley.feature.kit.setting.types.mechanic.KitSettingExplosiveImpl;
 import dev.revere.alley.feature.explosives.ExplosiveService;
-import dev.revere.alley.game.match.Match;
-import dev.revere.alley.profile.ProfileService;
-import dev.revere.alley.profile.Profile;
-import dev.revere.alley.profile.enums.ProfileState;
-import dev.revere.alley.util.chat.CC;
+import dev.revere.alley.feature.match.Match;
+import dev.revere.alley.core.profile.ProfileService;
+import dev.revere.alley.core.profile.Profile;
+import dev.revere.alley.core.profile.enums.ProfileState;
+import dev.revere.alley.common.text.CC;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -57,7 +57,7 @@ public class ExplosiveListener implements Listener {
     private void handleFireballUse(PlayerInteractEvent event) {
         Player player = event.getPlayer();
 
-        Profile profile = Alley.getInstance().getService(ProfileService.class).getProfile(player.getUniqueId());
+        Profile profile = AlleyPlugin.getInstance().getService(ProfileService.class).getProfile(player.getUniqueId());
         if (profile == null) return;
         if (profile.getState() != ProfileState.PLAYING) return;
 
@@ -73,7 +73,7 @@ public class ExplosiveListener implements Listener {
         event.setCancelled(true);
 
         CooldownType cooldownType = CooldownType.FIREBALL;
-        CooldownService cooldownService = Alley.getInstance().getService(CooldownService.class);
+        CooldownService cooldownService = AlleyPlugin.getInstance().getService(CooldownService.class);
         Optional<Cooldown> optionalCooldown = Optional.ofNullable(cooldownService.getCooldown(player.getUniqueId(), cooldownType));
         if (optionalCooldown.isPresent() && optionalCooldown.get().isActive()) {
             player.sendMessage(CC.translate("&cYou must wait " + optionalCooldown.get().remainingTimeInMinutes() + " &cbefore using another fireball."));
@@ -88,13 +88,13 @@ public class ExplosiveListener implements Listener {
 
         cooldown.resetCooldown();
 
-        ExplosiveService explosiveService = Alley.getInstance().getService(ExplosiveService.class);
+        ExplosiveService explosiveService = AlleyPlugin.getInstance().getService(ExplosiveService.class);
         Fireball fireball = player.launchProjectile(Fireball.class);
         fireball.setIsIncendiary(false);
         fireball.setYield(2.0F);
         fireball.setVelocity(player.getLocation().getDirection().normalize().multiply(explosiveService.getSpeed()));
 
-        //SoundUtil.playCustomSound(player, Sound.GHAST_FIREBALL, 1.0f, 1.0f);
+        //SoundUtil.playCustomSound(model, Sound.GHAST_FIREBALL, 1.0f, 1.0f);
 
         if (player.getGameMode() == GameMode.CREATIVE) return;
 
@@ -110,7 +110,7 @@ public class ExplosiveListener implements Listener {
         Block clickedBlock = event.getClickedBlock();
         if (clickedBlock == null) return;
 
-        Profile profile = Alley.getInstance().getService(ProfileService.class).getProfile(player.getUniqueId());
+        Profile profile = AlleyPlugin.getInstance().getService(ProfileService.class).getProfile(player.getUniqueId());
         if (profile == null || profile.getState() != ProfileState.PLAYING) return;
 
         Match match = profile.getMatch();
@@ -131,8 +131,8 @@ public class ExplosiveListener implements Listener {
         Location tntLocation = clickedBlock.getRelative(event.getBlockFace()).getLocation().add(0.5, 0.0, 0.5);
         TNTPrimed tnt = (TNTPrimed) tntLocation.getWorld().spawnEntity(tntLocation, EntityType.PRIMED_TNT);
 
-        tnt.setFuseTicks(Alley.getInstance().getService(ExplosiveService.class).getTntFuseTicks());
-        tnt.setMetadata(PRACTICE_TNT_METADATA, new FixedMetadataValue(Alley.getInstance(), true));
+        tnt.setFuseTicks(AlleyPlugin.getInstance().getService(ExplosiveService.class).getTntFuseTicks());
+        tnt.setMetadata(PRACTICE_TNT_METADATA, new FixedMetadataValue(AlleyPlugin.getInstance(), true));
     }
 
     @EventHandler
@@ -172,7 +172,7 @@ public class ExplosiveListener implements Listener {
         }
 
         Player player = (Player) event.getEntity();
-        Profile profile = Alley.getInstance().getService(ProfileService.class).getProfile(player.getUniqueId());
+        Profile profile = AlleyPlugin.getInstance().getService(ProfileService.class).getProfile(player.getUniqueId());
 
         if (profile != null && profile.getState() == ProfileState.PLAYING) {
             event.setDamage(0.0);
@@ -181,13 +181,13 @@ public class ExplosiveListener implements Listener {
 
     /**
      * Applies configured knockback to all players within range of an explosion.
-     * The knockback strength is scaled based on the player's distance from the explosion center.
+     * The knockback strength is scaled based on the model's distance from the explosion center.
      *
      * @param source            The entity causing the explosion (e.g., Fireball, TNTPrimed).
      * @param explosionLocation The center location of the explosion.
      */
     private void applyPlayerKnockback(Entity source, Location explosionLocation) {
-        ExplosiveService explosiveService = Alley.getInstance().getService(ExplosiveService.class);
+        ExplosiveService explosiveService = AlleyPlugin.getInstance().getService(ExplosiveService.class);
         double maxRange = explosiveService.getRange();
         double maxHorizontal = explosiveService.getHorizontal();
         double maxVertical = explosiveService.getVertical();
@@ -198,7 +198,7 @@ public class ExplosiveListener implements Listener {
             }
 
             Player player = (Player) entity;
-            Profile profile = Alley.getInstance().getService(ProfileService.class).getProfile(player.getUniqueId());
+            Profile profile = AlleyPlugin.getInstance().getService(ProfileService.class).getProfile(player.getUniqueId());
             if (profile == null || profile.getState() != ProfileState.PLAYING) {
                 return;
             }
@@ -275,7 +275,7 @@ public class ExplosiveListener implements Listener {
      * @param explosionLocation The central Location where the fireball explosion occurs.
      */
     private void handleFireballExplosion(Location explosionLocation) {
-        ExplosiveService explosiveService = Alley.getInstance().getService(ExplosiveService.class);
+        ExplosiveService explosiveService = AlleyPlugin.getInstance().getService(ExplosiveService.class);
         double range = explosiveService.getExplosionRange();
 
         List<Block> blocksToBreak = new ArrayList<>();
@@ -310,11 +310,11 @@ public class ExplosiveListener implements Listener {
      * purely cosmetic (zero-power) explosion for sounds and particle effects
      * and applies knockback to nearby players.
      *
-     * @param tnt               The TNTPrimed entity that is exploding. This is used as a reference for applying player knockback.
+     * @param tnt               The TNTPrimed entity that is exploding. This is used as a reference for applying model knockback.
      * @param explosionLocation The central Location where the explosion occurs.
      */
     private void handleCustomTntExplosion(TNTPrimed tnt, Location explosionLocation) {
-        ExplosiveService explosiveService = Alley.getInstance().getService(ExplosiveService.class);
+        ExplosiveService explosiveService = AlleyPlugin.getInstance().getService(ExplosiveService.class);
         double range = explosiveService.getExplosionRange();
 
         List<Block> blocksToBreak = new ArrayList<>();

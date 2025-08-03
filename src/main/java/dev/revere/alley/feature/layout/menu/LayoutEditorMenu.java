@@ -1,14 +1,14 @@
 package dev.revere.alley.feature.layout.menu;
 
-import dev.revere.alley.Alley;
-import dev.revere.alley.api.menu.Button;
-import dev.revere.alley.api.menu.Menu;
-import dev.revere.alley.base.kit.Kit;
+import dev.revere.alley.AlleyPlugin;
+import dev.revere.alley.library.menu.Button;
+import dev.revere.alley.library.menu.Menu;
+import dev.revere.alley.feature.kit.Kit;
 import dev.revere.alley.feature.layout.data.LayoutData;
 import dev.revere.alley.feature.layout.menu.button.editor.*;
-import dev.revere.alley.profile.ProfileService;
-import dev.revere.alley.profile.Profile;
-import dev.revere.alley.profile.enums.ProfileState;
+import dev.revere.alley.core.profile.ProfileService;
+import dev.revere.alley.core.profile.Profile;
+import dev.revere.alley.core.profile.enums.ProfileState;
 import lombok.AllArgsConstructor;
 import org.bukkit.entity.Player;
 
@@ -22,19 +22,19 @@ import java.util.Map;
  */
 @AllArgsConstructor
 public class LayoutEditorMenu extends Menu {
-    protected final Alley plugin = Alley.getInstance();
+    protected final AlleyPlugin plugin = AlleyPlugin.getInstance();
     private final Kit kit;
     private final LayoutData layout;
 
     @Override
     public void onOpen(Player player) {
-        Alley.getInstance().getService(ProfileService.class).getProfile(player.getUniqueId()).setState(ProfileState.EDITING);
+        AlleyPlugin.getInstance().getService(ProfileService.class).getProfile(player.getUniqueId()).setState(ProfileState.EDITING);
         player.getInventory().setContents(this.layout.getItems());
     }
 
     @Override
     public void onClose(Player player) {
-        Alley.getInstance().getService(ProfileService.class).getProfile(player.getUniqueId()).setState(ProfileState.LOBBY);
+        AlleyPlugin.getInstance().getService(ProfileService.class).getProfile(player.getUniqueId()).setState(ProfileState.LOBBY);
         super.onClose(player);
     }
 
@@ -47,7 +47,7 @@ public class LayoutEditorMenu extends Menu {
     public Map<Integer, Button> getButtons(Player player) {
         Map<Integer, Button> buttons = new HashMap<>();
 
-        ProfileService profileService = Alley.getInstance().getService(ProfileService.class);
+        ProfileService profileService = AlleyPlugin.getInstance().getService(ProfileService.class);
         Profile profile = profileService.getProfile(player.getUniqueId());
 
         buttons.put(11, new LayoutSaveButton(this.kit, this.layout));

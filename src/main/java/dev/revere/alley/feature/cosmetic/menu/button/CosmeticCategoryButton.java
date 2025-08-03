@@ -1,14 +1,14 @@
 package dev.revere.alley.feature.cosmetic.menu.button;
 
-import dev.revere.alley.Alley;
-import dev.revere.alley.api.menu.Button;
-import dev.revere.alley.feature.cosmetic.CosmeticType;
+import dev.revere.alley.AlleyPlugin;
+import dev.revere.alley.library.menu.Button;
+import dev.revere.alley.feature.cosmetic.model.CosmeticType;
 import dev.revere.alley.feature.cosmetic.menu.CosmeticTypeMenu;
-import dev.revere.alley.feature.cosmetic.BaseCosmeticRepository;
+import dev.revere.alley.feature.cosmetic.internal.repository.BaseCosmeticRepository;
 import dev.revere.alley.feature.cosmetic.CosmeticService;
-import dev.revere.alley.tool.item.ItemBuilder;
-import dev.revere.alley.util.StringUtil;
-import dev.revere.alley.util.chat.CC;
+import dev.revere.alley.common.item.ItemBuilder;
+import dev.revere.alley.common.text.StringUtil;
+import dev.revere.alley.common.text.CC;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -36,7 +36,7 @@ public class CosmeticCategoryButton extends Button {
         int totalCount = 0;
         int ownedCount = 0;
 
-        BaseCosmeticRepository<?> repository = Alley.getInstance().getService(CosmeticService.class).getRepository(cosmeticType);
+        BaseCosmeticRepository<?> repository = AlleyPlugin.getInstance().getService(CosmeticService.class).getRepository(cosmeticType);
         if (repository != null) {
             totalCount = repository.getCosmetics().size();
             ownedCount = (int) repository.getCosmetics().stream()

@@ -1,0 +1,120 @@
+package dev.revere.alley.common.reflect.internal.types;
+
+import dev.revere.alley.AlleyPlugin;
+import dev.revere.alley.core.config.ConfigService;
+import dev.revere.alley.core.profile.ProfileService;
+import dev.revere.alley.core.profile.Profile;
+import dev.revere.alley.common.logger.Logger;
+import dev.revere.alley.common.reflect.Reflection;
+import dev.revere.alley.common.text.CC;
+import dev.revere.alley.common.text.Symbol;
+import net.minecraft.server.v1_8_R3.IChatBaseComponent;
+import net.minecraft.server.v1_8_R3.PacketPlayOutChat;
+import org.bukkit.ChatColor;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.entity.Player;
+import org.bukkit.scheduler.BukkitRunnable;
+
+/**
+ * @author Emmy
+ * @project Alley
+ * @since 03/04/2025
+ */
+public class ActionBarReflectionServiceImpl implements Reflection {
+    /**
+     * Method to send an action bar message to a model in a specific interval.
+     *
+     * @param player          The model.
+     * @param message         The message.
+     * @param durationSeconds The duration to show the message (in seconds).
+     */
+    public void sendMessage(Player player, String message, int durationSeconds) {
+        try {
+            IChatBaseComponent chatBaseComponent = IChatBaseComponent.ChatSerializer.a("{\"text\": \"" + CC.translate(message) + "\"}");
+            PacketPlayOutChat packet = new PacketPlayOutChat(chatBaseComponent, (byte) 2);
+            this.sendPacket(player, packet);
+
+            if (durationSeconds > 0) {
+                new BukkitRunnable() {
+                    @Override
+                    public void run() {
+                        IChatBaseComponent clearChatBaseComponent = IChatBaseComponent.ChatSerializer.a("{\"text\": \"\"}");
+                        PacketPlayOutChat clearPacket = new PacketPlayOutChat(clearChatBaseComponent, (byte) 2);
+                        sendPacket(player, clearPacket);
+                    }
+                }.runTaskLater(AlleyPlugin.getInstance(), durationSeconds * 20L);
+            }
+        } catch (Exception exception) {
+            Logger.logException("An error occurred while trying to send an action bar message to " + player.getName(), exception);
+        }
+    }
+
+    /**
+     * Method to send an action bar message to a model.
+     *
+     * @param player  The model to send the message to.
+     * @param message The message to send.
+     */
+    public void sendMessage(Player player, String message) {
+        try {
+            IChatBaseComponent chatBaseComponent = IChatBaseComponent.ChatSerializer.a("{\"text\": \"" + CC.translate(message) + "\"}");
+            PacketPlayOutChat packet = new PacketPlayOutChat(chatBaseComponent, (byte) 2);
+            this.sendPacket(player, packet);
+        } catch (Exception exception) {
+            Logger.logException("An error occurred while trying to send an action bar message to " + player.getName(), exception);
+        }
+    }
+
+    /**
+     * Sends a death message to the killer.
+     *
+     * @param killer The model who killed the victim.
+     * @param victim The model who died.
+     */
+    public void sendDeathMessage(Player killer, Player victim) {
+        Profile victimProfile = AlleyPlugin.getInstance().getService(ProfileService.class).getProfile(victim.getUniqueId());
+        this.sendMessage(killer, "&c&lKILL! &f" + victimProfile.getFancyName(), 3);
+    }
+
+    /**
+     * Visualizes the target's health in the action bar for a model.
+     *
+     * @param player The model who will see the target's health.
+     * @param target The model whose health will be visualized.
+     */
+    public void visualizeTargetHealth(Player player, Player target) {
+        FileConfiguration config = AlleyPlugin.getInstance().getService(ConfigService.class).getVisualsConfig();
+        String path = "game.health-bar";
+
+        String symbol = config.getString(path + ".symbol.appearance", Symbol.HEART);
+        String fullColor = config.getString(path + ".symbol.color.full", "&a&l");
+        String emptyColor = config.getString(path + ".symbol.color.empty", "&7&l");
+
+        boolean roundUp = config.getBoolean(path + ".round-up-health", true);
+
+        int maxHealth = (int) target.getMaxHealth() / 2;
+        double rawHealth = target.getHealth() / 2;
+        int currentHealth = roundUp ? (int) Math.ceil(rawHealth) : (int) Math.floor(rawHealth);
+
+        StringBuilder healthBar = new StringBuilder();
+        for (int i = 0; i < maxHealth; i++) {
+            if (i < currentHealth) {
+                healthBar.append(CC.translate(fullColor + symbol));
+            } else {
+                healthBar.append(CC.translate(emptyColor + symbol));
+            }
+        }
+
+        ChatColor nameColor = AlleyPlugin.getInstance().getService(ProfileService.class).getProfile(target.getUniqueId()).getNameColor();
+
+        String template = config.getString(path + ".message-format", "&6{name-color}{target} &f{health-bar}");
+        String message = CC.translate(
+                template
+                        .replace("{target}", target.getName())
+                        .replace("{name-color}", nameColor.toString())
+                        .replace("{health-bar}", healthBar.toString())
+        );
+
+        this.sendMessage(player, message);
+    }
+}

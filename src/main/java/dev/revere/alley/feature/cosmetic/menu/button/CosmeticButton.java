@@ -1,13 +1,13 @@
 package dev.revere.alley.feature.cosmetic.menu.button;
 
-import dev.revere.alley.Alley;
-import dev.revere.alley.api.menu.Button;
-import dev.revere.alley.feature.cosmetic.BaseCosmetic;
-import dev.revere.alley.profile.ProfileService;
-import dev.revere.alley.profile.Profile;
-import dev.revere.alley.profile.data.impl.ProfileCosmeticData;
-import dev.revere.alley.tool.item.ItemBuilder;
-import dev.revere.alley.util.chat.CC;
+import dev.revere.alley.AlleyPlugin;
+import dev.revere.alley.library.menu.Button;
+import dev.revere.alley.feature.cosmetic.model.BaseCosmetic;
+import dev.revere.alley.core.profile.ProfileService;
+import dev.revere.alley.core.profile.Profile;
+import dev.revere.alley.core.profile.data.types.ProfileCosmeticData;
+import dev.revere.alley.common.item.ItemBuilder;
+import dev.revere.alley.common.text.CC;
 import lombok.AllArgsConstructor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.ClickType;
@@ -23,12 +23,12 @@ import java.util.List;
  */
 @AllArgsConstructor
 public class CosmeticButton extends Button {
-    protected final Alley plugin = Alley.getInstance();
+    protected final AlleyPlugin plugin = AlleyPlugin.getInstance();
     private final BaseCosmetic cosmetic;
 
     @Override
     public ItemStack getButtonItem(Player player) {
-        ProfileService profileService = Alley.getInstance().getService(ProfileService.class);
+        ProfileService profileService = AlleyPlugin.getInstance().getService(ProfileService.class);
         Profile profile = profileService.getProfile(player.getUniqueId());
         boolean isSelected = profile.getProfileData().getCosmeticData().isSelected(cosmetic);
         boolean hasPermission = player.hasPermission(cosmetic.getPermission());
@@ -58,7 +58,7 @@ public class CosmeticButton extends Button {
             return;
         }
 
-        ProfileService profileService = Alley.getInstance().getService(ProfileService.class);
+        ProfileService profileService = AlleyPlugin.getInstance().getService(ProfileService.class);
         Profile profile = profileService.getProfile(player.getUniqueId());
         ProfileCosmeticData cosmeticData = profile.getProfileData().getCosmeticData();
 

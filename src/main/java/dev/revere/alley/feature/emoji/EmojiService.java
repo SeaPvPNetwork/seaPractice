@@ -1,6 +1,6 @@
 package dev.revere.alley.feature.emoji;
 
-import dev.revere.alley.plugin.lifecycle.Service;
+import dev.revere.alley.bootstrap.lifecycle.Service;
 
 import java.util.Map;
 import java.util.Optional;

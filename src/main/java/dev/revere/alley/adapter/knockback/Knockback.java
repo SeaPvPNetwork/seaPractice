@@ -1,6 +1,5 @@
 package dev.revere.alley.adapter.knockback;
 
-import dev.revere.alley.adapter.knockback.enums.KnockbackType;
 import org.bukkit.entity.Player;
 
 /**
@@ -10,9 +9,9 @@ import org.bukkit.entity.Player;
  */
 public interface Knockback {
     /**
-     * Retrieves the plugin name of the knockback implementation.
+     * Retrieves the bootstrap name of the knockback implementation.
      *
-     * @return The plugin name as a String.
+     * @return The bootstrap name as a String.
      */
     KnockbackType getType();
 

@@ -1,8 +1,8 @@
 package dev.revere.alley.feature.leaderboard.command;
 
-import dev.revere.alley.api.command.BaseCommand;
-import dev.revere.alley.api.command.CommandArgs;
-import dev.revere.alley.api.command.annotation.CommandData;
+import dev.revere.alley.library.command.BaseCommand;
+import dev.revere.alley.library.command.CommandArgs;
+import dev.revere.alley.library.command.annotation.CommandData;
 import dev.revere.alley.feature.leaderboard.menu.LeaderboardMenu;
 import org.bukkit.entity.Player;
 

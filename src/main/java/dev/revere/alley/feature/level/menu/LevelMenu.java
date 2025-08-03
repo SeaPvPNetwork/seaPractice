@@ -1,11 +1,11 @@
 package dev.revere.alley.feature.level.menu;
 
-import dev.revere.alley.Alley;
-import dev.revere.alley.api.menu.Button;
-import dev.revere.alley.api.menu.pagination.PaginatedMenu;
+import dev.revere.alley.AlleyPlugin;
+import dev.revere.alley.library.menu.Button;
+import dev.revere.alley.library.menu.pagination.PaginatedMenu;
 import dev.revere.alley.feature.level.LevelService;
 import dev.revere.alley.feature.level.data.LevelData;
-import dev.revere.alley.profile.Profile;
+import dev.revere.alley.core.profile.Profile;
 import lombok.AllArgsConstructor;
 import org.bukkit.entity.Player;
 
@@ -41,7 +41,7 @@ public class LevelMenu extends PaginatedMenu {
 
         int slot = 0;
 
-        for (LevelData level : Alley.getInstance().getService(LevelService.class).getLevels()) {
+        for (LevelData level : AlleyPlugin.getInstance().getService(LevelService.class).getLevels()) {
             slot = this.validateSlot(slot);
             buttons.put(slot++, new LevelButton(this.profile, level));
         }

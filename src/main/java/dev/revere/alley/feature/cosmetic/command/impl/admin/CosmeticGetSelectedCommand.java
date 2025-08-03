@@ -1,14 +1,14 @@
 package dev.revere.alley.feature.cosmetic.command.impl.admin;
 
-import dev.revere.alley.api.command.BaseCommand;
-import dev.revere.alley.api.command.CommandArgs;
-import dev.revere.alley.api.command.annotation.CommandData;
-import dev.revere.alley.feature.cosmetic.CosmeticType;
-import dev.revere.alley.profile.ProfileService;
-import dev.revere.alley.profile.Profile;
-import dev.revere.alley.profile.data.impl.ProfileCosmeticData;
-import dev.revere.alley.util.StringUtil;
-import dev.revere.alley.util.chat.CC;
+import dev.revere.alley.library.command.BaseCommand;
+import dev.revere.alley.library.command.CommandArgs;
+import dev.revere.alley.library.command.annotation.CommandData;
+import dev.revere.alley.feature.cosmetic.model.CosmeticType;
+import dev.revere.alley.core.profile.ProfileService;
+import dev.revere.alley.core.profile.Profile;
+import dev.revere.alley.core.profile.data.types.ProfileCosmeticData;
+import dev.revere.alley.common.text.StringUtil;
+import dev.revere.alley.common.text.CC;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
@@ -25,7 +25,7 @@ public class CosmeticGetSelectedCommand extends BaseCommand {
         String[] args = command.getArgs();
 
         if (args.length != 1) {
-            player.sendMessage(CC.translate("&cUsage: /cosmetic get <player>"));
+            player.sendMessage(CC.translate("&cUsage: /cosmetic get <model>"));
             return;
         }
 

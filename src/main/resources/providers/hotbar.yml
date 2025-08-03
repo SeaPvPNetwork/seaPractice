@@ -4,7 +4,7 @@
 #   UNRANKED_MENU              - Opens the regular unranked queue menu
 #   LAYOUT_EDITOR_MENU         - Opens the kit editor
 #   CURRENT_MATCHES_MENU       - Opens a menu with the current ongoing matches
-#   SETTINGS_MENU              - Opens the player settings menu (/practicesettings)
+#   SETTINGS_MENU              - Opens the model settings menu (/practicesettings)
 #   HOST_EVENTS_MENU           - Opens the events menu
 #   LEADERBOARD_MENU           - Opens the leaderboards/stats menu
 #   PARTY_EVENT_MENU           - Opens the party event menu to start a party event

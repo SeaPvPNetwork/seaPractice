@@ -1,6 +1,6 @@
 name: Alley
 version: '${project.version}'
-main: dev.revere.alley.Alley
+main: dev.revere.alley.AlleyPlugin
 authors: ["Emmy", "Remi"]
 description: '${project.description}'
 website: https://discord.gg/revere

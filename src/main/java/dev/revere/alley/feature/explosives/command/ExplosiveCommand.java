@@ -1,10 +1,10 @@
 package dev.revere.alley.feature.explosives.command;
 
-import dev.revere.alley.api.command.BaseCommand;
-import dev.revere.alley.api.command.CommandArgs;
-import dev.revere.alley.api.command.annotation.CommandData;
+import dev.revere.alley.library.command.BaseCommand;
+import dev.revere.alley.library.command.CommandArgs;
+import dev.revere.alley.library.command.annotation.CommandData;
 import dev.revere.alley.feature.explosives.ExplosiveService;
-import dev.revere.alley.util.chat.CC;
+import dev.revere.alley.common.text.CC;
 import org.bukkit.command.CommandSender;
 
 import java.util.Arrays;

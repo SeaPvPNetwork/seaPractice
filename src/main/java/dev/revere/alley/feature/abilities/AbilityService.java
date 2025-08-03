@@ -1,6 +1,6 @@
 package dev.revere.alley.feature.abilities;
 
-import dev.revere.alley.plugin.lifecycle.Service;
+import dev.revere.alley.bootstrap.lifecycle.Service;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -56,27 +56,27 @@ public interface AbilityService extends Service {
     Set<String> getAbilityKeys();
 
     /**
-     * Gives a player a specified amount of an ability item.
+     * Gives a model a specified amount of an ability item.
      */
     void giveAbility(CommandSender sender, Player player, String key, String abilityName, int amount);
 
     /**
-     * Sends the configured "used ability" message to a player.
+     * Sends the configured "used ability" message to a model.
      */
     void sendPlayerMessage(Player player, String abilityKey);
 
     /**
-     * Sends the configured "hit by ability" message to a target player.
+     * Sends the configured "hit by ability" message to a target model.
      */
     void sendTargetMessage(Player target, Player player, String abilityKey);
 
     /**
-     * Sends the "cooldown active" message to a player.
+     * Sends the "cooldown active" message to a model.
      */
     void sendCooldownMessage(Player player, String abilityName, String cooldown);
 
     /**
-     * Schedules and sends the "cooldown expired" message to a player.
+     * Schedules and sends the "cooldown expired" message to a model.
      */
     void sendCooldownExpiredMessage(Player player, String abilityName, String abilityKey);
 }

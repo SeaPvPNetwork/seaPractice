@@ -1,6 +1,6 @@
 package dev.revere.alley.feature.division;
 
-import dev.revere.alley.feature.division.tier.DivisionTier;
+import dev.revere.alley.feature.division.model.DivisionTier;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.var;
@@ -46,10 +46,10 @@ public class Division {
     }
 
     /**
-     * Gets the division tier by the name.
+     * Gets the division model by the name.
      *
-     * @param tier The name of the division tier.
-     * @return The division tier.
+     * @param tier The name of the division model.
+     * @return The division model.
      */
     public String getTier(int tier) {
         if (tier < 0 || tier >= this.tiers.size()) {
@@ -61,10 +61,10 @@ public class Division {
     }
 
     /**
-     * Gets the division tier by the name.
+     * Gets the division model by the name.
      *
-     * @param tier The name of the division tier.
-     * @return The division tier.
+     * @param tier The name of the division model.
+     * @return The division model.
      */
     public DivisionTier getTier(String tier) {
         for (DivisionTier divisionTier : this.tiers) {
@@ -76,9 +76,9 @@ public class Division {
     }
 
     /**
-     * Gets the wins of the last tier in the division.
+     * Gets the wins of the last model in the division.
      *
-     * @return The wins of the last tier.
+     * @return The wins of the last model.
      */
     public int getTotalWins() {
         return this.tiers.get(this.tiers.size() - 1).getRequiredWins();

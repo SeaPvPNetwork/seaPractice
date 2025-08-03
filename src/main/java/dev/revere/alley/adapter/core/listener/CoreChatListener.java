@@ -1,12 +1,12 @@
 package dev.revere.alley.adapter.core.listener;
 
-import dev.revere.alley.Alley;
+import dev.revere.alley.AlleyPlugin;
 import dev.revere.alley.feature.filter.FilterService;
-import dev.revere.alley.profile.ProfileService;
+import dev.revere.alley.core.profile.ProfileService;
 import dev.revere.alley.adapter.core.Core;
-import dev.revere.alley.profile.Profile;
+import dev.revere.alley.core.profile.Profile;
 import dev.revere.alley.adapter.core.CoreAdapter;
-import dev.revere.alley.util.chat.CC;
+import dev.revere.alley.common.text.CC;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -24,9 +24,9 @@ public class CoreChatListener implements Listener {
     private void onChat(AsyncPlayerChatEvent event) {
         Player player = event.getPlayer();
 
-        Core core = Alley.getInstance().getService(CoreAdapter.class).getCore();
+        Core core = AlleyPlugin.getInstance().getService(CoreAdapter.class).getCore();
 
-        FilterService filterService = Alley.getInstance().getService(FilterService.class);
+        FilterService filterService = AlleyPlugin.getInstance().getService(FilterService.class);
 
         if (filterService.isProfanity(event.getMessage())) {
             filterService.notifyStaff(event.getMessage(), player);
@@ -38,7 +38,7 @@ public class CoreChatListener implements Listener {
         Bukkit.getConsoleSender().sendMessage(format);
 
         for (Player recipient : event.getRecipients()) {
-            Profile profile = Alley.getInstance().getService(ProfileService.class).getProfile(recipient.getUniqueId());
+            Profile profile = AlleyPlugin.getInstance().getService(ProfileService.class).getProfile(recipient.getUniqueId());
             if (profile.getProfileData().getSettingData().isProfanityFilterEnabled()) {
                 if (!event.isCancelled()) {
                     recipient.sendMessage(censoredFormat);

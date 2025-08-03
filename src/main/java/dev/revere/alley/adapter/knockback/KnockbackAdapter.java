@@ -1,6 +1,6 @@
 package dev.revere.alley.adapter.knockback;
 
-import dev.revere.alley.plugin.lifecycle.Service;
+import dev.revere.alley.bootstrap.lifecycle.Service;
 
 /**
  * @author Remi
