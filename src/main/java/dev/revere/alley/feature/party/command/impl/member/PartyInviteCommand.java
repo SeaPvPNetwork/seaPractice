@@ -28,7 +28,7 @@ public class PartyInviteCommand extends BaseCommand {
         ProfileService profileService = this.plugin.getService(ProfileService.class);
 
         if (command.length() < 1) {
-            player.sendMessage(CC.translate("&cUsage: /party invite (model)"));
+            player.sendMessage(CC.translate("&cUsage: /party invite (player)"));
             return;
         }
 
@@ -36,7 +36,7 @@ public class PartyInviteCommand extends BaseCommand {
         Player targetPlayer = Bukkit.getPlayer(target);
 
         if (targetPlayer == null) {
-            player.sendMessage(CC.translate("&cThe model you are trying to invite is not online."));
+            player.sendMessage(CC.translate("&cThe player you are trying to invite is not online."));
             return;
         }
 

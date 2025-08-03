@@ -59,7 +59,7 @@ public class HotbarServiceImpl implements HotbarService {
     /**
      * DI Constructor for the HotbarService class.
      *
-     * @param profileService The profile service to manage model profiles.
+     * @param profileService The profile service to manage player profiles.
      * @param configService  The configuration service to manage hotbar configurations.
      * @param queueService   The Queue service instance.
      * @param layoutService  The Layout service instance.

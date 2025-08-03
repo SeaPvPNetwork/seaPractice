@@ -20,7 +20,7 @@ public class InvSeeCommand extends BaseCommand {
         String[] args = command.getArgs();
 
         if (args.length == 0) {
-            player.sendMessage(CC.translate("&cUsage: /invsee (model)"));
+            player.sendMessage(CC.translate("&cUsage: /invsee (player)"));
             return;
         }
 

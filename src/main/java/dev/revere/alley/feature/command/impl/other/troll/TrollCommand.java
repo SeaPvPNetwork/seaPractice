@@ -24,7 +24,7 @@ public class TrollCommand extends BaseCommand {
         String[] args = command.getArgs();
 
         if (args.length < 1) {
-            sender.sendMessage(CC.translate("&6Usage: &e/troll &6(model)"));
+            sender.sendMessage(CC.translate("&6Usage: &e/troll &6(player)"));
             return;
         }
 

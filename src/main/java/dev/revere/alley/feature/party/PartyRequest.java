@@ -20,8 +20,8 @@ public class PartyRequest {
     /**
      * Constructor for the PartyRequest class.
      *
-     * @param sender The model sending the request.
-     * @param target The model receiving the request.
+     * @param sender The player sending the request.
+     * @param target The player receiving the request.
      */
     public PartyRequest(Player sender, Player target) {
         this.sender = sender;

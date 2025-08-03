@@ -22,7 +22,7 @@ public class MatchRespawnTask extends BukkitRunnable {
     /**
      * Constructor for the MatchRespawnTask class.
      *
-     * @param player The model to respawn.
+     * @param player The player to respawn.
      * @param match  The match instance.
      * @param count  The countdown time in seconds.
      */

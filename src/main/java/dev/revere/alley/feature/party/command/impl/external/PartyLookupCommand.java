@@ -23,19 +23,19 @@ public class PartyLookupCommand extends BaseCommand {
         String[] args = command.getArgs();
 
         if (args.length < 1) {
-            player.sendMessage(CC.translate("&6Usage: &e/party lookup &6<model>"));
+            player.sendMessage(CC.translate("&6Usage: &e/party lookup &6<player>"));
             return;
         }
 
         Player target = this.plugin.getServer().getPlayer(args[0]);
         if (target == null) {
-            player.sendMessage(CC.translate("&cInvalid model."));
+            player.sendMessage(CC.translate("&cInvalid player."));
             return;
         }
 
         Party party = this.plugin.getService(PartyService.class).getParty(target);
         if (party == null) {
-            player.sendMessage(CC.translate("&cThis model is not in a party."));
+            player.sendMessage(CC.translate("&cThis player is not in a party."));
             return;
         }
 

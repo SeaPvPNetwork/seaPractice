@@ -43,9 +43,9 @@ public class QueueProfile {
     }
 
     /**
-     * Method to queue the model.
+     * Method to queue the player.
      *
-     * @param player The model to queue.
+     * @param player The player to queue.
      */
     public void queueRange(Player player) {
         this.ticks++;

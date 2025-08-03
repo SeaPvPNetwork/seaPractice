@@ -53,9 +53,9 @@ public class SpawnCommand extends BaseCommand {
     }
 
     /**
-     * Sends the model to the spawn location and resets their state.
+     * Sends the player to the spawn location and resets their state.
      *
-     * @param player The model to send to spawn.
+     * @param player The player to send to spawn.
      */
     private void sendToSpawn(Player player) {
         PlayerUtil.reset(player, false, true);

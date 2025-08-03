@@ -56,7 +56,7 @@ public class PartyEventMenu extends Menu {
                 "&6&lFree for all",
                 Arrays.asList(
                         CC.MENU_BAR,
-                        "&7Every model fights",
+                        "&7Every player fights",
                         "&7against each other.",
                         "",
                         "&aClick to select a kit.",

@@ -16,7 +16,7 @@ public class TeamGameParticipant<T extends GamePlayer> extends GameParticipant<T
     /**
      * Constructor for the TeamGameParticipant class.
      *
-     * @param t The model.
+     * @param t The player.
      */
     public TeamGameParticipant(T t) {
         super(t);
@@ -50,7 +50,7 @@ public class TeamGameParticipant<T extends GamePlayer> extends GameParticipant<T
     /**
      * Gets the size of all players added to the list of players in the team participant.
      *
-     * @return the size of the model list.
+     * @return the size of the player list.
      */
     @Override
     public int getPlayerSize() {
@@ -58,9 +58,9 @@ public class TeamGameParticipant<T extends GamePlayer> extends GameParticipant<T
     }
 
     /**
-     * Adds a model to the team participant.
+     * Adds a player to the team participant.
      *
-     * @param t the model to add.
+     * @param t the player to add.
      */
     @Override
     public void addPlayer(T t) {
@@ -72,9 +72,9 @@ public class TeamGameParticipant<T extends GamePlayer> extends GameParticipant<T
     }
 
     /**
-     * Removes a model from the team participant.
+     * Removes a player from the team participant.
      *
-     * @param player The model to remove.
+     * @param player The player to remove.
      */
     @Override
     public void removePlayer(T player) {
@@ -131,10 +131,10 @@ public class TeamGameParticipant<T extends GamePlayer> extends GameParticipant<T
     }
 
     /**
-     * Method to determine whether the provided UUID is contained within the team participant's model list.
+     * Method to determine whether the provided UUID is contained within the team participant's player list.
      *
-     * @param uuid The UUID of the model.
-     * @return true if the participant contains the model, false otherwise.
+     * @param uuid The UUID of the player.
+     * @return true if the participant contains the player, false otherwise.
      */
     @Override
     public boolean containsPlayer(UUID uuid) {

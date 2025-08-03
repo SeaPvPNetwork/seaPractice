@@ -32,7 +32,7 @@ public class PartyAcceptCommand extends BaseCommand {
         Player target = Bukkit.getPlayer(args[0]);
 
         if (target == null) {
-            player.sendMessage(CC.translate("&cThe model you are trying to join is not online."));
+            player.sendMessage(CC.translate("&cThe player you are trying to join is not online."));
             return;
         }
 
@@ -40,7 +40,7 @@ public class PartyAcceptCommand extends BaseCommand {
 
         Party party = partyService.getPartyByLeader(target);
         if (party == null) {
-            player.sendMessage(CC.translate("&cThe model you are trying to join does not have a party."));
+            player.sendMessage(CC.translate("&cThe player you are trying to join does not have a party."));
             return;
         }
 

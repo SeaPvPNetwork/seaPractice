@@ -63,9 +63,9 @@ public class AlleyDebugCommand extends BaseCommand {
     }
 
     /**
-     * Sends memory information to the model.
+     * Sends memory information to the player.
      *
-     * @param player The model to send the information to.
+     * @param player The player to send the information to.
      */
     private void sendMemoryInfo(Player player) {
         Runtime runtime = Runtime.getRuntime();
@@ -86,9 +86,9 @@ public class AlleyDebugCommand extends BaseCommand {
     }
 
     /**
-     * Sends instance information to the model.
+     * Sends instance information to the player.
      *
-     * @param player The model to send the information to.
+     * @param player The player to send the information to.
      */
     private void sendInstanceInfo(Player player) {
         Arrays.asList(
@@ -113,10 +113,10 @@ public class AlleyDebugCommand extends BaseCommand {
     }
 
     /**
-     * Sends profile information to the model.
+     * Sends profile information to the player.
      *
      * @param profile The profile to send the information for.
-     * @param player  The model to send the information to.
+     * @param player  The player to send the information to.
      */
     private void sendProfileInfo(Profile profile, Player player) {
         String banned = profile.getProfileData().isRankedBanned() ? "&c&lBANNED" : "&a&lNOT BANNED";
@@ -130,14 +130,14 @@ public class AlleyDebugCommand extends BaseCommand {
                 "      &f│ Queue Profile: &6" + (profile.getQueueProfile() != null ? profile.getQueueProfile().getQueue().getKit().getName() : "&c&lNULL"),
                 "      &f│ Ranked: &6" + banned,
                 ""
-        ).forEach(line -> player.sendMessage(CC.translate(line).replace("The model", profile.getName())));
+        ).forEach(line -> player.sendMessage(CC.translate(line).replace("The player", profile.getName())));
     }
 
     /**
-     * Sends profile data to the model.
+     * Sends profile data to the player.
      *
      * @param profile The profile to send the data for.
-     * @param player  The model to send the data to.
+     * @param player  The player to send the data to.
      */
     private void sendProfileData(Profile profile, Player player) {
         Arrays.asList(

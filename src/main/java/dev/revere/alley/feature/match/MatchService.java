@@ -48,7 +48,7 @@ public interface MatchService extends Service {
      * @param participantA   The first participant in the match.
      * @param participantB   The second participant in the match.
      * @param teamMatch      Whether this is a team-based match.
-     * @param affectStatistics Whether this match should affect model stats (Elo, wins/losses).
+     * @param affectStatistics Whether this match should affect player stats (Elo, wins/losses).
      * @param isRanked       Whether this match is ranked.
      */
     void createAndStartMatch(Kit kit, Arena arena, GameParticipant<MatchGamePlayer> participantA, GameParticipant<MatchGamePlayer> participantB, boolean teamMatch, boolean affectStatistics, boolean isRanked);

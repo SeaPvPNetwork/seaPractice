@@ -22,9 +22,9 @@ public interface PartyService extends Service {
     List<Party> getParties();
 
     /**
-     * Creates a new party with the given model as the leader.
+     * Creates a new party with the given player as the leader.
      *
-     * @param player The model creating the party.
+     * @param player The player creating the party.
      */
     void createParty(Player player);
 
@@ -36,10 +36,10 @@ public interface PartyService extends Service {
     void disbandParty(Player leader);
 
     /**
-     * Allows a model to leave the party they are currently in.
+     * Allows a player to leave the party they are currently in.
      * If they are the leader, the party is disbanded.
      *
-     * @param player The model leaving the party.
+     * @param player The player leaving the party.
      */
     void leaveParty(Player player);
 
@@ -47,45 +47,45 @@ public interface PartyService extends Service {
      * Kicks a member from the party. Can only be initiated by the party leader.
      *
      * @param leader The party leader.
-     * @param member The model to kick.
+     * @param member The player to kick.
      */
     void kickMember(Player leader, Player member);
 
     /**
-     * Bans a model from the party, preventing them from rejoining.
+     * Bans a player from the party, preventing them from rejoining.
      *
      * @param leader The party leader.
-     * @param target The model to ban.
+     * @param target The player to ban.
      */
     void banMember(Player leader, Player target);
 
     /**
-     * Unbans a model from the party.
+     * Unbans a player from the party.
      *
      * @param leader The party leader.
-     * @param target The model to unban.
+     * @param target The player to unban.
      */
     void unbanMember(Player leader, Player target);
 
     /**
-     * Allows a model to join an existing party.
+     * Allows a player to join an existing party.
      *
-     * @param player The model joining.
+     * @param player The player joining.
      * @param leader The leader of the party to join.
      */
     void joinParty(Player player, Player leader);
 
     /**
-     * Sends a party invitation from a sender to a target model.
+     * Sends a party invitation from a sender to a target player.
      *
      * @param party  The party instance.
-     * @param sender The model sending the invite.
-     * @param target The model receiving the invite.
+     * @param sender The player sending the invite.
+     * @param target The player receiving the invite.
      */
     void sendInvite(Party party, Player sender, Player target);
 
     /**
-     * Gets the party that a model is the leader of.
+     * Gets the party that a player is the leader of.
      *
      * @param player The potential leader.
      * @return The Party object, or null if they are not a leader.
@@ -93,7 +93,7 @@ public interface PartyService extends Service {
     Party getPartyByLeader(Player player);
 
     /**
-     * Gets the party that a model is a member of.
+     * Gets the party that a player is a member of.
      *
      * @param uuid The UUID of the potential member.
      * @return The Party object, or null if they are not in a party.
@@ -101,9 +101,9 @@ public interface PartyService extends Service {
     Party getPartyByMember(UUID uuid);
 
     /**
-     * Gets the party a model is in, regardless of their role (leader or member).
+     * Gets the party a player is in, regardless of their role (leader or member).
      *
-     * @param player The model.
+     * @param player The player.
      * @return The Party object, or null if they are not in a party.
      */
     Party getParty(Player player);

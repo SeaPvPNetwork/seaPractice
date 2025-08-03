@@ -62,10 +62,10 @@ public class LivesMatch extends DefaultMatch {
     }
 
     /**
-     * Reduces the life count of a model in the match.
+     * Reduces the life count of a player in the match.
      *
-     * @param player The model whose life is to be reduced.
-     * @param data The MatchGamePlayerData of the model whose life is to be reduced.
+     * @param player The player whose life is to be reduced.
+     * @param data The MatchGamePlayerData of the player whose life is to be reduced.
      */
     public void reduceLife(Player player, MatchGamePlayerData data) {
         data.setLives(data.getLives() - 1);

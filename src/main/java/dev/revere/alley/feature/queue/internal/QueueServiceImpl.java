@@ -63,10 +63,10 @@ public class QueueServiceImpl implements QueueService {
     }
 
     /**
-     * Get the model count of a specific game type
+     * Get the player count of a specific game type
      *
-     * @param queue the queue to get the model count of
-     * @return the model count of the game type
+     * @param queue the queue to get the player count of
+     * @return the player count of the game type
      */
     public int getPlayerCountOfGameType(String queue) {
         ProfileState stateForQueue = this.getStateForQueue(queue);

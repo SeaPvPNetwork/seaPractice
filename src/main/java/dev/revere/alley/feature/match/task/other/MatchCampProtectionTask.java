@@ -30,7 +30,7 @@ public class MatchCampProtectionTask extends BukkitRunnable {
     /**
      * Constructor for the MatchCampProtectionTask class.
      *
-     * @param player The model to apply camp protection to.
+     * @param player The player to apply camp protection to.
      */
     public MatchCampProtectionTask(Player player) {
         this.player = player;

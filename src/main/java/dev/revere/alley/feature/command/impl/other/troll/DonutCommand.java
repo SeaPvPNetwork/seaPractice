@@ -36,7 +36,7 @@ public class DonutCommand extends BaseCommand {
         String[] args = command.getArgs();
 
         if (args.length == 0) {
-            player.sendMessage(CC.translate("&cUsage: /donut <model>"));
+            player.sendMessage(CC.translate("&cUsage: /donut <player>"));
             return;
         }
 

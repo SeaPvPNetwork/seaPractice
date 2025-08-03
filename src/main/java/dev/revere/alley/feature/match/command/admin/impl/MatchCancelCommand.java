@@ -23,7 +23,7 @@ public class MatchCancelCommand extends BaseCommand {
         String[] args = command.getArgs();
 
         if (args.length != 1) {
-            player.sendMessage(CC.translate("&6Usage: &e/match cancel &6<model>"));
+            player.sendMessage(CC.translate("&6Usage: &e/match cancel &6<player>"));
             return;
         }
 
@@ -36,7 +36,7 @@ public class MatchCancelCommand extends BaseCommand {
         Profile profile = this.plugin.getService(ProfileService.class).getProfile(target.getUniqueId());
 
         if (profile.getState() != ProfileState.PLAYING || profile.getMatch() == null) {
-            player.sendMessage(CC.translate("&cThat model is not in a match."));
+            player.sendMessage(CC.translate("&cThat player is not in a match."));
             return;
         }
 

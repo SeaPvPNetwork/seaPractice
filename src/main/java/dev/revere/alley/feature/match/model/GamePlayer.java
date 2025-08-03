@@ -37,8 +37,8 @@ public class GamePlayer {
     /**
      * Constructor for the GamePlayer class.
      *
-     * @param uuid     The UUID of the model.
-     * @param username The username of the model.
+     * @param uuid     The UUID of the player.
+     * @param username The username of the player.
      */
     public GamePlayer(UUID uuid, String username) {
         this.uuid = uuid;
@@ -51,9 +51,9 @@ public class GamePlayer {
     }
 
     /**
-     * Gets the model associated with the GamePlayer.
+     * Gets the player associated with the GamePlayer.
      *
-     * @return The model associated with the GamePlayer.
+     * @return The player associated with the GamePlayer.
      */
     public Player getTeamPlayer() {
         return Bukkit.getPlayer(uuid);

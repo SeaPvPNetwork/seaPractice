@@ -2,51 +2,51 @@ package dev.revere.alley.feature.match;
 
 import dev.revere.alley.AlleyPlugin;
 import dev.revere.alley.adapter.knockback.KnockbackAdapter;
+import dev.revere.alley.common.ListenerUtil;
+import dev.revere.alley.common.PlayerUtil;
+import dev.revere.alley.common.SoundUtil;
+import dev.revere.alley.common.logger.Logger;
+import dev.revere.alley.common.reflect.ReflectionService;
+import dev.revere.alley.common.reflect.internal.types.ActionBarReflectionServiceImpl;
+import dev.revere.alley.common.reflect.internal.types.TitleReflectionServiceImpl;
+import dev.revere.alley.common.text.CC;
+import dev.revere.alley.common.time.TimeUtil;
+import dev.revere.alley.core.profile.Profile;
+import dev.revere.alley.core.profile.ProfileService;
+import dev.revere.alley.core.profile.enums.ProfileState;
 import dev.revere.alley.feature.arena.Arena;
 import dev.revere.alley.feature.arena.ArenaService;
 import dev.revere.alley.feature.arena.internal.types.StandAloneArena;
 import dev.revere.alley.feature.combat.CombatService;
+import dev.revere.alley.feature.cosmetic.CosmeticService;
+import dev.revere.alley.feature.cosmetic.internal.repository.BaseCosmeticRepository;
+import dev.revere.alley.feature.cosmetic.internal.repository.impl.killmessage.KillMessagePack;
+import dev.revere.alley.feature.cosmetic.model.BaseCosmetic;
+import dev.revere.alley.feature.cosmetic.model.CosmeticType;
 import dev.revere.alley.feature.hotbar.HotbarService;
 import dev.revere.alley.feature.kit.Kit;
 import dev.revere.alley.feature.kit.setting.types.mechanic.KitSettingCampProtectionImpl;
 import dev.revere.alley.feature.kit.setting.types.mode.*;
 import dev.revere.alley.feature.kit.setting.types.visual.KitSettingHealthBar;
-import dev.revere.alley.visual.nametag.NametagService;
-import dev.revere.alley.feature.queue.Queue;
-import dev.revere.alley.feature.spawn.SpawnService;
-import dev.revere.alley.feature.visibility.VisibilityService;
-import dev.revere.alley.feature.cosmetic.model.BaseCosmetic;
-import dev.revere.alley.feature.cosmetic.model.CosmeticType;
-import dev.revere.alley.feature.cosmetic.internal.repository.impl.killmessage.KillMessagePack;
-import dev.revere.alley.feature.cosmetic.internal.repository.BaseCosmeticRepository;
-import dev.revere.alley.feature.cosmetic.CosmeticService;
 import dev.revere.alley.feature.layout.LayoutService;
 import dev.revere.alley.feature.layout.data.LayoutData;
 import dev.revere.alley.feature.match.data.MatchData;
 import dev.revere.alley.feature.match.data.types.MatchDataSolo;
 import dev.revere.alley.feature.match.internal.types.RoundsMatch;
+import dev.revere.alley.feature.match.model.GameParticipant;
 import dev.revere.alley.feature.match.model.GamePlayer;
 import dev.revere.alley.feature.match.model.MatchGamePlayerData;
 import dev.revere.alley.feature.match.model.internal.MatchGamePlayer;
-import dev.revere.alley.feature.match.model.GameParticipant;
+import dev.revere.alley.feature.match.snapshot.Snapshot;
+import dev.revere.alley.feature.match.snapshot.SnapshotService;
 import dev.revere.alley.feature.match.task.MatchTask;
 import dev.revere.alley.feature.match.task.mode.PlatformDecayTask;
 import dev.revere.alley.feature.match.task.other.MatchCampProtectionTask;
 import dev.revere.alley.feature.match.task.other.MatchRespawnTask;
-import dev.revere.alley.feature.match.snapshot.SnapshotService;
-import dev.revere.alley.feature.match.snapshot.Snapshot;
-import dev.revere.alley.core.profile.ProfileService;
-import dev.revere.alley.core.profile.Profile;
-import dev.revere.alley.core.profile.enums.ProfileState;
-import dev.revere.alley.common.logger.Logger;
-import dev.revere.alley.common.reflect.ReflectionService;
-import dev.revere.alley.common.reflect.internal.types.ActionBarReflectionServiceImpl;
-import dev.revere.alley.common.reflect.internal.types.TitleReflectionServiceImpl;
-import dev.revere.alley.common.ListenerUtil;
-import dev.revere.alley.common.PlayerUtil;
-import dev.revere.alley.common.SoundUtil;
-import dev.revere.alley.common.time.TimeUtil;
-import dev.revere.alley.common.text.CC;
+import dev.revere.alley.feature.queue.Queue;
+import dev.revere.alley.feature.spawn.SpawnService;
+import dev.revere.alley.feature.visibility.VisibilityService;
+import dev.revere.alley.visual.nametag.NametagService;
 import lombok.Getter;
 import lombok.Setter;
 import org.bukkit.*;
@@ -120,16 +120,16 @@ public abstract class Match {
     public abstract boolean canEndMatch();
 
     /**
-     * Handles the item drop on death for a model.
+     * Handles the item drop on death for a player.
      * This method clears the drops to prevent items from being dropped on death.
      *
-     * @param player The model that died.
+     * @param player The player that died.
      * @param event  The PlayerDeathEvent that triggered this method.
      */
     public abstract void handleDeathItemDrop(Player player, PlayerDeathEvent event);
 
     /**
-     * Starts the match by setting the state and updating model profiles and running the match task.
+     * Starts the match by setting the state and updating player profiles and running the match task.
      */
     public void startMatch() {
         this.sendPlayerVersusPlayerMessage();
@@ -182,7 +182,7 @@ public abstract class Match {
     }
 
     /**
-     * Initializes a game participant and updates the model profiles.
+     * Initializes a game participant and updates the player profiles.
      *
      * @param gameParticipant The game participant to initialize.
      */
@@ -208,7 +208,7 @@ public abstract class Match {
     }
 
     /**
-     * Finalizes a game participant and updates the model profiles.
+     * Finalizes a game participant and updates the player profiles.
      *
      * @param gameParticipant The game participant to finalize.
      */
@@ -224,10 +224,10 @@ public abstract class Match {
     }
 
     /**
-     * Method to finalize a model after the match ends.
-     * This method resets the model's state, updates their profile for the lobby,
+     * Method to finalize a player after the match ends.
+     * This method resets the player's state, updates their profile for the lobby,
      *
-     * @param player The model to finalize.
+     * @param player The player to finalize.
      */
     public void finalizePlayer(Player player) {
         VisibilityService visibilityService = AlleyPlugin.getInstance().getService(VisibilityService.class);
@@ -238,9 +238,9 @@ public abstract class Match {
     }
 
     /**
-     * Registers the below-name health objective for a model if the setting is enabled.
+     * Registers the below-name health objective for a player if the setting is enabled.
      *
-     * @param player The model to register the objective for.
+     * @param player The player to register the objective for.
      */
     private void registerHealthObjectiveForPlayer(Player player) {
         if (!this.getKit().isSettingEnabled(KitSettingHealthBar.class)) {
@@ -263,9 +263,9 @@ public abstract class Match {
     }
 
     /**
-     * Registers a camp protection task for a model if the kit setting is enabled.
+     * Registers a camp protection task for a player if the kit setting is enabled.
      *
-     * @param player The model to register the task for.
+     * @param player The player to register the task for.
      */
     private void registerCampProtectionTask(Player player) {
         if (!this.getKit().isSettingEnabled(KitSettingCampProtectionImpl.class)) {
@@ -302,9 +302,9 @@ public abstract class Match {
     }
 
     /**
-     * Sets up a model for the match.
+     * Sets up a player for the match.
      *
-     * @param player The model to set up.
+     * @param player The player to set up.
      */
     public void setupPlayer(Player player) {
         MatchGamePlayer gamePlayer = getGamePlayer(player);
@@ -318,9 +318,9 @@ public abstract class Match {
     }
 
     /**
-     * Gives a loadout to a model.
+     * Gives a loadout to a player.
      *
-     * @param player The model to give the kit to.
+     * @param player The player to give the kit to.
      */
     public void giveLoadout(Player player, Kit kit) {
         LayoutService layoutService = AlleyPlugin.getInstance().getService(LayoutService.class);
@@ -342,9 +342,9 @@ public abstract class Match {
     }
 
     /**
-     * Handles the death of a model.
+     * Handles the death of a player.
      *
-     * @param player The model that died.
+     * @param player The player that died.
      */
     public void handleDeath(Player player, EntityDamageEvent.DamageCause cause) {
         if (!(this.state == MatchState.STARTING || this.state == MatchState.RUNNING)) {
@@ -412,10 +412,10 @@ public abstract class Match {
     }
 
     /**
-     * Handles the model becoming a spectator based on the match state and kit settings.
+     * Handles the player becoming a spectator based on the match state and kit settings.
      *
-     * @param player      The model to handle.
-     * @param profile     The profile of the model.
+     * @param player      The player to handle.
+     * @param profile     The profile of the player.
      * @param participant The participant of the match.
      */
     private boolean handleSpectator(Player player, Profile profile, GameParticipant<MatchGamePlayer> participant) {
@@ -527,10 +527,10 @@ public abstract class Match {
 
     /**
      * Handles applying all relevant on-kill cosmetic effects.
-     * This is called when a model is confirmed to be eliminated from the match.
+     * This is called when a player is confirmed to be eliminated from the match.
      *
-     * @param player The model who died (the victim).
-     * @param killer The model who got the kill.
+     * @param player The player who died (the victim).
+     * @param killer The player who got the kill.
      */
     private void handleDeathEffects(Player player, Player killer) {
         ProfileService profileService = AlleyPlugin.getInstance().getService(ProfileService.class);
@@ -544,12 +544,12 @@ public abstract class Match {
     }
 
     /**
-     * Applies a selected cosmetic to a target model in a generic, type-safe way.
+     * Applies a selected cosmetic to a target player in a generic, type-safe way.
      * This method is now updated to use the enum-based repository system.
      *
      * @param cosmeticType The type of cosmetic to apply.
-     * @param cosmeticName The name of the cosmetic selected by the model.
-     * @param targetPlayer The model to apply the effect to (e.g., the victim or the killer).
+     * @param cosmeticName The name of the cosmetic selected by the player.
+     * @param targetPlayer The player to apply the effect to (e.g., the victim or the killer).
      */
     private void applyCosmetic(CosmeticType cosmeticType, String cosmeticName, Player targetPlayer) {
         if (cosmeticName == null || cosmeticName.equalsIgnoreCase("None")) {
@@ -645,10 +645,10 @@ public abstract class Match {
     }
 
     /**
-     * Creates a snapshot of the current match state for a model.
+     * Creates a snapshot of the current match state for a player.
      * This method captures various statistics and the opponent's UUID.
      *
-     * @param player The model for whom to create the snapshot.
+     * @param player The player for whom to create the snapshot.
      */
     public void createSnapshot(Player player) {
         if (this.snapshots.stream().anyMatch(snapshot -> snapshot.getUuid().equals(player.getUniqueId()))) {
@@ -674,9 +674,9 @@ public abstract class Match {
     }
 
     /**
-     * Adds a model to the list of spectators.
+     * Adds a player to the list of spectators.
      *
-     * @param player The model to add.
+     * @param player The player to add.
      */
     public void addSpectator(Player player) {
         if (this.getGamePlayer(player) == null) {
@@ -713,9 +713,9 @@ public abstract class Match {
     }
 
     /**
-     * Removes a model from the list of spectators.
+     * Removes a player from the list of spectators.
      *
-     * @param player The model to remove from spectating.
+     * @param player The player to remove from spectating.
      */
     public void removeSpectator(Player player, boolean notify) {
         ProfileService profileService = AlleyPlugin.getInstance().getService(ProfileService.class);
@@ -744,7 +744,7 @@ public abstract class Match {
     /**
      * Starts the respawn process for a participant.
      *
-     * @param player The model to start the respawn process for.
+     * @param player The player to start the respawn process for.
      */
     public void startRespawnProcess(Player player) {
         player.setGameMode(GameMode.SPECTATOR);
@@ -763,10 +763,10 @@ public abstract class Match {
     }
 
     /**
-     * Determines whether handleRespawn should be called for a model.
+     * Determines whether handleRespawn should be called for a player.
      * This method can be overridden by subclasses to control the respawn process.
      *
-     * @param player The model to check.
+     * @param player The player to check.
      * @return True if handleRespawn should be called, false otherwise.
      */
     protected boolean shouldHandleRegularRespawn(Player player) {
@@ -776,8 +776,8 @@ public abstract class Match {
     /**
      * Sets a participant as dead.
      *
-     * @param player     The model to set as dead.
-     * @param gamePlayer The game model to set as dead.
+     * @param player     The player to set as dead.
+     * @param gamePlayer The game player to set as dead.
      */
     public void handleParticipant(Player player, MatchGamePlayer gamePlayer) {
         gamePlayer.setDead(true);
@@ -870,10 +870,10 @@ public abstract class Match {
     }
 
     /**
-     * Gets the game model of a model.
+     * Gets the game player of a player.
      *
-     * @param player The model to get the game model of.
-     * @return The game model of the model.
+     * @param player The player to get the game player of.
+     * @return The game player of the player.
      */
     public MatchGamePlayer getGamePlayer(Player player) {
         return this.getParticipants().stream()
@@ -885,10 +885,10 @@ public abstract class Match {
     }
 
     /**
-     * Gets a game model from all game players in the match.
+     * Gets a game player from all game players in the match.
      *
-     * @param player The model to get the game model of.
-     * @return The game model of the model, or null if not found.
+     * @param player The player to get the game player of.
+     * @return The game player of the player, or null if not found.
      */
     public MatchGamePlayer getFromAllGamePlayers(Player player) {
         return this.getParticipants().stream()
@@ -900,10 +900,10 @@ public abstract class Match {
     }
 
     /**
-     * Gets a participant by a model.
+     * Gets a participant by a player.
      *
-     * @param player The model to get the participant of.
-     * @return The participant of the model.
+     * @param player The player to get the participant of.
+     * @return The participant of the player.
      */
     public GameParticipant<MatchGamePlayer> getParticipant(Player player) {
         return this.getParticipants().stream()
@@ -915,7 +915,7 @@ public abstract class Match {
     /**
      * Gets the opposing participant in a two-sided match.
      *
-     * @param player The model object of a model on one side.
+     * @param player The player object of a player on one side.
      * @return The opposing GameParticipant, or null if it cannot be determined.
      */
     public GameParticipant<MatchGamePlayer> getOpponent(Player player) {
@@ -931,7 +931,7 @@ public abstract class Match {
     }
 
     /**
-     * Plays a sound for a model.
+     * Plays a sound for a player.
      *
      * @param sound The sound to play.
      */
@@ -1027,7 +1027,7 @@ public abstract class Match {
     }
 
     /**
-     * Intentionally made to deny model movement during a match countdown.
+     * Intentionally made to deny player movement during a match countdown.
      *
      * @param participants the participants
      */
@@ -1056,9 +1056,9 @@ public abstract class Match {
     }
 
     /**
-     * Teleports the model back to their designated position if they moved.
+     * Teleports the player back to their designated position if they moved.
      *
-     * @param player   The model to check.
+     * @param player   The player to check.
      * @param location The designated location.
      */
     protected void teleportBackIfMoved(Player player, Location location) {
@@ -1073,9 +1073,9 @@ public abstract class Match {
     }
 
     /**
-     * Teleports a model to the spawn and applies spawn items.
+     * Teleports a player to the spawn and applies spawn items.
      *
-     * @param player The model to teleport.
+     * @param player The player to teleport.
      */
     private void teleportPlayerToSpawn(Player player) {
         if (player == null) return;
@@ -1088,9 +1088,9 @@ public abstract class Match {
     }
 
     /**
-     * Teleports a model to the spawn.
+     * Teleports a player to the spawn.
      *
-     * @param player The model to teleport.
+     * @param player The player to teleport.
      */
     private void resetPlayerState(Player player) {
         player.setFireTicks(0);
@@ -1232,10 +1232,10 @@ public abstract class Match {
     }
 
     /**
-     * Calculates the coin reward for a model based on their performance in the match.
+     * Calculates the coin reward for a player based on their performance in the match.
      * The calculation is based on kills, deaths, and missed potions.
      *
-     * @param player The model to calculate the coin reward for.
+     * @param player The player to calculate the coin reward for.
      */
     public void calculateCoinReward(Player player) {
         ProfileService profileService = AlleyPlugin.getInstance().getService(ProfileService.class);
@@ -1259,10 +1259,10 @@ public abstract class Match {
     }
 
     /**
-     * Sends a reward message to the model after the match.
+     * Sends a reward message to the player after the match.
      * This message includes the number of coins earned.
      *
-     * @param player The model to send the reward message to.
+     * @param player The player to send the reward message to.
      */
     public void sendRewardMessage(Player player) {
         ProfileService profileService = AlleyPlugin.getInstance().getService(ProfileService.class);

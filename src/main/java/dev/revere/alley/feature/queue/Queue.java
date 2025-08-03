@@ -65,9 +65,9 @@ public class Queue {
     }
 
     /**
-     * Adds a model to the queue.
+     * Adds a player to the queue.
      *
-     * @param player The model to add.
+     * @param player The player to add.
      */
     public void addPlayer(Player player, int elo) {
         ProfileService profileService = AlleyPlugin.getInstance().getService(ProfileService.class);
@@ -172,7 +172,7 @@ public class Queue {
     }
 
     /**
-     * Removes a model from the queue.
+     * Removes a player from the queue.
      *
      * @param queueProfile The queue profile to remove.
      */
@@ -216,9 +216,9 @@ public class Queue {
     }
 
     /**
-     * Gets the profile of a model.
+     * Gets the profile of a player.
      *
-     * @param uuid The UUID of the model.
+     * @param uuid The UUID of the player.
      * @return The profile object.
      */
     public Profile getProfile(UUID uuid) {

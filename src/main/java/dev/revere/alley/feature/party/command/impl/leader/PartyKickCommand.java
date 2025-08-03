@@ -23,13 +23,13 @@ public class PartyKickCommand extends BaseCommand {
         String[] args = command.getArgs();
 
         if (command.length() < 1) {
-            player.sendMessage(CC.translate("&cUsage: /party kick (model)"));
+            player.sendMessage(CC.translate("&cUsage: /party kick (player)"));
             return;
         }
 
         Player target = Bukkit.getPlayer(args[0]);
         if (target == null) {
-            player.sendMessage(CC.translate("&cThe model you are trying to kick is not online."));
+            player.sendMessage(CC.translate("&cThe player you are trying to kick is not online."));
             return;
         }
 
