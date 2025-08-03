@@ -101,6 +101,8 @@ public class ProfileListener implements Listener {
         profile.updatePlayTime();
         profile.setOnline(false);
         profile.save();
+
+        profileService.removeProfile(player.getUniqueId());
     }
 
     @EventHandler
@@ -179,11 +181,15 @@ public class ProfileListener implements Listener {
 
         FileConfiguration msgConfig = configService.getMessagesConfig();
         if (msgConfig.getBoolean("welcome-message.enabled")) {
+            String playerName = player.getName();
+            String version = constants.getVersion();
+            String authors = constants.getAuthors().toString().replace("[", "").replace("]", "");
+
             for (String message : msgConfig.getStringList("welcome-message.message")) {
                 player.sendMessage(CC.translate(message)
-                        .replace("{player}", player.getName())
-                        .replace("{version}", constants.getVersion())
-                        .replace("{author}", constants.getAuthors().toString().replace("[", "").replace("]", ""))
+                        .replace("{player}", playerName)
+                        .replace("{version}", version)
+                        .replace("{author}", authors)
                 );
             }
         }

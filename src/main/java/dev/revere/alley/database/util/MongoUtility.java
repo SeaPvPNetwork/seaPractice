@@ -3,7 +3,6 @@ package dev.revere.alley.database.util;
 import dev.revere.alley.Alley;
 import dev.revere.alley.feature.division.Division;
 import dev.revere.alley.feature.division.DivisionService;
-import dev.revere.alley.feature.division.tier.DivisionTier;
 import dev.revere.alley.feature.layout.data.LayoutData;
 import dev.revere.alley.feature.music.MusicService;
 import dev.revere.alley.profile.Profile;
@@ -11,12 +10,17 @@ import dev.revere.alley.profile.data.ProfileData;
 import dev.revere.alley.profile.data.impl.*;
 import dev.revere.alley.profile.enums.ChatChannel;
 import dev.revere.alley.profile.enums.WorldTime;
+import dev.revere.alley.tool.logger.Logger;
 import dev.revere.alley.tool.serializer.Serializer;
+import lombok.Getter;
 import lombok.experimental.UtilityClass;
 import org.bson.Document;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.*;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
 /**
  * @author Remi
@@ -25,388 +29,623 @@ import java.util.*;
  */
 @UtilityClass
 public class MongoUtility {
+    private static final String EMPTY_STRING = "";
+    private static final int DEFAULT_ELO = 1000;
+    private static final int DEFAULT_COINS = 100;
+    private static final int DEFAULT_INT = 0;
+    private static final long DEFAULT_LONG = 0L;
+    private static final boolean DEFAULT_BOOLEAN_TRUE = true;
+    private static final boolean DEFAULT_BOOLEAN_FALSE = false;
+
     /**
-     * Converts a Profile object to a Document.
+     * Represents the result of a validation operation.
+     */
+    @Getter
+    public static class ValidationResult {
+        private final boolean valid;
+        private final List<String> errors;
+
+        private ValidationResult(boolean valid, List<String> errors) {
+            this.valid = valid;
+            this.errors = errors != null ? errors : new ArrayList<>();
+        }
+
+        public static ValidationResult valid() {
+            return new ValidationResult(true, null);
+        }
+
+        public static ValidationResult invalid(List<String> errors) {
+            return new ValidationResult(false, errors);
+        }
+
+        public List<String> getErrors() {
+            return new ArrayList<>(errors);
+        }
+    }
+
+    /**
+     * Validates a Profile object with comprehensive checks.
      *
-     * @param profile The profile to convert.
-     * @return The converted Document.
+     * @param profile The Profile object to validate.
+     * @return A ValidationResult indicating whether the profile is valid or not.
+     */
+    public ValidationResult validateProfile(Profile profile) {
+        List<String> errors = new ArrayList<>();
+
+        if (profile == null) {
+            errors.add("Profile cannot be null");
+            return ValidationResult.invalid(errors);
+        }
+
+        if (profile.getUuid() == null) {
+            errors.add("Profile UUID cannot be null");
+        }
+
+        if (profile.getName() == null || profile.getName().trim().isEmpty()) {
+            errors.add("Profile name cannot be null or empty");
+        }
+
+        return errors.isEmpty() ? ValidationResult.valid() : ValidationResult.invalid(errors);
+    }
+
+    /**
+     * Converts a Profile object to a MongoDB Document with comprehensive validation and null safety.
+     *
+     * @param profile The Profile object to convert.
+     * @return A Document representation of the Profile.
+     * @throws IllegalArgumentException if the profile is invalid.
      */
     public Document toDocument(Profile profile) {
-        Document document = new Document();
-        document.put("firstJoin", profile.getFirstJoin());
-        document.put("uuid", profile.getUuid().toString());
-        document.put("name", profile.getName());
+        ValidationResult validation = validateProfile(profile);
+        if (!validation.isValid()) {
+            throw new IllegalArgumentException("Profile validation failed: " + validation.getErrors());
+        }
 
-        Document profileDataDocument = new Document();
-        ProfileData profileData = profile.getProfileData();
+        try {
+            Document document = new Document();
+            document.put("firstJoin", profile.getFirstJoin());
+            document.put("uuid", profile.getUuid().toString());
+            document.put("name", safeString(profile.getName()));
 
-        profileDataDocument.put("elo", profileData.getElo());
-        profileDataDocument.put("coins", profileData.getCoins());
-        profileDataDocument.put("unrankedWins", profileData.getUnrankedWins());
-        profileDataDocument.put("unrankedLosses", profileData.getUnrankedLosses());
-        profileDataDocument.put("rankedWins", profileData.getRankedWins());
-        profileDataDocument.put("rankedLosses", profileData.getRankedLosses());
+            ProfileData profileData = profile.getProfileData();
+            if (profileData != null) {
+                document.put("profileData", convertProfileData(profileData));
+            } else {
+                Logger.warn(String.format("ProfileData is null for profile: %s, using empty document", profile.getUuid()));
+                document.put("profileData", new Document());
+            }
 
-        profileDataDocument.put("rankedBanned", profileData.isRankedBanned());
-
-        profileDataDocument.put("globalLevel", profileData.getGlobalLevel() == null || profileData.getGlobalLevel().isEmpty() ? "" : profileData.getGlobalLevel());
-
-        profileDataDocument.put("selectedTitle", profileData.getSelectedTitle() == null || profileData.getSelectedTitle().isEmpty() ? "" : profileData.getSelectedTitle());
-        profileDataDocument.put("unlockedTitles", profileData.getUnlockedTitles());
-
-        profileDataDocument.put("unrankedKitData", convertUnrankedKitData(profileData.getUnrankedKitData()));
-        profileDataDocument.put("rankedKitData", convertRankedKitData(profileData.getRankedKitData()));
-        profileDataDocument.put("ffaData", convertFFAData(profileData.getFfaData()));
-        profileDataDocument.put("layoutData", convertLayoutData(profileData.getLayoutData()));
-        profileDataDocument.put("settingData", convertProfileSettingData(profileData.getSettingData()));
-        profileDataDocument.put("cosmeticData", convertProfileCosmeticData(profileData.getCosmeticData()));
-        profileDataDocument.put("playTimeData", convertProfilePlayTimeData(profileData.getPlayTimeData()));
-        profileDataDocument.put("musicData", convertProfileMusicData(profileData.getMusicData()));
-
-        document.put("profileData", profileDataDocument);
-        return document;
+            return document;
+        } catch (Exception e) {
+            Logger.logException(String.format("Failed to convert profile to document for UUID: %s", profile.getUuid()), e);
+            throw new RuntimeException("Profile to document conversion failed", e);
+        }
     }
 
     /**
-     * Converts a Map of ProfileUnrankedKitData objects to a Document.
+     * Updates a Profile object from a MongoDB Document with comprehensive error handling.
      *
-     * @param kitData The kit data to convert.
-     * @return The converted Document.
+     * @param profile  The Profile object to update.
+     * @param document The Document containing the profile data.
+     * @throws IllegalArgumentException if the profile or document is null.
      */
-    private Document convertUnrankedKitData(Map<String, ProfileUnrankedKitData> kitData) {
-        Document kitDataDocument = new Document();
-        for (Map.Entry<String, ProfileUnrankedKitData> entry : kitData.entrySet()) {
-            Document kitEntry = new Document();
-            kitEntry.put("division", entry.getValue().getDivision().getName());
-            kitEntry.put("tier", entry.getValue().getTier().getName());
-            kitEntry.put("wins", entry.getValue().getWins());
-            kitEntry.put("losses", entry.getValue().getLosses());
-            kitEntry.put("winstreak", entry.getValue().getWinstreak());
-            kitDataDocument.put(entry.getKey(), kitEntry);
+    public void updateProfileFromDocument(Profile profile, Document document) {
+        if (profile == null) {
+            throw new IllegalArgumentException("Profile cannot be null");
         }
+        if (document == null) {
+            throw new IllegalArgumentException("Document cannot be null");
+        }
+
+        try {
+            Long firstJoin = document.getLong("firstJoin");
+            if (firstJoin != null) {
+                profile.setFirstJoin(firstJoin);
+            }
+
+            Document profileDataDocument = document.get("profileData", Document.class);
+            if (profileDataDocument != null) {
+                ProfileData profileData = parseProfileData(profileDataDocument);
+                profile.setProfileData(profileData);
+            } else {
+                Logger.warn(String.format("ProfileData document is null for profile: %s, creating new ProfileData", profile.getUuid()));
+                profile.setProfileData(new ProfileData());
+            }
+        } catch (Exception e) {
+            Logger.logException(String.format("Error updating profile from document for UUID: %s", profile.getUuid()), e);
+            throw new RuntimeException("Failed to update profile from document", e);
+        }
+    }
+
+    /**
+     * Converts ProfileData to a MongoDB Document with comprehensive null safety.
+     *
+     * @param profileData The ProfileData object to convert.
+     * @return A Document representation of the ProfileData.
+     */
+    private static Document convertProfileData(ProfileData profileData) {
+        return new DocumentBuilder()
+                .put("elo", profileData.getElo())
+                .put("coins", profileData.getCoins())
+                .put("unrankedWins", profileData.getUnrankedWins())
+                .put("unrankedLosses", profileData.getUnrankedLosses())
+                .put("rankedWins", profileData.getRankedWins())
+                .put("rankedLosses", profileData.getRankedLosses())
+                .put("rankedBanned", profileData.isRankedBanned())
+                .put("globalLevel", safeString(profileData.getGlobalLevel()))
+                .put("selectedTitle", safeString(profileData.getSelectedTitle()))
+                .put("unlockedTitles", safeList(profileData.getUnlockedTitles()))
+                .putSafe("unrankedKitData", profileData::getUnrankedKitData, MongoUtility::convertUnrankedKitData)
+                .putSafe("rankedKitData", profileData::getRankedKitData, MongoUtility::convertRankedKitData)
+                .putSafe("ffaData", profileData::getFfaData, MongoUtility::convertFFAData)
+                .putSafe("layoutData", profileData::getLayoutData, MongoUtility::convertLayoutData)
+                .putSafe("settingData", profileData::getSettingData, MongoUtility::convertProfileSettingData)
+                .putSafe("cosmeticData", profileData::getCosmeticData, MongoUtility::convertProfileCosmeticData)
+                .putSafe("playTimeData", profileData::getPlayTimeData, MongoUtility::convertProfilePlayTimeData)
+                .putSafe("musicData", profileData::getMusicData, MongoUtility::convertProfileMusicData)
+                .build();
+    }
+
+    /**
+     * Parses a MongoDB Document into a ProfileData object with comprehensive null safety.
+     *
+     * @param profileDataDocument The Document containing the profile data.
+     * @return A ProfileData object populated with the data from the Document.
+     */
+    private static ProfileData parseProfileData(Document profileDataDocument) {
+        ProfileData profileData = new ProfileData();
+
+        profileData.setElo(profileDataDocument.getInteger("elo", DEFAULT_ELO));
+        profileData.setCoins(profileDataDocument.getInteger("coins", DEFAULT_COINS));
+        profileData.setUnrankedWins(profileDataDocument.getInteger("unrankedWins", DEFAULT_INT));
+        profileData.setUnrankedLosses(profileDataDocument.getInteger("unrankedLosses", DEFAULT_INT));
+        profileData.setRankedWins(profileDataDocument.getInteger("rankedWins", DEFAULT_INT));
+        profileData.setRankedLosses(profileDataDocument.getInteger("rankedLosses", DEFAULT_INT));
+        profileData.setRankedBanned(profileDataDocument.getBoolean("rankedBanned", DEFAULT_BOOLEAN_FALSE));
+        profileData.setGlobalLevel(profileDataDocument.getString("globalLevel"));
+        profileData.setSelectedTitle(profileDataDocument.getString("selectedTitle"));
+
+        List<String> unlockedTitles = profileDataDocument.getList("unlockedTitles", String.class);
+        if (unlockedTitles != null) {
+            profileData.setUnlockedTitles(new ArrayList<>(unlockedTitles));
+        }
+
+        parseAndMerge(profileDataDocument, "unrankedKitData", MongoUtility::parseUnrankedKitData,
+                profileData.getUnrankedKitData(), profileData::setUnrankedKitData);
+        parseAndMerge(profileDataDocument, "rankedKitData", MongoUtility::parseRankedKitData,
+                profileData.getRankedKitData(), profileData::setRankedKitData);
+        parseAndMerge(profileDataDocument, "ffaData", MongoUtility::parseFFAData,
+                profileData.getFfaData(), profileData::setFfaData);
+
+        parseAndSet(profileDataDocument, "layoutData", MongoUtility::parseProfileLayoutData,
+                profileData::setLayoutData, ProfileLayoutData::new);
+        parseAndSet(profileDataDocument, "settingData", MongoUtility::parseProfileSettingData,
+                profileData::setSettingData, ProfileSettingData::new);
+        parseAndSet(profileDataDocument, "cosmeticData", MongoUtility::parseProfileCosmeticData,
+                profileData::setCosmeticData, ProfileCosmeticData::new);
+        parseAndSet(profileDataDocument, "playTimeData", MongoUtility::parseProfilePlayTimeData,
+                profileData::setPlayTimeData, ProfilePlayTimeData::new);
+        parseAndSet(profileDataDocument, "musicData", MongoUtility::parseProfileMusicData,
+                profileData::setMusicData, MongoUtility::createDefaultMusicData);
+
+        return profileData;
+    }
+
+    /**
+     * Converts a map of unranked kit data to a MongoDB Document.
+     * Each kit entry contains division, tier, wins, losses, and winstreak information.
+     *
+     * @param kitData A map where the key is the kit name and the value is ProfileUnrankedKitData
+     * @return A Document representation of the unranked kit data, or empty Document if input is null
+     */
+    private static Document convertUnrankedKitData(Map<String, ProfileUnrankedKitData> kitData) {
+        Document kitDataDocument = new Document();
+        if (kitData == null) return kitDataDocument;
+
+        kitData.entrySet().stream()
+                .filter(entry -> entry.getKey() != null && entry.getValue() != null)
+                .forEach(entry -> {
+                    ProfileUnrankedKitData data = entry.getValue();
+                    Document kitEntry = new DocumentBuilder()
+                            .put("division", data.getDivision() != null ? data.getDivision().getName() : EMPTY_STRING)
+                            .put("tier", data.getTier() != null ? data.getTier().getName() : EMPTY_STRING)
+                            .put("wins", data.getWins())
+                            .put("losses", data.getLosses())
+                            .put("winstreak", data.getWinstreak())
+                            .build();
+                    kitDataDocument.put(entry.getKey(), kitEntry);
+                });
+
         return kitDataDocument;
     }
 
     /**
-     * Converts a Map of ProfileKitData objects to a Document.
+     * Converts a map of ranked kit data to a MongoDB Document.
+     * Each kit entry contains elo, wins, and losses information.
      *
-     * @param kitData The kit data to convert.
-     * @return The converted Document.
+     * @param kitData A map where the key is the kit name and the value is ProfileRankedKitData
+     * @return A Document representation of the ranked kit data, or empty Document if input is null
      */
-    private Document convertRankedKitData(Map<String, ProfileRankedKitData> kitData) {
+    private static Document convertRankedKitData(Map<String, ProfileRankedKitData> kitData) {
         Document kitDataDocument = new Document();
-        for (Map.Entry<String, ProfileRankedKitData> entry : kitData.entrySet()) {
-            Document kitEntry = new Document();
-            kitEntry.put("elo", entry.getValue().getElo());
-            kitEntry.put("wins", entry.getValue().getWins());
-            kitEntry.put("losses", entry.getValue().getLosses());
-            kitDataDocument.put(entry.getKey(), kitEntry);
-        }
+        if (kitData == null) return kitDataDocument;
+
+        kitData.entrySet().stream()
+                .filter(entry -> entry.getKey() != null && entry.getValue() != null)
+                .forEach(entry -> {
+                    ProfileRankedKitData data = entry.getValue();
+                    Document kitEntry = new DocumentBuilder()
+                            .put("elo", data.getElo())
+                            .put("wins", data.getWins())
+                            .put("losses", data.getLosses())
+                            .build();
+                    kitDataDocument.put(entry.getKey(), kitEntry);
+                });
+
         return kitDataDocument;
     }
 
     /**
-     * Converts a Map of ProfileFFAData objects to a Document.
+     * Converts a map of FFA (Free For All) data to a MongoDB Document.
+     * Each FFA entry contains kills, deaths, killstreak, and highest killstreak information.
      *
-     * @param ffaData The FFA data to convert.
-     * @return The converted Document.
+     * @param ffaData A map where the key is the arena/mode name and the value is ProfileFFAData
+     * @return A Document representation of the FFA data, or empty Document if input is null
      */
-    private Document convertFFAData(Map<String, ProfileFFAData> ffaData) {
+    private static Document convertFFAData(Map<String, ProfileFFAData> ffaData) {
         Document ffaDataDocument = new Document();
-        for (Map.Entry<String, ProfileFFAData> entry : ffaData.entrySet()) {
-            Document ffaEntry = new Document();
-            ffaEntry.put("kills", entry.getValue().getKills());
-            ffaEntry.put("deaths", entry.getValue().getDeaths());
-            ffaEntry.put("killstreak", entry.getValue().getKillstreak());
-            ffaEntry.put("highestKillstreak", entry.getValue().getHighestKillstreak());
-            ffaDataDocument.put(entry.getKey(), ffaEntry);
-        }
+        if (ffaData == null) return ffaDataDocument;
+
+        ffaData.entrySet().stream()
+                .filter(entry -> entry.getKey() != null && entry.getValue() != null)
+                .forEach(entry -> {
+                    ProfileFFAData data = entry.getValue();
+                    Document ffaEntry = new DocumentBuilder()
+                            .put("kills", data.getKills())
+                            .put("deaths", data.getDeaths())
+                            .put("killstreak", data.getKillstreak())
+                            .put("highestKillstreak", data.getHighestKillstreak())
+                            .build();
+                    ffaDataDocument.put(entry.getKey(), ffaEntry);
+                });
+
         return ffaDataDocument;
     }
 
     /**
-     * Converts a ProfileLayoutData object to a Document.
+     * Converts ProfileLayoutData to a MongoDB Document.
+     * Serializes layout configurations including item arrangements and display names.
      *
-     * @param layoutData The layout data to convert.
-     * @return The converted Document.
+     * @param layoutData The ProfileLayoutData object containing layout configurations
+     * @return A Document representation of the layout data, or empty Document if input is null
      */
-    private Document convertLayoutData(ProfileLayoutData layoutData) {
+    private static Document convertLayoutData(ProfileLayoutData layoutData) {
         Document layoutDocument = new Document();
-        for (Map.Entry<String, List<LayoutData>> entry : layoutData.getLayouts().entrySet()) {
-            List<Document> layoutRecords = new ArrayList<>();
-            for (LayoutData record : entry.getValue()) {
-                Document recordDocument = new Document();
-                recordDocument.put("name", record.getName());
-                recordDocument.put("displayName", record.getDisplayName());
-                recordDocument.put("items", Serializer.serializeItemStack(record.getItems()));
-                layoutRecords.add(recordDocument);
-            }
-            layoutDocument.put(entry.getKey(), layoutRecords);
-        }
+        if (layoutData == null || layoutData.getLayouts() == null) return layoutDocument;
+
+        layoutData.getLayouts().entrySet().stream()
+                .filter(entry -> entry.getKey() != null && entry.getValue() != null)
+                .forEach(entry -> {
+                    List<Document> layoutRecords = entry.getValue().stream()
+                            .filter(Objects::nonNull)
+                            .map(record -> new DocumentBuilder()
+                                    .put("name", safeString(record.getName()))
+                                    .put("displayName", safeString(record.getDisplayName()))
+                                    .put("items", record.getItems() != null ?
+                                            Serializer.serializeItemStack(record.getItems()) : EMPTY_STRING)
+                                    .build())
+                            .collect(ArrayList::new, ArrayList::add, ArrayList::addAll);
+
+                    layoutDocument.put(entry.getKey(), layoutRecords);
+                });
+
         return layoutDocument;
     }
 
     /**
-     * Converts a ProfileSettingData object to a Document.
+     * Converts ProfileSettingData to a MongoDB Document.
+     * Includes all user preference settings such as party messages, scoreboard visibility, etc.
      *
-     * @param settingData The setting data to convert.
-     * @return The converted Document.
+     * @param settingData The ProfileSettingData object containing user settings
+     * @return A Document representation of the settings data, or empty Document if input is null
      */
-    private Document convertProfileSettingData(ProfileSettingData settingData) {
-        Document settingDocument = new Document();
-        settingDocument.put("partyMessagesEnabled", settingData.isPartyMessagesEnabled());
-        settingDocument.put("partyInvitesEnabled", settingData.isPartyInvitesEnabled());
-        settingDocument.put("scoreboardEnabled", settingData.isScoreboardEnabled());
-        settingDocument.put("tablistEnabled", settingData.isTablistEnabled());
-        settingDocument.put("showScoreboardLines", settingData.isShowScoreboardLines());
-        settingDocument.put("profanityFilterEnabled", settingData.isProfanityFilterEnabled());
-        settingDocument.put("receiveDuelRequestsEnabled", settingData.isReceiveDuelRequestsEnabled());
-        settingDocument.put("lobbyMusicEnabled", settingData.isLobbyMusicEnabled());
-        settingDocument.put("chatChannel", settingData.getChatChannel());
-        settingDocument.put("time", settingData.getTime());
-        return settingDocument;
+    private static Document convertProfileSettingData(ProfileSettingData settingData) {
+        if (settingData == null) return new Document();
+
+        return new DocumentBuilder()
+                .put("partyMessagesEnabled", settingData.isPartyMessagesEnabled())
+                .put("partyInvitesEnabled", settingData.isPartyInvitesEnabled())
+                .put("scoreboardEnabled", settingData.isScoreboardEnabled())
+                .put("tablistEnabled", settingData.isTablistEnabled())
+                .put("showScoreboardLines", settingData.isShowScoreboardLines())
+                .put("profanityFilterEnabled", settingData.isProfanityFilterEnabled())
+                .put("receiveDuelRequestsEnabled", settingData.isReceiveDuelRequestsEnabled())
+                .put("lobbyMusicEnabled", settingData.isLobbyMusicEnabled())
+                .put("chatChannel", safeString(settingData.getChatChannel()))
+                .put("time", safeString(settingData.getTime()))
+                .build();
     }
 
     /**
-     * Converts a ProfileCosmeticData object to a Document.
+     * Converts ProfileCosmeticData to a MongoDB Document.
+     * Includes selected cosmetic items such as kill effects, messages, and trails.
      *
-     * @param cosmeticData The cosmetic data to convert.
-     * @return The converted Document.
+     * @param cosmeticData The ProfileCosmeticData object containing cosmetic selections
+     * @return A Document representation of the cosmetic data, or empty Document if input is null
      */
-    private Document convertProfileCosmeticData(ProfileCosmeticData cosmeticData) {
-        Document cosmeticDocument = new Document();
-        cosmeticDocument.put("selectedKillEffect", cosmeticData.getSelectedKillEffect());
-        cosmeticDocument.put("selectedKillMessage", cosmeticData.getSelectedKillMessage());
-        cosmeticDocument.put("selectedSoundEffect", cosmeticData.getSelectedSoundEffect());
-        cosmeticDocument.put("selectedProjectileTrail", cosmeticData.getSelectedProjectileTrail());
-        return cosmeticDocument;
+    private static Document convertProfileCosmeticData(ProfileCosmeticData cosmeticData) {
+        if (cosmeticData == null) return new Document();
+
+        return new DocumentBuilder()
+                .put("selectedKillEffect", safeString(cosmeticData.getSelectedKillEffect()))
+                .put("selectedKillMessage", safeString(cosmeticData.getSelectedKillMessage()))
+                .put("selectedSoundEffect", safeString(cosmeticData.getSelectedSoundEffect()))
+                .put("selectedProjectileTrail", safeString(cosmeticData.getSelectedProjectileTrail()))
+                .build();
     }
 
     /**
-     * Converts a ProfilePlayTimeData object to a Document.
+     * Converts ProfilePlayTimeData to a MongoDB Document.
+     * Includes total playtime and last login information.
      *
-     * @param playTimeData The play time data to convert.
-     * @return The converted Document.
+     * @param playTimeData The ProfilePlayTimeData object containing playtime statistics
+     * @return A Document representation of the playtime data, or empty Document if input is null
      */
-    private Document convertProfilePlayTimeData(ProfilePlayTimeData playTimeData) {
-        Document playTimeDocument = new Document();
-        playTimeDocument.put("total", playTimeData.getTotal());
-        playTimeDocument.put("lastLogin", playTimeData.getLastLogin());
-        return playTimeDocument;
+    private static Document convertProfilePlayTimeData(ProfilePlayTimeData playTimeData) {
+        if (playTimeData == null) return new Document();
+
+        return new DocumentBuilder()
+                .put("total", playTimeData.getTotal())
+                .put("lastLogin", playTimeData.getLastLogin())
+                .build();
     }
 
     /**
-     * Converts a ProfileMusicData object to a Document.
+     * Converts ProfileMusicData to a MongoDB Document.
+     * Includes the list of selected music discs.
      *
-     * @param musicData The music data to convert.
-     * @return The converted Document.
+     * @param musicData The ProfileMusicData object containing music preferences
+     * @return A Document representation of the music data, or empty Document if input is null
      */
-    private Document convertProfileMusicData(ProfileMusicData musicData) {
-        Document musicDocument = new Document();
-        musicDocument.put("selectedDiscs", new ArrayList<>(musicData.getSelectedDiscs()));
-        return musicDocument;
+    private static Document convertProfileMusicData(ProfileMusicData musicData) {
+        if (musicData == null) return new Document();
+
+        Set<String> selectedDiscs = musicData.getSelectedDiscs();
+        return new DocumentBuilder()
+                .put("selectedDiscs", selectedDiscs != null ? new ArrayList<>(selectedDiscs) : new ArrayList<>())
+                .build();
     }
 
     /**
-     * Updates a Profile object from a Document.
+     * Parses a MongoDB Document into a map of unranked kit data.
+     * Reconstructs ProfileUnrankedKitData objects with division, tier, and statistics.
+     * Uses DivisionService to validate and resolve division/tier references.
      *
-     * @param profile  The profile to update.
-     * @param document The document to update from.
+     * @param kitDataDocument The Document containing unranked kit data
+     * @return A map of kit names to ProfileUnrankedKitData objects, empty map if input is null
      */
-    public void updateProfileFromDocument(Profile profile, Document document) {
-        profile.setFirstJoin(document.getLong("firstJoin"));
-
-        if (document.containsKey("profileData")) {
-            Document profileDataDocument = (Document) document.get("profileData");
-            ProfileData profileData = new ProfileData();
-
-            profileData.setElo(profileDataDocument.getInteger("elo"));
-            profileData.setCoins(profileDataDocument.getInteger("coins"));
-            profileData.setUnrankedWins(profileDataDocument.getInteger("unrankedWins"));
-            profileData.setUnrankedLosses(profileDataDocument.getInteger("unrankedLosses"));
-            profileData.setRankedWins(profileDataDocument.getInteger("rankedWins"));
-            profileData.setRankedLosses(profileDataDocument.getInteger("rankedLosses"));
-
-            profileData.setRankedBanned(profileDataDocument.getBoolean("rankedBanned"));
-
-            profileData.setGlobalLevel(profileDataDocument.getString("globalLevel"));
-
-            profileData.setSelectedTitle(profileDataDocument.getString("selectedTitle"));
-            profileData.setUnlockedTitles(profileDataDocument.getList("unlockedTitles", String.class));
-
-            Map<String, ProfileUnrankedKitData> existingUnrankedKitData = profileData.getUnrankedKitData();
-            Map<String, ProfileUnrankedKitData> newUnrankedKitData = parseUnrankedKitData((Document) profileDataDocument.get("unrankedKitData"));
-            existingUnrankedKitData.putAll(newUnrankedKitData);
-            profileData.setUnrankedKitData(existingUnrankedKitData);
-
-            Map<String, ProfileRankedKitData> existingRankedKitData = profileData.getRankedKitData();
-            Map<String, ProfileRankedKitData> newKitData = parseRankedKitData((Document) profileDataDocument.get("rankedKitData"));
-            existingRankedKitData.putAll(newKitData);
-            profileData.setRankedKitData(existingRankedKitData);
-
-            Map<String, ProfileFFAData> existingFFAData = profileData.getFfaData();
-            Map<String, ProfileFFAData> newFFAData = parseFFAData((Document) profileDataDocument.get("ffaData"));
-            existingFFAData.putAll(newFFAData);
-            profileData.setFfaData(existingFFAData);
-
-            Document layoutDataDocument = (Document) profileDataDocument.get("layoutData");
-            ProfileLayoutData profileLayoutData = parseProfileLayoutData(layoutDataDocument);
-            profileData.setLayoutData(profileLayoutData);
-
-            profileData.setSettingData(parseProfileSettingData((Document) profileDataDocument.get("settingData")));
-            profileData.setCosmeticData(parseProfileCosmeticData((Document) profileDataDocument.get("cosmeticData")));
-            profileData.setPlayTimeData(parseProfilePlayTimeData((Document) profileDataDocument.get("playTimeData")));
-
-            profileData.setMusicData(parseProfileMusicData((Document) profileDataDocument.get("musicData")));
-
-            profile.setProfileData(profileData);
-        }
-    }
-
-    /**
-     * Parses a Map of ProfileUnrankedKitData objects from a Document.
-     *
-     * @param kitDataDocument The kit data document to parse.
-     * @return The parsed Map.
-     */
-    private Map<String, ProfileUnrankedKitData> parseUnrankedKitData(Document kitDataDocument) {
+    private static Map<String, ProfileUnrankedKitData> parseUnrankedKitData(Document kitDataDocument) {
         Map<String, ProfileUnrankedKitData> kitData = new HashMap<>();
-        for (Map.Entry<String, Object> entry : kitDataDocument.entrySet()) {
-            Document kitEntry = (Document) entry.getValue();
-            ProfileUnrankedKitData kit = new ProfileUnrankedKitData();
+        if (kitDataDocument == null) return kitData;
 
-            String storedDivision = kitEntry.getString("division");
-            Division division = Alley.getInstance().getService(DivisionService.class).getDivision(storedDivision);
-            kit.setDivision(division.getName());
+        DivisionService divisionService = Alley.getInstance().getService(DivisionService.class);
 
-            String storedTier = kitEntry.getString("tier");
-            DivisionTier tier = division.getTiers().stream()
-                    .filter(t -> t.getName().equals(storedTier))
-                    .findFirst()
-                    .orElse(null);
-            kit.setTier(Objects.requireNonNull(tier).getName());
+        kitDataDocument.forEach((key, value) -> {
+            try {
+                Document kitEntry = (Document) value;
+                ProfileUnrankedKitData kit = new ProfileUnrankedKitData();
 
-            kit.setWins(kitEntry.getInteger("wins"));
-            kit.setLosses(kitEntry.getInteger("losses"));
-            kit.setWinstreak(kitEntry.getInteger("winstreak"));
+                String storedDivision = kitEntry.getString("division");
+                if (storedDivision != null && !storedDivision.isEmpty()) {
+                    Division division = divisionService.getDivision(storedDivision);
+                    if (division != null) {
+                        kit.setDivision(division.getName());
 
-            kitData.put(entry.getKey(), kit);
-        }
+                        String storedTier = kitEntry.getString("tier");
+                        if (storedTier != null && !storedTier.isEmpty()) {
+                            division.getTiers().stream()
+                                    .filter(t -> t.getName().equals(storedTier))
+                                    .findFirst()
+                                    .ifPresent(tier -> kit.setTier(tier.getName()));
+                        }
+                    }
+                }
+
+                kit.setWins(kitEntry.getInteger("wins", DEFAULT_INT));
+                kit.setLosses(kitEntry.getInteger("losses", DEFAULT_INT));
+                kit.setWinstreak(kitEntry.getInteger("winstreak", DEFAULT_INT));
+
+                kitData.put(key, kit);
+            } catch (Exception e) {
+                Logger.logException(String.format("Failed to parse unranked kit data for key: %s", key), e);
+            }
+        });
+
         return kitData;
     }
 
+
     /**
-     * Parses a Map of ProfileKitData objects from a Document.
+     * Parses a MongoDB Document into a map of ranked kit data.
+     * Reconstructs ProfileRankedKitData objects with elo ratings and match statistics.
      *
-     * @param kitDataDocument The kit data document to parse.
-     * @return The parsed Map.
+     * @param kitDataDocument The Document containing ranked kit data
+     * @return A map of kit names to ProfileRankedKitData objects, empty map if input is null
      */
-    private Map<String, ProfileRankedKitData> parseRankedKitData(Document kitDataDocument) {
+    private static Map<String, ProfileRankedKitData> parseRankedKitData(Document kitDataDocument) {
         Map<String, ProfileRankedKitData> kitData = new HashMap<>();
-        for (Map.Entry<String, Object> entry : kitDataDocument.entrySet()) {
-            Document kitEntry = (Document) entry.getValue();
-            ProfileRankedKitData kit = new ProfileRankedKitData();
-            kit.setElo(kitEntry.getInteger("elo"));
-            kit.setWins(kitEntry.getInteger("wins"));
-            kit.setLosses(kitEntry.getInteger("losses"));
-            kitData.put(entry.getKey(), kit);
-        }
+        if (kitDataDocument == null) return kitData;
+
+        kitDataDocument.forEach((key, value) -> {
+            try {
+                Document kitEntry = (Document) value;
+                ProfileRankedKitData kit = new ProfileRankedKitData();
+
+                kit.setElo(kitEntry.getInteger("elo", DEFAULT_ELO));
+                kit.setWins(kitEntry.getInteger("wins", DEFAULT_INT));
+                kit.setLosses(kitEntry.getInteger("losses", DEFAULT_INT));
+
+                kitData.put(key, kit);
+            } catch (Exception e) {
+                Logger.logException(String.format("Failed to parse ranked kit data for key: %s", key), e);
+            }
+        });
+
         return kitData;
     }
 
     /**
-     * Parses a Map of ProfileFFAData objects from a Document.
+     * Parses a MongoDB Document into a map of FFA data.
+     * Reconstructs ProfileFFAData objects with kill/death statistics and streaks.
      *
-     * @param ffaDataDocument The FFA data document to parse.
-     * @return The parsed Map.
+     * @param ffaDataDocument The Document containing FFA data
+     * @return A map of arena/mode names to ProfileFFAData objects, empty map if input is null
      */
-    private Map<String, ProfileFFAData> parseFFAData(Document ffaDataDocument) {
+    private static Map<String, ProfileFFAData> parseFFAData(Document ffaDataDocument) {
         Map<String, ProfileFFAData> ffaData = new HashMap<>();
-        for (Map.Entry<String, Object> entry : ffaDataDocument.entrySet()) {
-            Document ffaEntry = (Document) entry.getValue();
-            ProfileFFAData ffa = new ProfileFFAData();
-            ffa.setKills(ffaEntry.getInteger("kills"));
-            ffa.setDeaths(ffaEntry.getInteger("deaths"));
-            ffa.setKillstreak(ffaEntry.getInteger("killstreak", 0));
-            ffa.setHighestKillstreak(ffaEntry.getInteger("highestKillstreak"));
-            ffaData.put(entry.getKey(), ffa);
-        }
+        if (ffaDataDocument == null) return ffaData;
+
+        ffaDataDocument.forEach((key, value) -> {
+            try {
+                Document ffaEntry = (Document) value;
+                ProfileFFAData ffa = new ProfileFFAData();
+
+                ffa.setKills(ffaEntry.getInteger("kills", DEFAULT_INT));
+                ffa.setDeaths(ffaEntry.getInteger("deaths", DEFAULT_INT));
+                ffa.setKillstreak(ffaEntry.getInteger("killstreak", DEFAULT_INT));
+                ffa.setHighestKillstreak(ffaEntry.getInteger("highestKillstreak", DEFAULT_INT));
+
+                ffaData.put(key, ffa);
+            } catch (Exception e) {
+                Logger.logException(String.format("Failed to parse FFA data for key: %s", key), e);
+            }
+        });
+
         return ffaData;
     }
 
     /**
-     * Parses a ProfileLayoutData object from a Document.
+     * Parses a MongoDB Document into ProfileLayoutData.
+     * Deserializes layout configurations and reconstructs ItemStack arrays from serialized strings.
+     * Handles deserialization errors gracefully by logging and using empty ItemStack arrays.
      *
-     * @param layoutDocument The layout document to parse.
-     * @return The parsed ProfileLayoutData.
+     * @param layoutDocument The Document containing layout data
+     * @return A ProfileLayoutData object with reconstructed layouts, or new instance if input is null
      */
-    private ProfileLayoutData parseProfileLayoutData(Document layoutDocument) {
+    private static ProfileLayoutData parseProfileLayoutData(Document layoutDocument) {
         ProfileLayoutData layoutData = new ProfileLayoutData();
-        for (Map.Entry<String, Object> entry : layoutDocument.entrySet()) {
-            List<LayoutData> layoutRecords = new ArrayList<>();
-            List<Document> records = (List<Document>) entry.getValue();
-            for (Document record : records) {
-                String name = record.getString("name");
-                String displayName = record.getString("displayName");
-                ItemStack[] items = Serializer.deserializeItemStack(record.get("items", String.class));
-                LayoutData layoutRecord = new LayoutData(name, displayName, items);
-                layoutRecords.add(layoutRecord);
+        if (layoutDocument == null) return layoutData;
+
+        layoutDocument.forEach((key, value) -> {
+            try {
+                List<LayoutData> layoutRecords = new ArrayList<>();
+                @SuppressWarnings("unchecked")
+                List<Document> records = (List<Document>) value;
+
+                if (records != null) {
+                    records.stream()
+                            .filter(Objects::nonNull)
+                            .forEach(record -> {
+                                String name = record.getString("name");
+                                String displayName = record.getString("displayName");
+                                String itemsString = record.getString("items");
+
+                                ItemStack[] items = null;
+                                if (itemsString != null && !itemsString.isEmpty()) {
+                                    try {
+                                        items = Serializer.deserializeItemStack(itemsString);
+                                    } catch (Exception e) {
+                                        Logger.logException(String.format("Failed to deserialize items for layout: %s", name), e);
+                                    }
+                                }
+
+                                LayoutData layoutRecord = new LayoutData(
+                                        safeString(name),
+                                        safeString(displayName),
+                                        items != null ? items : new ItemStack[0]
+                                );
+                                layoutRecords.add(layoutRecord);
+                            });
+                }
+                layoutData.getLayouts().put(key, layoutRecords);
+            } catch (Exception e) {
+                Logger.logException(String.format("Failed to parse layout data for key: %s", key), e);
             }
-            layoutData.getLayouts().put(entry.getKey(), layoutRecords);
-        }
+        });
+
         return layoutData;
     }
 
     /**
-     * Parses a ProfileMusicData object from a Document.
+     * Parses a MongoDB Document into ProfileMusicData.
+     * Reconstructs the set of selected music discs from the stored list.
+     * Falls back to default music data if parsing fails.
      *
-     * @param musicDocument The music document to parse.
-     * @return The parsed ProfileMusicData.
+     * @param musicDocument The Document containing music data
+     * @return A ProfileMusicData object with selected discs, or default music data if parsing fails
      */
-    private ProfileMusicData parseProfileMusicData(Document musicDocument) {
-        ProfileMusicData musicData = new ProfileMusicData();
-
+    private static ProfileMusicData parseProfileMusicData(Document musicDocument) {
         if (musicDocument == null) {
-            MusicService musicService = Alley.getInstance().getService(MusicService.class);
-            musicService.getMusicDiscs().forEach(disc -> musicData.addDisc(disc.name()));
-            return musicData;
+            return createDefaultMusicData();
         }
 
-        List<String> selectedDiscs = musicDocument.getList("selectedDiscs", String.class);
-        musicData.getSelectedDiscs().addAll(selectedDiscs);
+        try {
+            ProfileMusicData musicData = new ProfileMusicData();
+            List<String> selectedDiscs = musicDocument.getList("selectedDiscs", String.class);
 
-        return musicData;
+            if (selectedDiscs != null && !selectedDiscs.isEmpty()) {
+                musicData.getSelectedDiscs().addAll(selectedDiscs);
+                return musicData;
+            }
+        } catch (Exception e) {
+            Logger.logException("Failed to parse music data, using defaults", e);
+        }
+
+        return createDefaultMusicData();
     }
 
     /**
-     * Parses a ProfileSettingData object from a Document.
+     * Parses a MongoDB Document into ProfileSettingData.
+     * Reconstructs all user preference settings with appropriate default values.
+     * Validates enum values for ChatChannel and WorldTime settings.
      *
-     * @param settingDocument The setting document to parse.
-     * @return The parsed ProfileSettingData.
+     * @param settingDocument The Document containing settings data
+     * @return A ProfileSettingData object with user preferences, or new instance with defaults if input is null
      */
-    private ProfileSettingData parseProfileSettingData(Document settingDocument) {
+    private static ProfileSettingData parseProfileSettingData(Document settingDocument) {
         ProfileSettingData settingData = new ProfileSettingData();
-        settingData.setPartyMessagesEnabled(settingDocument.getBoolean("partyMessagesEnabled", true));
-        settingData.setPartyInvitesEnabled(settingDocument.getBoolean("partyInvitesEnabled", true));
-        settingData.setScoreboardEnabled(settingDocument.getBoolean("scoreboardEnabled", true));
-        settingData.setTablistEnabled(settingDocument.getBoolean("tablistEnabled", true));
-        settingData.setShowScoreboardLines(settingDocument.getBoolean("showScoreboardLines", true));
-        settingData.setProfanityFilterEnabled(settingDocument.getBoolean("profanityFilterEnabled", true));
-        settingData.setReceiveDuelRequestsEnabled(settingDocument.getBoolean("receiveDuelRequestsEnabled", true));
-        settingData.setLobbyMusicEnabled(settingDocument.getBoolean("lobbyMusicEnabled", true));
-        settingData.setChatChannel(settingDocument.get("chatChannel", ChatChannel.GLOBAL.toString()));
-        settingData.setTime(settingDocument.get("time", WorldTime.DEFAULT.getName()));
+        if (settingDocument == null) return settingData;
+
+        settingData.setPartyMessagesEnabled(settingDocument.getBoolean("partyMessagesEnabled", DEFAULT_BOOLEAN_TRUE));
+        settingData.setPartyInvitesEnabled(settingDocument.getBoolean("partyInvitesEnabled", DEFAULT_BOOLEAN_TRUE));
+        settingData.setScoreboardEnabled(settingDocument.getBoolean("scoreboardEnabled", DEFAULT_BOOLEAN_TRUE));
+        settingData.setTablistEnabled(settingDocument.getBoolean("tablistEnabled", DEFAULT_BOOLEAN_TRUE));
+        settingData.setShowScoreboardLines(settingDocument.getBoolean("showScoreboardLines", DEFAULT_BOOLEAN_TRUE));
+        settingData.setProfanityFilterEnabled(settingDocument.getBoolean("profanityFilterEnabled", DEFAULT_BOOLEAN_TRUE));
+        settingData.setReceiveDuelRequestsEnabled(settingDocument.getBoolean("receiveDuelRequestsEnabled", DEFAULT_BOOLEAN_TRUE));
+        settingData.setLobbyMusicEnabled(settingDocument.getBoolean("lobbyMusicEnabled", DEFAULT_BOOLEAN_TRUE));
+
+        String chatChannel = settingDocument.getString("chatChannel");
+        settingData.setChatChannel(chatChannel != null ? chatChannel : ChatChannel.GLOBAL.toString());
+
+        String time = settingDocument.getString("time");
+        settingData.setTime(time != null ? time : WorldTime.DEFAULT.getName());
+
         return settingData;
     }
 
+
     /**
-     * Parses a ProfileCosmeticData object from a Document.
+     * Parses a MongoDB Document into ProfileCosmeticData.
+     * Reconstructs selected cosmetic items from stored string identifiers.
      *
-     * @param cosmeticDocument The cosmetic document to parse.
-     * @return The parsed ProfileCosmeticData.
+     * @param cosmeticDocument The Document containing cosmetic data
+     * @return A ProfileCosmeticData object with cosmetic selections, or new instance if input is null
      */
-    private ProfileCosmeticData parseProfileCosmeticData(Document cosmeticDocument) {
+    private static ProfileCosmeticData parseProfileCosmeticData(Document cosmeticDocument) {
         ProfileCosmeticData cosmeticData = new ProfileCosmeticData();
+        if (cosmeticDocument == null) return cosmeticData;
+
         cosmeticData.setSelectedKillEffect(cosmeticDocument.getString("selectedKillEffect"));
         cosmeticData.setSelectedKillMessage(cosmeticDocument.getString("selectedKillMessage"));
         cosmeticData.setSelectedSoundEffect(cosmeticDocument.getString("selectedSoundEffect"));
@@ -415,15 +654,177 @@ public class MongoUtility {
     }
 
     /**
-     * Parses a ProfilePlayTimeData object from a Document.
+     * Parses a MongoDB Document into ProfilePlayTimeData.
+     * Reconstructs playtime statistics with null-safe handling for Long values.
      *
-     * @param playTimeDocument The play time document to parse.
-     * @return The parsed ProfilePlayTimeData.
+     * @param playTimeDocument The Document containing playtime data
+     * @return A ProfilePlayTimeData object with playtime statistics, or new instance with defaults if input is null
      */
-    private ProfilePlayTimeData parseProfilePlayTimeData(Document playTimeDocument) {
+    private static ProfilePlayTimeData parseProfilePlayTimeData(Document playTimeDocument) {
         ProfilePlayTimeData playTimeData = new ProfilePlayTimeData();
-        playTimeData.setTotal(playTimeDocument.getLong("total"));
-        playTimeData.setLastLogin(playTimeDocument.getLong("lastLogin"));
+        if (playTimeDocument == null) return playTimeData;
+
+        Long total = playTimeDocument.getLong("total");
+        Long lastLogin = playTimeDocument.getLong("lastLogin");
+
+        playTimeData.setTotal(total != null ? total : DEFAULT_LONG);
+        playTimeData.setLastLogin(lastLogin != null ? lastLogin : DEFAULT_LONG);
+
         return playTimeData;
+    }
+
+    /**
+     * Safe string handling that prevents null pointer exceptions.
+     * Provides a consistent way to handle potentially null string values throughout the utility.
+     *
+     * @param value The string value to check
+     * @return The original string if not null, otherwise an empty string
+     */
+    private static String safeString(String value) {
+        return value != null ? value : EMPTY_STRING;
+    }
+
+    /**
+     * Safe list handling that prevents null pointer exceptions.
+     * Creates a defensive copy of the input list to prevent external modifications.
+     *
+     * @param list The list to check and copy
+     * @param <T> The type of elements in the list
+     * @return A new ArrayList containing the elements of the input list, or an empty list if input is null
+     */
+    private static <T> List<T> safeList(List<T> list) {
+        return list != null ? new ArrayList<>(list) : new ArrayList<>();
+    }
+
+    /**
+     * Generic method for parsing and merging map data from a Document.
+     * Provides a standardized way to handle map-based data fields with error recovery.
+     * If parsing fails, the existing map is preserved to maintain data integrity.
+     *
+     * @param document The Document to parse from
+     * @param key The key to look for in the Document
+     * @param parser The function to parse the sub-document into a map
+     * @param existingMap The existing map to merge parsed data into
+     * @param setter The consumer to set the final merged map back to the parent object
+     * @param <T> The type of values in the map
+     */
+    private static <T> void parseAndMerge(Document document, String key,
+                                          Function<Document, Map<String, T>> parser,
+                                          Map<String, T> existingMap,
+                                          Consumer<Map<String, T>> setter) {
+        try {
+            Document subDocument = document.get(key, Document.class);
+            if (subDocument != null) {
+                Map<String, T> parsedData = parser.apply(subDocument);
+                if (parsedData != null && !parsedData.isEmpty()) {
+                    existingMap.putAll(parsedData);
+                    setter.accept(existingMap);
+                    return;
+                }
+            }
+        } catch (Exception e) {
+            Logger.logException(String.format("Failed to parse and merge field: %s", key), e);
+        }
+
+        setter.accept(existingMap);
+    }
+
+    /**
+     * Generic method for parsing a sub-document and setting it to a field.
+     * Provides a standardized way to handle complex object fields with fallback to defaults.
+     * Ensures robust error handling and prevents null values from being set.
+     *
+     * @param document The Document to parse from
+     * @param key The key to look for in the Document
+     * @param parser The function to parse the sub-document into the target type
+     * @param setter The consumer to set the parsed value to the parent object
+     * @param defaultSupplier A supplier to create a default value if parsing fails or document is null
+     * @param <T> The type of the parsed value
+     */
+    private static <T> void parseAndSet(Document document, String key,
+                                        Function<Document, T> parser,
+                                        Consumer<T> setter,
+                                        Supplier<T> defaultSupplier) {
+        try {
+            Document subDocument = document.get(key, Document.class);
+            if (subDocument != null) {
+                T parsed = parser.apply(subDocument);
+                if (parsed != null) {
+                    setter.accept(parsed);
+                    return;
+                }
+            }
+        } catch (Exception e) {
+            Logger.logException(String.format("Failed to parse and set field: %s", key), e);
+        }
+
+        try {
+            setter.accept(defaultSupplier.get());
+        } catch (Exception e) {
+            Logger.logException(String.format("Failed to create default value for field: %s", key), e);
+        }
+    }
+
+    /**
+     * Creates default music data with all available music discs selected.
+     * This method is used when music data is not present in the database document,
+     * ensuring users have access to all available music by default.
+     * Handles service lookup failures gracefully by returning empty music data.
+     *
+     * @return A ProfileMusicData object with all available music discs, or empty music data if service unavailable
+     */
+    private static ProfileMusicData createDefaultMusicData() {
+        ProfileMusicData musicData = new ProfileMusicData();
+        try {
+            MusicService musicService = Alley.getInstance().getService(MusicService.class);
+            if (musicService != null && musicService.getMusicDiscs() != null) {
+                musicService.getMusicDiscs().forEach(disc -> {
+                    if (disc != null) {
+                        musicData.addDisc(disc.name());
+                    }
+                });
+            }
+        } catch (Exception e) {
+            Logger.logException("Failed to create default music data", e);
+        }
+        return musicData;
+    }
+
+    /**
+     * A builder class for constructing MongoDB Documents with null safety and error handling.
+     * This class allows for chaining method calls to build a Document incrementally.
+     */
+    private static class DocumentBuilder {
+        private final Document document;
+
+        public DocumentBuilder() {
+            this.document = new Document();
+        }
+
+        public DocumentBuilder put(String key, Object value) {
+            if (key != null) {
+                document.put(key, value);
+            }
+            return this;
+        }
+
+        public <T> DocumentBuilder putSafe(String key, Supplier<T> supplier, Function<T, Document> converter) {
+            try {
+                T value = supplier.get();
+                if (value != null) {
+                    Document converted = converter.apply(value);
+                    if (converted != null) {
+                        document.put(key, converted);
+                    }
+                }
+            } catch (Exception e) {
+                Logger.logException(String.format("Failed to put safe value for key: %s", key), e);
+            }
+            return this;
+        }
+
+        public Document build() {
+            return document;
+        }
     }
 }

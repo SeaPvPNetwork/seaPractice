@@ -53,14 +53,14 @@ public interface ProfileService extends Service {
      */
     Map<UUID, Profile> getProfiles();
 
-    void loadProfiles();
-
     /**
-     * Manually adds a profile to the in-memory cache.
+     * Removes a profile from the in-memory cache.
+     * <p>
+     * This does not delete the profile from the database; it only removes it from the cache.
      *
-     * @param profile The profile to add.
+     * @param uuid The UUID of the profile to remove.
      */
-    void addProfile(Profile profile);
+    void removeProfile(UUID uuid);
 
     /**
      * Resets the statistics for a target player and archives their old profile.

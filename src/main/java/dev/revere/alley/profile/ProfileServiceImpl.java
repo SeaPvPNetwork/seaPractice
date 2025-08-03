@@ -63,30 +63,8 @@ public class ProfileServiceImpl implements ProfileService {
     }
 
     @Override
-    public MongoCollection<Document> getCollection() {
-        return collection;
-    }
-
-    @Override
-    public Map<UUID, Profile> getProfiles() {
-        return this.profiles;
-    }
-
-    @Override
-    public void loadProfiles() {
-        for (Document document : this.collection.find()) {
-            UUID uuid = UUID.fromString(document.getString("uuid"));
-            this.profiles.computeIfAbsent(uuid, k -> {
-                Profile profile = new Profile(k);
-                profile.load();
-                return profile;
-            });
-        }
-    }
-
-    @Override
-    public void addProfile(Profile profile) {
-        this.profiles.put(profile.getUuid(), profile);
+    public void removeProfile(UUID uuid) {
+        this.profiles.remove(uuid);
     }
 
     @Override

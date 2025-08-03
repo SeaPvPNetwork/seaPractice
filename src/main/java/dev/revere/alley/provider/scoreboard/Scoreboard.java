@@ -2,6 +2,8 @@ package dev.revere.alley.provider.scoreboard;
 
 import dev.revere.alley.Alley;
 import dev.revere.alley.profile.Profile;
+import dev.revere.alley.profile.ProfileService;
+import dev.revere.alley.profile.enums.ProfileState;
 import dev.revere.alley.tool.animation.AnimationService;
 import dev.revere.alley.tool.animation.enums.AnimationType;
 import dev.revere.alley.tool.animation.type.internal.impl.DotAnimation;
@@ -54,5 +56,22 @@ public interface Scoreboard {
         }
 
         return ReflectionUtility.getPing(player);
+    }
+
+    /**
+     * Safely counts the number of profiles in a given state.
+     *
+     * @param service The ProfileService to use for counting.
+     * @param state   The ProfileState to count.
+     * @return The count of profiles in the specified state, or 0 if an error occurs.
+     */
+    default int safeCountState(ProfileService service, ProfileState state) {
+        try {
+            return (int) service.getProfiles().values().parallelStream()
+                    .filter(p -> p.getState() == state)
+                    .count();
+        } catch (Exception e) {
+            return 0;
+        }
     }
 }
