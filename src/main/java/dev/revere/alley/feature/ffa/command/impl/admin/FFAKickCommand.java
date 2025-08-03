@@ -20,22 +20,22 @@ public class FFAKickCommand extends BaseCommand {
         Player player = command.getPlayer();
         String[] args = command.getArgs();
 
-        // /ffa kick <model>
+        // /ffa kick <player>
 
         if (args.length != 1) {
-            player.sendMessage(CC.translate("&cUsage: /ffa kick <model>"));
+            player.sendMessage(CC.translate("&cUsage: /ffa kick <player>"));
             return;
         }
 
         Player target = player.getServer().getPlayer(args[0]);
         if (target == null) {
-            player.sendMessage(CC.translate("&cThere is no model with the name " + args[0] + "."));
+            player.sendMessage(CC.translate("&cThere is no player with the name " + args[0] + "."));
             return;
         }
 
         FFAMatch match = this.plugin.getService(FFAService.class).getFFAMatch(target);
         if (match == null) {
-            player.sendMessage(CC.translate("&cThis model is not in a FFA match."));
+            player.sendMessage(CC.translate("&cThis player is not in a FFA match."));
             return;
         }
 

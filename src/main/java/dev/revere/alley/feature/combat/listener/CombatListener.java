@@ -27,9 +27,9 @@ public class CombatListener implements Listener {
     }
 
     /**
-     * Removes the model from the combat map.
+     * Removes the player from the combat map.
      *
-     * @param player The model to remove.
+     * @param player The player to remove.
      */
     private void removeFromCombatMap(Player player) {
         CombatService combatService = AlleyPlugin.getInstance().getService(CombatService.class);

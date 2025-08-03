@@ -43,9 +43,9 @@ public class DefaultFFAMatch extends FFAMatch {
     }
 
     /**
-     * Join a model to the FFA match.
+     * Join a player to the FFA match.
      *
-     * @param player The model
+     * @param player The player
      */
     @Override
     public void join(Player player) {

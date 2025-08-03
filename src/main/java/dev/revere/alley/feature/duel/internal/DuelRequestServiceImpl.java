@@ -175,7 +175,7 @@ public class DuelRequestServiceImpl implements DuelRequestService {
      */
     private boolean isRequestInvalid(Player sender, Profile senderProfile, Player finalTarget, boolean isPartyDuel) {
         if (finalTarget == null) {
-            sender.sendMessage(CC.translate("&cThe target model (or their party leader) is not online."));
+            sender.sendMessage(CC.translate("&cThe target player (or their party leader) is not online."));
             return true;
         }
 
@@ -191,7 +191,7 @@ public class DuelRequestServiceImpl implements DuelRequestService {
 
         Profile finalTargetProfile = this.profileService.getProfile(finalTarget.getUniqueId());
         if (finalTargetProfile.getState() != ProfileState.LOBBY) {
-            sender.sendMessage(CC.translate("&cThe target model is not in the lobby."));
+            sender.sendMessage(CC.translate("&cThe target player is not in the lobby."));
             return true;
         }
 
@@ -212,7 +212,7 @@ public class DuelRequestServiceImpl implements DuelRequestService {
         }
 
         if (getDuelRequest(sender, finalTarget) != null) {
-            sender.sendMessage(CC.translate("&cYou already have a pending duel request with that model/party."));
+            sender.sendMessage(CC.translate("&cYou already have a pending duel request with that player/party."));
             return true;
         }
 
@@ -220,7 +220,7 @@ public class DuelRequestServiceImpl implements DuelRequestService {
     }
 
     /**
-     * Send an invitation to the target model.
+     * Send an invitation to the target player.
      *
      * @param sender the sender
      * @param target the target
@@ -303,28 +303,28 @@ public class DuelRequestServiceImpl implements DuelRequestService {
         }
 
         if (duelRequest.getTarget() == null) {
-            duelRequest.getSender().sendMessage(CC.translate("&cThat model is not online."));
+            duelRequest.getSender().sendMessage(CC.translate("&cThat player is not online."));
             return false;
         }
 
         Profile targetProfile = this.profileService.getProfile(duelRequest.getTarget().getUniqueId());
         if (targetProfile.getState() != ProfileState.LOBBY) {
-            duelRequest.getSender().sendMessage(CC.translate("&cThat model is not in the lobby."));
+            duelRequest.getSender().sendMessage(CC.translate("&cThat player is not in the lobby."));
             return false;
         }
 
         if (targetProfile.getParty() != null && profile.getParty() == null) {
-            duelRequest.getSender().sendMessage(CC.translate("&cYou cannot accept a duel request from a model in a party if you are not in a party."));
+            duelRequest.getSender().sendMessage(CC.translate("&cYou cannot accept a duel request from a player in a party if you are not in a party."));
             return false;
         }
 
         if (targetProfile.getParty() != null && targetProfile.getParty().getMembers().contains(duelRequest.getSender().getUniqueId())) {
-            duelRequest.getSender().sendMessage(CC.translate("&cYou cannot accept a duel request from a model in your party."));
+            duelRequest.getSender().sendMessage(CC.translate("&cYou cannot accept a duel request from a player in your party."));
             return false;
         }
 
         if (targetProfile.getParty() == null && profile.getParty() != null) {
-            duelRequest.getSender().sendMessage(CC.translate("&cYou cannot accept a duel request from a model who is not in a party."));
+            duelRequest.getSender().sendMessage(CC.translate("&cYou cannot accept a duel request from a player who is not in a party."));
             return false;
         }
 

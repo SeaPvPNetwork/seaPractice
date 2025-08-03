@@ -52,9 +52,9 @@ public abstract class BaseMatchScoreboard implements MatchScoreboard {
      * Child classes should override this to add their own specific placeholders.
      *
      * @param line     The line with placeholders.
-     * @param profile  The model's profile.
-     * @param player   The model.
-     * @param you      The model's game participant.
+     * @param profile  The player's profile.
+     * @param player   The player.
+     * @param you      The player's game participant.
      * @param opponent The opponent's game participant.
      * @return The line with all placeholders replaced.
      */
@@ -67,7 +67,7 @@ public abstract class BaseMatchScoreboard implements MatchScoreboard {
 
         return CC.translate(line)
                 .replace("{opponent}", opponentName)
-                .replace("{model-ping}", String.valueOf(getPing(player)))
+                .replace("{player-ping}", String.valueOf(getPing(player)))
                 .replace("{opponent-ping}", String.valueOf(getPing(opponent.getLeader().getTeamPlayer())))
                 .replace("{duration}", match.getDuration())
                 .replace("{arena}", match.getArena().getDisplayName() == null ? "&c&lNULL" : match.getArena().getDisplayName())

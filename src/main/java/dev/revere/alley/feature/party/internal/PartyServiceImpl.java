@@ -345,7 +345,7 @@ public class PartyServiceImpl implements PartyService {
         party.getMembers().add(player.getUniqueId());
         party.notifyParty("&a" + player.getName() + " has joined the party.");
 
-        player.sendMessage(CC.translate(PartyLocale.JOINED_PARTY.getMessage().replace("{model}", leader.getName())));
+        player.sendMessage(CC.translate(PartyLocale.JOINED_PARTY.getMessage().replace("{player}", leader.getName())));
 
         this.setupProfile(player, true);
     }

@@ -64,9 +64,9 @@ public class LoreHelper {
     }
 
     /**
-     * Represents equipment selection lore for a model based on a permission.
+     * Represents equipment selection lore for a player based on a permission.
      *
-     * @param player        The model to check.
+     * @param player        The player to check.
      * @param permission    The permission required to select.
      * @param inUse         Whether the item is in use or not.
      * @param clickToAction The action to perform when clicked.
@@ -82,7 +82,7 @@ public class LoreHelper {
     }
 
     /**
-     * Represents equipment selection lore for a model.
+     * Represents equipment selection lore for a player.
      *
      * @param inUse         Whether the item is in use or not.
      * @param clickToAction The action to perform when clicked.

@@ -21,7 +21,7 @@ public class SetCoinsCommand extends BaseCommand {
         String[] args = command.getArgs();
 
         if (args.length != 2) {
-            player.sendMessage(CC.translate("&cUsage: /coins set <model> <amount>"));
+            player.sendMessage(CC.translate("&cUsage: /coins set <player> <amount>"));
             return;
         }
 

@@ -169,7 +169,7 @@ public class ItemBuilder implements Listener {
      *
      * @param base64Texture The Base64 encoded texture string.
      * @return The ItemBuilder instance.
-     * @throws IllegalArgumentException if the ItemStack is not a model skull.
+     * @throws IllegalArgumentException if the ItemStack is not a player skull.
      */
     public ItemBuilder setSkullTexture(String base64Texture) {
         if (itemStack.getType() != Material.SKULL_ITEM) {
@@ -177,7 +177,7 @@ public class ItemBuilder implements Listener {
         }
 
         if (this.itemStack.getDurability() != 3) {
-            throw new IllegalArgumentException("ItemStack must be a model skull (durability 3) to set a custom texture.");
+            throw new IllegalArgumentException("ItemStack must be a player skull (durability 3) to set a custom texture.");
         }
 
         SkullMeta meta = ReflectionUtility.createSkullMeta(this.itemStack, base64Texture);

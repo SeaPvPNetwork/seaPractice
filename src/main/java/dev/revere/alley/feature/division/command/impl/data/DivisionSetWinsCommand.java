@@ -34,14 +34,14 @@ public class DivisionSetWinsCommand extends BaseCommand {
         return completion;
     }
 
-    @CommandData(name = "division.setwins", isAdminOnly = true, usage = "division setwins <name> <model> <wins>")
+    @CommandData(name = "division.setwins", isAdminOnly = true, usage = "division setwins <name> <tier> <wins>")
     @Override
     public void onCommand(CommandArgs command) {
         Player player = command.getPlayer();
         String[] args = command.getArgs();
 
         if (args.length < 3) {
-            player.sendMessage(CC.translate("&6Usage: &e/division setwins &6<name> <model> <wins>"));
+            player.sendMessage(CC.translate("&6Usage: &e/division setwins &6<name> <tier> <wins>"));
             return;
         }
 
@@ -54,7 +54,7 @@ public class DivisionSetWinsCommand extends BaseCommand {
 
         String tier = args[1];
         if (division.getTier(tier) == null) {
-            player.sendMessage(CC.translate("&cThe " + division.getDisplayName() + " division does not have a model named " + tier + "."));
+            player.sendMessage(CC.translate("&cThe " + division.getDisplayName() + " division does not have a tier named " + tier + "."));
             return;
         }
 
@@ -73,6 +73,6 @@ public class DivisionSetWinsCommand extends BaseCommand {
 
         division.getTier(tier).setRequiredWins(wins);
         divisionService.saveDivision(division);
-        player.sendMessage(CC.translate("&aSuccessfully set the required wins for the " + division.getDisplayName() + " division's " + tier + " model to " + wins + "."));
+        player.sendMessage(CC.translate("&aSuccessfully set the required wins for the " + division.getDisplayName() + " division's " + tier + " tier to " + wins + "."));
     }
 }

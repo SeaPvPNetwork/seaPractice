@@ -18,7 +18,7 @@ public interface LevelService extends Service {
     List<LevelData> getLevels();
 
     /**
-     * Creates a new level model and saves it to the configuration.
+     * Creates a new level player and saves it to the configuration.
      *
      * @param name   The unique name of the level.
      * @param minElo The minimum Elo rating for this level.
@@ -41,7 +41,7 @@ public interface LevelService extends Service {
     void saveLevel(LevelData level);
 
     /**
-     * Gets the level model that corresponds to a given Elo rating.
+     * Gets the level player that corresponds to a given Elo rating.
      *
      * @param elo The Elo rating to check.
      * @return The matching LevelData, or null if no level contains the Elo.
@@ -49,7 +49,7 @@ public interface LevelService extends Service {
     LevelData getLevel(int elo);
 
     /**
-     * Gets a level model by its unique name (case-insensitive).
+     * Gets a level player by its unique name (case-insensitive).
      *
      * @param name The name of the level.
      * @return The matching LevelData, or null if not found.

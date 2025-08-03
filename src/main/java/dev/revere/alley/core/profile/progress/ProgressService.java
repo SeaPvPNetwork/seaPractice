@@ -10,9 +10,9 @@ import dev.revere.alley.core.profile.Profile;
  */
 public interface ProgressService extends Service {
     /**
-     * Calculates a model's progress for a given kit.
+     * Calculates a player's progress for a given kit.
      *
-     * @param profile The model's profile, containing their current stats.
+     * @param profile The player's profile, containing their current stats.
      * @param kitName The name of the kit to check progress for.
      * @return A PlayerProgress object containing all calculated data.
      */

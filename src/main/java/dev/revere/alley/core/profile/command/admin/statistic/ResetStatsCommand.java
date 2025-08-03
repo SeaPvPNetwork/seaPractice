@@ -27,7 +27,7 @@ public class ResetStatsCommand extends BaseCommand {
         String[] args = command.getArgs();
 
         if (args.length < 1) {
-            player.sendMessage(CC.translate("&6Usage: &e/resetstats &6<model>"));
+            player.sendMessage(CC.translate("&6Usage: &e/resetstats &6<player>"));
             return;
         }
 
@@ -36,13 +36,13 @@ public class ResetStatsCommand extends BaseCommand {
 
         UUID uuid = target.getUniqueId();
         if (uuid == null) {
-            player.sendMessage(CC.translate("&cThat model is invalid."));
+            player.sendMessage(CC.translate("&cThat player is invalid."));
             return;
         }
 
         Profile profile = this.plugin.getService(ProfileService.class).getProfile(uuid);
         if (profile == null) {
-            player.sendMessage(CC.translate("&cThat model does not exist."));
+            player.sendMessage(CC.translate("&cThat player does not exist."));
             return;
         }
 

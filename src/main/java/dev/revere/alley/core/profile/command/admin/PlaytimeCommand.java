@@ -30,19 +30,19 @@ public class PlaytimeCommand extends BaseCommand {
         String[] args = command.getArgs();
 
         if (command.length() < 1) {
-            sender.sendMessage(CC.translate("&cUsage: /playtime (model)"));
+            sender.sendMessage(CC.translate("&cUsage: /playtime (player)"));
             return;
         }
 
         OfflinePlayer targetPlayer = PlayerUtil.getOfflinePlayerByName(args[0]);
         if (targetPlayer == null) {
-            sender.sendMessage(CC.translate("&cThe model you are trying to check is not online."));
+            sender.sendMessage(CC.translate("&cThe player you are trying to check is not online."));
             return;
         }
 
         Profile targetProfile = this.plugin.getService(ProfileService.class).getProfile(targetPlayer.getUniqueId());
         if (targetProfile == null) {
-            sender.sendMessage(CC.translate("&cThe model profile could not be found."));
+            sender.sendMessage(CC.translate("&cThe player profile could not be found."));
             return;
         }
 

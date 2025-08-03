@@ -49,7 +49,7 @@ public class AssembleAdapterImpl implements AssembleAdapter {
     /**
      * Get the lines of the scoreboard.
      *
-     * @param player The model to get the lines for.
+     * @param player The player to get the lines for.
      * @return The lines of the scoreboard.
      */
     @Override

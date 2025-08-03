@@ -24,8 +24,8 @@ public class GameFFAPlayer {
     /**
      * Constructor for the GameFFAPlayer class.
      *
-     * @param uuid The UUID of the model.
-     * @param name The name of the model.
+     * @param uuid The UUID of the player.
+     * @param name The name of the player.
      */
     public GameFFAPlayer(UUID uuid, String name) {
         this.uuid = uuid;
@@ -36,7 +36,7 @@ public class GameFFAPlayer {
     /**
      * Gets the Player object associated with this GameFFAPlayer.
      *
-     * @return The Player object, or null if the model is not online.
+     * @return The Player object, or null if the player is not online.
      */
     public Player getPlayer() {
         return AlleyPlugin.getInstance().getServer().getPlayer(this.uuid);

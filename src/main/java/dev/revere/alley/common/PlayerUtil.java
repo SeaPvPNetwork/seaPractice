@@ -21,10 +21,10 @@ import org.bukkit.inventory.ItemStack;
 @UtilityClass
 public class PlayerUtil {
     /**
-     * Reset a model's state to default values.
+     * Reset a player's state to default values.
      *
-     * @param player         the model to reset.
-     * @param closeInventory whether to close the model's inventory after resetting.
+     * @param player         the player to reset.
+     * @param closeInventory whether to close the player's inventory after resetting.
      */
     public void reset(Player player, boolean closeInventory, boolean resetHealth) {
         if (resetHealth) {
@@ -56,7 +56,7 @@ public class PlayerUtil {
         player.getActivePotionEffects().forEach(effect -> player.removePotionEffect(effect.getType()));
         player.updateInventory();
 
-        // Clears visuals from the model's model
+        // Clears visuals from the player's model
         ((CraftPlayer) player).getHandle().getDataWatcher().watch(9, (byte) 0);
 
         if (closeInventory) {
@@ -65,9 +65,9 @@ public class PlayerUtil {
     }
 
     /**
-     * Starts flying for the model if they have the required permission.
+     * Starts flying for the player if they have the required permission.
      *
-     * @param player the model to start flying.
+     * @param player the player to start flying.
      */
     public boolean canFly(Player player) {
         Profile profile = AlleyPlugin.getInstance().getService(ProfileService.class).getProfile(player.getUniqueId());
@@ -82,10 +82,10 @@ public class PlayerUtil {
     }
 
     /**
-     * Get an offline model by their name
+     * Get an offline player by their name
      *
-     * @param name the name of the model
-     * @return the offline model
+     * @param name the name of the player
+     * @return the offline player
      */
     public OfflinePlayer getOfflinePlayerByName(String name) {
         for (OfflinePlayer offlinePlayer : Bukkit.getOfflinePlayers()) {

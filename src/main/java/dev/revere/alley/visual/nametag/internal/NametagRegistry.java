@@ -47,9 +47,9 @@ public class NametagRegistry {
     }
 
     /**
-     * Sends creation packets for all active adapters to a specific model.
+     * Sends creation packets for all active adapters to a specific player.
      *
-     * @param player The model to receive the packets.
+     * @param player The player to receive the packets.
      */
     public void sendAllAdapters(Player player) {
         for (NametagAdapter adapter : adapterCache.asMap().values()) {
@@ -58,9 +58,9 @@ public class NametagRegistry {
     }
 
     /**
-     * Cleans up a model's data from all perspectives when they quit.
+     * Cleans up a player's data from all perspectives when they quit.
      *
-     * @param player The model who quit.
+     * @param player The player who quit.
      */
     public void cleanupPlayer(Player player) {
         service.getPlayerPerspectives().values().forEach(p -> p.getDisplayedAdapters().remove(player.getUniqueId()));

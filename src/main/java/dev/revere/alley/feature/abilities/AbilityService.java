@@ -56,27 +56,27 @@ public interface AbilityService extends Service {
     Set<String> getAbilityKeys();
 
     /**
-     * Gives a model a specified amount of an ability item.
+     * Gives a player a specified amount of an ability item.
      */
     void giveAbility(CommandSender sender, Player player, String key, String abilityName, int amount);
 
     /**
-     * Sends the configured "used ability" message to a model.
+     * Sends the configured "used ability" message to a player.
      */
     void sendPlayerMessage(Player player, String abilityKey);
 
     /**
-     * Sends the configured "hit by ability" message to a target model.
+     * Sends the configured "hit by ability" message to a target player.
      */
     void sendTargetMessage(Player target, Player player, String abilityKey);
 
     /**
-     * Sends the "cooldown active" message to a model.
+     * Sends the "cooldown active" message to a player.
      */
     void sendCooldownMessage(Player player, String abilityName, String cooldown);
 
     /**
-     * Schedules and sends the "cooldown expired" message to a model.
+     * Schedules and sends the "cooldown expired" message to a player.
      */
     void sendCooldownExpiredMessage(Player player, String abilityName, String abilityKey);
 }

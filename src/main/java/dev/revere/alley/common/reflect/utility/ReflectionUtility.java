@@ -629,10 +629,10 @@ public final class ReflectionUtility {
     }
 
     /**
-     * Gets the ping of a model.
+     * Gets the ping of a player.
      *
-     * @param player The model to get the ping of.
-     * @return The ping of the model in milliseconds.
+     * @param player The player to get the ping of.
+     * @return The ping of the player in milliseconds.
      * @author Emmy
      */
     public static int getPing(Player player) {

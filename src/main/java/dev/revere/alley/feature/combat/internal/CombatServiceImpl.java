@@ -124,7 +124,7 @@ public class CombatServiceImpl implements CombatService {
     }
 
     /**
-     * A clear helper method to tag one model with another.
+     * A clear helper method to tag one player with another.
      */
     private void tagPlayer(Player playerToTag, Player newAttacker, long currentTime, long expirationTime) {
         Combat combat = this.combatMap.get(playerToTag.getUniqueId());

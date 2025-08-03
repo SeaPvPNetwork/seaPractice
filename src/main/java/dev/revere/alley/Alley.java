@@ -20,11 +20,11 @@ import java.util.UUID;
  * <p>
  * This class allows other developers to interact with the server functionalities of Alley,
  * such as registering custom code to be executed during bootstrap enable and disable,
- * and accessing model profiles.
+ * and accessing player profiles.
  * </p>
  * <p>
  * Developers can use this class to easily hook into the lifecycle of the Alley bootstrap
- * and retrieve model profiles without having to directly interact with other parts of the code.
+ * and retrieve player profiles without having to directly interact with other parts of the code.
  * </p>
  *
  * @author Emmy
@@ -98,11 +98,11 @@ public class Alley {
     }
 
     /**
-     * Get the profile of a model using their UUID.
-     * Profile contains all types of non-statistic related data for the model.
+     * Get the profile of a player using their UUID.
+     * Profile contains all types of non-statistic related data for the player.
      * Such as; UUID, Username, Join date, etc.
      *
-     * @param uuid The UUID of the model to retrieve the profile for.
+     * @param uuid The UUID of the player to retrieve the profile for.
      * @return The profile associated with the UUID.
      */
     public Profile getProfile(UUID uuid) {
@@ -110,11 +110,11 @@ public class Alley {
     }
 
     /**
-     * Get the profile data of a model using their UUID.
-     * ProfileData contains all types of game related data for the model.
+     * Get the profile data of a player using their UUID.
+     * ProfileData contains all types of game related data for the player.
      * Such as; Ranked data, Unranked data, FFA data, Divisions, Titles, ELO, etc.
      *
-     * @param uuid The UUID of the model to retrieve the profile data for.
+     * @param uuid The UUID of the player to retrieve the profile data for.
      * @return The profile data associated with the UUID.
      */
     public ProfileData getProfileData(UUID uuid) {

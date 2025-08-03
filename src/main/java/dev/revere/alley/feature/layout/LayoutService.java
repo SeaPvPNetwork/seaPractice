@@ -28,9 +28,9 @@ public interface LayoutService extends Service {
     ItemStack getLayoutBook(LayoutData layout);
 
     /**
-     * Gives a model all the layout selection books for a specific kit.
+     * Gives a player all the layout selection books for a specific kit.
      *
-     * @param player  The model to give the books to.
+     * @param player  The player to give the books to.
      * @param kitName The name of the kit.
      */
     void giveBooks(Player player, String kitName);

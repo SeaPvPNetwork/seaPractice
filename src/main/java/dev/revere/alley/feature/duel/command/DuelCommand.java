@@ -25,13 +25,13 @@ public class DuelCommand extends BaseCommand {
         String[] args = command.getArgs();
 
         if (args.length < 1) {
-            player.sendMessage(CC.translate("&6Usage: &e/duel &6<model>"));
+            player.sendMessage(CC.translate("&6Usage: &e/duel &6<player>"));
             return;
         }
 
         Player target = player.getServer().getPlayer(args[0]);
         if (target == null) {
-            player.sendMessage(CC.translate("&cThat model is not online."));
+            player.sendMessage(CC.translate("&cThat player is not online."));
             return;
         }
 
@@ -42,7 +42,7 @@ public class DuelCommand extends BaseCommand {
 
         DuelRequestService duelRequestService = this.plugin.getService(DuelRequestService.class);
         if (duelRequestService.getDuelRequest(player, target) != null) {
-            player.sendMessage(CC.translate("&cYou already have a pending duel request with this model."));
+            player.sendMessage(CC.translate("&cYou already have a pending duel request with this player."));
             return;
         }
 
@@ -55,12 +55,12 @@ public class DuelCommand extends BaseCommand {
 
         Profile targetProfile = this.plugin.getService(ProfileService.class).getProfile(target.getUniqueId());
         if (!targetProfile.getProfileData().getSettingData().isReceiveDuelRequestsEnabled()) {
-            player.sendMessage(CC.translate("&cThis model has disabled duel requests."));
+            player.sendMessage(CC.translate("&cThis player has disabled duel requests."));
             return;
         }
 
         if (targetProfile.isBusy()) {
-            player.sendMessage(ProfileLocale.IS_BUSY.getMessage().replace("{color}", String.valueOf(targetProfile.getNameColor())).replace("{model}", target.getName()));
+            player.sendMessage(ProfileLocale.IS_BUSY.getMessage().replace("{color}", String.valueOf(targetProfile.getNameColor())).replace("{player}", target.getName()));
             return;
         }
 

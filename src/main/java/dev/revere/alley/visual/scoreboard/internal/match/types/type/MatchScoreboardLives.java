@@ -38,7 +38,7 @@ public class MatchScoreboardLives extends BaseMatchScoreboard {
                 .sum();
 
         return baseLine
-                .replace("{model-lives}", String.valueOf(you.getLeader().getData().getLives()))
+                .replace("{player-lives}", String.valueOf(you.getLeader().getData().getLives()))
                 .replace("{opponent-lives}", String.valueOf(opponent.getLeader().getData().getLives()))
                 .replace("{your-team-lives}", String.valueOf(yourTeamLives))
                 .replace("{opponent-team-lives}", String.valueOf(opponentTeamLives));

@@ -38,11 +38,11 @@ public class ClickableUtil {
     }
 
     /**
-     * Send clickable page navigation messages to a model.
+     * Send clickable page navigation messages to a player.
      * This calculates the current page, the total number of pages, and the base command for navigation.
-     * This allows the model to navigate through pages with ease.
+     * This allows the player to navigate through pages with ease.
      *
-     * @param player         the model
+     * @param player         the player
      * @param page           the current page
      * @param totalPages     the total number of pages
      * @param command        the command to be executed upon clicking

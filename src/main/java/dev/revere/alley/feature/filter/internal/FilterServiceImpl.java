@@ -95,7 +95,7 @@ public class FilterServiceImpl implements FilterService {
     public void notifyStaff(String message, Player offender) {
         String permission = this.pluginConstant.getAdminPermissionPrefix();
         String replacedMessage = this.notificationMessage
-                .replace("{model}", offender.getName())
+                .replace("{player}", offender.getName())
                 .replace("{message}", message);
 
         this.plugin.getServer().getOnlinePlayers().stream()

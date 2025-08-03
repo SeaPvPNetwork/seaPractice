@@ -94,7 +94,7 @@ public class ExplosiveListener implements Listener {
         fireball.setYield(2.0F);
         fireball.setVelocity(player.getLocation().getDirection().normalize().multiply(explosiveService.getSpeed()));
 
-        //SoundUtil.playCustomSound(model, Sound.GHAST_FIREBALL, 1.0f, 1.0f);
+        //SoundUtil.playCustomSound(player, Sound.GHAST_FIREBALL, 1.0f, 1.0f);
 
         if (player.getGameMode() == GameMode.CREATIVE) return;
 
@@ -181,7 +181,7 @@ public class ExplosiveListener implements Listener {
 
     /**
      * Applies configured knockback to all players within range of an explosion.
-     * The knockback strength is scaled based on the model's distance from the explosion center.
+     * The knockback strength is scaled based on the player's distance from the explosion center.
      *
      * @param source            The entity causing the explosion (e.g., Fireball, TNTPrimed).
      * @param explosionLocation The center location of the explosion.
@@ -310,7 +310,7 @@ public class ExplosiveListener implements Listener {
      * purely cosmetic (zero-power) explosion for sounds and particle effects
      * and applies knockback to nearby players.
      *
-     * @param tnt               The TNTPrimed entity that is exploding. This is used as a reference for applying model knockback.
+     * @param tnt               The TNTPrimed entity that is exploding. This is used as a reference for applying player knockback.
      * @param explosionLocation The central Location where the explosion occurs.
      */
     private void handleCustomTntExplosion(TNTPrimed tnt, Location explosionLocation) {

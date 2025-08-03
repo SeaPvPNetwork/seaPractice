@@ -22,11 +22,11 @@ public interface DuelRequestService extends Service {
     List<DuelRequest> getDuelRequests();
 
     /**
-     * The primary method for creating and sending a duel request from one model to another.
+     * The primary method for creating and sending a duel request from one player to another.
      * This handles validation, arena selection, and sending the invitation.
      *
-     * @param sender        The model initiating the request.
-     * @param initialTarget The model being challenged.
+     * @param sender        The player initiating the request.
+     * @param initialTarget The player being challenged.
      * @param kit           The kit for the duel.
      * @param arena         The specific arena chosen, or null to select a random one.
      */
@@ -43,8 +43,8 @@ public interface DuelRequestService extends Service {
      * Finds a pending duel request between two players.
      * The order of sender/target does not matter.
      *
-     * @param playerOne The first model.
-     * @param playerTwo The second model.
+     * @param playerOne The first player.
+     * @param playerTwo The second player.
      * @return The DuelRequest object, or null if none is pending.
      */
     DuelRequest getDuelRequest(Player playerOne, Player playerTwo);

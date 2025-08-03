@@ -24,26 +24,26 @@ public class AcceptCommand extends BaseCommand {
         String[] args = command.getArgs();
 
         if (args.length < 1) {
-            player.sendMessage(CC.translate("&6Usage: &e/accept &6<model>"));
+            player.sendMessage(CC.translate("&6Usage: &e/accept &6<player>"));
             return;
         }
 
         Player target = player.getServer().getPlayer(args[0]);
         if (target == null) {
-            player.sendMessage(CC.translate("&cThat model is not online."));
+            player.sendMessage(CC.translate("&cThat player is not online."));
             return;
         }
 
         DuelRequestService duelRequestService = this.plugin.getService(DuelRequestService.class);
         DuelRequest duelRequest = duelRequestService.getDuelRequest(player, target);
         if (duelRequest == null) {
-            player.sendMessage(CC.translate("&cYou do not have a pending duel request from that model."));
+            player.sendMessage(CC.translate("&cYou do not have a pending duel request from that player."));
             return;
         }
 
         Profile targetProfile = this.plugin.getService(ProfileService.class).getProfile(target.getUniqueId());
         if (targetProfile.isBusy()) {
-            player.sendMessage(ProfileLocale.IS_BUSY.getMessage().replace("{color}", String.valueOf(targetProfile.getNameColor())).replace("{model}", target.getName()));
+            player.sendMessage(ProfileLocale.IS_BUSY.getMessage().replace("{color}", String.valueOf(targetProfile.getNameColor())).replace("{player}", target.getName()));
             return;
         }
 

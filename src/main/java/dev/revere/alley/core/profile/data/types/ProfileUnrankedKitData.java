@@ -64,9 +64,9 @@ public class ProfileUnrankedKitData {
     }
 
     /**
-     * Gets the division model.
+     * Gets the division tier.
      *
-     * @return The division model.
+     * @return The division tier.
      */
     public DivisionTier getTier() {
         Division division = this.getDivision();

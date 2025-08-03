@@ -26,7 +26,7 @@ public class ListenerUtil {
      * After 5 seconds, clears the dropped items on death via a BukkitRunnable.
      *
      * @param event      The event.
-     * @param deadPlayer The dead model.
+     * @param deadPlayer The dead player.
      */
     public void clearDroppedItemsOnDeath(PlayerDeathEvent event, Player deadPlayer) {
         List<Item> droppedItems = new ArrayList<>();
@@ -66,10 +66,10 @@ public class ListenerUtil {
     }
 
     /**
-     * Checks if the model is not stepping on a pressure plate.
+     * Checks if the player is not stepping on a pressure plate.
      *
      * @param block The block you are standing on.
-     * @return true if the model is stepping on a pressure plate, false otherwise.
+     * @return true if the player is stepping on a pressure plate, false otherwise.
      */
     public boolean notSteppingOnPlate(Block block) {
         if (block == null) {

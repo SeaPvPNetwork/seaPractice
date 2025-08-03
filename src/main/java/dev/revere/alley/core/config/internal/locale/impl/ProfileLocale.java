@@ -11,16 +11,16 @@ import dev.revere.alley.common.text.CC;
  * @since 03/03/2025
  */
 public enum ProfileLocale implements Locale {
-    TOGGLED_PARTY_INVITES("messages.yml", "model-settings.party-invites"),
-    TOGGLED_PARTY_MESSAGES("messages.yml", "model-settings.party-messages"),
-    TOGGLED_SCOREBOARD("messages.yml", "model-settings.scoreboard"),
-    TOGGLED_SCOREBOARD_LINES("messages.yml", "model-settings.scoreboard-lines"),
-    TOGGLED_TABLIST("messages.yml", "model-settings.tablist"),
-    TOGGLED_PROFANITY_FILTER("messages.yml", "model-settings.profanity-filter"),
-    TOGGLED_DUEL_REQUESTS("messages.yml", "model-settings.duel-requests"),
-    TOGGLED_LOBBY_MUSIC("messages.yml", "model-settings.lobby-music"),
+    TOGGLED_PARTY_INVITES("messages.yml", "player-settings.party-invites"),
+    TOGGLED_PARTY_MESSAGES("messages.yml", "player-settings.party-messages"),
+    TOGGLED_SCOREBOARD("messages.yml", "player-settings.scoreboard"),
+    TOGGLED_SCOREBOARD_LINES("messages.yml", "player-settings.scoreboard-lines"),
+    TOGGLED_TABLIST("messages.yml", "player-settings.tablist"),
+    TOGGLED_PROFANITY_FILTER("messages.yml", "player-settings.profanity-filter"),
+    TOGGLED_DUEL_REQUESTS("messages.yml", "player-settings.duel-requests"),
+    TOGGLED_LOBBY_MUSIC("messages.yml", "player-settings.lobby-music"),
 
-    IS_BUSY("messages.yml", "error-messages.model.is-busy"),
+    IS_BUSY("messages.yml", "error-messages.player.is-busy"),
 
     ;
 

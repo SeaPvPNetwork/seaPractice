@@ -28,7 +28,7 @@ public class CurrentMatchesMenu extends PaginatedMenu {
     /**
      * Gets the title of the menu.
      *
-     * @param player the model viewing the menu
+     * @param player the player viewing the menu
      * @return the title of the menu
      */
     @Override
@@ -39,7 +39,7 @@ public class CurrentMatchesMenu extends PaginatedMenu {
     /**
      * Gets the buttons to display in the menu.
      *
-     * @param player the model viewing the menu
+     * @param player the player viewing the menu
      * @return the buttons to display
      */
     @Override
@@ -57,7 +57,7 @@ public class CurrentMatchesMenu extends PaginatedMenu {
     /**
      * Gets the buttons to display in the global section of the menu.
      *
-     * @param player the model viewing the menu
+     * @param player the player viewing the menu
      * @return the global buttons
      */
     @Override
@@ -77,7 +77,7 @@ public class CurrentMatchesMenu extends PaginatedMenu {
         /**
          * Gets the item stack for the button.
          *
-         * @param player the model viewing the button
+         * @param player the player viewing the button
          * @return the item stack
          */
         @Override
@@ -98,7 +98,7 @@ public class CurrentMatchesMenu extends PaginatedMenu {
         /**
          * Handles the click event for the button.
          *
-         * @param player       the model who clicked the button
+         * @param player       the player who clicked the button
          * @param slot         the slot the button was clicked in
          * @param clickType    the type of click
          * @param hotbarButton the hotbar button clicked
@@ -122,7 +122,7 @@ public class CurrentMatchesMenu extends PaginatedMenu {
         /**
          * Gets the item stack for the button.
          *
-         * @param player the model viewing the button
+         * @param player the player viewing the button
          * @return the item stack
          */
         @Override
@@ -137,7 +137,7 @@ public class CurrentMatchesMenu extends PaginatedMenu {
         /**
          * Handles the click event for the button.
          *
-         * @param player       the model who clicked the button
+         * @param player       the player who clicked the button
          * @param slot         the slot the button was clicked in
          * @param clickType    the type of click
          * @param hotbarButton the hotbar button clicked

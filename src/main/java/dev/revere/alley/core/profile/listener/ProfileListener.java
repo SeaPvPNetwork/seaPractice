@@ -128,13 +128,13 @@ public class ProfileListener implements Listener {
     }
 
     /**
-     * Handles the model joining the server.
-     * This method sets the model's profile state to LOBBY, updates their name
+     * Handles the player joining the server.
+     * This method sets the player's profile state to LOBBY, updates their name
      * and online status, including other profile-related data.
-     * Also teleports the model to the spawn and applies the lobby hotbar items.
+     * Also teleports the player to the spawn and applies the lobby hotbar items.
      *
-     * @param profile The profile of the model.
-     * @param player  The model who joined.
+     * @param profile The profile of the player.
+     * @param player  The player who joined.
      */
     private void handlePlayerJoin(Profile profile, Player player) {
         CoreAdapter coreAdapter = AlleyPlugin.getInstance().getService(CoreAdapter.class);
@@ -170,10 +170,10 @@ public class ProfileListener implements Listener {
     }
 
     /**
-     * Sends a welcome message to the model when they join the server.
+     * Sends a welcome message to the player when they join the server.
      * The message is configured in the messages.yml file.
      *
-     * @param player The model who joined.
+     * @param player The player who joined.
      */
     private void sendJoinMessage(Player player) {
         ConfigService configService = AlleyPlugin.getInstance().getService(ConfigService.class);
@@ -187,7 +187,7 @@ public class ProfileListener implements Listener {
 
             for (String message : msgConfig.getStringList("welcome-message.message")) {
                 player.sendMessage(CC.translate(message)
-                        .replace("{model}", playerName)
+                        .replace("{player}", playerName)
                         .replace("{version}", version)
                         .replace("{author}", authors)
                 );

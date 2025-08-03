@@ -88,10 +88,10 @@ public class ProfileData {
     }
 
     /**
-     * Calculates the global elo of the model
+     * Calculates the global elo of the player
      *
-     * @param profile the profile of the model
-     * @return the global elo of the model
+     * @param profile the profile of the player
+     * @return the global elo of the player
      */
     private int calculateGlobalElo(Profile profile) {
         KitService kitService = AlleyPlugin.getInstance().getService(KitService.class);
@@ -131,9 +131,9 @@ public class ProfileData {
     }
 
     /**
-     * Updates the elo and division of the model
+     * Updates the elo and division of the player
      *
-     * @param profile the profile of the model
+     * @param profile the profile of the player
      */
     public void updateElo(Profile profile) {
         int previousElo = this.elo;
@@ -149,10 +149,10 @@ public class ProfileData {
     }
 
     /**
-     * Sends a level up message to the model
+     * Sends a level up message to the player
      *
-     * @param profile  the profile of the model
-     * @param newLevel the new level of the model
+     * @param profile  the profile of the player
+     * @param newLevel the new level of the player
      */
     private void sendLevelUpMessage(Profile profile, String newLevel) {
         Arrays.asList(
@@ -182,7 +182,7 @@ public class ProfileData {
     }
 
     /**
-     * Get the total amount of kills of the model ffa data.
+     * Get the total amount of kills of the player ffa data.
      *
      * @return The total amount of kills
      */
@@ -191,7 +191,7 @@ public class ProfileData {
     }
 
     /**
-     * Get the total amount of deaths of the model ffa data.
+     * Get the total amount of deaths of the player ffa data.
      *
      * @return The total amount of deaths
      */
@@ -216,7 +216,7 @@ public class ProfileData {
     }
 
     /**
-     * Increments the model's coins by the specified amount.
+     * Increments the player's coins by the specified amount.
      *
      * @param amount The amount of coins to add.
      */

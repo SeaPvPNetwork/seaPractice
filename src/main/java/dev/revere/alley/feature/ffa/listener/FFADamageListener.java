@@ -28,7 +28,7 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 public class FFADamageListener implements Listener {
     /**
      * Handles the EntityDamageByEntityEvent.
-     * The event is cancelled if the model is in the FFA state and tries to damage another model.
+     * The event is cancelled if the player is in the FFA state and tries to damage another player.
      *
      * @param event The EntityDamageByEntityEvent
      */

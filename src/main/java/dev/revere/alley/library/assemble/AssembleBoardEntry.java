@@ -56,7 +56,7 @@ public class AssembleBoardEntry {
     }
 
     /**
-     * Send the board entry update to the model.
+     * Send the board entry update to the player.
      *
      * @param position of entry.
      */

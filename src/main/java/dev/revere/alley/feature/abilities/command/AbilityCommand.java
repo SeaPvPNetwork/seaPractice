@@ -32,7 +32,7 @@ public class AbilityCommand extends BaseCommand {
         switch (args[0].toLowerCase()) {
             case "give":
                 if (args.length < 4) {
-                    CC.sender(player, "&cUsage: /" + "ability" + " give <model> <ability|all> <amount>");
+                    CC.sender(player, "&cUsage: /" + "ability" + " give <player> <ability|all> <amount>");
                     return;
                 }
 
@@ -87,7 +87,7 @@ public class AbilityCommand extends BaseCommand {
         CC.sender(sender, "&7&m-----------------------------");
         CC.sender(sender, "&c&lAbility Help");
         CC.sender(sender, "");
-        CC.sender(sender, "&4/" + label + " give <model> <ability|all> <amount>");
+        CC.sender(sender, "&4/" + label + " give <player> <ability|all> <amount>");
         CC.sender(sender, "&4/" + label + " list");
         CC.sender(sender, "&7&m-----------------------------");
     }

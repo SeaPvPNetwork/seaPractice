@@ -75,7 +75,7 @@ public class FFAServiceImpl implements FFAService {
 
             if (kit.getMaxFfaPlayers() <= 0) {
                 kit.setMaxFfaPlayers(this.defaultPlayerSize);
-                Logger.error("FFA match for kit " + kit.getName() + " has a max model size of 0. Setting to default of " + this.defaultPlayerSize + " players.");
+                Logger.error("FFA match for kit " + kit.getName() + " has a max player size of 0. Setting to default of " + this.defaultPlayerSize + " players.");
             }
 
             this.createFFAMatch(arena, kit, kit.getMaxFfaPlayers());

@@ -133,9 +133,9 @@ public class Kit {
     }
 
     /**
-     * Method to apply the potion effects of the kit to a model.
+     * Method to apply the potion effects of the kit to a player.
      *
-     * @param player The model to apply the potion effects to.
+     * @param player The player to apply the potion effects to.
      */
     public void applyPotionEffects(Player player) {
         for (PotionEffect effect : this.potionEffects) {

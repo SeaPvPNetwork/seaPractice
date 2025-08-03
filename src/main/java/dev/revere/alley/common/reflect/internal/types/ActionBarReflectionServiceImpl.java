@@ -22,9 +22,9 @@ import org.bukkit.scheduler.BukkitRunnable;
  */
 public class ActionBarReflectionServiceImpl implements Reflection {
     /**
-     * Method to send an action bar message to a model in a specific interval.
+     * Method to send an action bar message to a player in a specific interval.
      *
-     * @param player          The model.
+     * @param player          The player.
      * @param message         The message.
      * @param durationSeconds The duration to show the message (in seconds).
      */
@@ -50,9 +50,9 @@ public class ActionBarReflectionServiceImpl implements Reflection {
     }
 
     /**
-     * Method to send an action bar message to a model.
+     * Method to send an action bar message to a player.
      *
-     * @param player  The model to send the message to.
+     * @param player  The player to send the message to.
      * @param message The message to send.
      */
     public void sendMessage(Player player, String message) {
@@ -68,8 +68,8 @@ public class ActionBarReflectionServiceImpl implements Reflection {
     /**
      * Sends a death message to the killer.
      *
-     * @param killer The model who killed the victim.
-     * @param victim The model who died.
+     * @param killer The player who killed the victim.
+     * @param victim The player who died.
      */
     public void sendDeathMessage(Player killer, Player victim) {
         Profile victimProfile = AlleyPlugin.getInstance().getService(ProfileService.class).getProfile(victim.getUniqueId());
@@ -77,10 +77,10 @@ public class ActionBarReflectionServiceImpl implements Reflection {
     }
 
     /**
-     * Visualizes the target's health in the action bar for a model.
+     * Visualizes the target's health in the action bar for a player.
      *
-     * @param player The model who will see the target's health.
-     * @param target The model whose health will be visualized.
+     * @param player The player who will see the target's health.
+     * @param target The player whose health will be visualized.
      */
     public void visualizeTargetHealth(Player player, Player target) {
         FileConfiguration config = AlleyPlugin.getInstance().getService(ConfigService.class).getVisualsConfig();

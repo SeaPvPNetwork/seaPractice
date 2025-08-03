@@ -46,10 +46,10 @@ public class Division {
     }
 
     /**
-     * Gets the division model by the name.
+     * Gets the division tier by the name.
      *
-     * @param tier The name of the division model.
-     * @return The division model.
+     * @param tier The name of the division tier.
+     * @return The division tier.
      */
     public String getTier(int tier) {
         if (tier < 0 || tier >= this.tiers.size()) {
@@ -61,10 +61,10 @@ public class Division {
     }
 
     /**
-     * Gets the division model by the name.
+     * Gets the division tier by the name.
      *
-     * @param tier The name of the division model.
-     * @return The division model.
+     * @param tier The name of the division tier.
+     * @return The division tier.
      */
     public DivisionTier getTier(String tier) {
         for (DivisionTier divisionTier : this.tiers) {
@@ -76,9 +76,9 @@ public class Division {
     }
 
     /**
-     * Gets the wins of the last model in the division.
+     * Gets the wins of the last tier in the division.
      *
-     * @return The wins of the last model.
+     * @return The wins of the last tier.
      */
     public int getTotalWins() {
         return this.tiers.get(this.tiers.size() - 1).getRequiredWins();

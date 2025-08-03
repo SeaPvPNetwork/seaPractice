@@ -10,12 +10,12 @@ import org.bukkit.entity.Player;
  */
 public interface VisibilityService extends Service {
     /**
-     * Updates the visibility for a specific model in relation to all other online players,
-     * and also updates how all other players see this specific model.
+     * Updates the visibility for a specific player in relation to all other online players,
+     * and also updates how all other players see this specific player.
      * <p>
-     * This is the main method to call whenever a model's state changes.
+     * This is the main method to call whenever a player's state changes.
      *
-     * @param player The model whose visibility state needs a full update.
+     * @param player The player whose visibility state needs a full update.
      */
     void updateVisibility(Player player);
 

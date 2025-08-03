@@ -14,9 +14,9 @@ import org.bukkit.entity.Player;
  */
 public class TitleReflectionServiceImpl implements Reflection {
     /**
-     * Send a title to a model with a subtitle and fade in/out times.
+     * Send a title to a player with a subtitle and fade in/out times.
      *
-     * @param player   the model to send the title to
+     * @param player   the player to send the title to
      * @param title    the title to send
      * @param subtitle the subtitle to send
      * @param fadeIn   the fade in time
@@ -43,9 +43,9 @@ public class TitleReflectionServiceImpl implements Reflection {
     }
 
     /**
-     * Send a title to a model with default fade in, stay, and fade out times.
+     * Send a title to a player with default fade in, stay, and fade out times.
      *
-     * @param player   the model to send the title to
+     * @param player   the player to send the title to
      * @param title    the title to send
      * @param subtitle the subtitle to send
      */

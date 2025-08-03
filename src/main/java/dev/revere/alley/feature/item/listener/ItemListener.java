@@ -54,10 +54,10 @@ public class ItemListener implements Listener {
     }
 
     /**
-     * Checks if the model is on cooldown for consuming a golden head.
+     * Checks if the player is on cooldown for consuming a golden head.
      *
-     * @param player The model to check the cooldown for.
-     * @return true if the model is on cooldown, false otherwise.
+     * @param player The player to check the cooldown for.
+     * @return true if the player is on cooldown, false otherwise.
      */
     private boolean isOnHeadCooldown(Player player) {
         CooldownType cooldownType = CooldownType.GOLDEN_HEAD_CONSUME;

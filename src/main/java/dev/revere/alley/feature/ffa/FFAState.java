@@ -9,8 +9,8 @@ import lombok.Getter;
  */
 @Getter
 public enum FFAState {
-    SPAWN("Spawn", "The model is in the safezone."),
-    FIGHTING("Fighting", "The model is fighting outside safezone.");
+    SPAWN("Spawn", "The player is in the safezone."),
+    FIGHTING("Fighting", "The player is fighting outside safezone.");
 
     private final String name;
     private final String description;

@@ -15,7 +15,7 @@ public interface AssembleService extends Service {
     /**
      * Gets the map of all active scoreboard instances.
      *
-     * @return A map where the key is the model's UUID and the value is their AssembleBoard.
+     * @return A map where the key is the player's UUID and the value is their AssembleBoard.
      */
     Map<UUID, AssembleBoard> getBoards();
 
@@ -29,18 +29,18 @@ public interface AssembleService extends Service {
     boolean isCallEvents();
 
     /**
-     * Creates and registers a new scoreboard for a model.
-     * This should be called when a model joins.
+     * Creates and registers a new scoreboard for a player.
+     * This should be called when a player joins.
      *
-     * @param player The model to create the board for.
+     * @param player The player to create the board for.
      */
     void createBoard(Player player);
 
     /**
-     * Removes the scoreboard for a model.
-     * This should be called when a model quits.
+     * Removes the scoreboard for a player.
+     * This should be called when a player quits.
      *
-     * @param player The model whose board to remove.
+     * @param player The player whose board to remove.
      */
     void removeBoard(Player player);
 }

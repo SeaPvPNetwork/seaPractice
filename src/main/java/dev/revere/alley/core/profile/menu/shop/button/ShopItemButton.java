@@ -71,7 +71,7 @@ public class ShopItemButton extends Button {
         profile.getProfileData().setCoins(profile.getProfileData().getCoins() - cosmetic.getPrice());
 
         FileConfiguration config = AlleyPlugin.getInstance().getService(ConfigService.class).getSettingsConfig();
-        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), config.get("command.grant-cosmetic-permission-command").toString().replace("{model}", player.getName()).replace("%permission%", cosmetic.getPermission()));
+        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), config.get("command.grant-cosmetic-permission-command").toString().replace("{player}", player.getName()).replace("%permission%", cosmetic.getPermission()));
 
         player.sendMessage(CC.translate("&aSuccessfully purchased the &6" + cosmetic.getName() + " &acosmetic!"));
         this.playSuccess(player);

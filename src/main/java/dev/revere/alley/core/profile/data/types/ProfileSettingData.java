@@ -42,9 +42,9 @@ public class ProfileSettingData {
     }
 
     /**
-     * Set the world time for a model to the default time.
+     * Set the world time for a player to the default time.
      *
-     * @param player The model to set the world time for.
+     * @param player The player to set the world time for.
      */
     public void setTimeDefault(Player player) {
         this.time = WorldTime.DEFAULT.getName();
@@ -52,9 +52,9 @@ public class ProfileSettingData {
     }
 
     /**
-     * Set the world time for a model to day.
+     * Set the world time for a player to day.
      *
-     * @param player The model to set the world time for.
+     * @param player The player to set the world time for.
      */
     public void setTimeDay(Player player) {
         this.time = WorldTime.DAY.getName();
@@ -62,9 +62,9 @@ public class ProfileSettingData {
     }
 
     /**
-     * Set the world time for a model to sunset.
+     * Set the world time for a player to sunset.
      *
-     * @param player The model to set the world time for.
+     * @param player The player to set the world time for.
      */
     public void setTimeSunset(Player player) {
         this.time = WorldTime.SUNSET.getName();
@@ -72,9 +72,9 @@ public class ProfileSettingData {
     }
 
     /**
-     * Set the world time for a model to night.
+     * Set the world time for a player to night.
      *
-     * @param player The model to set the world time for.
+     * @param player The player to set the player time for.
      */
     public void setTimeNight(Player player) {
         this.time = WorldTime.NIGHT.getName();
@@ -93,7 +93,7 @@ public class ProfileSettingData {
     /**
      * Set the world time based on the profile setting.
      *
-     * @param player The model to set the world time for.
+     * @param player The player to set the world time for.
      */
     public void setTimeBasedOnProfileSetting(Player player) {
         switch (this.getWorldTime()) {
@@ -113,36 +113,36 @@ public class ProfileSettingData {
     }
 
     /**
-     * Check if the model is in day time.
+     * Check if the player is in day time.
      *
-     * @return True if the model is in day time.
+     * @return True if the player is in day time.
      */
     public boolean isDayTime() {
         return this.time.equals(WorldTime.DAY.getName());
     }
 
     /**
-     * Check if the model is in sunset time.
+     * Check if the player is in sunset time.
      *
-     * @return True if the model is in sunset time.
+     * @return True if the player is in sunset time.
      */
     public boolean isSunsetTime() {
         return this.time.equals(WorldTime.SUNSET.getName());
     }
 
     /**
-     * Check if the model is in night time.
+     * Check if the player is in night time.
      *
-     * @return True if the model is in night time.
+     * @return True if the player is in night time.
      */
     public boolean isNightTime() {
         return this.time.equals(WorldTime.NIGHT.getName());
     }
 
     /**
-     * Check if the model is in default time.
+     * Check if the player is in default time.
      *
-     * @return True if the model is in default time.
+     * @return True if the player is in default time.
      */
     public boolean isDefaultTime() {
         return this.time.equals(WorldTime.DEFAULT.getName());

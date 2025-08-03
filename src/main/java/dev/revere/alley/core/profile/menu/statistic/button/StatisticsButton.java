@@ -19,7 +19,7 @@ public class StatisticsButton extends Button {
     /**
      * Gets the item to display in the menu.
      *
-     * @param player the model viewing the menu
+     * @param player the player viewing the menu
      * @return the item to display
      */
     @Override
@@ -40,7 +40,7 @@ public class StatisticsButton extends Button {
     /**
      * Handles the click event for the button.
      *
-     * @param player    the model who clicked the button
+     * @param player    the player who clicked the button
      * @param clickType the type of click
      */
     @Override

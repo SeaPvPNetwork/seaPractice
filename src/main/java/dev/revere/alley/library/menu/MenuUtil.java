@@ -14,12 +14,12 @@ import java.util.Map;
 @UtilityClass
 public class MenuUtil {
     /**
-     * Checks if the model has a next page.
+     * Checks if the player has a next page.
      *
-     * @param player the model viewing the menu
+     * @param player the player viewing the menu
      * @param offset the delta to modify the page number by
      * @param menu   the menu
-     * @return true if the model has a next page
+     * @return true if the player has a next page
      */
     public boolean hasNext(Player player, int offset, PaginatedMenu menu) {
         int pg = menu.getPage() + offset;
@@ -27,11 +27,11 @@ public class MenuUtil {
     }
 
     /**
-     * Checks if the model has a previous page.
+     * Checks if the player has a previous page.
      *
      * @param offset the delta to modify the page number by
      * @param menu   the menu
-     * @return true if the model has a previous page
+     * @return true if the player has a previous page
      */
     public boolean hasPrevious(int offset, PaginatedMenu menu) {
         int pg = menu.getPage() + offset;

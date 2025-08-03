@@ -36,9 +36,9 @@ public interface FFAService extends Service {
     void createFFAMatch(Arena arena, Kit kit, int maxPlayers);
 
     /**
-     * Finds the FFA match that a specific model is currently in.
-     * @param player The model to search for.
-     * @return An Optional containing the AbstractFFAMatch if the model is in one.
+     * Finds the FFA match that a specific player is currently in.
+     * @param player The player to search for.
+     * @return An Optional containing the AbstractFFAMatch if the player is in one.
      */
     Optional<FFAMatch> getMatchByPlayer(Player player);
 
@@ -50,9 +50,9 @@ public interface FFAService extends Service {
     FFAMatch getFFAMatch(String kitName);
 
     /**
-     * An overloaded method to find the FFA match a model is in.
-     * @param player The model to search for.
-     * @return The AbstractFFAMatch, or null if the model is not in one.
+     * An overloaded method to find the FFA match a player is in.
+     * @param player The player to search for.
+     * @return The AbstractFFAMatch, or null if the player is not in one.
      */
     FFAMatch getFFAMatch(Player player);
 

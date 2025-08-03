@@ -19,7 +19,7 @@ public class AssembleBoardCreatedEvent extends Event {
     /**
      * Assemble Board Created Event.
      *
-     * @param board of model.
+     * @param board of player.
      */
     public AssembleBoardCreatedEvent(AssembleBoard board) {
         this.cancelled = false;

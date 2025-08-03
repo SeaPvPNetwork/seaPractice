@@ -18,7 +18,7 @@ welcome-message:
 
 error-messages:
   player:
-    is-busy: "&6{color}{model} &cis busy."
+    is-busy: "&6{color}{player} &cis busy."
 
 server:
   crafting-operations:
@@ -87,15 +87,15 @@ kit:
     saved-all: "&aSuccessfully saved all kits!"
 
 party:
-  chat-format: "&7[&6Party&7] &6{model}&7: &f{message}"
+  chat-format: "&7[&6Party&7] &6{player}&7: &f{message}"
   already-in-party: "&cYou are already in a party."
   not-leader: "&cYou are not the leader of the party."
   not-in-party: "&cYou are not in a party."
-  no-invite: "&cYou do not have a party invitation from &6{model}&c."
-  joined: "&aYou have joined &6{model}&a's party."
+  no-invite: "&cYou do not have a party invitation from &6{player}&c."
+  joined: "&aYou have joined &6{player}&a's party."
   left: "&cYou've left the party!"
   disabled-chat: "&cYou have party messages disabled. &7(To enable: /togglepartymessages)"
-  target-disabled-invites: "&c{model} has party invites disabled."
+  target-disabled-invites: "&c{player} has party invites disabled."
   info-command:
     no-members-format: "&cNo members"
     text:
@@ -106,9 +106,9 @@ party:
       - ""
 
 #tournament-broadcast:
-#  model:
-#    joined: "&a{model} has joined the tournament &f(&6{players}&f/&6{maxPlayers}&f)"
-#    left: "&c{model} has left the tournament &f(&6{players}&f/&6{maxPlayers}&f)"
+#  player:
+#    joined: "&a{player} has joined the tournament &f(&6{players}&f/&6{maxPlayers}&f)"
+#    left: "&c{player} has left the tournament &f(&6{players}&f/&6{maxPlayers}&f)"
 #  waiting:
 #    clickable-format: " &a[CLICK TO JOIN]"
 #    clickable-hover: "&aClick to join the tournament!"
@@ -183,7 +183,7 @@ ffa:
     interval: 5 # the required amount of kills to alert ffa players about killstreaks
     message:
       - ""
-      - "&6&l{name-color}{model} &fis on a &6&l{killstreak} &fkillstreak!"
+      - "&6&l{name-color}{player} &fis on a &6&l{killstreak} &fkillstreak!"
       - ""
 
 player-settings:

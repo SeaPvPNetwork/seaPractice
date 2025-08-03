@@ -18,9 +18,9 @@ public interface ItemService extends Service {
     ItemStack getGoldenHead();
 
     /**
-     * Performs the consume action for a golden head item when used by a model.
+     * Performs the consume action for a golden head item when used by a player.
      *
-     * @param player The model who is consuming the item.
+     * @param player The player who is consuming the item.
      * @param item The ItemStack representing the golden head being consumed.
      */
     void performHeadConsume(Player player, ItemStack item);
