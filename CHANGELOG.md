@@ -1,16 +1,16 @@
-## 🎉 Alley v2.1.11
+## 🎉 Alley v2.1.12
 
 ### 🔧 **PATCH RELEASE** - Bug Fixes & Improvements
 
-**Previous Version:** `2.1.10`
-**New Version:** `2.1.11`
+**Previous Version:** `2.1.11`
+**New Version:** `2.1.12`
 
 ### 📝 Changes:
 
-- chore(project): refactor entire package structure for modern conventions (dbfc3daa)
+- Merge pull request #26 from RevereInc/chore/project-structure MINOR (fb315503) ([#26](https://github.com/RevereInc/alley-practice/pull/26))
 
 ---
-**Download:** [Alley-2.1.11.jar](https://github.com/RevereInc/alley-practice/releases/download/v2.1.11/Alley-2.1.11.jar)
+**Download:** [Alley-2.1.12.jar](https://github.com/RevereInc/alley-practice/releases/download/v2.1.12/Alley-2.1.12.jar)
 
 **Installation:** Place the JAR file in your `plugins/` folder and restart your server.
 
