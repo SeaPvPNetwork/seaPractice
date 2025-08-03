@@ -25,9 +25,9 @@ public interface SpawnService extends Service {
     void updateSpawnLocation(Location location);
 
     /**
-     * Teleports a model to the configured spawn location.
+     * Teleports a player to the configured spawn location.
      *
-     * @param player The model to teleport.
+     * @param player The player to teleport.
      */
     void teleportToSpawn(Player player);
 }

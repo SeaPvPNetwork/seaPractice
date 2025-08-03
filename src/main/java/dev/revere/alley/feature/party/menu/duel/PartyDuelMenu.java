@@ -37,7 +37,7 @@ public class PartyDuelMenu extends PaginatedMenu {
 
         AlleyPlugin.getInstance().getService(PartyService.class).getParties().stream()
                 .sorted(Comparator.comparing(party -> party.getLeader().getName()))
-                //.filter(party -> !party.getLeader().equals(model))
+                //.filter(party -> !party.getLeader().equals(player))
                 .sorted(Comparator.comparingInt(party -> party.getMembers().size()))
                 .forEach(party -> buttons.put(buttons.size(), new DuelOtherPartyButton(party)))
         ;

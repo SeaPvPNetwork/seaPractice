@@ -59,10 +59,10 @@ public class Party {
     }
 
     /**
-     * Determines whether the specified model is the leader of the party.
+     * Determines whether the specified player is the leader of the party.
      *
-     * @param player The model to check.
-     * @return True if the specified model is the leader of the party, false otherwise.
+     * @param player The player to check.
+     * @return True if the specified player is the leader of the party, false otherwise.
      */
     public boolean isLeader(Player player) {
         return leader == player;

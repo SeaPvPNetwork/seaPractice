@@ -66,7 +66,7 @@ public class NinjaStar extends Ability {
                 return;
             }
 
-            //if (!AbilityCooldowns.isOnCooldown("TELEPORT", model)) return;
+            //if (!AbilityCooldowns.isOnCooldown("TELEPORT", player)) return;
 
             PlayerUtil.decrement(player);
 

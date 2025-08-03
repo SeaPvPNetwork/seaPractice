@@ -82,12 +82,12 @@ public class QueueTask implements Runnable {
     }
 
     /**
-     * Determines if a model should be removed from the queue based on
+     * Determines if a player should be removed from the queue based on
      * their online status, profile state, and queue time.
      *
-     * @param player  The model to check
-     * @param profile The model's queue profile
-     * @return true if the model should be removed from the queue
+     * @param player  The player to check
+     * @param profile The player's queue profile
+     * @return true if the player should be removed from the queue
      */
     private boolean shouldRemovePlayerFromQueue(Player player, QueueProfile profile) {
         if (player == null || !player.isOnline()) {
@@ -105,10 +105,10 @@ public class QueueTask implements Runnable {
     }
 
     /**
-     * Sends appropriate notification message to a model being removed from queue.
+     * Sends appropriate notification message to a player being removed from queue.
      *
-     * @param player  The model being removed
-     * @param profile The model's queue profile
+     * @param player  The player being removed
+     * @param profile The player's queue profile
      */
     private void notifyPlayerOfQueueRemoval(Player player, QueueProfile profile) {
         if (player != null) {
@@ -186,12 +186,12 @@ public class QueueTask implements Runnable {
     }
 
     /**
-     * Validates if a model is ready for match creation.
+     * Validates if a player is ready for match creation.
      *
-     * @param player  The model to validate
-     * @param profile The model's queue profile
+     * @param player  The player to validate
+     * @param profile The player's queue profile
      * @param queue   The queue being processed
-     * @return true if the model is valid for match creation
+     * @return true if the player is valid for match creation
      */
     private boolean isPlayerInvalidForMatch(Player player, QueueProfile profile, Queue queue) {
         if (player == null || !player.isOnline()) {
@@ -214,10 +214,10 @@ public class QueueTask implements Runnable {
      * Creates a solo match between two players.
      *
      * @param queue         The queue
-     * @param firstPlayer   First model
-     * @param secondPlayer  Second model
-     * @param firstProfile  First model's profile
-     * @param secondProfile Second model's profile
+     * @param firstPlayer   First player
+     * @param secondPlayer  Second player
+     * @param firstProfile  First player's profile
+     * @param secondProfile Second player's profile
      * @return true if match was successfully created
      */
     private boolean createSoloMatch(Queue queue, Player firstPlayer, Player secondPlayer,
@@ -408,7 +408,7 @@ public class QueueTask implements Runnable {
         // Add team 1 party members
         addPartyMembersToMatch(team1Leader, allMatchPlayers);
 
-        // Determine team 2 leader position based on potential model count
+        // Determine team 2 leader position based on potential player count
         int team2StartIndex = (potentialPlayerCount == 2) ? 1 : 2;
         Player team2Leader = onlinePlayers.get(team2StartIndex);
         allMatchPlayers.add(team2Leader);
@@ -423,7 +423,7 @@ public class QueueTask implements Runnable {
     }
 
     /**
-     * Adds party members of a leader to the match model list.
+     * Adds party members of a leader to the match player list.
      *
      * @param leader          The party leader
      * @param allMatchPlayers List to add party members to
@@ -560,9 +560,9 @@ public class QueueTask implements Runnable {
     }
 
     /**
-     * Gets the ELO rating for a model from the queue profiles.
+     * Gets the ELO rating for a player from the queue profiles.
      *
-     * @param player             The model
+     * @param player             The player
      * @param validQueueProfiles List of valid queue profiles
      * @return Player's ELO rating or default value
      */
@@ -575,10 +575,10 @@ public class QueueTask implements Runnable {
     }
 
     /**
-     * Assigns a single model to the appropriate team based on party membership.
+     * Assigns a single player to the appropriate team based on party membership.
      *
-     * @param player       The model to assign
-     * @param gamePlayer   The game model implementation
+     * @param player       The player to assign
+     * @param gamePlayer   The game player implementation
      * @param team1Party   Team 1's party
      * @param team2Party   Team 2's party
      * @param participantA Team A participant
@@ -630,7 +630,7 @@ public class QueueTask implements Runnable {
 
     /**
      * Clears queue profiles for multiple players after a match has been created.
-     * This method handles all cleanup including updating model profiles and
+     * This method handles all cleanup including updating player profiles and
      * removing entries from the queue list.
      *
      * @param queue       The queue to clean up
@@ -650,9 +650,9 @@ public class QueueTask implements Runnable {
     }
 
     /**
-     * Gets unique queue profiles for the given model UUIDs.
+     * Gets unique queue profiles for the given player UUIDs.
      *
-     * @param playerUUIDs List of model UUIDs
+     * @param playerUUIDs List of player UUIDs
      * @return Set of unique queue profiles
      */
     private Set<QueueProfile> getUniqueQueueProfiles(List<UUID> playerUUIDs) {
@@ -690,7 +690,7 @@ public class QueueTask implements Runnable {
      *
      * @param queue  The queue being processed
      * @param party  The party (can be null)
-     * @param leader The leader model
+     * @param leader The leader player
      * @return List of UUIDs to clean up
      */
     private List<UUID> getMembersToClean(Queue queue, Party party, Player leader) {
@@ -721,7 +721,7 @@ public class QueueTask implements Runnable {
     /**
      * Creates game participant list for solo matches.
      *
-     * @param gamePlayerList The game model list containing both players
+     * @param gamePlayerList The game player list containing both players
      * @return Game participant list with individual participants
      */
     private @NotNull GameParticipantList getSoloGameParticipantList(GamePlayerList gamePlayerList) {
@@ -732,13 +732,13 @@ public class QueueTask implements Runnable {
     }
 
     /**
-     * Creates a game model list from two players and their profiles.
+     * Creates a game player list from two players and their profiles.
      *
-     * @param firstPlayer   The first model
-     * @param secondPlayer  The second model
-     * @param firstProfile  The first model's queue profile
-     * @param secondProfile The second model's queue profile
-     * @return Game model list containing both match game players
+     * @param firstPlayer   The first player
+     * @param secondPlayer  The second player
+     * @param firstProfile  The first player's queue profile
+     * @param secondProfile The second player's queue profile
+     * @return Game player list containing both match game players
      */
     private @NotNull GamePlayerList getGamePlayerList(Player firstPlayer, Player secondPlayer,
                                                       QueueProfile firstProfile, QueueProfile secondProfile) {
@@ -786,24 +786,24 @@ public class QueueTask implements Runnable {
 
     /**
      * Data class representing a pair of match game players.
-     * Used for organizing model data before creating participants.
+     * Used for organizing player data before creating participants.
      */
     @Getter
     private static class GamePlayerList {
         /**
-         * The first match game model
+         * The first match game player
          */
         public final MatchGamePlayer firstMatchGamePlayer;
         /**
-         * The second match game model
+         * The second match game player
          */
         public final MatchGamePlayer secondMatchGamePlayer;
 
         /**
          * Constructor for the GamePlayerList class.
          *
-         * @param firstMatchGamePlayer  The first match game model
-         * @param secondMatchGamePlayer The second match game model
+         * @param firstMatchGamePlayer  The first match game player
+         * @param secondMatchGamePlayer The second match game player
          */
         public GamePlayerList(MatchGamePlayer firstMatchGamePlayer, MatchGamePlayer secondMatchGamePlayer) {
             this.firstMatchGamePlayer = firstMatchGamePlayer;

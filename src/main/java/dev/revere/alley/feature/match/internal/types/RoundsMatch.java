@@ -209,11 +209,11 @@ public class RoundsMatch extends DefaultMatch {
     }
 
     /**
-     * Broadcasts a message to all players in the match when a model scores.
+     * Broadcasts a message to all players in the match when a player scores.
      *
-     * @param winner The model who scored.
-     * @param loser  The model who was scored on.
-     * @param scorer The name of the model who scored.
+     * @param winner The player who scored.
+     * @param loser  The player who was scored on.
+     * @param scorer The name of the player who scored.
      */
     public void broadcastPlayerScoreMessage(GameParticipant<MatchGamePlayer> winner, GameParticipant<MatchGamePlayer> loser, String scorer) {
         ChatColor teamWinnerColor = this.getTeamColor(winner);

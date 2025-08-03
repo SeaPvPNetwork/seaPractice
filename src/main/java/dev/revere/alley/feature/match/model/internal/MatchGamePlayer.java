@@ -21,9 +21,9 @@ public class MatchGamePlayer extends GamePlayer {
     /**
      * Constructor for the MatchGamePlayerImpl class.
      *
-     * @param uuid     The UUID of the model.
-     * @param username The username of the model.
-     * @param elo      The elo of the model.
+     * @param uuid     The UUID of the player.
+     * @param username The username of the player.
+     * @param elo      The elo of the player.
      */
     public MatchGamePlayer(UUID uuid, String username, int elo) {
         super(uuid, username);
@@ -34,8 +34,8 @@ public class MatchGamePlayer extends GamePlayer {
     /**
      * Constructor for the MatchGamePlayerImpl class.
      *
-     * @param uuid     The UUID of the model.
-     * @param username The username of the model.
+     * @param uuid     The UUID of the player.
+     * @param username The username of the player.
      */
     public MatchGamePlayer(UUID uuid, String username) {
         this(uuid, username, 0);

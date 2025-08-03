@@ -108,9 +108,9 @@ public class DefaultMatch extends Match {
     }
 
     /**
-     * Applies the wool color to the model based on their team.
+     * Applies the wool color to the player based on their team.
      *
-     * @param player The model to apply the wool color to.
+     * @param player The player to apply the wool color to.
      */
     public void applyColorKit(Player player) {
         GameParticipant<MatchGamePlayer> participant = this.getParticipant(player);
@@ -153,7 +153,7 @@ public class DefaultMatch extends Match {
     }
 
     /**
-     * Handles all model-facing messages at the end of a match, including titles and results.
+     * Handles all player-facing messages at the end of a match, including titles and results.
      */
     private void broadcastMatchOutcome(GameParticipant<MatchGamePlayer> winner, GameParticipant<MatchGamePlayer> loser) {
         winner.getPlayers().forEach(gamePlayer -> sendVictory(gamePlayer.getTeamPlayer()));
@@ -208,7 +208,7 @@ public class DefaultMatch extends Match {
     }
 
     /**
-     * Updates model profiles and Elo for a ranked match.
+     * Updates player profiles and Elo for a ranked match.
      */
     private void updateRankedStats(GameParticipant<MatchGamePlayer> winner, GameParticipant<MatchGamePlayer> loser) {
         OldEloResult result = this.getOldEloResult(winner, loser);
@@ -228,7 +228,7 @@ public class DefaultMatch extends Match {
     }
 
     /**
-     * Updates model profiles with wins/losses for an unranked match.
+     * Updates player profiles with wins/losses for an unranked match.
      */
     private void updateUnrankedStats(GameParticipant<MatchGamePlayer> winner, GameParticipant<MatchGamePlayer> loser) {
         ProfileService profileService = AlleyPlugin.getInstance().getService(ProfileService.class);
@@ -244,9 +244,9 @@ public class DefaultMatch extends Match {
     }
 
     /**
-     * Send the winner title to the model.
+     * Send the winner title to the player.
      *
-     * @param player The model to send the title to.
+     * @param player The player to send the title to.
      */
     private void sendVictory(Player player) {
         AlleyPlugin.getInstance().getService(ReflectionService.class).getReflectionService(TitleReflectionServiceImpl.class).sendTitle(
@@ -257,9 +257,9 @@ public class DefaultMatch extends Match {
     }
 
     /**
-     * Send the loser title to the model.
+     * Send the loser title to the player.
      *
-     * @param player The model to send the title to.
+     * @param player The player to send the title to.
      */
     private void sendDefeat(Player player) {
         AlleyPlugin.getInstance().getService(ReflectionService.class).getReflectionService(TitleReflectionServiceImpl.class).sendTitle(
@@ -305,10 +305,10 @@ public class DefaultMatch extends Match {
     }
 
     /**
-     * Sends the progress of the winner to the model using the ProgressService.
+     * Sends the progress of the winner to the player using the ProgressService.
      * The method no longer needs Division or Tier passed in.
      *
-     * @param winner The winning model.
+     * @param winner The winning player.
      */
     public void sendProgressToWinner(Player winner) {
         Profile winnerProfile = AlleyPlugin.getInstance().getService(ProfileService.class).getProfile(winner.getUniqueId());
@@ -446,9 +446,9 @@ public class DefaultMatch extends Match {
     }
 
     /**
-     * Gives the base raiding kit to the model based on their team.
+     * Gives the base raiding kit to the player based on their team.
      *
-     * @param player The model to give the kit to.
+     * @param player The player to give the kit to.
      */
     public void determineRolesAndGiveKit(Player player) {
         if (this.getParticipantA() == null || this.getParticipantB() == null) {

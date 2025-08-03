@@ -15,24 +15,24 @@ public interface SnapshotService extends Service {
 
     /**
      * Adds a post-match snapshot to the repository.
-     * If a snapshot for the same model already exists, it will be overwritten.
+     * If a snapshot for the same player already exists, it will be overwritten.
      *
      * @param snapshot The snapshot to add.
      */
     void addSnapshot(Snapshot snapshot);
 
     /**
-     * Retrieves a snapshot by the model's UUID.
+     * Retrieves a snapshot by the player's UUID.
      *
-     * @param uuid The UUID of the model.
+     * @param uuid The UUID of the player.
      * @return The Snapshot object, or null if not found.
      */
     Snapshot getSnapshot(UUID uuid);
 
     /**
-     * Retrieves a snapshot by the model's username (case-insensitive).
+     * Retrieves a snapshot by the player's username (case-insensitive).
      *
-     * @param username The username of the model.
+     * @param username The username of the player.
      * @return The Snapshot object, or null if not found.
      */
     Snapshot getSnapshot(String username);
@@ -41,7 +41,7 @@ public interface SnapshotService extends Service {
      * Removes a snapshot from the repository, typically after it has been viewed
      * or has expired.
      *
-     * @param uuid The UUID of the model whose snapshot should be removed.
+     * @param uuid The UUID of the player whose snapshot should be removed.
      */
     void removeSnapshot(UUID uuid);
 }

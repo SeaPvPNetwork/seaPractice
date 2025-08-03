@@ -26,34 +26,34 @@ public class GameParticipant<T extends GamePlayer> {
     /**
      * Constructor for the GameParticipant class.
      *
-     * @param leader The model.
+     * @param leader The player.
      */
     public GameParticipant(T leader) {
         this.leader = leader;
     }
 
     /**
-     * Gets the model associated with the participant.
+     * Gets the player associated with the participant.
      *
-     * @return The model associated with the participant.
+     * @return The player associated with the participant.
      */
     public List<T> getPlayers() {
         return this.leader.isDisconnected() ? Collections.emptyList() : Collections.singletonList(this.leader);
     }
 
     /**
-     * Gets the model associated with the participant.
+     * Gets the player associated with the participant.
      *
-     * @return The model associated with the participant.
+     * @return The player associated with the participant.
      */
     public List<T> getAllPlayers() {
         return Collections.singletonList(this.leader);
     }
 
     /**
-     * Gets the model associated with the participant.
+     * Gets the player associated with the participant.
      *
-     * @return The model associated with the participant.
+     * @return The player associated with the participant.
      */
     public int getPlayerSize() {
         return this.leader.isDead() ? 0 : 1;
@@ -79,18 +79,18 @@ public class GameParticipant<T extends GamePlayer> {
 
 
     /**
-     * Adds a model to the team participant.
+     * Adds a player to the team participant.
      *
-     * @param player the model to add.
+     * @param player the player to add.
      */
     public void addPlayer(T player) {
         this.leader = player;
     }
 
     /**
-     * Removes a model from the team participant.
+     * Removes a player from the team participant.
      *
-     * @param player The model to remove.
+     * @param player The player to remove.
      */
     public void removePlayer(T player) {
        if (this.leader != null && this.leader.getUuid().equals(player.getUuid())) {
@@ -117,10 +117,10 @@ public class GameParticipant<T extends GamePlayer> {
     }
 
     /**
-     * Checks if the participant contains a model.
+     * Checks if the participant contains a player.
      *
-     * @param uuid The UUID of the model.
-     * @return True if the participant contains the model.
+     * @param uuid The UUID of the player.
+     * @return True if the participant contains the player.
      */
     public boolean containsPlayer(UUID uuid) {
         return this.leader.getUuid().equals(uuid);

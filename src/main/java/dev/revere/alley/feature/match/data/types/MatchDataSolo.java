@@ -20,8 +20,8 @@ public class MatchDataSolo extends MatchData {
      *
      * @param kit    The kit used in the match.
      * @param arena  The arena where the match took place.
-     * @param winner The UUID of the winning model.
-     * @param loser  The UUID of the losing model.
+     * @param winner The UUID of the winning player.
+     * @param loser  The UUID of the losing player.
      */
     public MatchDataSolo(String kit, String arena, UUID winner, UUID loser) {
         super(kit, arena);

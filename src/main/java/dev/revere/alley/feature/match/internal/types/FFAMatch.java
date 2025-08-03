@@ -47,7 +47,7 @@ public class FFAMatch extends Match {
     public void handleRespawn(Player player) {
         player.spigot().respawn();
 
-        //this.addSpectator(model);
+        //this.addSpectator(player);
 
         player.teleport(this.getArena().getCenter());
     }

@@ -62,7 +62,7 @@ public abstract class BaseCosmetic implements Cosmetic {
     /**
      * All cosmetics now need a way to be executed.
      *
-     * @param player The relevant model for the cosmetic effect.
+     * @param player The relevant player for the cosmetic effect.
      */
     public abstract void execute(Player player);
 }

@@ -48,8 +48,8 @@ public class Snapshot {
     /**
      * Constructor for the Snapshot class.
      *
-     * @param player the model to create the snapshot for
-     * @param alive  whether the model is alive or not
+     * @param player the player to create the snapshot for
+     * @param alive  whether the player is alive or not
      */
     public Snapshot(Player player, boolean alive) {
         this.uuid = player.getUniqueId();
@@ -94,7 +94,7 @@ public class Snapshot {
     }
 
     /**
-     * Get the amount of potions in the model's inventory.
+     * Get the amount of potions in the player's inventory.
      *
      * @return the amount of potions in the inventory
      */

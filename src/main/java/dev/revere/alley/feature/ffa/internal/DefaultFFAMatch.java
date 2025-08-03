@@ -61,9 +61,9 @@ public class DefaultFFAMatch extends FFAMatch {
     }
 
     /**
-     * Force a model to join the FFA match.
+     * Force a player to join the FFA match.
      *
-     * @param player The model
+     * @param player The player
      */
     public void forceJoin(Player player) {
         GameFFAPlayer gameFFAPlayer = new GameFFAPlayer(player.getUniqueId(), player.getName());
@@ -73,9 +73,9 @@ public class DefaultFFAMatch extends FFAMatch {
     }
 
     /**
-     * Leave a model from the FFA match.
+     * Leave a player from the FFA match.
      *
-     * @param player The model
+     * @param player The player
      */
     @Override
     public void leave(Player player) {
@@ -103,9 +103,9 @@ public class DefaultFFAMatch extends FFAMatch {
     }
 
     /**
-     * Setup a model for the FFA match.
+     * Setup a player for the FFA match.
      *
-     * @param player The model
+     * @param player The player
      */
     @Override
     public void setupPlayer(Player player) {
@@ -131,9 +131,9 @@ public class DefaultFFAMatch extends FFAMatch {
     }
 
     /**
-     * Handle the respawn of a model.
+     * Handle the respawn of a player.
      *
-     * @param player The model
+     * @param player The player
      */
     public void handleRespawn(Player player) {
         ProfileService profileService = this.plugin.getService(ProfileService.class);
@@ -158,10 +158,10 @@ public class DefaultFFAMatch extends FFAMatch {
     }
 
     /**
-     * Handle the death of a model.
+     * Handle the death of a player.
      *
-     * @param player The model who died.
-     * @param killer The killer / last attacker of the model who died.
+     * @param player The player who died.
+     * @param killer The killer / last attacker of the player who died.
      */
     @Override
     public void handleDeath(Player player, Player killer) {

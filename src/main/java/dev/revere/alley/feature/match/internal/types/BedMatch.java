@@ -107,7 +107,7 @@ public class BedMatch extends DefaultMatch {
     /**
      * Alerts the participants about the bed destruction.
      *
-     * @param breaker  The model who broke the bed.
+     * @param breaker  The player who broke the bed.
      * @param opponent The opponent whose bed was destroyed.
      */
     public void alertBedDestruction(Player breaker, GameParticipant<MatchGamePlayer> opponent) {

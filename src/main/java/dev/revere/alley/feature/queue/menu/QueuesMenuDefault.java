@@ -35,7 +35,7 @@ public class QueuesMenuDefault extends Menu {
     /**
      * Get the title of the menu.
      *
-     * @param player the model to get the title for
+     * @param player the player to get the title for
      * @return the title of the menu
      */
     @Override
@@ -46,7 +46,7 @@ public class QueuesMenuDefault extends Menu {
     /**
      * Get the buttons for the menu.
      *
-     * @param player the model to get the buttons for
+     * @param player the player to get the buttons for
      * @return the buttons for the menu
      */
     @Override

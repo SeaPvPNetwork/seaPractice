@@ -40,7 +40,7 @@ public class QueuesMenuModern extends Menu {
     /**
      * Get the title of the menu.
      *
-     * @param player the model to get the title for
+     * @param player the player to get the title for
      * @return the title of the menu
      */
     @Override
@@ -53,7 +53,7 @@ public class QueuesMenuModern extends Menu {
     /**
      * Get the buttons for the menu.
      *
-     * @param player the model to get the buttons for
+     * @param player the player to get the buttons for
      * @return the buttons for the menu
      */
     @Override
@@ -189,7 +189,7 @@ public class QueuesMenuModern extends Menu {
     /**
      * Get the lore for the selected queue type.
      *
-     * @param profile the model's profile
+     * @param profile the player's profile
      * @param type    the queue type to check
      */
     private String getLore(Profile profile, QueueType type) {

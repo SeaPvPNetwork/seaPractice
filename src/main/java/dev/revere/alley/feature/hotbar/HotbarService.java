@@ -1,7 +1,6 @@
 package dev.revere.alley.feature.hotbar;
 
 import dev.revere.alley.library.menu.Menu;
-import dev.revere.alley.feature.hotbar.HotbarType;
 import dev.revere.alley.bootstrap.lifecycle.Service;
 import dev.revere.alley.core.profile.Profile;
 import org.bukkit.entity.Player;
@@ -23,18 +22,18 @@ public interface HotbarService extends Service {
     List<HotbarItem> getHotbarItems();
 
     /**
-     * Applies a specific type of hotbar layout to a model's inventory.
+     * Applies a specific type of hotbar layout to a player's inventory.
      *
-     * @param player The model to apply the hotbar to.
+     * @param player The player to apply the hotbar to.
      * @param type   The type of hotbar to apply.
      */
     void applyHotbarItems(Player player, HotbarType type);
 
     /**
-     * Determines the correct hotbar type based on the model's current profile state
+     * Determines the correct hotbar type based on the player's current profile state
      * and applies it to their inventory.
      *
-     * @param player The model to apply the hotbar to.
+     * @param player The player to apply the hotbar to.
      */
     void applyHotbarItems(Player player);
 
@@ -61,10 +60,10 @@ public interface HotbarService extends Service {
     void saveToConfig(HotbarItem hotbarItem);
 
     /**
-     * Builds an ItemStack representation of a hotbar item that can be received by the model.
+     * Builds an ItemStack representation of a hotbar item that can be received by the player.
      *
      * @param hotbarItem The HotbarItem to build the ItemStack for.
-     * @return An ItemStack representing the hotbar item, ready to be given to the model.
+     * @return An ItemStack representing the hotbar item, ready to be given to the player.
      */
     ItemStack buildReceivableItem(HotbarItem hotbarItem);
 
