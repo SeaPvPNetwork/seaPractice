@@ -20,13 +20,13 @@ public class PartyBanCommand extends BaseCommand {
         String[] args = command.getArgs();
 
         if (args.length < 1) {
-            player.sendMessage(CC.translate("&6Usage: &e/party ban &6<model>"));
+            player.sendMessage(CC.translate("&6Usage: &e/party ban &6<player>"));
             return;
         }
 
         Player target = player.getServer().getPlayer(args[0]);
         if (target == null) {
-            player.sendMessage(CC.translate("&cThat model is not online."));
+            player.sendMessage(CC.translate("&cThat player is not online."));
             return;
         }
 

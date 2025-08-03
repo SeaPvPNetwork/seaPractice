@@ -28,7 +28,7 @@ public class QueueForceCommand extends BaseCommand {
         String[] args = command.getArgs();
 
         if (args.length != 3) {
-            player.sendMessage(CC.translate("&6Usage: &e/queue force &6<model> <kit> <ranked>"));
+            player.sendMessage(CC.translate("&6Usage: &e/queue force &6<player> <kit> <ranked>"));
             player.sendMessage(CC.translate("&7Example: /queue force hmRemi Boxing true"));
             return;
         }

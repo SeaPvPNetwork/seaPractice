@@ -23,7 +23,7 @@ public class MatchInfoCommand extends BaseCommand {
         String[] args = command.getArgs();
 
         if (args.length == 0) {
-            sender.sendMessage(CC.translate("&6Usage: &e/match info &6<model>"));
+            sender.sendMessage(CC.translate("&6Usage: &e/match info &6<player>"));
             return;
         }
 
@@ -36,7 +36,7 @@ public class MatchInfoCommand extends BaseCommand {
 
         Profile profile = this.plugin.getService(ProfileService.class).getProfile(target.getUniqueId());
         if (profile.getMatch() == null) {
-            sender.sendMessage(CC.translate("&cThis model is not in a match."));
+            sender.sendMessage(CC.translate("&cThis player is not in a match."));
             return;
         }
 

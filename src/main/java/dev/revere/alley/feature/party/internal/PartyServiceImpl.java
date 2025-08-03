@@ -231,7 +231,7 @@ public class PartyServiceImpl implements PartyService {
         }
 
         if (!party.getMembers().contains(member.getUniqueId())) {
-            leader.sendMessage(CC.translate("&cThat model is not in your party."));
+            leader.sendMessage(CC.translate("&cThat player is not in your party."));
             return;
         }
 
@@ -262,7 +262,7 @@ public class PartyServiceImpl implements PartyService {
         }
 
         if (!party.getMembers().contains(target.getUniqueId())) {
-            leader.sendMessage(CC.translate("&cThat model is not in your party."));
+            leader.sendMessage(CC.translate("&cThat player is not in your party."));
             return;
         }
 
@@ -291,7 +291,7 @@ public class PartyServiceImpl implements PartyService {
         }
 
         if (!party.getBannedPlayers().contains(target.getUniqueId())) {
-            leader.sendMessage(CC.translate("&cThat model is not banned from your party."));
+            leader.sendMessage(CC.translate("&cThat player is not banned from your party."));
             return;
         }
 
@@ -369,10 +369,10 @@ public class PartyServiceImpl implements PartyService {
     }
 
     /**
-     * Sets up the profile of a model.
+     * Sets up the profile of a player.
      *
-     * @param player The model to set up the profile for.
-     * @param join   Whether the model is joining a party.
+     * @param player The player to set up the profile for.
+     * @param join   Whether the player is joining a party.
      */
     private void setupProfile(Player player, boolean join) {
         Profile profile = this.profileService.getProfile(player.getUniqueId());
@@ -438,10 +438,10 @@ public class PartyServiceImpl implements PartyService {
     }
 
     /**
-     * Handles a model leaving a party, specifically notifying the QueueService if they were queuing.
+     * Handles a player leaving a party, specifically notifying the QueueService if they were queuing.
      * This method should be called whenever a party member disconnects or leaves their party.
      *
-     * @param player The model who left the party (or disconnected).
+     * @param player The player who left the party (or disconnected).
      */
     public void handlePartyMemberLeave(Player player) {
         if (player == null) return;
@@ -471,7 +471,7 @@ public class PartyServiceImpl implements PartyService {
     /**
      * Gets the clickable text component for accepting a party invitation.
      *
-     * @param sender The model who sent the invitation.
+     * @param sender The player who sent the invitation.
      * @return The clickable text component.
      */
     private TextComponent getClickable(Player sender) {

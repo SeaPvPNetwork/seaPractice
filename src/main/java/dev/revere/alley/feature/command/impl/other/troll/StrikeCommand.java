@@ -12,14 +12,14 @@ import org.bukkit.entity.Player;
  * @date 25/06/2024 - 19:42
  */
 public class StrikeCommand extends BaseCommand {
-    @CommandData(name = "strike", permission = "alley.command.troll.strike", usage = "strike <model> | all", description = "Strike a model with lightning")
+    @CommandData(name = "strike", permission = "alley.command.troll.strike", usage = "strike <player> | all", description = "Strike a player with lightning")
     @Override
     public void onCommand(CommandArgs command) {
         Player player = command.getPlayer();
         String[] args = command.getArgs();
 
         if (args.length < 1) {
-            player.sendMessage(CC.translate("&6Usage: &e/strike &6<model>"));
+            player.sendMessage(CC.translate("&6Usage: &e/strike &6<player>"));
             return;
         }
 

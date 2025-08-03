@@ -94,7 +94,7 @@ public class SpectatorTeleportMenu extends PaginatedMenu {
 
             for (String line : configLore) {
                 lore.add(line
-                        .replace("{model-color}", String.valueOf(profile.getNameColor()))
+                        .replace("{player-color}", String.valueOf(profile.getNameColor()))
                         .replace("{username}", this.gamePlayer.getUsername())
                         .replace("{ping}", String.valueOf(ping))
                         .replace("{team}", team + teamColor)
@@ -104,7 +104,7 @@ public class SpectatorTeleportMenu extends PaginatedMenu {
 
             String name = this.config.getString(this.path + ".buttons.spectator-teleport-button.name", "&6{username}")
                     .replace("{username}", this.gamePlayer.getUsername())
-                    .replace("{model-color}", String.valueOf(profile.getNameColor())
+                    .replace("{player-color}", String.valueOf(profile.getNameColor())
                     );
 
             return new ItemBuilder(Material.SKULL_ITEM)
@@ -120,7 +120,7 @@ public class SpectatorTeleportMenu extends PaginatedMenu {
         public void clicked(Player player, ClickType clickType) {
             if (clickType == ClickType.LEFT) {
                 if (this.gamePlayer.isDead() || this.gamePlayer.isDisconnected()) {
-                    player.sendMessage(CC.translate("&cThis model is either dead or disconnected."));
+                    player.sendMessage(CC.translate("&cThis player is either dead or disconnected."));
                     return;
                 }
                 player.teleport(this.gamePlayer.getTeamPlayer().getLocation());

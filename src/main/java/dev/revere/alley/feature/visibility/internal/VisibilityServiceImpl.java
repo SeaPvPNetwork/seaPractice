@@ -40,10 +40,10 @@ public class VisibilityServiceImpl implements VisibilityService {
     }
 
     /**
-     * Hides a model from another model based on their profile states.
+     * Hides a player from another player based on their profile states.
      *
      * @param viewer The profile of the viewer.
-     * @param target The target model to hide.
+     * @param target The target player to hide.
      */
     public void handleVisibility(Player viewer, Player target) {
         if (viewer == null || target == null || !viewer.isOnline() || !target.isOnline()) {
@@ -54,7 +54,7 @@ public class VisibilityServiceImpl implements VisibilityService {
         Profile targetProfile = this.profileService.getProfile(target.getUniqueId());
 
         if (viewerProfile == null || targetProfile == null) {
-            Logger.error("Could not retrieve profile for viewer or target model.");
+            Logger.error("Could not retrieve profile for viewer or target player.");
             return;
         }
 
@@ -84,9 +84,9 @@ public class VisibilityServiceImpl implements VisibilityService {
     /**
      * Handles the visibility logic for players in lobby and queue states.
      *
-     * @param viewer             the model who is viewing.
-     * @param target             model to be viewed.
-     * @param targetProfileState the profile state of the target model.
+     * @param viewer             the player who is viewing.
+     * @param target             player to be viewed.
+     * @param targetProfileState the profile state of the target player.
      */
     private void handleLobbyAndQueueState(Player viewer, Player target, ProfileState targetProfileState) {
         switch (targetProfileState) {
@@ -119,8 +119,8 @@ public class VisibilityServiceImpl implements VisibilityService {
     /**
      * Handles the visibility logic for players in playing state.
      *
-     * @param viewer        The model who is viewing.
-     * @param target        The target model to be viewed.
+     * @param viewer        The player who is viewing.
+     * @param target        The target player to be viewed.
      * @param viewerProfile The profile of the viewer.
      */
     private void handlePlayingCase(Player viewer, Player target, Profile viewerProfile, Profile targetProfile) {
@@ -157,8 +157,8 @@ public class VisibilityServiceImpl implements VisibilityService {
     /**
      * Handles the visibility logic for players in spectating state.
      *
-     * @param viewer        The model who is viewing.
-     * @param target        The target model to be viewed.
+     * @param viewer        The player who is viewing.
+     * @param target        The target player to be viewed.
      * @param viewerProfile The profile of the viewer.
      */
     private void handleSpectatingCase(Player viewer, Player target, Profile viewerProfile) {
