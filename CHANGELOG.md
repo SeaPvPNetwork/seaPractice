@@ -1,16 +1,16 @@
-## 🎉 Alley v2.1.9
+## 🎉 Alley v2.1.10
 
 ### 🔧 **PATCH RELEASE** - Bug Fixes & Improvements
 
-**Previous Version:** `2.1.8`
-**New Version:** `2.1.9`
+**Previous Version:** `2.1.9`
+**New Version:** `2.1.10`
 
 ### 📝 Changes:
 
-- chore: Added missing string in settings.yml (e769ae35)
+- chore: prevent loading profiles upon kit creation, more robust and safe implementation for mongo data parsing and conversion, and fix scoreboard profile state variables where potential race conditions could occur (865181b3)
 
 ---
-**Download:** [Alley-2.1.9.jar](https://github.com/RevereInc/alley-practice/releases/download/v2.1.9/Alley-2.1.9.jar)
+**Download:** [Alley-2.1.10.jar](https://github.com/RevereInc/alley-practice/releases/download/v2.1.10/Alley-2.1.10.jar)
 
 **Installation:** Place the JAR file in your `plugins/` folder and restart your server.
 
