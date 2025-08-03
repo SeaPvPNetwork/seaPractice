@@ -1,16 +1,17 @@
-## 🎉 Alley v2.2.1
+## 🎉 Alley v2.2.2
 
 ### 🔧 **PATCH RELEASE** - Bug Fixes & Improvements
 
-**Previous Version:** `2.2.0`
-**New Version:** `2.2.1`
+**Previous Version:** `2.2.1`
+**New Version:** `2.2.2`
 
 ### 📝 Changes:
 
-- chore(project): refactor "model" in places where it was accidentally renamed from its origin name (7bb5f5a0)
+- chore(project): refactor "model" in places where it was accidentally renamed from its origin name (c0ba2fb8)
+- chore(project): refactor "model" in places where it was accidentally renamed from its origin name (408fc12f)
 
 ---
-**Download:** [Alley-2.2.1.jar](https://github.com/RevereInc/alley-practice/releases/download/v2.2.1/Alley-2.2.1.jar)
+**Download:** [Alley-2.2.2.jar](https://github.com/RevereInc/alley-practice/releases/download/v2.2.2/Alley-2.2.2.jar)
 
 **Installation:** Place the JAR file in your `plugins/` folder and restart your server.
 
