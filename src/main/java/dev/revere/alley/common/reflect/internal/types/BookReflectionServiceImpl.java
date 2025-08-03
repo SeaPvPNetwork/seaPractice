@@ -18,9 +18,9 @@ import java.io.DataOutputStream;
  */
 public class BookReflectionServiceImpl implements Reflection {
     /**
-     * Opens a book for a model.
+     * Opens a book for a player.
      *
-     * @param player the model
+     * @param player the player
      * @param book   the book
      */
     public void openBook(Player player, ItemStack book) {

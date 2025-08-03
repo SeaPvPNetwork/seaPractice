@@ -61,7 +61,7 @@ public class Profile {
     /**
      * Constructor for the Profile class.
      *
-     * @param uuid The UUID of the model.
+     * @param uuid The UUID of the player.
      */
     public Profile(UUID uuid) {
         this.uuid = uuid;
@@ -193,10 +193,10 @@ public class Profile {
     }
 
     /**
-     * Get the next division or model string for a given profile and kit.
+     * Get the next division or tier string for a given profile and kit.
      *
      * @param kitName The name of the kit.
-     * @return The next division or model string.
+     * @return The next division or tier string.
      */
     public String getNextDivisionAndTier(String kitName) {
         ProfileUnrankedKitData profileUnrankedKitData = this.profileData.getUnrankedKitData().get(kitName);

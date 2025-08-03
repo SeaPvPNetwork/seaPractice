@@ -15,10 +15,10 @@ import java.lang.reflect.Field;
  */
 public class VirtualStackReflectionServiceImpl implements Reflection {
     /**
-     * Sets the amount of the item in the model's hand,
+     * Sets the amount of the item in the player's hand,
      * even beyond normal max stack size using reflect.
      *
-     * @param player the model whose held item to modify
+     * @param player the player whose held item to modify
      * @param amount the amount to set (can exceed normal stack max)
      * @throws Exception if reflect fails
      */

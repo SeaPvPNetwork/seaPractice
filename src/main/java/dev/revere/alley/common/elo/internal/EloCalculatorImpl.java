@@ -41,21 +41,21 @@ public class EloCalculatorImpl implements EloCalculator {
     }
 
     /**
-     * Determines the expected outcome for a model against an opponent based on Elo ratings.
+     * Determines the expected outcome for a player against an opponent based on Elo ratings.
      * An expected score of 0.5 means the players are evenly matched.
      *
-     * @param playerElo   The model's current Elo rating.
+     * @param playerElo   The player's current Elo rating.
      * @param opponentElo The opponent's Elo rating.
-     * @return The expected score for the model (a value between 0 and 1).
+     * @return The expected score for the player (a value between 0 and 1).
      */
     private double calculateExpectedScore(int playerElo, int opponentElo) {
         return 1.0 / (1.0 + Math.pow(10, (opponentElo - playerElo) / 400.0));
     }
 
     /**
-     * Determines the K-factor (range factor) for the model's Elo rating.
+     * Determines the K-factor (range factor) for the player's Elo rating.
      *
-     * @param elo The model's Elo rating.
+     * @param elo The player's Elo rating.
      * @return The K-factor (range).
      */
     private double determineRange(int elo) {

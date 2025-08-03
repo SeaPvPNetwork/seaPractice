@@ -8,6 +8,6 @@ import dev.revere.alley.feature.kit.setting.annotation.KitSettingData;
  * @project Alley
  * @date 16/10/2024 - 14:01
  */
-@KitSettingData(name = "NoDamage", description = "Prevent the model from taking damage", enabled = false)
+@KitSettingData(name = "NoDamage", description = "Prevent the player from taking damage", enabled = false)
 public class KitSettingNoDamageImpl extends KitSetting {
 }

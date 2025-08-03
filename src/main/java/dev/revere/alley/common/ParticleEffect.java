@@ -1482,11 +1482,11 @@ public enum ParticleEffect {
         }
 
         /**
-         * Sends the packet to a single model and caches it
+         * Sends the packet to a single player and caches it
          *
          * @param center Center location of the effect
          * @param player Receiver of the packet
-         * @throws PacketInstantiationException If instantion fails due to an unknown error
+         * @throws PacketInstantiationException If instantiation fails due to an unknown error
          * @throws PacketSendingException       If sending fails due to an unknown error
          * @see #initializePacket(Location)
          */
@@ -1495,7 +1495,7 @@ public enum ParticleEffect {
             try {
                 sendPacket.invoke(playerConnection.get(getHandle.invoke(player)), packet);
             } catch (Exception exception) {
-                throw new PacketSendingException("Failed to send the packet to model '" + player.getName() + "'", exception);
+                throw new PacketSendingException("Failed to send the packet to player '" + player.getName() + "'", exception);
             }
         }
 
@@ -1504,12 +1504,12 @@ public enum ParticleEffect {
          *
          * @param center  Center location of the effect
          * @param players Receivers of the packet
-         * @throws IllegalArgumentException If the model list is empty
-         * @see #sendTo(Location center, Player model)
+         * @throws IllegalArgumentException If the player list is empty
+         * @see #sendTo(Location center, Player player)
          */
         public void sendTo(Location center, List<Player> players) throws IllegalArgumentException {
             if (players.isEmpty()) {
-                throw new IllegalArgumentException("The model list is empty");
+                throw new IllegalArgumentException("The player list is empty");
             }
             for (Player player : players) {
                 sendTo(center, player);
@@ -1522,7 +1522,7 @@ public enum ParticleEffect {
          * @param center Center location of the effect
          * @param range  Range in which players will receive the packet (Maximum range for particles is usually 16, but it can differ for some types)
          * @throws IllegalArgumentException If the range is lower than 1
-         * @see #sendTo(Location center, Player model)
+         * @see #sendTo(Location center, Player player)
          */
         public void sendTo(Location center, double range) throws IllegalArgumentException {
             if (range < 1) {

@@ -67,11 +67,11 @@ menus:
           - " &f● &6Arena: &f{arena}"
           - " &f● &6Players: &f{players}"
       spectator-teleport-button:
-        name: "{model-color}{username}"
+        name: "{player-color}{username}"
         lore:
           - " &f● &6Ping: &f{ping}ms"
           - " &f● &6Team: &f{team}"
           - " &f● &6ELO: &f{elo}"
           - ""
-          - "&6&lLEFT-CLICK &fto teleport to this model."
+          - "&6&lLEFT-CLICK &fto teleport to this player."
           - "&6&lRIGHT-CLICK &fto view their statistics."

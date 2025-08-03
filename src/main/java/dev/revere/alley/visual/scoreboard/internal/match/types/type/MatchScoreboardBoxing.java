@@ -44,7 +44,7 @@ public class MatchScoreboardBoxing extends BaseMatchScoreboard {
         String combo = formatCombo(playerCombo, opponentCombo, config);
 
         return baseLine
-                .replace("{model-hits}", String.valueOf(playerHits))
+                .replace("{player-hits}", String.valueOf(playerHits))
                 .replace("{opponent-hits}", String.valueOf(opponentHits))
                 .replace("{difference}", hitDifference)
                 .replace("{combo}", combo);

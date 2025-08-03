@@ -41,7 +41,7 @@ public class MatchScoreboardStartingImpl implements MatchScoreboard {
             scoreboardLines.add(CC.translate(line)
                     .replace("{opponent}", this.getColoredName(profileService.getProfile(opponent.getLeader().getUuid())))
                     .replace("{opponent-ping}", String.valueOf(this.getPing(opponent.getLeader().getTeamPlayer())))
-                    .replace("{model-ping}", String.valueOf(this.getPing(player)))
+                    .replace("{player-ping}", String.valueOf(this.getPing(player)))
                     .replace("{duration}", profile.getMatch().getDuration())
                     .replace("{arena}", profile.getMatch().getArena().getDisplayName() == null ? "&c&lNULL" : profile.getMatch().getArena().getDisplayName())
                     .replace("{dot-animation}", this.dotAnimation.getCurrentFrame())

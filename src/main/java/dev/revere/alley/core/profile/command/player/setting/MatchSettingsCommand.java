@@ -18,7 +18,7 @@ public class MatchSettingsCommand extends BaseCommand {
     public void onCommand(CommandArgs command) {
         Player player = command.getPlayer();
 
-        //new MatchSettingsMenu().openMenu(model);
+        //new MatchSettingsMenu().openMenu(player);
         player.closeInventory();
         player.sendMessage(CC.translate("&cThis command is not available yet."));
     }

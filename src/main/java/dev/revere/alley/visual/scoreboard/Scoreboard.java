@@ -30,7 +30,7 @@ public interface Scoreboard {
      * Gets the scoreboard lines for the given profile.
      *
      * @param profile The profile to get the scoreboard lines for.
-     * @param player  The model to get the scoreboard lines for.
+     * @param player  The player to get the scoreboard lines for.
      * @return The scoreboard lines.
      */
     List<String> getLines(Profile profile, Player player);
@@ -45,10 +45,10 @@ public interface Scoreboard {
     }
 
     /**
-     * Gets the ping of the model by using reflect.
+     * Gets the ping of the player by using reflect.
      *
-     * @param player The model to get the ping for.
-     * @return The ping of the model.
+     * @param player The player to get the ping for.
+     * @return The ping of the player.
      */
     default int getPing(Player player) {
         if (player == null) {

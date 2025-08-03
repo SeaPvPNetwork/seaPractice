@@ -26,7 +26,7 @@ public abstract class PaginatedMenu extends Menu {
     /**
      * Changes the page number
      *
-     * @param player model viewing the inventory
+     * @param player player viewing the inventory
      * @param mod    delta to modify the page number by
      */
     public final void modPage(Player player, int mod) {
@@ -36,7 +36,7 @@ public abstract class PaginatedMenu extends Menu {
     }
 
     /**
-     * @param player model viewing the inventory
+     * @param player player viewing the inventory
      */
     public final int getPages(Player player) {
         int buttonAmount = getAllPagesButtons(player).size();
@@ -142,7 +142,7 @@ public abstract class PaginatedMenu extends Menu {
     }
 
     /**
-     * @param player model viewing the inventory
+     * @param player player viewing the inventory
      * @return a Map of button that returns items which will be present on all pages
      */
     public Map<Integer, Button> getGlobalButtons(Player player) {
@@ -150,13 +150,13 @@ public abstract class PaginatedMenu extends Menu {
     }
 
     /**
-     * @param player model viewing the inventory
+     * @param player player viewing the inventory
      * @return title of the inventory before the page number is added
      */
     public abstract String getPrePaginatedTitle(Player player);
 
     /**
-     * @param player model viewing the inventory
+     * @param player player viewing the inventory
      * @return a map of button that will be paginated and spread across pages
      */
     public abstract Map<Integer, Button> getAllPagesButtons(Player player);

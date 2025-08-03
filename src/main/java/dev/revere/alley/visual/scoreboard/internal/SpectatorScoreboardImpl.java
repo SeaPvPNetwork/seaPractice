@@ -78,10 +78,10 @@ public class SpectatorScoreboardImpl implements Scoreboard {
     }
 
     /**
-     * Safely gets the model name from a participant.
+     * Safely gets the player name from a participant.
      *
      * @param participant The participant to get the name from
-     * @return The model name, or "Disconnected" if not available
+     * @return The player name, or "Disconnected" if not available
      */
     private String getPlayerNameSafely(GameParticipant<MatchGamePlayer> participant) {
         if (participant == null) {

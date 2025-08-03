@@ -73,9 +73,9 @@ public abstract class FFAMatch {
 
 
     /**
-     * Method to spectate the match as a model.
+     * Method to spectate the match as a player.
      *
-     * @param player The model who wants to spectate the match.
+     * @param player The player who wants to spectate the match.
      */
     public void addSpectator(Player player) {
         ProfileService profileService = this.plugin.getService(ProfileService.class);
@@ -104,9 +104,9 @@ public abstract class FFAMatch {
     }
 
     /**
-     * Method to remove a model from the spectator list and reset their state.
+     * Method to remove a player from the spectator list and reset their state.
      *
-     * @param player The model to remove from the spectator list.
+     * @param player The player to remove from the spectator list.
      */
     public void removeSpectator(Player player) {
         ProfileService profileService = this.plugin.getService(ProfileService.class);
@@ -144,9 +144,9 @@ public abstract class FFAMatch {
     }
 
     /**
-     * Handle the combat log of a model and killer, updating stats of the combat logger, ect...
+     * Handle the combat log of a player and killer, updating stats of the combat logger, ect...
      *
-     * @param player The model
+     * @param player The player
      * @param killer The killer
      */
     public void handleCombatLog(Player player, Player killer) {
@@ -170,9 +170,9 @@ public abstract class FFAMatch {
     }
 
     /**
-     * Teleports a model to the safe zone of the FFA arena.
+     * Teleports a player to the safe zone of the FFA arena.
      *
-     * @param player The model to teleport.
+     * @param player The player to teleport.
      */
     public void teleportToSafeZone(Player player) {
         CombatService combatService = this.plugin.getService(CombatService.class);
@@ -187,9 +187,9 @@ public abstract class FFAMatch {
     }
 
     /**
-     * Alerts all players in the match if a model reaches a killstreak of 5 or more.
+     * Alerts all players in the match if a player reaches a killstreak of 5 or more.
      *
-     * @param player The model who reached the killstreak.
+     * @param player The player who reached the killstreak.
      */
     public void sendKillstreakAlertMessage(Player player) {
         ConfigService configService = this.plugin.getService(ConfigService.class);
@@ -209,7 +209,7 @@ public abstract class FFAMatch {
             this.getPlayers().forEach(ffaPlayer -> {
                 for (String message : messages) {
                     ffaPlayer.getPlayer().sendMessage(CC.translate(message
-                            .replace("{model}", player.getName())
+                            .replace("{player}", player.getName())
                             .replace("{name-color}", String.valueOf(profile.getNameColor()))
                             .replace("{killstreak}", String.valueOf(ffaData.getKillstreak()))));
                 }

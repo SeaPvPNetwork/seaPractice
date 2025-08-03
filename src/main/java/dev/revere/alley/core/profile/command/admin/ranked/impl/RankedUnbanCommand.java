@@ -17,14 +17,14 @@ import org.bukkit.entity.Player;
  * @since 13/03/2025
  */
 public class RankedUnbanCommand extends BaseCommand {
-    @CommandData(name = "ranked.unban", isAdminOnly = true, description = "Unban a model from ranked matches.", usage = "/ranked unban <model>")
+    @CommandData(name = "ranked.unban", isAdminOnly = true, description = "Unban a player from ranked matches.", usage = "/ranked unban <player>")
     @Override
     public void onCommand(CommandArgs command) {
         Player player = command.getPlayer();
         String[] args = command.getArgs();
 
         if (args.length < 1) {
-            player.sendMessage(CC.translate("&6Usage: &e/ranked unban &6<model>"));
+            player.sendMessage(CC.translate("&6Usage: &e/ranked unban &6<player>"));
             return;
         }
 
@@ -42,7 +42,7 @@ public class RankedUnbanCommand extends BaseCommand {
         }
 
         if (!profile.getProfileData().isRankedBanned()) {
-            player.sendMessage(CC.translate("&cThis model is not banned from ranked matches."));
+            player.sendMessage(CC.translate("&cThis player is not banned from ranked matches."));
             return;
         }
 

@@ -18,7 +18,7 @@ public class CustomItemsGoldenHeadCommand extends BaseCommand {
             name = "customitems.goldenhead",
             aliases = {"alleyitems.goldenhead", "specialitems.goldenhead"},
             usage = "/customitems goldenhead <amount>",
-            description = "Gives the model specific amount of custom golden heads",
+            description = "Gives the player specific amount of custom golden heads",
             isAdminOnly = true
     )
     @Override

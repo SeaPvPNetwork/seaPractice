@@ -16,21 +16,21 @@ import java.util.UUID;
  */
 public interface MusicService extends Service {
     /**
-     * Starts a music session for a model.
-     * This will first stop any currently playing music for the model. A random song
-     * from the model's selected preferences will then be played if their lobby music setting is enabled.
+     * Starts a music session for a player.
+     * This will first stop any currently playing music for the player. A random song
+     * from the player's selected preferences will then be played if their lobby music setting is enabled.
      * The audio is played client-side and appears to emanate from the spawn location.
      *
-     * @param player The model to start the music for.
+     * @param player The player to start the music for.
      */
     void startMusic(Player player);
 
     /**
-     * Fully stops a model's music session.
+     * Fully stops a player's music session.
      * This is a "hard stop" that halts the audio, cancels any associated tracking tasks,
-     * and completely removes the model's session from memory.
+     * and completely removes the player's session from memory.
      *
-     * @param player The model whose music session should be stopped.
+     * @param player The player whose music session should be stopped.
      */
     void stopMusic(Player player);
 
@@ -49,29 +49,29 @@ public interface MusicService extends Service {
     MusicDisc getRandomMusicDisc();
 
     /**
-     * Retrieves the set of music discs a model has selected in their profile.
+     * Retrieves the set of music discs a player has selected in their profile.
      * This method safely converts disc names stored in the profile to {@link MusicDisc} objects.
      *
-     * @param profile The model's profile containing their music preferences.
+     * @param profile The player's profile containing their music preferences.
      * @return A non-null set of {@link MusicDisc} values representing the selected discs.
      */
     Set<MusicDisc> getSelectedMusicDiscs(Profile profile);
 
     /**
-     * Selects a random music disc from a model's personal list of selected discs.
-     * If the model has not selected any discs, this will fall back to selecting a
+     * Selects a random music disc from a player's personal list of selected discs.
+     * If the player has not selected any discs, this will fall back to selecting a
      * random disc from the global pool.
      *
-     * @param profile The model's profile.
-     * @return A random {@link MusicDisc} from the model's selection.
+     * @param profile The player's profile.
+     * @return A random {@link MusicDisc} from the player's selection.
      */
     MusicDisc getRandomSelectedMusicDisc(Profile profile);
 
     /**
-     * Retrieves the current music session state for a specific model.
+     * Retrieves the current music session state for a specific player.
      *
-     * @param playerUuid The UUID of the model.
-     * @return An {@link Optional} containing the {@link MusicSession} if one is active for the model, otherwise empty.
+     * @param playerUuid The UUID of the player.
+     * @return An {@link Optional} containing the {@link MusicSession} if one is active for the player, otherwise empty.
      */
     Optional<MusicSession> getMusicState(UUID playerUuid);
 }

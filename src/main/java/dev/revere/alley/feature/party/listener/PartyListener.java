@@ -42,7 +42,7 @@ public class PartyListener implements Listener {
                 return;
             }
 
-            String partyMessage = partyService.getChatFormat().replace("{model}", player.getName()).replace("{message}", event.getMessage());
+            String partyMessage = partyService.getChatFormat().replace("{player}", player.getName()).replace("{message}", event.getMessage());
             profile.getParty().notifyParty(partyMessage);
             event.setCancelled(true);
             return;
@@ -61,7 +61,7 @@ public class PartyListener implements Listener {
                 return;
             }
 
-            String partyMessage = partyService.getChatFormat().replace("{model}", player.getName()).replace("{message}", event.getMessage().substring(1));
+            String partyMessage = partyService.getChatFormat().replace("{player}", player.getName()).replace("{message}", event.getMessage().substring(1));
             profile.getParty().notifyParty(partyMessage);
             event.setCancelled(true);
         }

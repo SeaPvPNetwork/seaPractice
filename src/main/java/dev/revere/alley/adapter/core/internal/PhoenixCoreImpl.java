@@ -67,10 +67,10 @@ public class PhoenixCoreImpl implements Core {
     }
 
     /**
-     * Retrieves the Profile object associated with the given model.
+     * Retrieves the Profile object associated with the given player.
      *
-     * @param player The model whose profile is to be retrieved.
-     * @return The Profile object associated with the model.
+     * @param player The player whose profile is to be retrieved.
+     * @return The Profile object associated with the player.
      */
     private Profile getProfile(Player player) {
         return this.phoenixAPI.getProfileHandler().getProfile(player.getUniqueId());

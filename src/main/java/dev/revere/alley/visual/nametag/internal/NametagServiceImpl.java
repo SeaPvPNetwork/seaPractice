@@ -45,10 +45,10 @@ public class NametagServiceImpl implements NametagService, Listener {
     }
 
     /**
-     * This is the main method to call when a model's state changes (e.g., joining/leaving a match).
+     * This is the main method to call when a player's state changes (e.g., joining/leaving a match).
      * It triggers a full, two-way re-evaluation of nametags.
      *
-     * @param player The model whose state has changed.
+     * @param player The player whose state has changed.
      */
     public void updatePlayerState(Player player) {
         if (player == null) return;

@@ -26,7 +26,7 @@ public interface DivisionService extends Service {
     /**
      * Creates a new division with default tiers and saves it to the configuration.
      * @param name The unique name for the new division.
-     * @param requiredWins The number of wins required for the first model of this division.
+     * @param requiredWins The number of wins required for the first tier of this division.
      */
     void createDivision(String name, int requiredWins);
 

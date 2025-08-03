@@ -29,10 +29,10 @@ public class InventoryUtil {
     );
 
     /**
-     * Applies a specified TeamColor to a model's inventory,
+     * Applies a specified TeamColor to a player's inventory,
      * coloring any dyeable blocks and leather armor.
      *
-     * @param player    The model whose inventory will be colored.
+     * @param player    The player whose inventory will be colored.
      * @param teamColor The TeamColor data to apply.
      */
     public void applyTeamColorToInventory(Player player, TeamColor teamColor) {
@@ -89,9 +89,9 @@ public class InventoryUtil {
     }
 
     /**
-     * Give a specific item to a model.
+     * Give a specific item to a player.
      *
-     * @param player   the model to give the item to
+     * @param player   the player to give the item to
      * @param material the material of the item to give
      */
     public void giveItem(Player player, Material material, int amount) {

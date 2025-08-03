@@ -233,7 +233,7 @@ public class MongoUtility {
 
     /**
      * Converts a map of unranked kit data to a MongoDB Document.
-     * Each kit entry contains division, model, wins, losses, and winstreak information.
+     * Each kit entry contains division, tier, wins, losses, and winstreak information.
      *
      * @param kitData A map where the key is the kit name and the value is ProfileUnrankedKitData
      * @return A Document representation of the unranked kit data, or empty Document if input is null
@@ -248,7 +248,7 @@ public class MongoUtility {
                     ProfileUnrankedKitData data = entry.getValue();
                     Document kitEntry = new DocumentBuilder()
                             .put("division", data.getDivision() != null ? data.getDivision().getName() : EMPTY_STRING)
-                            .put("model", data.getTier() != null ? data.getTier().getName() : EMPTY_STRING)
+                            .put("tier", data.getTier() != null ? data.getTier().getName() : EMPTY_STRING)
                             .put("wins", data.getWins())
                             .put("losses", data.getLosses())
                             .put("winstreak", data.getWinstreak())
@@ -418,8 +418,8 @@ public class MongoUtility {
 
     /**
      * Parses a MongoDB Document into a map of unranked kit data.
-     * Reconstructs ProfileUnrankedKitData objects with division, model, and statistics.
-     * Uses DivisionService to validate and resolve division/model references.
+     * Reconstructs ProfileUnrankedKitData objects with division, tier, and statistics.
+     * Uses DivisionService to validate and resolve division/tier references.
      *
      * @param kitDataDocument The Document containing unranked kit data
      * @return A map of kit names to ProfileUnrankedKitData objects, empty map if input is null
@@ -441,7 +441,7 @@ public class MongoUtility {
                     if (division != null) {
                         kit.setDivision(division.getName());
 
-                        String storedTier = kitEntry.getString("model");
+                        String storedTier = kitEntry.getString("tier");
                         if (storedTier != null && !storedTier.isEmpty()) {
                             division.getTiers().stream()
                                     .filter(t -> t.getName().equals(storedTier))

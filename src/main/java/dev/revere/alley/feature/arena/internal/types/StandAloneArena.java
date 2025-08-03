@@ -264,12 +264,12 @@ public class StandAloneArena extends Arena {
     }
 
     /**
-     * Check if the model is in the enemy portal.
+     * Check if the player is in the enemy portal.
      *
      * @param match          The match.
-     * @param playerLocation The location of the model.
-     * @param playerTeam     The team of the model.
-     * @return Whether the model is in the enemy portal or not.
+     * @param playerLocation The location of the player.
+     * @param playerTeam     The team of the player.
+     * @return Whether the player is in the enemy portal or not.
      */
     public boolean isEnemyPortal(RoundsMatch match, Location playerLocation, GameParticipant<MatchGamePlayer> playerTeam) {
         Location enemyPortal = playerTeam == match.getParticipantA() ? this.team2Portal : this.team1Portal;
@@ -280,7 +280,7 @@ public class StandAloneArena extends Arena {
      * Check if the block is an enemy bed.
      *
      * @param block              The block to check.
-     * @param breakerParticipant The model who is breaking the bed.
+     * @param breakerParticipant The player who is breaking the bed.
      * @return Whether the block is an enemy bed or not.
      */
     public boolean isEnemyBed(Block block, GameParticipant<MatchGamePlayer> breakerParticipant) {

@@ -17,14 +17,14 @@ import org.bukkit.entity.Player;
  * @since 13/03/2025
  */
 public class RankedBanCommand extends BaseCommand {
-    @CommandData(name = "ranked.ban", isAdminOnly = true, description = "Ban a model from ranked matches.", usage = "/ranked ban <model>")
+    @CommandData(name = "ranked.ban", isAdminOnly = true, description = "Ban a player from ranked matches.", usage = "/ranked ban <player>")
     @Override
     public void onCommand(CommandArgs command) {
         Player player = command.getPlayer();
         String[] args = command.getArgs();
 
         if (args.length < 1) {
-            player.sendMessage(CC.translate("&6Usage: &e/ranked ban &6<model>"));
+            player.sendMessage(CC.translate("&6Usage: &e/ranked ban &6<player>"));
             return;
         }
 
@@ -42,7 +42,7 @@ public class RankedBanCommand extends BaseCommand {
         }
 
         if (profile.getProfileData().isRankedBanned()) {
-            player.sendMessage(CC.translate("&cThis model is already banned from ranked matches."));
+            player.sendMessage(CC.translate("&cThis player is already banned from ranked matches."));
             return;
         }
 

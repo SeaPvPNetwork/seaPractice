@@ -50,9 +50,9 @@ public interface Reflection {
     }
 
     /**
-     * Sends a packet to a model via reflect.
+     * Sends a packet to a player via reflect.
      *
-     * @param player the model to send the packet to
+     * @param player the player to send the packet to
      * @param packet the packet to send
      */
     default void sendPacket(Player player, Packet<?> packet) {

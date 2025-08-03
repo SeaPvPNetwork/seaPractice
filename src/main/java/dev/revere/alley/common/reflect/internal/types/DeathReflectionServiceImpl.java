@@ -29,9 +29,9 @@ public class DeathReflectionServiceImpl implements Reflection {
     }
 
     /**
-     * Visualizes the death of a model by sending fake entity packets to nearby players.
+     * Visualizes the death of a player by sending fake entity packets to nearby players.
      *
-     * @param player The supposedly dying model.
+     * @param player The supposedly dying player.
      */
     public void animateDeath(Player player) {
         PacketPlayOutNamedEntitySpawn spawnPacket = this.createSpawnPacket(player);
@@ -52,7 +52,7 @@ public class DeathReflectionServiceImpl implements Reflection {
     /**
      * Creates a spawn packet for the fake death entity.
      *
-     * @param player The model whose death animation is being shown.
+     * @param player The player whose death animation is being shown.
      * @return The spawn packet.
      */
     private PacketPlayOutNamedEntitySpawn createSpawnPacket(Player player) {
@@ -108,9 +108,9 @@ public class DeathReflectionServiceImpl implements Reflection {
     }
 
     /**
-     * Retrieves a set of players within a certain radius of the model.
+     * Retrieves a set of players within a certain radius of the player.
      *
-     * @param player The model to check around.
+     * @param player The player to check around.
      * @return A set of nearby players.
      */
     private Set<Player> getPlayersInRange(Player player) {

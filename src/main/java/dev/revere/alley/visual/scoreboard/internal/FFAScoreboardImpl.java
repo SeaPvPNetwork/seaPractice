@@ -29,7 +29,7 @@ public class FFAScoreboardImpl implements Scoreboard {
      * Get the title of the scoreboard.
      *
      * @param profile The profile to get the title for.
-     * @param player  The model to get the title for.
+     * @param player  The player to get the title for.
      * @return The title of the scoreboard.
      */
     @Override
@@ -46,7 +46,7 @@ public class FFAScoreboardImpl implements Scoreboard {
         List<String> combatTagLines = configService.getScoreboardConfig().getStringList("ffa-combat-tag");
 
         for (String line : ffaLines) {
-            if (line.contains("{model-combat}")) {
+            if (line.contains("{player-combat}")) {
                 if (combatService.isPlayerInCombat(player.getUniqueId())) {
                     for (String combatLine : combatTagLines) {
                         scoreboardLines.add(CC.translate(combatLine

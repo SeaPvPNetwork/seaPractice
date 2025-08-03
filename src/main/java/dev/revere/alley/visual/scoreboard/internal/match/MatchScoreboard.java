@@ -19,18 +19,18 @@ public interface MatchScoreboard {
      * Gets the scoreboard lines for the given profile in a regular solo match.
      *
      * @param profile  The profile to get the scoreboard lines for.
-     * @param player   The model whose scoreboard is being displayed.
-     * @param you      The model whose scoreboard is being displayed.
-     * @param opponent The opponent model.
+     * @param player   The player whose scoreboard is being displayed.
+     * @param you      The player whose scoreboard is being displayed.
+     * @param opponent The opponent player.
      * @return The scoreboard lines.
      */
     List<String> getLines(Profile profile, Player player, GameParticipant<MatchGamePlayer> you, GameParticipant<MatchGamePlayer> opponent);
 
     /**
-     * Gets the corresponding color of the model including the model's name.
+     * Gets the corresponding color of the player including the player's name.
      *
-     * @param profile The profile of the model.
-     * @return The formatted model name with color.
+     * @param profile The profile of the player.
+     * @return The formatted player name with color.
      */
     default String getColoredName(Profile profile) {
         ChatColor nameColor = profile.getNameColor();
@@ -44,10 +44,10 @@ public interface MatchScoreboard {
     }
 
     /**
-     * Gets the ping of the model by using reflect.
+     * Gets the ping of the player by using reflect.
      *
-     * @param player The model to get the ping for.
-     * @return The ping of the model.
+     * @param player The player to get the ping for.
+     * @return The ping of the player.
      */
     default int getPing(Player player) {
         if (player == null) {

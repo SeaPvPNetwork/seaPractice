@@ -45,9 +45,9 @@ public class NametagPerspective {
     }
 
     /**
-     * Calculates and applies the nametag for a target model, as seen by this manager's owner.
+     * Calculates and applies the nametag for a target player, as seen by this manager's owner.
      *
-     * @param target The model whose nametag is to be updated for the viewer.
+     * @param target The player whose nametag is to be updated for the viewer.
      */
     public void updateNametagFor(Player target) {
         if (!viewer.isOnline() || !target.isOnline()) {

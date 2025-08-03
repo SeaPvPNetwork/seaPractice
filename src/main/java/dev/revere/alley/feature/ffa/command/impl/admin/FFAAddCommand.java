@@ -15,14 +15,14 @@ import org.bukkit.entity.Player;
  * @since 04/06/2025
  */
 public class FFAAddCommand extends BaseCommand {
-    @CommandData(name = "ffa.add", isAdminOnly = true, usage = "/ffa add <model> <kit>", description = "Add a model to an FFA match", aliases = {"ffa.addplayer", "ffa.addp"})
+    @CommandData(name = "ffa.add", isAdminOnly = true, usage = "/ffa add <player> <kit>", description = "Add a player to an FFA match", aliases = {"ffa.addplayer", "ffa.addp"})
     @Override
     public void onCommand(CommandArgs command) {
         Player player = command.getPlayer();
         String[] args = command.getArgs();
 
         if (args.length < 2) {
-            player.sendMessage(CC.translate("&6Usage: &e/ffa add &6<model> <kit>"));
+            player.sendMessage(CC.translate("&6Usage: &e/ffa add &6<player> <kit>"));
             return;
         }
 

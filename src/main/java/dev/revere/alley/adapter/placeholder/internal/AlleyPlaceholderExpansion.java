@@ -24,8 +24,8 @@ public class AlleyPlaceholderExpansion extends PlaceholderExpansion {
     /*
      * Examples:
      *
-     * %alley_division_<kit_name>% | returns the model's division in the specified kit
-     * %alley_global-elo% | returns the model's global Elo
+     * %alley_division_<kit_name>% | returns the player's division in the specified kit
+     * %alley_global-elo% | returns the player's global Elo
      */
 
     protected final AlleyPlugin plugin;

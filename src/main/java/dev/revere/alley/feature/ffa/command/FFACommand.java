@@ -85,15 +85,15 @@ public class FFACommand extends BaseCommand {
                     " &f● &6/ffa listplayers &8(&7ffaName&8) &7| List all players playing ffa",
             },
             {
-                    " &f● &6/ffa maxplayers &8(&7ffaName&8) &8(&7amount&8) &7| Set the max model count.",
+                    " &f● &6/ffa maxplayers &8(&7ffaName&8) &8(&7amount&8) &7| Set the max player count.",
                     " &f● &6/ffa safezone &8(&7kitName&8) &8(&7pos1/pos2&8) &7| Set the spawn safezone bounds",
                     " &f● &6/ffa setspawn &8(&7ffaName&8) &7| Set the spawn location for an FFA arena",
                     " &f● &6/ffa setarena &8(&7ffaName&8) &7| Set arena of a ffa match",
                     " &f● &6/ffa setslot &8(&7ffaName&8) &8(&7slotNumber&8) &7| Set menu slot"
             },
             {
-                    " &f● &6/ffa add &8(&7playerName&8) &8(&7ffaName&8) &7| Add a model",
-                    " &f● &6/ffa kick &8(&7playerName&8) &7| Kick a model"
+                    " &f● &6/ffa add &8(&7playerName&8) &8(&7ffaName&8) &7| Add a player",
+                    " &f● &6/ffa kick &8(&7playerName&8) &7| Kick a player"
             }
     };
 }

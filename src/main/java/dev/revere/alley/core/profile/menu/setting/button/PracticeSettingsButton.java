@@ -87,7 +87,7 @@ public class PracticeSettingsButton extends Button {
                 }
                 break;
             case BOOK:
-                //new MatchSettingsMenu().openMenu(model);
+                //new MatchSettingsMenu().openMenu(player);
                 player.closeInventory();
                 player.sendMessage(CC.translate("&cThis feature is currently in development."));
                 break;
@@ -118,7 +118,7 @@ public class PracticeSettingsButton extends Button {
      * Gets the next world time based on the click type.
      *
      * @param clickType the type of click
-     * @param profile   the model's profile
+     * @param profile   the player's profile
      * @return the next world time
      */
     private WorldTime getNextWorldTime(ClickType clickType, Profile profile) {

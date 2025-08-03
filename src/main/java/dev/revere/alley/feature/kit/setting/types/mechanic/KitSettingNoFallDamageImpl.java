@@ -8,6 +8,6 @@ import dev.revere.alley.feature.kit.setting.annotation.KitSettingData;
  * @project Alley
  * @date 16/10/2024 - 14:01
  */
-@KitSettingData(name = "NoFallDamage", description = "Prevent the model from taking fall damage", enabled = false)
+@KitSettingData(name = "NoFallDamage", description = "Prevent the player from taking fall damage", enabled = false)
 public class KitSettingNoFallDamageImpl extends KitSetting {
 }

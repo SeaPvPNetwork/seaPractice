@@ -37,7 +37,7 @@ public class AssembleBoard {
     }
 
     /**
-     * Get's a model's bukkit scoreboard.
+     * Get's a player's bukkit scoreboard.
      *
      * @return either existing scoreboard or new scoreboard.
      */
@@ -51,7 +51,7 @@ public class AssembleBoard {
     }
 
     /**
-     * Get's the model's scoreboard objective.
+     * Get's the player's scoreboard objective.
      *
      * @return either existing objecting or new objective.
      */
@@ -68,7 +68,7 @@ public class AssembleBoard {
     }
 
     /**
-     * Setup the board for a model.
+     * Setup the board for a player.
      *
      * @param player who's board to setup.
      */

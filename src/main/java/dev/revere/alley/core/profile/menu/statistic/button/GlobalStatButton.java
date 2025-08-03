@@ -27,7 +27,7 @@ public class GlobalStatButton extends Button {
     /**
      * Gets the item to display in the menu.
      *
-     * @param player the model viewing the menu
+     * @param player the player viewing the menu
      * @return the item to display
      */
     @Override

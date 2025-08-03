@@ -36,7 +36,7 @@ public class PlayerProgress {
     }
 
     /**
-     * @return The number of additional wins required to reach the next model.
+     * @return The number of additional wins required to reach the next tier.
      */
     public int getWinsRequired() {
         if (isMaxRank) return 0;

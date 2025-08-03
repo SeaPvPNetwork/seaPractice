@@ -50,7 +50,7 @@ public class ProfileServiceImpl implements ProfileService {
 
     @Override
     public void shutdown(AlleyContext context) {
-        Logger.info("Saving all loaded model profiles...");
+        Logger.info("Saving all loaded player profiles...");
         this.profiles.values().forEach(Profile::save);
         Logger.info("Profile saving complete.");
     }

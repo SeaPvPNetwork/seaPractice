@@ -44,29 +44,29 @@ public class NametagAdapter {
     }
 
     /**
-     * Sends the team creation packet to a specific model.
+     * Sends the team creation packet to a specific player.
      *
-     * @param player The model to send the packet to.
+     * @param player The player to send the packet to.
      */
     public void sendCreationPacket(Player player) {
         createPacket(0).sendToPlayer(player);
     }
 
     /**
-     * Adds a model to this team for a specific viewer.
+     * Adds a player to this team for a specific viewer.
      *
-     * @param player The model to add to the team.
-     * @param viewer The model who needs to see this change.
+     * @param player The player to add to the team.
+     * @param viewer The player who needs to see this change.
      */
     public void addPlayer(Player player, Player viewer) {
         createPacket(3, player.getName()).sendToPlayer(viewer);
     }
 
     /**
-     * Removes a model from this team for a specific viewer.
+     * Removes a player from this team for a specific viewer.
      *
-     * @param player The model to remove from the team.
-     * @param viewer The model who needs to see this change.
+     * @param player The player to remove from the team.
+     * @param viewer The player who needs to see this change.
      */
     public void removePlayer(Player player, Player viewer) {
         createPacket(4, player.getName()).sendToPlayer(viewer);

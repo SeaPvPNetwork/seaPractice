@@ -51,7 +51,7 @@ public class PartyChatCommand extends BaseCommand {
             return;
         }
 
-        String partyMessage = this.plugin.getService(PartyService.class).getChatFormat().replace("{model}", player.getName()).replace("{message}", message);
+        String partyMessage = this.plugin.getService(PartyService.class).getChatFormat().replace("{player}", player.getName()).replace("{message}", message);
         profile.getParty().notifyParty(partyMessage);
     }
 }

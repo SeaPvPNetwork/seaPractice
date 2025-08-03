@@ -20,10 +20,10 @@ public class LeaderboardPlayerData {
     /**
      * Constructor for the LeaderboardEntry class.
      *
-     * @param name  The name of the model
-     * @param uuid  The UUID of the model
-     * @param kit   The kit of the model
-     * @param value The value of the model
+     * @param name  The name of the player
+     * @param uuid  The UUID of the player
+     * @param kit   The kit of the player
+     * @param value The value of the player
      */
     public LeaderboardPlayerData(String name, UUID uuid, Kit kit, int value) {
         this.name = name;

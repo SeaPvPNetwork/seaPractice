@@ -77,7 +77,7 @@ public class HostMenu extends Menu {
                     // Open the tournament menu
                     break;
                 case EMPTY_MAP:
-                    //new EventMenu().openMenu(model);
+                    //new EventMenu().openMenu(player);
                     break;
             }
 

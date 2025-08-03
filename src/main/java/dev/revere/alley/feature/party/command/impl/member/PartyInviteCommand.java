@@ -58,7 +58,7 @@ public class PartyInviteCommand extends BaseCommand {
 
         Profile targetProfile = profileService.getProfile(targetPlayer.getUniqueId());
         if (!targetProfile.getProfileData().getSettingData().isPartyInvitesEnabled()) {
-            player.sendMessage(CC.translate(PartyLocale.PLAYER_DISABLED_PARTY_INVITES.getMessage().replace("{model}", target)));
+            player.sendMessage(CC.translate(PartyLocale.PLAYER_DISABLED_PARTY_INVITES.getMessage().replace("{player}", target)));
             return;
         }
 

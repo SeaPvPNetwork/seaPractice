@@ -76,7 +76,7 @@ public class DivisionServiceImpl implements DivisionService {
             Material icon = Material.getMaterial(iconName.toUpperCase());
 
             List<DivisionTier> tiers = new ArrayList<>();
-            ConfigurationSection tierLevels = config.getConfigurationSection(path + ".model-levels");
+            ConfigurationSection tierLevels = config.getConfigurationSection(path + ".tier-levels");
             if (tierLevels != null) {
                 for (String tierKey : tierLevels.getKeys(false)) {
                     int requiredWins = tierLevels.getInt(tierKey + ".required-wins");
@@ -111,7 +111,7 @@ public class DivisionServiceImpl implements DivisionService {
         config.set(path + ".icon", division.getIcon().name());
 
         for (DivisionTier tier : division.getTiers()) {
-            String tierPath = path + ".model-levels." + tier.getName();
+            String tierPath = path + ".tier-levels." + tier.getName();
             config.set(tierPath + ".required-wins", tier.getRequiredWins());
         }
 

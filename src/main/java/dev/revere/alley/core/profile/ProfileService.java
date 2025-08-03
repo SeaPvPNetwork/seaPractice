@@ -17,13 +17,13 @@ import java.util.UUID;
  */
 public interface ProfileService extends Service {
     /**
-     * Gets a model's profile by their UUID.
+     * Gets a player's profile by their UUID.
      * <p>
      * This method features lazy-loading: if the profile is not found in the cache,
      * it will be loaded from the database on-demand.
      *
-     * @param uuid The UUID of the model.
-     * @return The model's Profile object.
+     * @param uuid The UUID of the player.
+     * @return The player's Profile object.
      */
     Profile getProfile(UUID uuid);
 
@@ -63,15 +63,15 @@ public interface ProfileService extends Service {
     void removeProfile(UUID uuid);
 
     /**
-     * Resets the statistics for a target model and archives their old profile.
+     * Resets the statistics for a target player and archives their old profile.
      *
      * @param player The staff member issuing the command.
-     * @param target The UUID of the model whose stats are being reset.
+     * @param target The UUID of the player whose stats are being reset.
      */
     void resetStats(Player player, UUID target);
 
     /**
-     * Resets the inventory layout for a specific kit across all model profiles.
+     * Resets the inventory layout for a specific kit across all player profiles.
      *
      * @param kit The kit to reset the layout for.
      */

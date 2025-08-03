@@ -80,7 +80,7 @@ public class MatchScoreboardHideAndSeek extends BaseMatchScoreboard {
         }
 
         return baseLine
-                .replace("{model-role}", playerRole)
+                .replace("{player-role}", playerRole)
                 .replace("{time-left}", timeLeft)
                 .replace("{hiders-alive}", String.valueOf(hidersAlive))
                 .replace("{hiders-total}", String.valueOf(hiders.getPlayerSize()))

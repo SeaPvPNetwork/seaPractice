@@ -51,7 +51,7 @@ public class PartyAcceptCommand extends BaseCommand {
 
         PartyRequest partyRequest = partyService.getRequest(player);
         if (partyRequest == null || !partyRequest.getSender().equals(target)) {
-            player.sendMessage(CC.translate(PartyLocale.NO_PARTY_INVITE.getMessage().replace("{model}", target.getName())));
+            player.sendMessage(CC.translate(PartyLocale.NO_PARTY_INVITE.getMessage().replace("{player}", target.getName())));
             return;
         }
 

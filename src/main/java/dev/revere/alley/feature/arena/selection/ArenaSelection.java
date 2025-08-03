@@ -33,9 +33,9 @@ public class ArenaSelection {
     }
 
     /**
-     * Creates a selection based on the model.
+     * Creates a selection based on the player.
      *
-     * @param player The model to create the selection for.
+     * @param player The player to create the selection for.
      * @return The selection created.
      */
     public static ArenaSelection createSelection(Player player) {
@@ -50,9 +50,9 @@ public class ArenaSelection {
     }
 
     /**
-     * Gets the selection of the model.
+     * Gets the selection of the player.
      *
-     * @param player The model to get the selection of.
+     * @param player The player to get the selection of.
      */
     public static void removeSelection(Player player) {
         if (player.hasMetadata(SELECTION_METADATA)) {
@@ -61,9 +61,9 @@ public class ArenaSelection {
     }
 
     /**
-     * Checks if the model has a selection.
+     * Checks if the player has a selection.
      *
-     * @return True if the model has a selection, false otherwise.
+     * @return True if the player has a selection, false otherwise.
      */
     public boolean hasSelection() {
         return minimum != null && maximum != null;
