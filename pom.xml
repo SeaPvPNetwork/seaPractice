@@ -57,12 +57,18 @@
                                 <filter>
                                     <artifact>*:*</artifact>
                                     <excludes>
+                                        <exclude>net/minecraft/**</exclude>
+                                        <exclude>org/bukkit/craftbukkit/**</exclude>
                                         <exclude>org/bukkit/**</exclude>
                                         <exclude>org/spigotmc/**</exclude>
                                         <exclude>me/clip/**</exclude>
                                         <exclude>com/comphenix/**</exclude>
                                         <exclude>com/boydti/**</exclude>
                                         <exclude>net/citizensnpcs/**</exclude>
+                                        <exclude>com/sk89q/**</exclude>
+                                        <exclude>xyz/refinedev/**</exclude>
+                                        <exclude>me/activated/**</exclude>
+                                        <exclude>com/github/plasmaservices/**</exclude>
                                     </excludes>
                                 </filter>
                                 <filter>
@@ -192,6 +198,7 @@
             <groupId>com.sk89q.worldedit</groupId>
             <artifactId>WorldEdit</artifactId>
             <version>6.0.0</version>
+            <scope>provided</scope>
         </dependency>
 
         <!-- ProtocolLib -->
@@ -209,6 +216,13 @@
             <version>4.11.1</version>
         </dependency>
 
+        <!-- Reflections -->
+        <dependency>
+            <groupId>org.reflections</groupId>
+            <artifactId>reflections</artifactId>
+            <version>0.10.2</version>
+        </dependency>
+
         <!-- https://mvnrepository.com/artifact/me.clip/placeholderapi -->
         <dependency>
             <groupId>me.clip</groupId>
@@ -222,13 +236,7 @@
             <groupId>org.bukkit.craftbukkit</groupId>
             <artifactId>1.8.8</artifactId>
             <version>1.8.8</version>
-        </dependency>
-
-        <!-- Reflections -->
-        <dependency>
-            <groupId>org.reflections</groupId>
-            <artifactId>reflections</artifactId>
-            <version>0.10.2</version>
+            <scope>provided</scope>
         </dependency>
 
         <!-- Citizens API -->
@@ -237,7 +245,7 @@
             <artifactId>citizensapi</artifactId>
             <version>2.0.27-SNAPSHOT</version>
             <type>jar</type>
-            <scope>compile</scope>
+            <scope>provided</scope>
         </dependency>
 
         <!-- Helium API -->
@@ -245,6 +253,7 @@
             <groupId>com.github.PlasmaServices</groupId>
             <artifactId>HeliumAPI</artifactId>
             <version>latest-build</version>
+            <scope>provided</scope>
         </dependency>
 
         <!-- Phoenix API -->
