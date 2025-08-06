@@ -1,6 +1,7 @@
 package dev.revere.alley.feature.cosmetic.menu.button;
 
 import dev.revere.alley.AlleyPlugin;
+import dev.revere.alley.feature.cosmetic.internal.repository.impl.suit.BaseSuit;
 import dev.revere.alley.library.menu.Button;
 import dev.revere.alley.feature.cosmetic.model.BaseCosmetic;
 import dev.revere.alley.core.profile.ProfileService;
@@ -73,6 +74,8 @@ public class CosmeticButton extends Button {
             this.playFail(player);
             return;
         }
+
+        cosmetic.getType().handleSelection(cosmetic, player);
 
         cosmeticData.setSelected(cosmetic);
 

@@ -33,6 +33,7 @@ public class PracticeSettingsMenu extends Menu {
 
         for (PracticeSettingType type : PracticeSettingType.values()) {
             buttons.put(type.slot, new PracticeSettingsButton(
+                    type,
                     type.displayName,
                     type.material,
                     type.durability,

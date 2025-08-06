@@ -10,10 +10,9 @@ import lombok.Getter;
  * @date 01/06/2024
  */
 @Getter
-public class KillEffectRepository extends BaseCosmeticRepository<BaseCosmetic> {
+public class KillEffectRepository extends BaseCosmeticRepository<BaseKillEffect> {
     public KillEffectRepository() {
         this.registerCosmetic(BloodKillEffect.class);
-        this.registerCosmetic(BodyFallKillEffect.class);
         this.registerCosmetic(ExplosionKillEffect.class);
         this.registerCosmetic(FireworkKillEffect.class);
         this.registerCosmetic(HeartKillEffect.class);

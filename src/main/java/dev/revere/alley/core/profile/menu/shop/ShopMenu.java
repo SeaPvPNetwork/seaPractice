@@ -25,8 +25,10 @@ public class ShopMenu extends Menu {
     public Map<Integer, Button> getButtons(Player player) {
         final Map<Integer, Button> buttons = new HashMap<>();
 
-        buttons.put(11, new ShopCategoryButton(CosmeticType.KILL_EFFECT, Material.DIAMOND_SWORD));
-        buttons.put(12, new ShopCategoryButton(CosmeticType.SOUND_EFFECT, Material.NOTE_BLOCK));
+        buttons.put(10, new ShopCategoryButton(CosmeticType.KILL_EFFECT, Material.DIAMOND_SWORD));
+        buttons.put(11, new ShopCategoryButton(CosmeticType.SOUND_EFFECT, Material.NOTE_BLOCK));
+        buttons.put(12, new ShopCategoryButton(CosmeticType.CLOAK, Material.BLAZE_POWDER));
+        buttons.put(13, new ShopCategoryButton(CosmeticType.SUIT, Material.GOLD_CHESTPLATE));
         buttons.put(14, new ShopCategoryButton(CosmeticType.PROJECTILE_TRAIL, Material.ARROW));
         buttons.put(15, new ShopCategoryButton(CosmeticType.KILL_MESSAGE, Material.BOOK_AND_QUILL));
 

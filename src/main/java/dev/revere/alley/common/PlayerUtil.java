@@ -4,6 +4,11 @@ import dev.revere.alley.AlleyPlugin;
 import dev.revere.alley.core.profile.ProfileService;
 import dev.revere.alley.core.profile.Profile;
 import dev.revere.alley.core.profile.enums.ProfileState;
+import dev.revere.alley.feature.cosmetic.CosmeticService;
+import dev.revere.alley.feature.cosmetic.internal.repository.BaseCosmeticRepository;
+import dev.revere.alley.feature.cosmetic.internal.repository.SuitRepository;
+import dev.revere.alley.feature.cosmetic.internal.repository.impl.suit.BaseSuit;
+import dev.revere.alley.feature.cosmetic.model.CosmeticType;
 import lombok.experimental.UtilityClass;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
@@ -47,17 +52,20 @@ public class PlayerUtil {
 
         player.setExp(0.0F);
         player.setLevel(0);
-
         player.setGameMode(GameMode.SURVIVAL);
 
         player.getInventory().setArmorContents(new ItemStack[4]);
         player.getInventory().setContents(new ItemStack[36]);
-
         player.getActivePotionEffects().forEach(effect -> player.removePotionEffect(effect.getType()));
-        player.updateInventory();
 
         // Clears visuals from the player's model
         ((CraftPlayer) player).getHandle().getDataWatcher().watch(9, (byte) 0);
+
+        if (inLobby(player)) {
+            equipSelectedSuit(player);
+        }
+
+        player.updateInventory();
 
         if (closeInventory) {
             player.closeInventory();
@@ -70,8 +78,48 @@ public class PlayerUtil {
      * @param player the player to start flying.
      */
     public boolean canFly(Player player) {
+        return inLobby(player) && player.hasPermission("alley.donator.fly");
+    }
+
+    /**
+     * Checks if the player is in the lobby or waiting state.
+     *
+     * @param player the player to check.
+     * @return true if the player is in the lobby or waiting state, false otherwise.
+     */
+    public boolean inLobby(Player player) {
         Profile profile = AlleyPlugin.getInstance().getService(ProfileService.class).getProfile(player.getUniqueId());
-        return (profile.getState() == ProfileState.LOBBY || profile.getState() == ProfileState.WAITING) && player.hasPermission("alley.donator.fly");
+        return profile != null && (profile.getState() == ProfileState.LOBBY || profile.getState() == ProfileState.WAITING);
+    }
+
+    private void equipSelectedSuit(Player player) {
+        ProfileService profileService = AlleyPlugin.getInstance().getService(ProfileService.class);
+        Profile profile = profileService.getProfile(player.getUniqueId());
+        if (profile == null) {
+            return;
+        }
+
+        CosmeticService cosmeticService = AlleyPlugin.getInstance().getService(CosmeticService.class);
+        if (cosmeticService == null) {
+            return;
+        }
+
+        String selectedSuitName = profile.getProfileData().getCosmeticData().getSelectedSuit();
+        if (selectedSuitName == null || selectedSuitName.equalsIgnoreCase("None")) {
+            return;
+        }
+
+        SuitRepository suitRepository = cosmeticService.getRepository(CosmeticType.SUIT, SuitRepository.class);
+        if (suitRepository == null) {
+            return;
+        }
+
+        BaseSuit suit = suitRepository.getCosmetic(selectedSuitName);
+        if (suit == null) {
+            return;
+        }
+
+        suit.equip(player);
     }
 
     public static void decrement(Player player) {

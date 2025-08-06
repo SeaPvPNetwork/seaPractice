@@ -19,6 +19,7 @@ public enum ProfileLocale implements Locale {
     TOGGLED_PROFANITY_FILTER("messages.yml", "player-settings.profanity-filter"),
     TOGGLED_DUEL_REQUESTS("messages.yml", "player-settings.duel-requests"),
     TOGGLED_LOBBY_MUSIC("messages.yml", "player-settings.lobby-music"),
+    TOGGLED_SERVER_TITLES("messages.yml", "player-settings.server-titles"),
 
     IS_BUSY("messages.yml", "error-messages.player.is-busy"),
 

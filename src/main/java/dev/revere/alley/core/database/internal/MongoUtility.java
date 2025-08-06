@@ -1,6 +1,7 @@
 package dev.revere.alley.core.database.internal;
 
 import dev.revere.alley.AlleyPlugin;
+import dev.revere.alley.feature.cosmetic.model.CosmeticType;
 import dev.revere.alley.feature.division.Division;
 import dev.revere.alley.feature.division.DivisionService;
 import dev.revere.alley.feature.layout.data.LayoutData;
@@ -361,6 +362,7 @@ public class MongoUtility {
                 .put("profanityFilterEnabled", settingData.isProfanityFilterEnabled())
                 .put("receiveDuelRequestsEnabled", settingData.isReceiveDuelRequestsEnabled())
                 .put("lobbyMusicEnabled", settingData.isLobbyMusicEnabled())
+                .put("serverTitles", settingData.isServerTitles())
                 .put("chatChannel", safeString(settingData.getChatChannel()))
                 .put("time", safeString(settingData.getTime()))
                 .build();
@@ -376,11 +378,19 @@ public class MongoUtility {
     private static Document convertProfileCosmeticData(ProfileCosmeticData cosmeticData) {
         if (cosmeticData == null) return new Document();
 
+        Document selectedCosmetics = new Document();
+        for (Map.Entry<CosmeticType, String> entry : cosmeticData.getSelectedCosmetics().entrySet()) {
+            selectedCosmetics.put(entry.getKey().name(), safeString(entry.getValue()));
+        }
+
         return new DocumentBuilder()
+                .put("selectedCosmetics", selectedCosmetics)
                 .put("selectedKillEffect", safeString(cosmeticData.getSelectedKillEffect()))
                 .put("selectedKillMessage", safeString(cosmeticData.getSelectedKillMessage()))
                 .put("selectedSoundEffect", safeString(cosmeticData.getSelectedSoundEffect()))
                 .put("selectedProjectileTrail", safeString(cosmeticData.getSelectedProjectileTrail()))
+                .put("selectedSuit", safeString(cosmeticData.getSelectedSuit()))
+                .put("selectedCloak", safeString(cosmeticData.getSelectedCloak()))
                 .build();
     }
 
@@ -624,6 +634,7 @@ public class MongoUtility {
         settingData.setProfanityFilterEnabled(settingDocument.getBoolean("profanityFilterEnabled", DEFAULT_BOOLEAN_TRUE));
         settingData.setReceiveDuelRequestsEnabled(settingDocument.getBoolean("receiveDuelRequestsEnabled", DEFAULT_BOOLEAN_TRUE));
         settingData.setLobbyMusicEnabled(settingDocument.getBoolean("lobbyMusicEnabled", DEFAULT_BOOLEAN_TRUE));
+        settingData.setServerTitles(settingDocument.getBoolean("serverTitles", DEFAULT_BOOLEAN_TRUE));
 
         String chatChannel = settingDocument.getString("chatChannel");
         settingData.setChatChannel(chatChannel != null ? chatChannel : ChatChannel.GLOBAL.toString());
@@ -646,10 +657,25 @@ public class MongoUtility {
         ProfileCosmeticData cosmeticData = new ProfileCosmeticData();
         if (cosmeticDocument == null) return cosmeticData;
 
-        cosmeticData.setSelectedKillEffect(cosmeticDocument.getString("selectedKillEffect"));
-        cosmeticData.setSelectedKillMessage(cosmeticDocument.getString("selectedKillMessage"));
-        cosmeticData.setSelectedSoundEffect(cosmeticDocument.getString("selectedSoundEffect"));
-        cosmeticData.setSelectedProjectileTrail(cosmeticDocument.getString("selectedProjectileTrail"));
+        Document selectedCosmetics = cosmeticDocument.get("selectedCosmetics", Document.class);
+        if (selectedCosmetics != null) {
+            for (CosmeticType type : CosmeticType.values()) {
+                String value = selectedCosmetics.getString(type.name());
+                if (value != null) {
+                    cosmeticData.getSelectedCosmetics().put(type, value);
+                }
+            }
+            return cosmeticData;
+        }
+
+        for (CosmeticType type : CosmeticType.values()) {
+            String legacyFieldName = getLegacyFieldName(type);
+            String value = cosmeticDocument.getString(legacyFieldName);
+            if (value != null) {
+                cosmeticData.getSelectedCosmetics().put(type, value);
+            }
+        }
+
         return cosmeticData;
     }
 
@@ -671,6 +697,25 @@ public class MongoUtility {
         playTimeData.setLastLogin(lastLogin != null ? lastLogin : DEFAULT_LONG);
 
         return playTimeData;
+    }
+
+    /**
+     * Returns the legacy field name for a given CosmeticType.
+     * This method is used to maintain backward compatibility with older database schemas.
+     *
+     * @param type The CosmeticType to get the legacy field name for
+     * @return The legacy field name as a String
+     */
+    private static String getLegacyFieldName(CosmeticType type) {
+        switch (type) {
+            case KILL_EFFECT: return "selectedKillEffect";
+            case KILL_MESSAGE: return "selectedKillMessage";
+            case SOUND_EFFECT: return "selectedSoundEffect";
+            case PROJECTILE_TRAIL: return "selectedProjectileTrail";
+            case SUIT: return "selectedSuit";
+            case CLOAK: return "selectedCloak";
+            default: return "selected" + type.name();
+        }
     }
 
     /**

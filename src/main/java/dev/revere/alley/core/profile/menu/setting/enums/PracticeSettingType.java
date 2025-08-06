@@ -111,6 +111,17 @@ public enum PracticeSettingType {
                     CC.MENU_BAR
             )
     ),
+    SERVER_TITLES(22, "&6&lServer Titles", Material.PAPER,
+            settings -> Arrays.asList(
+                    CC.MENU_BAR,
+                    "&7Display titles sent by the server.",
+                    "",
+                    LoreHelper.displayShown(settings.isServerTitles()),
+                    "",
+                    "&aClick to toggle.",
+                    CC.MENU_BAR
+            )
+    ),
 
     MATCH_SETTINGS(16, "&6&lMatch Settings", Material.BOOK,
             settings -> Arrays.asList(

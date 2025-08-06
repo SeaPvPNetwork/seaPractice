@@ -2,6 +2,7 @@ package dev.revere.alley.bootstrap.listener.internal;
 
 import dev.revere.alley.AlleyPlugin;
 import dev.revere.alley.adapter.core.listener.CoreChatListener;
+import dev.revere.alley.feature.cosmetic.CosmeticListener;
 import dev.revere.alley.library.menu.MenuListener;
 import dev.revere.alley.feature.arena.listener.ArenaListener;
 import dev.revere.alley.feature.combat.listener.CombatListener;
@@ -66,7 +67,9 @@ public class ListenerServiceImpl implements ListenerService {
 
                 new MatchListener(), new MatchInteractListener(),
                 new MatchPearlListener(), new MatchDisconnectListener(),
-                new MatchDamageListener(), new MatchChatListener(), new MatchBlockListener()
+                new MatchDamageListener(), new MatchChatListener(), new MatchBlockListener(),
+
+                new CosmeticListener()
 
         ).forEach(listener -> plugin.getServer().getPluginManager().registerEvents(listener, plugin));
     }

@@ -1,7 +1,10 @@
 package dev.revere.alley.common.reflect.internal.types;
 
+import dev.revere.alley.AlleyPlugin;
 import dev.revere.alley.common.reflect.Reflection;
 import dev.revere.alley.common.text.CC;
+import dev.revere.alley.core.profile.Profile;
+import dev.revere.alley.core.profile.ProfileService;
 import net.minecraft.server.v1_8_R3.IChatBaseComponent;
 import net.minecraft.server.v1_8_R3.PacketPlayOutTitle;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
@@ -26,6 +29,11 @@ public class TitleReflectionServiceImpl implements Reflection {
     public void sendTitle(Player player, String title, String subtitle, int fadeIn, int stay, int fadeOut) {
         CraftPlayer craftPlayer = this.getCraftPlayer(player);
         if (craftPlayer == null) return;
+
+        Profile profile = AlleyPlugin.getInstance().getService(ProfileService.class).getProfile(player.getUniqueId());
+        if (profile == null || !profile.isOnline() || !profile.getProfileData().getSettingData().isServerTitles()) {
+            return;
+        }
 
         String translatedTitle = CC.translate(title);
         String translatedSubtitle = CC.translate(subtitle);
