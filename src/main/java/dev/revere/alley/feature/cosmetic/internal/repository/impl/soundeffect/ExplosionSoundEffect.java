@@ -14,8 +14,7 @@ import org.bukkit.entity.Player;
  * @since 02/04/2025
  */
 @CosmeticData(type = CosmeticType.SOUND_EFFECT, name = "Explosion", description = "Play an explosion sound", permission = "explosion", icon = Material.TNT, slot = 12)
-public class ExplosionSoundEffect extends BaseCosmetic {
-
+public class ExplosionSoundEffect extends BaseSoundEffect {
     @Override
     public void execute(Player player) {
         SoundUtil.playCustomSound(player, Sound.EXPLODE, 1.0f, 1.0f);

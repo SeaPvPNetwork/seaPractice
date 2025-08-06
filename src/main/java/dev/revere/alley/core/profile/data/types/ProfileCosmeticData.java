@@ -6,6 +6,9 @@ import dev.revere.alley.feature.cosmetic.model.CosmeticType;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.EnumMap;
+import java.util.Map;
+
 /**
  * @author Remi
  * @project Alley
@@ -15,16 +18,14 @@ import lombok.Setter;
 @Setter
 public class ProfileCosmeticData {
     protected final AlleyPlugin plugin = AlleyPlugin.getInstance();
-    private String selectedKillEffect;
-    private String selectedSoundEffect;
-    private String selectedProjectileTrail;
-    private String selectedKillMessage;
+    private Map<CosmeticType, String> selectedCosmetics;
 
     public ProfileCosmeticData() {
-        this.selectedKillEffect = "None";
-        this.selectedSoundEffect = "None";
-        this.selectedProjectileTrail = "None";
-        this.selectedKillMessage = "None";
+        this.selectedCosmetics = new EnumMap<>(CosmeticType.class);
+
+        for (CosmeticType type : CosmeticType.values()) {
+            this.selectedCosmetics.put(type, "None");
+        }
     }
 
     /**
@@ -34,42 +35,17 @@ public class ProfileCosmeticData {
      */
     public void setSelected(BaseCosmetic cosmetic) {
         if (cosmetic == null) return;
-
-        switch (cosmetic.getType()) {
-            case KILL_EFFECT:
-                this.selectedKillEffect = cosmetic.getName();
-                break;
-            case SOUND_EFFECT:
-                this.selectedSoundEffect = cosmetic.getName();
-                break;
-            case PROJECTILE_TRAIL:
-                this.selectedProjectileTrail = cosmetic.getName();
-                break;
-            case KILL_MESSAGE:
-                this.selectedKillMessage = cosmetic.getName();
-                break;
-        }
+        this.selectedCosmetics.put(cosmetic.getType(), cosmetic.getName());
     }
 
     /**
      * Gets the name of the selected cosmetic for a given type.
      *
      * @param type The CosmeticType category to check.
-     * @return The name of the selected cosmetic.
+     * @return The name of the selected cosmetic, or "None" if not found.
      */
     public String getSelected(CosmeticType type) {
-        switch (type) {
-            case KILL_EFFECT:
-                return this.selectedKillEffect;
-            case SOUND_EFFECT:
-                return this.selectedSoundEffect;
-            case PROJECTILE_TRAIL:
-                return this.selectedProjectileTrail;
-            case KILL_MESSAGE:
-                return this.selectedKillMessage;
-            default:
-                return "None";
-        }
+        return this.selectedCosmetics.getOrDefault(type, "None");
     }
 
     /**
@@ -82,5 +58,29 @@ public class ProfileCosmeticData {
         if (cosmetic == null) return false;
         String selectedName = getSelected(cosmetic.getType());
         return cosmetic.getName().equals(selectedName);
+    }
+
+    public String getSelectedKillEffect() {
+        return getSelected(CosmeticType.KILL_EFFECT);
+    }
+
+    public String getSelectedSoundEffect() {
+        return getSelected(CosmeticType.SOUND_EFFECT);
+    }
+
+    public String getSelectedProjectileTrail() {
+        return getSelected(CosmeticType.PROJECTILE_TRAIL);
+    }
+
+    public String getSelectedKillMessage() {
+        return getSelected(CosmeticType.KILL_MESSAGE);
+    }
+
+    public String getSelectedSuit() {
+        return getSelected(CosmeticType.SUIT);
+    }
+
+    public String getSelectedCloak() {
+        return getSelected(CosmeticType.CLOAK);
     }
 }

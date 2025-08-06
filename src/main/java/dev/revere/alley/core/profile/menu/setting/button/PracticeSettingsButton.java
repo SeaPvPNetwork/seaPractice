@@ -1,14 +1,15 @@
 package dev.revere.alley.core.profile.menu.setting.button;
 
 import dev.revere.alley.AlleyPlugin;
-import dev.revere.alley.library.menu.Button;
-import dev.revere.alley.feature.cosmetic.menu.CosmeticsMenu;
-import dev.revere.alley.core.profile.ProfileService;
-import dev.revere.alley.core.profile.Profile;
-import dev.revere.alley.core.profile.enums.WorldTime;
-import dev.revere.alley.core.profile.menu.music.MusicDiscSelectorMenu;
 import dev.revere.alley.common.item.ItemBuilder;
 import dev.revere.alley.common.text.CC;
+import dev.revere.alley.core.profile.Profile;
+import dev.revere.alley.core.profile.ProfileService;
+import dev.revere.alley.core.profile.enums.WorldTime;
+import dev.revere.alley.core.profile.menu.music.MusicDiscSelectorMenu;
+import dev.revere.alley.core.profile.menu.setting.enums.PracticeSettingType;
+import dev.revere.alley.feature.cosmetic.menu.CosmeticsMenu;
+import dev.revere.alley.library.menu.Button;
 import lombok.AllArgsConstructor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -24,6 +25,7 @@ import java.util.List;
  */
 @AllArgsConstructor
 public class PracticeSettingsButton extends Button {
+    private final PracticeSettingType settingType;
     private String displayName;
     private Material material;
     private int durability;
@@ -43,29 +45,8 @@ public class PracticeSettingsButton extends Button {
     public void clicked(Player player, int slot, ClickType clickType, int hotbarSlot) {
         Profile profile = AlleyPlugin.getInstance().getService(ProfileService.class).getProfile(player.getUniqueId());
 
-        if (this.material == Material.WATCH) {
-            WorldTime newTime = this.getNextWorldTime(clickType, profile);
-            profile.getProfileData().getSettingData().setTime(newTime.getName());
-
-            switch (newTime) {
-                case DEFAULT:
-                    profile.getProfileData().getSettingData().setTimeDefault(player);
-                    player.sendMessage(CC.translate("&aYou have reset your world time."));
-                    break;
-                case DAY:
-                    profile.getProfileData().getSettingData().setTimeDay(player);
-                    player.sendMessage(CC.translate("&aYou have set the time to day."));
-                    break;
-                case SUNSET:
-                    profile.getProfileData().getSettingData().setTimeSunset(player);
-                    player.sendMessage(CC.translate("&aYou have set the time to sunset."));
-                    break;
-                case NIGHT:
-                    profile.getProfileData().getSettingData().setTimeNight(player);
-                    player.sendMessage(CC.translate("&aYou have set the time to night."));
-                    break;
-            }
-
+        if (this.settingType == PracticeSettingType.WORLD_TIME) {
+            handleWorldTimeClick(player, profile, clickType);
             this.playNeutral(player);
             return;
         }
@@ -73,45 +54,75 @@ public class PracticeSettingsButton extends Button {
         if (clickType != ClickType.LEFT) {
             return;
         }
-
-        switch (this.material) {
-            case FEATHER:
+        switch (this.settingType) {
+            case PARTY_MESSAGES:
                 player.performCommand("togglepartymessages");
                 break;
-            case NAME_TAG:
+            case PARTY_INVITES:
                 player.performCommand("togglepartyinvites");
                 break;
-            case CARPET:
-                if (durability == (short) 5) {
-                    player.performCommand("togglescoreboard");
-                }
+            case SIDEBAR_VISIBILITY:
+                player.performCommand("togglescoreboard");
                 break;
-            case BOOK:
-                //new MatchSettingsMenu().openMenu(player);
+            case SCOREBOARD_LINES:
+                player.performCommand("togglescoreboardlines");
+                break;
+            case TAB_VISIBILITY:
+                player.performCommand("toggletablist");
+                break;
+            case PROFANITY_FILTER:
+                player.performCommand("toggleprofanityfilter");
+                break;
+            case DUEL_REQUESTS:
+                player.performCommand("toggleduelrequests");
+                break;
+            case SERVER_TITLES:
+                player.performCommand("toggleservertitles");
+                break;
+            case MATCH_SETTINGS:
                 player.closeInventory();
                 player.sendMessage(CC.translate("&cThis feature is currently in development."));
                 break;
-            case NETHER_STAR:
+            case COSMETICS:
                 new CosmeticsMenu().openMenu(player);
                 break;
-            case STRING:
-                player.performCommand("togglescoreboardlines");
-                break;
-            case ITEM_FRAME:
-                player.performCommand("toggletablist");
-                break;
-            case ROTTEN_FLESH:
-                player.performCommand("toggleprofanityfilter");
-                break;
-            case JUKEBOX:
+            case LOBBY_MUSIC:
                 new MusicDiscSelectorMenu().openMenu(player);
-                break;
-            case DIAMOND_SWORD:
-                player.performCommand("toggleduelrequests");
                 break;
         }
 
         this.playNeutral(player);
+    }
+
+    /**
+     * Handles world time clicking with cycling logic.
+     *
+     * @param player    the player who clicked
+     * @param profile   the player's profile
+     * @param clickType the type of click
+     */
+    private void handleWorldTimeClick(Player player, Profile profile, ClickType clickType) {
+        WorldTime newTime = getNextWorldTime(clickType, profile);
+        profile.getProfileData().getSettingData().setTime(newTime.getName());
+
+        switch (newTime) {
+            case DEFAULT:
+                profile.getProfileData().getSettingData().setTimeDefault(player);
+                player.sendMessage(CC.translate("&aYou have reset your world time."));
+                break;
+            case DAY:
+                profile.getProfileData().getSettingData().setTimeDay(player);
+                player.sendMessage(CC.translate("&aYou have set the time to day."));
+                break;
+            case SUNSET:
+                profile.getProfileData().getSettingData().setTimeSunset(player);
+                player.sendMessage(CC.translate("&aYou have set the time to sunset."));
+                break;
+            case NIGHT:
+                profile.getProfileData().getSettingData().setTimeNight(player);
+                player.sendMessage(CC.translate("&aYou have set the time to night."));
+                break;
+        }
     }
 
     /**

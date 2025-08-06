@@ -13,8 +13,7 @@ import org.bukkit.entity.Player;
  * @date 01/06/2024
  */
 @CosmeticData(type = CosmeticType.KILL_EFFECT, name = "Thunder", description = "Spawn a lighting bolt at the opponent", permission = "thunder", icon = Material.STICK, slot = 11)
-public class ThunderKillEffect extends BaseCosmetic {
-
+public class ThunderKillEffect extends BaseKillEffect {
     @Override
     public void execute(Player player) {
         Location location = player.getLocation();

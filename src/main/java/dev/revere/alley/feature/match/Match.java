@@ -20,8 +20,11 @@ import dev.revere.alley.feature.arena.internal.types.StandAloneArena;
 import dev.revere.alley.feature.combat.CombatService;
 import dev.revere.alley.feature.cosmetic.CosmeticService;
 import dev.revere.alley.feature.cosmetic.internal.repository.BaseCosmeticRepository;
+import dev.revere.alley.feature.cosmetic.internal.repository.KillEffectRepository;
+import dev.revere.alley.feature.cosmetic.internal.repository.SoundEffectRepository;
+import dev.revere.alley.feature.cosmetic.internal.repository.impl.killeffect.BaseKillEffect;
 import dev.revere.alley.feature.cosmetic.internal.repository.impl.killmessage.KillMessagePack;
-import dev.revere.alley.feature.cosmetic.model.BaseCosmetic;
+import dev.revere.alley.feature.cosmetic.internal.repository.impl.soundeffect.BaseSoundEffect;
 import dev.revere.alley.feature.cosmetic.model.CosmeticType;
 import dev.revere.alley.feature.hotbar.HotbarService;
 import dev.revere.alley.feature.kit.Kit;
@@ -231,8 +234,8 @@ public abstract class Match {
      */
     public void finalizePlayer(Player player) {
         VisibilityService visibilityService = AlleyPlugin.getInstance().getService(VisibilityService.class);
-        this.resetPlayerState(player);
         this.updatePlayerProfileForLobby(player);
+        this.resetPlayerState(player);
         visibilityService.updateVisibility(player);
         this.teleportPlayerToSpawn(player);
     }
@@ -556,19 +559,44 @@ public abstract class Match {
             return;
         }
 
-        CosmeticService cosmeticRepository = AlleyPlugin.getInstance().getService(CosmeticService.class);
-        BaseCosmeticRepository<?> repository = cosmeticRepository.getRepository(cosmeticType);
-        if (repository == null) {
-            Logger.error("Could not find cosmetic repository for type " + cosmeticType.name());
+        CosmeticService cosmeticService = AlleyPlugin.getInstance().getService(CosmeticService.class);
+        if (cosmeticService == null) {
             return;
         }
 
-        BaseCosmetic cosmetic = repository.getCosmetic(cosmeticName);
-        if (cosmetic == null) {
-            return;
-        }
+        switch (cosmeticType) {
+            case KILL_EFFECT:
+                KillEffectRepository killEffectRepository = cosmeticService.getRepository(CosmeticType.KILL_EFFECT, KillEffectRepository.class);
+                if (killEffectRepository == null) {
+                    return;
+                }
 
-        cosmetic.execute(targetPlayer);
+                BaseKillEffect killEffect = killEffectRepository.getCosmetic(cosmeticName);
+                if (killEffect == null) {
+                    return;
+                }
+
+                killEffect.execute(targetPlayer);
+                break;
+
+            case SOUND_EFFECT:
+                SoundEffectRepository soundEffectRepository = cosmeticService.getRepository(CosmeticType.SOUND_EFFECT, SoundEffectRepository.class);
+                if (soundEffectRepository == null) {
+                    return;
+                }
+
+                BaseSoundEffect soundEffect = soundEffectRepository.getCosmetic(cosmeticName);
+                if (soundEffect == null) {
+                    return;
+                }
+
+                soundEffect.execute(targetPlayer);
+                break;
+
+            default:
+                Logger.warn("Cosmetic type " + cosmeticType.name() + " does not support execution");
+                break;
+        }
     }
 
     /**

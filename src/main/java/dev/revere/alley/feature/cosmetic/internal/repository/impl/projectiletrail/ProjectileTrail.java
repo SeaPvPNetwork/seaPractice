@@ -17,8 +17,4 @@ public abstract class ProjectileTrail extends BaseCosmetic {
      * @param location The current location of the projectile.
      */
     public abstract void spawnTrailParticle(Location location);
-
-    @Override
-    public void execute(Player player) {
-    }
 }

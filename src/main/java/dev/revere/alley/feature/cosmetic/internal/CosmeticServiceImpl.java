@@ -1,13 +1,10 @@
 package dev.revere.alley.feature.cosmetic.internal;
 
+import dev.revere.alley.AlleyPlugin;
 import dev.revere.alley.bootstrap.AlleyContext;
 import dev.revere.alley.bootstrap.annotation.Service;
-import dev.revere.alley.feature.cosmetic.internal.repository.BaseCosmeticRepository;
+import dev.revere.alley.feature.cosmetic.internal.repository.*;
 import dev.revere.alley.feature.cosmetic.CosmeticService;
-import dev.revere.alley.feature.cosmetic.internal.repository.KillEffectRepository;
-import dev.revere.alley.feature.cosmetic.internal.repository.KillMessageRepository;
-import dev.revere.alley.feature.cosmetic.internal.repository.ProjectileTrailRepository;
-import dev.revere.alley.feature.cosmetic.internal.repository.SoundEffectRepository;
 import dev.revere.alley.feature.cosmetic.model.CosmeticType;
 import lombok.Getter;
 
@@ -30,6 +27,8 @@ public class CosmeticServiceImpl implements CosmeticService {
         this.register(new SoundEffectRepository());
         this.register(new ProjectileTrailRepository());
         this.register(new KillMessageRepository());
+        this.register(new SuitRepository());
+        this.register(new CloakRepository());
     }
 
     /**

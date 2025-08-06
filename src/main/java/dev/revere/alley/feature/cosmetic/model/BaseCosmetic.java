@@ -58,11 +58,4 @@ public abstract class BaseCosmetic implements Cosmetic {
     public List<String> getDisplayLore() {
         return Collections.singletonList("&7" + this.getDescription());
     }
-
-    /**
-     * All cosmetics now need a way to be executed.
-     *
-     * @param player The relevant player for the cosmetic effect.
-     */
-    public abstract void execute(Player player);
 }

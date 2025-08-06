@@ -1,7 +1,10 @@
 package dev.revere.alley.feature.cosmetic.model;
 
+import dev.revere.alley.feature.cosmetic.internal.repository.impl.suit.BaseSuit;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import org.bukkit.entity.Player;
+
+import java.util.function.BiConsumer;
 
 /**
  * @author Remi
@@ -9,17 +12,42 @@ import lombok.RequiredArgsConstructor;
  * @date 6/23/2025
  */
 @Getter
-@RequiredArgsConstructor
 public enum CosmeticType {
-    KILL_EFFECT("killeffect", "Display a fancy effect upon killing a player."),
-    SOUND_EFFECT("soundeffect", "Play a custom sound when you get a kill."),
-    PROJECTILE_TRAIL("projectiletrail", "Leave a nice particle trail on your projectiles."),
-    KILL_MESSAGE("killmessage", "&7Broadcast custom messages when you die.")
-
-    ;
+    KILL_EFFECT("killeffect", "Display a fancy effect upon killing a player.", (cosmetic, player) -> {
+    }),
+    SOUND_EFFECT("soundeffect", "Play a custom sound when you get a kill.", (cosmetic, player) -> {
+    }),
+    PROJECTILE_TRAIL("projectiletrail", "Leave a nice particle trail on your projectiles.", (cosmetic, player) -> {
+    }),
+    KILL_MESSAGE("killmessage", "&7Broadcast custom messages when you die.", (cosmetic, player) -> {
+    }),
+    SUIT("suit", "Wear a fancy suit to show off your style.", (cosmetic, player) -> {
+        if (cosmetic instanceof BaseSuit) {
+            ((BaseSuit) cosmetic).onSelect(player);
+        }
+    }),
+    CLOAK("cloak", "Wear a cloak to show off your style.", (cosmetic, player) -> {
+    });
 
     private final String permissionKey;
     private final String description;
+    private final BiConsumer<BaseCosmetic, Player> selectionHandler;
+
+    CosmeticType(String permissionKey, String description, BiConsumer<BaseCosmetic, Player> selectionHandler) {
+        this.permissionKey = permissionKey;
+        this.description = description;
+        this.selectionHandler = selectionHandler;
+    }
+
+    /**
+     * Handles the selection behavior for this cosmetic type.
+     *
+     * @param cosmetic The cosmetic being selected
+     * @param player   The player selecting the cosmetic
+     */
+    public void handleSelection(BaseCosmetic cosmetic, Player player) {
+        selectionHandler.accept(cosmetic, player);
+    }
 
     /**
      * Finds a CosmeticType from a user-friendly string, ignoring case, dashes, and underscores.

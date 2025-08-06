@@ -119,9 +119,4 @@ public abstract class KillMessagePack extends BaseCosmetic {
         }
         return lore;
     }
-
-    @Override
-    public void execute(Player player) {
-
-    }
 }

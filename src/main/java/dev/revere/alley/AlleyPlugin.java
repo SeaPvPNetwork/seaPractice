@@ -3,6 +3,7 @@ package dev.revere.alley;
 import dev.revere.alley.core.config.ConfigService;
 import dev.revere.alley.bootstrap.AlleyContext;
 import dev.revere.alley.bootstrap.lifecycle.Service;
+import dev.revere.alley.feature.cosmetic.task.CosmeticTask;
 import dev.revere.alley.visual.tablist.task.TablistUpdateTask;
 import dev.revere.alley.feature.match.task.other.ArrowRemovalTask;
 import dev.revere.alley.feature.match.task.other.MatchPearlCooldownTask;
@@ -109,6 +110,7 @@ public class AlleyPlugin extends JavaPlugin {
         tasks.put(RepositoryCleanupTask.class.getSimpleName(), () -> new RepositoryCleanupTask(this).runTaskTimer(this, 0L, 40L));
         tasks.put(MatchPearlCooldownTask.class.getSimpleName(), () -> new MatchPearlCooldownTask().runTaskTimer(this, 2L, 2L));
         tasks.put(ArrowRemovalTask.class.getSimpleName(), () -> new ArrowRemovalTask().runTaskTimer(this, 20L, 20L));
+        tasks.put(CosmeticTask.class.getSimpleName(), () -> new CosmeticTask(this).runTaskTimerAsynchronously(this, 0L, 4L));
 
         if (this.getService(ConfigService.class).getTabListConfig().getBoolean("tablist.enabled")) {
             tasks.put(TablistUpdateTask.class.getSimpleName(), () -> new TablistUpdateTask().runTaskTimer(this, 0L, 20L));

@@ -22,6 +22,7 @@ public class ProfileSettingData {
     private boolean isProfanityFilterEnabled;
     private boolean receiveDuelRequestsEnabled;
     private boolean lobbyMusicEnabled;
+    private boolean serverTitles;
     private String chatChannel;
     private String time;
 
@@ -37,6 +38,7 @@ public class ProfileSettingData {
         this.isProfanityFilterEnabled = false;
         this.receiveDuelRequestsEnabled = true;
         this.lobbyMusicEnabled = true;
+        this.serverTitles = true;
         this.chatChannel = ChatChannel.GLOBAL.toString();
         this.time = WorldTime.DEFAULT.getName();
     }

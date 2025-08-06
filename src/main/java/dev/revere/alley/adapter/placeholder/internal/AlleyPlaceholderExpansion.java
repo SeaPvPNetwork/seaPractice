@@ -80,19 +80,19 @@ public class AlleyPlaceholderExpansion extends PlaceholderExpansion {
         }
 
         switch (params.toLowerCase()) {
-            case "model-global-elo":
+            case "player-global-elo":
                 return String.valueOf(profileData.getElo());
-            case "model-unranked-wins":
+            case "player-unranked-wins":
                 return String.valueOf(profileData.getTotalWins());
-            case "model-unranked-losses":
+            case "player-unranked-losses":
                 return String.valueOf(profileData.getTotalLosses());
-            case "model-ranked-wins":
+            case "player-ranked-wins":
                 return String.valueOf(profileData.getRankedWins());
-            case "model-ranked-losses":
+            case "player-ranked-losses":
                 return String.valueOf(profileData.getRankedLosses());
-            case "model-level":
+            case "player-level":
                 return Objects.requireNonNull(CC.translate(this.plugin.getService(LevelService.class).getLevel(profileData.getElo()).getDisplayName()), this.notAvailableString);
-            case "model-coins":
+            case "player-coins":
                 return String.valueOf(profileData.getCoins());
         }
 
