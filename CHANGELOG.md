@@ -1,16 +1,17 @@
-## 🎉 Alley v2.2.3
+## 🎉 Alley v2.2.4
 
 ### 🔧 **PATCH RELEASE** - Bug Fixes & Improvements
 
-**Previous Version:** `2.2.2`
-**New Version:** `2.2.3`
+**Previous Version:** `2.2.3`
+**New Version:** `2.2.4`
 
 ### 📝 Changes:
 
-- chore(pom): prevent shading minecraft server files and apis (e5a104e6)
+- chore: unify cloak rotation logic into base class (abca53a2)
+- chore: implemented cloaks and suits, improved cosmetics storing, added server title command, removed body fall kill effect, reverted papi placeholders (f4188c69)
 
 ---
-**Download:** [Alley-2.2.3.jar](https://github.com/RevereInc/alley-practice/releases/download/v2.2.3/Alley-2.2.3.jar)
+**Download:** [Alley-2.2.4.jar](https://github.com/RevereInc/alley-practice/releases/download/v2.2.4/Alley-2.2.4.jar)
 
 **Installation:** Place the JAR file in your `plugins/` folder and restart your server.
 
