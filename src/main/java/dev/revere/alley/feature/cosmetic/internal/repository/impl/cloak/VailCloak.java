@@ -55,21 +55,4 @@ public class VailCloak extends BaseCloak {
             }
         }
     }
-
-    /**
-     * Rotates a vector around the Y axis by the given yaw angle.
-     *
-     * @param v   The vector to rotate.
-     * @param yaw The yaw angle in degrees.
-     */
-    private void rotateAroundAxisY(Vector v, float yaw) {
-        double angleRad = Math.toRadians(yaw);
-        double cos = Math.cos(angleRad);
-        double sin = Math.sin(angleRad);
-
-        double x = v.getX() * cos - v.getZ() * sin;
-        double z = v.getX() * sin + v.getZ() * cos;
-
-        v.setX(x).setZ(z);
-    }
 }

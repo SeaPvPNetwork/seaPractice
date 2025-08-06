@@ -67,13 +67,4 @@ public class AngelWingsCloak extends BaseCloak {
             ParticleEffect.FLAME.display(0F, 0F, 0F, 0F, 1, particleLoc, 20);
         }
     }
-
-    private Vector rotateAroundAxisY(Vector v, float yaw) {
-        double angle = Math.toRadians(yaw);
-        double cos = Math.cos(angle);
-        double sin = Math.sin(angle);
-        double x = v.getX() * cos - v.getZ() * sin;
-        double z = v.getX() * sin + v.getZ() * cos;
-        return v.setX(x).setZ(z);
-    }
 }
