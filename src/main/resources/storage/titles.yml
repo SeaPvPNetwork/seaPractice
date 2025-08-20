@@ -1,28 +1,55 @@
 titles:
   NoDebuff:
-    prefix: '&6&lNODEBUFF GRANDMASTER'
+    prefix: '&cNODEBUFF GRANDMASTER'
     required: Grandmaster
   Classic:
-    prefix: '&6&lCLASSIC GRANDMASTER'
+    prefix: '&cCLASSIC GRANDMASTER'
     required: Grandmaster
   Boxing:
-    prefix: '&6&lBOXING GRANDMASTER'
+    prefix: '&cBOXING GRANDMASTER'
     required: Grandmaster
   Sumo:
-    prefix: '&6&lSUMO GRANDMASTER'
+    prefix: '&cSUMO GRANDMASTER'
     required: Grandmaster
   Spleef:
-    prefix: '&6&lSPLEEF GRANDMASTER'
+    prefix: '&cSPLEEF GRANDMASTER'
     required: Grandmaster
   Parkour:
-    prefix: '&6&lPARKOUR GRANDMASTER'
+    prefix: '&cPARKOUR GRANDMASTER'
     required: Grandmaster
   BattleRush:
-    prefix: '&6&lBATTLERUSH GRANDMASTER'
+    prefix: '&cBATTLERUSH GRANDMASTER'
     required: Grandmaster
   PearlFight:
-    prefix: '&6&lPEARLFIGHT GRANDMASTER'
+    prefix: '&cPEARLFIGHT GRANDMASTER'
     required: Grandmaster
   StickFight:
-    prefix: '&6&lSTICKFIGHT GRANDMASTER'
+    prefix: '&cSTICKFIGHT GRANDMASTER'
+    required: Grandmaster
+  BaseRaiding:
+    prefix: '&cBASERAIDING GRANDMASTER'
+    required: Grandmaster
+  ParkourMayhem:
+    prefix: '&cPARKOURMAYHEM GRANDMASTER'
+    required: Grandmaster
+  FireballFight:
+    prefix: '&cFIREBALLFIGHT GRANDMASTER'
+    required: Grandmaster
+  BedFight:
+    prefix: '&cBEDFIGHT GRANDMASTER'
+    required: Grandmaster
+  TopFight:
+    prefix: '&cTOPFIGHT GRANDMASTER'
+    required: Grandmaster
+  Gapple:
+    prefix: '&cGAPPLE GRANDMASTER'
+    required: Grandmaster
+  BaseRaider:
+    prefix: '&cBASERAIDER GRANDMASTER'
+    required: Grandmaster
+  BaseTrapper:
+    prefix: '&cBASETRAPPER GRANDMASTER'
+    required: Grandmaster
+  BuildUhc:
+    prefix: '&cBUILDUHC GRANDMASTER'
     required: Grandmaster

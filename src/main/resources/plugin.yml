@@ -1,4 +1,4 @@
-name: Alley
+name: Practice
 version: '${project.version}'
 main: dev.revere.alley.AlleyPlugin
 authors: ["Emmy", "Remi"]

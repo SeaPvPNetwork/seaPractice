@@ -36,7 +36,7 @@ levels:
     min-elo: 1451
     max-elo: 1550
   elite:
-    display-name: "&6&lElite"
+    display-name: "&cElite"
     material: DIAMOND
     durability: 0
     min-elo: 1551

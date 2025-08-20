@@ -1,52 +1,53 @@
 spawn:
-  teleported: "&6Teleported you to spawn!"
-  spawn-set: "&aSuccessfully set the new spawn location of &6Alley Practice&a! \n &8- &7{world}: {x}, {y}, {z} (Yaw: {yaw}, Pitch: {pitch})"
+  teleported: "&cTeleported you to spawn!"
+  spawn-set: "&aSuccessfully set the new spawn location of &cPractice Practice&a! \n &8- &7{world}: {x}, {y}, {z} (Yaw: {yaw}, Pitch: {pitch})"
 
 welcome-message:
   enabled: true
   message:
     - ""
-    - "&6&lEU Practice &7- Ranked, Events, FFA & more"
+    - "&cPractice &7- &fRank, win and be the best."
     - ""
-    - "&6&lLinks"
-    - " &6Website: &frevere.dev"
-    - " &6Store: &frevere.dev/store"
-    - " &6Discord: &fdiscord.gg/revere"
+    - "&fWelcome &7{player}"
+    - "&fNow is running the &CSeason I"
     - ""
-    - "&6&lMade by &f{author} &7(v{version})"
+    - " &f• &7Teamspeak: &fts.seapvp.us"
+    - " &f• &7Store: &fseapvp.us/store"
+    - " &f• &7Discord: &fdiscord.seapvp.us"
+    - " &f• &7X.com: &f@SeaNetworkUS"
     - ""
 
 error-messages:
   player:
-    is-busy: "&6{color}{player} &cis busy."
+    is-busy: "&c{color}{player} &cis busy."
 
 server:
   crafting-operations:
-    toggled: "&aCrafting operations for &6{item} &aare now &6{status}&a."
+    toggled: "&aCrafting operations for &c{item} &aare now &c{status}&a."
     must-hold-craftable-item: "&cYou must be holding a craftable item to manage crafting operations."
 
 arena:
   error:
-    not-found: "&cAn arena named &6{arena-name} &cdoes not exist!"
+    not-found: "&cAn arena named &c{arena-name} &cdoes not exist!"
     already-exists: "&cAn arena with that name already exists!"
     no-selection: "&cYou don't have the bounds selected for the arena! Use &b/arena wand&c!"
-    kit-already-added-to-arena: "&cThe kit &6{kit-name} &cis already added to the arena &6{arena-name}&c!"
-    arena-does-not-have-kit: "&cThe arena &6{arena-name} &cdoes not have the kit &6{kit-name}&c!"
+    kit-already-added-to-arena: "&cThe kit &c{kit-name} &cis already added to the arena &c{arena-name}&c!"
+    arena-does-not-have-kit: "&cThe arena &c{arena-name} &cdoes not have the kit &c{kit-name}&c!"
   data:
-    center-set: "&aSuccessfully set the center of the arena &6{arena-name}&a!"
-    cuboid-set: "&aSuccessfully set the geom of the arena &6{arena-name}&a!"
-    height-limit-set: "&aSuccessfully set the height limit of the arena &6{arena-name}&a to &6{height-limit}&a!"
-    portal-set: "&aSuccessfully set portal &b{portal} &aof arena &6{arena-name}&a!"
-    void-level-set: "&aSuccessfully set the void level of arena &6{arena-name}&a to &6{void-level}&a!"
-    toggled: "&aSuccessfully toggled the arena &6{arena-name}&a to &6{status}&a!"
-    blue-spawn-set: "&aSuccessfully set the blue spawn of arena &6{arena-name}&a!"
-    red-spawn-set: "&aSuccessfully set the red spawn of arena &6{arena-name}&a!"
-    ffa-spawn-set: "&aSuccessfully set the FFA spawn of arena &6{arena-name}&a!"
-    kit-added: "&aSuccessfully added the kit &6{kit-name}&a to arena &6{arena-name}&a!"
-    kit-removed: "&cSuccessfully removed the kit &6{kit-name}&c from arena &6{arena-name}&c!"
+    center-set: "&aSuccessfully set the center of the arena &c{arena-name}&a!"
+    cuboid-set: "&aSuccessfully set the geom of the arena &c{arena-name}&a!"
+    height-limit-set: "&aSuccessfully set the height limit of the arena &c{arena-name}&a to &c{height-limit}&a!"
+    portal-set: "&aSuccessfully set portal &b{portal} &aof arena &c{arena-name}&a!"
+    void-level-set: "&aSuccessfully set the void level of arena &c{arena-name}&a to &c{void-level}&a!"
+    toggled: "&aSuccessfully toggled the arena &c{arena-name}&a to &c{status}&a!"
+    blue-spawn-set: "&aSuccessfully set the blue spawn of arena &c{arena-name}&a!"
+    red-spawn-set: "&aSuccessfully set the red spawn of arena &c{arena-name}&a!"
+    ffa-spawn-set: "&aSuccessfully set the FFA spawn of arena &c{arena-name}&a!"
+    kit-added: "&aSuccessfully added the kit &c{kit-name}&a to arena &c{arena-name}&a!"
+    kit-removed: "&cSuccessfully removed the kit &c{kit-name}&c from arena &c{arena-name}&c!"
   manage:
-    created: "&aSuccessfully created a new arena named &6{arena-name}&a with type &6{arena-type}&a!"
-    deleted: "&cSuccessfully deleted the arena named &6{arena-name}&c!"
+    created: "&aSuccessfully created a new arena named &c{arena-name}&a with type &c{arena-type}&a!"
+    deleted: "&cSuccessfully deleted the arena named &c{arena-name}&c!"
     selection-tool:
       added: "&aSuccessfully added the selection tool to your inventory!"
       removed: "&cSuccessfully removed the selection tool from your inventory!"
@@ -60,39 +61,39 @@ kit:
     cannot-set-in-creative: "&cYou can't set a kit's inventory in creative mode!"
     slot-must-be-number: "&cThe slot must be a number!"
   data:
-    inventory-given: "&aSuccessfully retrieved the inventory of the &6{kit-name} &akit!"
-    inventory-set: "&aSuccessfully set the inventory of the &6{kit-name} &akit!"
-    unrankedslot-set: "&aSuccessfully set the unranked slot of the &6{kit-name} &akit to &6{slot}&a!"
-    rankedslot-set: "&aSuccessfully set the ranked slot of the &6{kit-name} &akit to &6{slot}&a!"
-    editorslot-set: "&aSuccessfully set the editor slot of the &6{kit-name} &akit to &6{slot}&a!"
-    ffaslot-set: "&aSuccessfully set the FFA slot of the &6{kit-name} &akit to &6{slot}&a!"
-    slots-set: "&aSuccessfully set all slots of the &6{kit-name} &akit to &6{slot}&a!"
-    description-set: "&aSuccessfully set the description of the &6{kit-name} &akit: &r{description}"
-    description-cleared: "&aSuccessfully cleared the description of the &6{kit-name} &akit!"
-    disclaimer-set: "&aSuccessfully set the disclaimer of the &6{kit-name} &akit: &r{disclaimer}"
-    displayname-set: "&aSuccessfully set the display name of the &6{kit-name} &akit: &r{display-name}"
-    menu-title-set: "&aSuccessfully set the menu title of the &6{kit-name} &akit: &r{title}"
-    icon-set: "&aSuccessfully set the icon of the &6{kit-name} &akit to &6{icon}&a!"
-    set-category: "&aSuccessfully set the category of the &6{kit-name} &akit to &6{category}&a!"
-    set-editable: "&aSuccessfully set the editable status of the &6{kit-name} &akit to &6{editable}&a!"
-    potion-effects-set: "&aSuccessfully set the potion effects of the &6{kit-name} &akit!"
-    potion-effects-cleared: "&aSuccessfully cleared the potion effects of the &6{kit-name} &akit!"
+    inventory-given: "&aSuccessfully retrieved the inventory of the &c{kit-name} &akit!"
+    inventory-set: "&aSuccessfully set the inventory of the &c{kit-name} &akit!"
+    unrankedslot-set: "&aSuccessfully set the unranked slot of the &c{kit-name} &akit to &c{slot}&a!"
+    rankedslot-set: "&aSuccessfully set the ranked slot of the &c{kit-name} &akit to &c{slot}&a!"
+    editorslot-set: "&aSuccessfully set the editor slot of the &c{kit-name} &akit to &c{slot}&a!"
+    ffaslot-set: "&aSuccessfully set the FFA slot of the &c{kit-name} &akit to &c{slot}&a!"
+    slots-set: "&aSuccessfully set all slots of the &c{kit-name} &akit to &c{slot}&a!"
+    description-set: "&aSuccessfully set the description of the &c{kit-name} &akit: &r{description}"
+    description-cleared: "&aSuccessfully cleared the description of the &c{kit-name} &akit!"
+    disclaimer-set: "&aSuccessfully set the disclaimer of the &c{kit-name} &akit: &r{disclaimer}"
+    displayname-set: "&aSuccessfully set the display name of the &c{kit-name} &akit: &r{display-name}"
+    menu-title-set: "&aSuccessfully set the menu title of the &c{kit-name} &akit: &r{title}"
+    icon-set: "&aSuccessfully set the icon of the &c{kit-name} &akit to &c{icon}&a!"
+    set-category: "&aSuccessfully set the category of the &c{kit-name} &akit to &c{category}&a!"
+    set-editable: "&aSuccessfully set the editable status of the &c{kit-name} &akit to &c{editable}&a!"
+    potion-effects-set: "&aSuccessfully set the potion effects of the &c{kit-name} &akit!"
+    potion-effects-cleared: "&aSuccessfully cleared the potion effects of the &c{kit-name} &akit!"
   manage:
-    created: "&aSuccessfully created a new kit named &6{kit-name}&a!"
-    deleted: "&cSuccessfully deleted the kit named &6{kit-name}&c!"
+    created: "&aSuccessfully created a new kit named &c{kit-name}&a!"
+    deleted: "&cSuccessfully deleted the kit named &c{kit-name}&c!"
   settings:
-    setting-set: "&aSuccessfully set the setting &6{setting-name} &ato &6{enabled} &afor the kit &6{kit-name}&a."
+    setting-set: "&aSuccessfully set the setting &c{setting-name} &ato &c{enabled} &afor the kit &c{kit-name}&a."
   storage:
-    saved: "&aSuccessfully saved the &6{kit-name} &akit!"
+    saved: "&aSuccessfully saved the &c{kit-name} &akit!"
     saved-all: "&aSuccessfully saved all kits!"
 
 party:
-  chat-format: "&7[&6Party&7] &6{player}&7: &f{message}"
+  chat-format: "&7[&cParty&7] &c{player}&7: &f{message}"
   already-in-party: "&cYou are already in a party."
   not-leader: "&cYou are not the leader of the party."
   not-in-party: "&cYou are not in a party."
-  no-invite: "&cYou do not have a party invitation from &6{player}&c."
-  joined: "&aYou have joined &6{player}&a's party."
+  no-invite: "&cYou do not have a party invitation from &c{player}&c."
+  joined: "&aYou have joined &c{player}&a's party."
   left: "&cYou've left the party!"
   disabled-chat: "&cYou have party messages disabled. &7(To enable: /togglepartymessages)"
   target-disabled-invites: "&c{player} has party invites disabled."
@@ -100,25 +101,25 @@ party:
     no-members-format: "&cNo members"
     text:
       - ""
-      - " &6&lParty Information"
-      - "  &f&l● &fLeader: &6{leader}"
-      - "  &f&l● &fMembers: &6{members}"
+      - " &cParty Information"
+      - "  &f&l● &fLeader: &c{leader}"
+      - "  &f&l● &fMembers: &c{members}"
       - ""
 
 #tournament-broadcast:
 #  player:
-#    joined: "&a{player} has joined the tournament &f(&6{players}&f/&6{maxPlayers}&f)"
-#    left: "&c{player} has left the tournament &f(&6{players}&f/&6{maxPlayers}&f)"
+#    joined: "&a{player} has joined the tournament &f(&c{players}&f/&c{maxPlayers}&f)"
+#    left: "&c{player} has left the tournament &f(&c{players}&f/&c{maxPlayers}&f)"
 #  waiting:
 #    clickable-format: " &a[CLICK TO JOIN]"
 #    clickable-hover: "&aClick to join the tournament!"
 #    message:
 #      - ""
-#      - "&6&lTOURNAMENT"
-#      - " &f• &6Host: &f{host}"
-#      - " &f• &6Kit: &f{kit}"
-#      - " &f• &6Players: &f{players}/{maxPlayers}"
-#      - " &f• &6Waiting for &6{remaining} &fmore players."
+#      - "&cTOURNAMENT"
+#      - " &f• &cHost: &f{host}"
+#      - " &f• &cKit: &f{kit}"
+#      - " &f• &cPlayers: &f{players}/{maxPlayers}"
+#      - " &f• &cWaiting for &c{remaining} &fmore players."
 #      - ""
 #      - "[clickable]"
 #      - ""
@@ -129,8 +130,8 @@ match:
       enabled: true
       format:
         - ""
-        - "&6&l{kit-name}"
-        - " &f• &6{kit-disclaimer}"
+        - "&c{kit-name}"
+        - " &f• &c{kit-disclaimer}"
         - ""
       not-set: # In case if the kit disclaimer is null.
         - "&4&lWarning: &cUsing hacks or any form of cheating is strictly prohibited!"
@@ -139,12 +140,12 @@ match:
     format:
       solo:
         - ""
-        - "{winner-color}&l{scorer} &6&lscored!"
+        - "{winner-color}&l{scorer} &cscored!"
         - "{winner-color}&l{winner-goals} &7- {loser-color}&l{loser-goals}"
         - ""
       team:
         - ""
-        - "{winner-color}&l{winner}'s Team &6&lscored!"
+        - "{winner-color}&l{winner}'s Team &cscored!"
         - "{winner-color}&l{winner-goals} &7- {loser-color}&l{loser-goals}"
         - ""
   ended:
@@ -152,7 +153,7 @@ match:
       regular:
         format:
           - ""
-          - "&6&lMatch Results: &7(click to view)"
+          - "&cMatch Results: &7(click to view)"
           - "&aWinner: &f{winner} &7| &cLoser: &f{loser}"
           - ""
         winner:
@@ -164,7 +165,7 @@ match:
       #conjoined:
       #  format:
       #    - ""
-      #    - "&6&lTeam Match Results:"
+      #    - "&cTeam Match Results:"
       #    - "&aWinner Team: &f{winner}"
       #    - "&cLoser Team: &f{loser}"
       #    - ""
@@ -172,9 +173,9 @@ match:
       winner-indicator-color: "&a"  # Color for positive Elo gain
       loser-indicator-color: "&c"   # Color for negative Elo loss
       format:
-        - " &6&lElo Changes"
-        - "  &6&l● &f{winner} &7{winner-color}{winner-indicator}{math-winner-elo} &7(&f{old-winner-elo} &7-> &f{new-winner-elo})"
-        - "  &6&l● &f{loser} &7{loser-color}{loser-indicator}{math-loser-elo} &7(&f{old-loser-elo} &7-> &f{new-loser-elo})"
+        - " &cElo Changes"
+        - "  &c● &f{winner} &7{winner-color}{winner-indicator}{math-winner-elo} &7(&f{old-winner-elo} &7-> &f{new-winner-elo})"
+        - "  &c● &f{loser} &7{loser-color}{loser-indicator}{math-loser-elo} &7(&f{old-loser-elo} &7-> &f{new-loser-elo})"
         - ""
 
 ffa:
@@ -183,7 +184,7 @@ ffa:
     interval: 5 # the required amount of kills to alert ffa players about killstreaks
     message:
       - ""
-      - "&6&l{name-color}{player} &fis on a &6&l{killstreak} &fkillstreak!"
+      - "&c{name-color}{player} &fis on a &c{killstreak} &fkillstreak!"
       - ""
 
 player-settings:
@@ -203,7 +204,7 @@ rename-item:
   renamed: "&aYou've renamed the &a'&r{item}&a' &aitem to &a'&r{renamed}&a'."
 
 tips:
-  - "&6Tip: &fUse F5 to look at your opponent one last time before they end you."
-  - "&6Tip: &fW-tap like your life depends on it. It kinda does."
-  - "&6Tip: &fKeep your crosshair at head level... unless you like tickling toes."
-  - "&6Tip: &fPractice spacing — or just hug them and pray."
+  - "&cTip: &fUse F5 to look at your opponent one last time before they end you."
+  - "&cTip: &fW-tap like your life depends on it. It kinda does."
+  - "&cTip: &fKeep your crosshair at head level... unless you like tickling toes."
+  - "&cTip: &fPractice spacing — or just hug them and pray."

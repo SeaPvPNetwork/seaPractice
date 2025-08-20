@@ -3,7 +3,7 @@ kits:
     display-name: 'Base Raiding'
     description: '&7Trapping and Raiding!'
     disclaimer: '&7BaseRaiding kit disclaimer.'
-    menu-title: '&6&lBase Raiding &c&lNEW!'
+    menu-title: '&cBase Raiding &c&lNEW!'
     enabled: true
     editable: true
     category: NORMAL
@@ -53,8 +53,8 @@ kits:
   ParkourMayhem:
     display-name: 'Parkour Mayhem'
     description: ''
-    disclaimer: '&6ParkourMayhem kit disclaimer.'
-    menu-title: '&6&lParkour Mayhem &c&lNEW!'
+    disclaimer: '&cParkourMayhem kit disclaimer.'
+    menu-title: '&cParkour Mayhem &c&lNEW!'
     enabled: true
     editable: true
     category: NORMAL
@@ -95,7 +95,7 @@ kits:
     display-name: 'Fireball Fight'
     description: ''
     disclaimer: '&7FireballFight kit disclaimer.'
-    menu-title: '&6&lFireball Fight &c&lNEW!'
+    menu-title: '&cFireball Fight &c&lNEW!'
     enabled: true
     editable: true
     category: NORMAL
@@ -143,7 +143,7 @@ kits:
     display-name: 'Bed Fight'
     description: ''
     disclaimer: '&7bedfight kit disclaimer.'
-    menu-title: '&6&lBed Fight'
+    menu-title: '&cBed Fight'
     enabled: true
     editable: true
     category: NORMAL
@@ -191,7 +191,7 @@ kits:
     display-name: 'No Debuff'
     description: ''
     disclaimer: '&7NoDebuff kit disclaimer.'
-    menu-title: '&6&lNo Debuff'
+    menu-title: '&cNo Debuff'
     enabled: true
     editable: true
     category: NORMAL
@@ -239,7 +239,7 @@ kits:
     display-name: 'Boxing'
     description: '&f1st to 100 hits!'
     disclaimer: '&7Boxing kit disclaimer.'
-    menu-title: '&6&lBoxing'
+    menu-title: '&cBoxing'
     enabled: true
     editable: true
     category: NORMAL
@@ -288,7 +288,7 @@ kits:
     display-name: 'Battle Rush'
     description: ''
     disclaimer: '&7BattleRush kit disclaimer.'
-    menu-title: '&6&lBattle Rush'
+    menu-title: '&cBattle Rush'
     enabled: true
     editable: true
     category: NORMAL
@@ -336,7 +336,7 @@ kits:
     display-name: 'Stick Fight'
     description: ''
     disclaimer: '&7StickFight kit disclaimer.'
-    menu-title: '&6&lStick Fight'
+    menu-title: '&cStick Fight'
     enabled: true
     editable: true
     category: NORMAL
@@ -384,7 +384,7 @@ kits:
     display-name: 'Pearl Fight'
     description: ''
     disclaimer: '&7PearlFight kit disclaimer.'
-    menu-title: '&6&lPearl Fight'
+    menu-title: '&cPearl Fight'
     enabled: true
     editable: true
     category: NORMAL
@@ -432,7 +432,7 @@ kits:
     display-name: 'Spleef'
     description: '&7Spleef kit description.'
     disclaimer: '&7Spleef kit disclaimer.'
-    menu-title: '&6&lSpleef'
+    menu-title: '&cSpleef'
     enabled: true
     editable: true
     category: EXTRA
@@ -480,7 +480,7 @@ kits:
     display-name: 'Classic'
     description: ''
     disclaimer: '&7Classic kit disclaimer.'
-    menu-title: '&6&lClassic'
+    menu-title: '&cClassic'
     enabled: true
     editable: true
     category: NORMAL
@@ -528,7 +528,7 @@ kits:
     display-name: 'Top Fight'
     description: ''
     disclaimer: '&7TopFight kit disclaimer.'
-    menu-title: '&6&lTop Fight'
+    menu-title: '&cTop Fight'
     enabled: true
     editable: true
     category: NORMAL
@@ -576,7 +576,7 @@ kits:
     display-name: 'Gapple'
     description: ''
     disclaimer: '&7Gapple kit disclaimer.'
-    menu-title: '&6&lGapple'
+    menu-title: '&cGapple'
     enabled: true
     editable: true
     category: NORMAL
@@ -624,7 +624,7 @@ kits:
     display-name: 'Sumo'
     description: ''
     disclaimer: '&7sumo kit disclaimer.'
-    menu-title: '&6&lSumo'
+    menu-title: '&cSumo'
     enabled: true
     editable: false
     category: NORMAL
@@ -764,7 +764,7 @@ kits:
     display-name: 'Build UHC'
     description: ''
     disclaimer: '&7BuildUhc kit disclaimer.'
-    menu-title: '&6&lBuild UHC'
+    menu-title: '&cBuild UHC'
     enabled: true
     editable: true
     category: NORMAL

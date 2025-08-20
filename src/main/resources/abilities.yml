@@ -1,7 +1,7 @@
 # ABILITIES CONFIGURATION
 SWITCHER:
   ICON:
-    DISPLAYNAME: '&6&lSwitcher'
+    DISPLAYNAME: '&cSwitcher'
     DESCRIPTION:
       - ''
       - '&fSwap places with your opponent.'
@@ -12,17 +12,17 @@ SWITCHER:
   MESSAGE:
     PLAYER:
       - ''
-      - ' &6►  &fYou have successfully used &6%ABILITY%'
-      - ' &6►  &fNow on cooldown for &6%COOLDOWN% &fseconds.'
+      - ' &c►  &fYou have successfully used &c%ABILITY%'
+      - ' &c►  &fNow on cooldown for &c%COOLDOWN% &fseconds.'
       - ''
     TARGET:
       - ''
-      - ' &6►  &f%PLAYER% has hit you with &6%ABILITY%'
-      - ' &6►  &fYou have swapped position with &6%PLAYER% &fposition.'
+      - ' &c►  &f%PLAYER% has hit you with &c%ABILITY%'
+      - ' &c►  &fYou have swapped position with &c%PLAYER% &fposition.'
       - ''
 GUARDIAN_ANGEL:
   ICON:
-    DISPLAYNAME: '&6&lGuardian Angel'
+    DISPLAYNAME: '&cGuardian Angel'
     DESCRIPTION:
       - ''
       - '&fRight Click to receive full heatlh'
@@ -34,12 +34,12 @@ GUARDIAN_ANGEL:
   MESSAGE:
     PLAYER:
       - ''
-      - ' &6►  &fYou have successfully used &6%ABILITY%'
-      - ' &6►  &fNow on cooldown for &6%COOLDOWN% &fseconds.'
+      - ' &c►  &fYou have successfully used &c%ABILITY%'
+      - ' &c►  &fNow on cooldown for &c%COOLDOWN% &fseconds.'
       - ''
 NINJA_STAR:
   ICON:
-    DISPLAYNAME: '&6&lNinja Star'
+    DISPLAYNAME: '&cNinja Star'
     DESCRIPTION:
       - ''
       - '&fRight Click to teleport to the player'
@@ -51,17 +51,17 @@ NINJA_STAR:
   MESSAGE:
     PLAYER:
       - ''
-      - ' &6►  &fYou have successfully used %ABILITY%'
-      - ' &6►  &fNow on cooldown for &6%COOLDOWN% &fseconds.'
+      - ' &c►  &fYou have successfully used %ABILITY%'
+      - ' &c►  &fNow on cooldown for &c%COOLDOWN% &fseconds.'
       - ''
     TARGET:
       - ''
-      - ' &6►  &6%PLAYER% &fhas used &6%ABILITY%'
-      - ' &6►  &6%PLAYER% &fteleported to your position.'
+      - ' &c►  &c%PLAYER% &fhas used &c%ABILITY%'
+      - ' &c►  &c%PLAYER% &fteleported to your position.'
       - ''
 TANK_INGOT:
   ICON:
-    DISPLAYNAME: '&6&lTank Ingot'
+    DISPLAYNAME: '&cTank Ingot'
     DESCRIPTION:
       - ''
       - '&fRight Click this ability to'
@@ -73,12 +73,12 @@ TANK_INGOT:
   MESSAGE:
     PLAYER:
       - ''
-      - ' &6►  &fYou have successfully used &6%ABILITY%'
-      - ' &6►  &fNow on cooldown for &6%COOLDOWN% &fseconds.'
+      - ' &c►  &fYou have successfully used &c%ABILITY%'
+      - ' &c►  &fNow on cooldown for &c%COOLDOWN% &fseconds.'
       - ''
 STRENGTH:
   ICON:
-    DISPLAYNAME: '&6&lStrength'
+    DISPLAYNAME: '&cStrength'
     DESCRIPTION:
       - ''
       - '&fRight Click to receive strength 2.'
@@ -89,12 +89,12 @@ STRENGTH:
   MESSAGE:
     PLAYER:
       - ''
-      - ' &6►  &fYou have successfully used &6%ABILITY%'
-      - ' &6►  &fNow on cooldown for &6%COOLDOWN% &fseconds.'
+      - ' &c►  &fYou have successfully used &c%ABILITY%'
+      - ' &c►  &fNow on cooldown for &c%COOLDOWN% &fseconds.'
       - ''
 POCKET_BARD:
   ICON:
-    DISPLAYNAME: '&6&lPocket Bard'
+    DISPLAYNAME: '&cPocket Bard'
     DESCRIPTION:
       - ''
       - '&fRight Click to receive a random effect.'
@@ -106,12 +106,12 @@ POCKET_BARD:
   MESSAGE:
     PLAYER:
       - ''
-      - ' &6►  &fYou have successfully used &6%ABILITY%'
-      - ' &6►  &fNow on cooldown for &6%COOLDOWN% &fseconds.'
+      - ' &c►  &fYou have successfully used &c%ABILITY%'
+      - ' &c►  &fNow on cooldown for &c%COOLDOWN% &fseconds.'
       - ''
 SWAPPER_AXE:
   ICON:
-    DISPLAYNAME: '&6&lSwapper Axe'
+    DISPLAYNAME: '&cSwapper Axe'
     DESCRIPTION:
       - '&fDefault desc.'
     MATERIAL: DIAMOND_AXE
@@ -120,17 +120,17 @@ SWAPPER_AXE:
   MESSAGE:
     PLAYER:
       - ''
-      - ' &6►  &fYou have successfully used &6%ABILITY%'
-      - ' &6►  &fNow on cooldown for &6%COOLDOWN% &fseconds.'
+      - ' &c►  &fYou have successfully used &c%ABILITY%'
+      - ' &c►  &fNow on cooldown for &c%COOLDOWN% &fseconds.'
       - ''
     TARGET:
       - ''
-      - ' &6►  &6%PLAYER% &fhas used %ABILITY%'
-      - ' &6►  &fYour helmet take off in 5 seconds.'
+      - ' &c►  &c%PLAYER% &fhas used %ABILITY%'
+      - ' &c►  &fYour helmet take off in 5 seconds.'
       - ''
 SCRAMMBLER:
   ICON:
-    DISPLAYNAME: '&6&lScrambler'
+    DISPLAYNAME: '&cScrambler'
     DESCRIPTION:
       - ''
       - '&fHit a player to scramble their inventory.'
@@ -141,17 +141,17 @@ SCRAMMBLER:
   MESSAGE:
     PLAYER:
       - ''
-      - ' &6►  &fYou have successfully used &6%ABILITY%'
-      - ' &6►  &fNow on cooldown for &6%COOLDOWN% &fseconds.'
+      - ' &c►  &fYou have successfully used &c%ABILITY%'
+      - ' &c►  &fNow on cooldown for &c%COOLDOWN% &fseconds.'
       - ''
     TARGET:
       - ''
-      - ' &6►  &6%PLAYER% &fhas used &6%ABILITY%'
-      - ' &6►  &fYour inventory has been scrammbler.'
+      - ' &c►  &c%PLAYER% &fhas used &c%ABILITY%'
+      - ' &c►  &fYour inventory has been scrammbler.'
       - ''
 COMBO:
   ICON:
-    DISPLAYNAME: '&6&lCombo'
+    DISPLAYNAME: '&cCombo'
     DESCRIPTION:
       - ''
       - '&fIf you are in combat with a player, right click'
@@ -164,12 +164,12 @@ COMBO:
   MESSAGE:
     PLAYER:
       - ''
-      - ' &6►  &fYou have successfully used &6%ABILITY%'
-      - ' &6►  &fNow on cooldown for &6%COOLDOWN% &fseconds.'
+      - ' &c►  &fYou have successfully used &c%ABILITY%'
+      - ' &c►  &fNow on cooldown for &c%COOLDOWN% &fseconds.'
       - ''
 EFFECT_DISABLER:
   ICON:
-    DISPLAYNAME: '&6&lEffect Disabler'
+    DISPLAYNAME: '&cEffect Disabler'
     DESCRIPTION:
       - '&fDefault desc.'
     MATERIAL: SLIME_BALL
@@ -178,17 +178,17 @@ EFFECT_DISABLER:
   MESSAGE:
     PLAYER:
       - ''
-      - ' &6►  &fYou have successfully used %ABILITY%'
-      - ' &6►  &fNow on cooldown for &6%COOLDOWN% &fseconds.'
+      - ' &c►  &fYou have successfully used %ABILITY%'
+      - ' &c►  &fNow on cooldown for &c%COOLDOWN% &fseconds.'
       - ''
     TARGET:
       - ''
-      - ' &6►  &f%PLAYER% has used %ABILITY%'
-      - ' &6►  &fYour effects has been removed.'
+      - ' &c►  &f%PLAYER% has used %ABILITY%'
+      - ' &c►  &fYour effects has been removed.'
       - ''
 LUCKY_INGOT:
   ICON:
-    DISPLAYNAME: '&6&lLucky Ingot'
+    DISPLAYNAME: '&cLucky Ingot'
     DESCRIPTION:
       - ''
       - '&fRight Click to activate ability.'
@@ -200,12 +200,12 @@ LUCKY_INGOT:
   MESSAGE:
     PLAYER:
       - ''
-      - ' &6►  &fYou have successfully used &6%ABILITY%'
-      - ' &6►  &fNow on cooldown for &6%COOLDOWN% &fseconds.'
+      - ' &c►  &fYou have successfully used &c%ABILITY%'
+      - ' &c►  &fNow on cooldown for &c%COOLDOWN% &fseconds.'
       - ''
 WAYPOINT:
   ICON:
-    DISPLAYNAME: '&6&lWaypoint'
+    DISPLAYNAME: '&cWaypoint'
     DESCRIPTION:
       - '&fDefault desc.'
     MATERIAL: WATCH
@@ -217,12 +217,12 @@ WAYPOINT:
   MESSAGE:
     PLAYER:
       - ''
-      - ' &6►  &fYou have successfully used %ABILITY%'
-      - ' &6►  &fNow on cooldown for &6%COOLDOWN% &fseconds.'
+      - ' &c►  &fYou have successfully used %ABILITY%'
+      - ' &c►  &fNow on cooldown for &c%COOLDOWN% &fseconds.'
       - ''
 ANTI_TRAPPER:
   ICON:
-    DISPLAYNAME: '&6&lExotic Bone'
+    DISPLAYNAME: '&cExotic Bone'
     DESCRIPTION:
       - ''
       - '&fRight click the player 3 times to bone a player'
@@ -235,17 +235,17 @@ ANTI_TRAPPER:
   MESSAGE:
     PLAYER:
       - ''
-      - ' &6►  &fYou have successfully used &6%ABILITY%'
-      - ' &6►  &fNow on cooldown for &6%COOLDOWN% &fseconds.'
+      - ' &c►  &fYou have successfully used &c%ABILITY%'
+      - ' &c►  &fNow on cooldown for &c%COOLDOWN% &fseconds.'
       - ''
     TARGET:
       - ''
-      - ' &6►  &6%PLAYER% &fhas used &6%ABILITY%'
-      - ' &6►  &fYou can no longer build.'
+      - ' &c►  &c%PLAYER% &fhas used &c%ABILITY%'
+      - ' &c►  &fYou can no longer build.'
       - ''
 COOKIE:
   ICON:
-    DISPLAYNAME: '&6&lCookie'
+    DISPLAYNAME: '&cCookie'
     DESCRIPTION:
       - '&fDefault desc.'
     MATERIAL: COOKIE
@@ -254,12 +254,12 @@ COOKIE:
   MESSAGE:
     PLAYER:
       - ''
-      - ' &6►  &fYou have successfully used &6%ABILITY%'
-      - ' &6►  &fNow on cooldown for &6%COOLDOWN% &fseconds.'
+      - ' &c►  &fYou have successfully used &c%ABILITY%'
+      - ' &c►  &fNow on cooldown for &c%COOLDOWN% &fseconds.'
       - ''
 ROCKET:
   ICON:
-    DISPLAYNAME: '&6&lRocket'
+    DISPLAYNAME: '&cRocket'
     DESCRIPTION:
       - '&fDefault desc.'
     MATERIAL: FIREWORK
@@ -268,12 +268,12 @@ ROCKET:
   MESSAGE:
     PLAYER:
       - ''
-      - ' &6►  &fYou have successfully used &6%ABILITY%'
-      - ' &6►  &fNow on cooldown for &6%COOLDOWN% &fseconds.'
+      - ' &c►  &fYou have successfully used &c%ABILITY%'
+      - ' &c►  &fNow on cooldown for &c%COOLDOWN% &fseconds.'
       - ''
 TIME_WARP:
   ICON:
-    DISPLAYNAME: '&6&lTime Warp'
+    DISPLAYNAME: '&cTime Warp'
     DESCRIPTION:
       - ''
       - '&fTeleport to your last thrown pearl (10 sec)'
@@ -284,16 +284,16 @@ TIME_WARP:
   MESSAGE:
     PLAYER:
       - ''
-      - '&6❤ &fYou have successfully used &6%ABILITY%'
-      - '&6❤ &fNow on cooldown for &6%COOLDOWN% &fseconds.'
+      - '&c❤ &fYou have successfully used &c%ABILITY%'
+      - '&c❤ &fNow on cooldown for &c%COOLDOWN% &fseconds.'
       - ''
-STILL_ON_COOLDOWN: '&6%ABILITY% &fstill on cooldown for another &6%COOLDOWN%&f.'
-COOLDOWN_EXPIRED: '&fYour &6%ABILITY% &fcooldown has been expired.'
-RECEIVED_ABILITY: '&fYou''ve received &6x%AMOUNT% %ABILITY%&f.'
-GIVE_ABILITY: '&fYou''ve given &6x%AMOUNT% %ABILITY% &fto &6%PLAYER%&f.'
+STILL_ON_COOLDOWN: '&c%ABILITY% &fstill on cooldown for another &c%COOLDOWN%&f.'
+COOLDOWN_EXPIRED: '&fYour &c%ABILITY% &fcooldown has been expired.'
+RECEIVED_ABILITY: '&fYou''ve received &cx%AMOUNT% %ABILITY%&f.'
+GIVE_ABILITY: '&fYou''ve given &cx%AMOUNT% %ABILITY% &fto &c%PLAYER%&f.'
 SCRAMBLER:
   ICON:
-    DISPLAYNAME: '&6&lScrambler'
+    DISPLAYNAME: '&cScrambler'
     DESCRIPTION:
       - ''
       - '&fHit a player to scramble their inventory.'
@@ -304,11 +304,11 @@ SCRAMBLER:
   MESSAGE:
     PLAYER:
       - ''
-      - ' &6►  &fYou have successfully used &6%ABILITY%'
-      - ' &6►  &fNow on cooldown for &6%COOLDOWN% &fseconds.'
+      - ' &c►  &fYou have successfully used &c%ABILITY%'
+      - ' &c►  &fNow on cooldown for &c%COOLDOWN% &fseconds.'
       - ''
     TARGET:
       - ''
-      - ' &6►  &6%PLAYER% &fhas used &6%ABILITY%'
-      - ' &6►  &fYour inventory has been scrambled.'
+      - ' &c►  &c%PLAYER% &fhas used &c%ABILITY%'
+      - ' &c►  &fYour inventory has been scrambled.'
       - ''

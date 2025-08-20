@@ -6,49 +6,49 @@ layout-menu:
 
 menus:
   snapshot-menu:
-    title: "&6&l{name}'s Inventory"
+    title: "&c{name}'s Inventory"
     buttons:
       hits:
-        name: "&6&lHits: {hits}"
+        name: "&cHits: {hits}"
         lore:
-          - " &fCritical: &6{critical_hits}"
-          - " &fBlocked: &6{blocked_hits}"
-          - " &fBest Combo: &6{longest_combo}"
+          - " &fCritical: &c{critical_hits}"
+          - " &fBlocked: &c{blocked_hits}"
+          - " &fBest Combo: &c{longest_combo}"
           - ""
-          - "&6&lPlayer"
-          - " &fW-Taps: &6{w_taps}"
+          - "&cPlayer"
+          - " &fW-Taps: &c{w_taps}"
         item: "DIAMOND_SWORD"
         durability: 0
       potions:
-        name: "&6&lHealth Potions"
+        name: "&cHealth Potions"
         lore:
-          - " &fRemaining: &6{potions_remaining}"
-          - " &fThrown: &6{potions_thrown}"
-          - " &fWasted: &6{potions_wasted}{heart}"
-          - " &fMissed: &6{potions_missed}"
-          - " &fAccuracy: &6{potion_accuracy}"
+          - " &fRemaining: &c{potions_remaining}"
+          - " &fThrown: &c{potions_thrown}"
+          - " &fWasted: &c{potions_wasted}{heart}"
+          - " &fMissed: &c{potions_missed}"
+          - " &fAccuracy: &c{potion_accuracy}"
         item: "POTION"
         durability: 16421
       potion_effects:
-        name: "&6&lPotion Effects"
+        name: "&cPotion Effects"
         empty-lore:
           - " &cNone."
-        lore-header: " &fActive Effects: &6{count}"
+        lore-header: " &fActive Effects: &c{count}"
         effect-line: " &7{effect}"
         item: "BREWING_STAND_ITEM"
         durability: 0
       food:
-        name: "&6&lFood Level"
+        name: "&cFood Level"
         lore:
-          - " &fLevel: &6{food_level}"
-          - " &fSaturation: &6{saturation}"
+          - " &fLevel: &c{food_level}"
+          - " &fSaturation: &c{saturation}"
         item: "COOKED_BEEF"
         durability: 0
       health:
-        name: "&6&lHealth"
+        name: "&cHealth"
         lore:
-          - " &fHealth: &6{health} {heart}"
-          - " &fAbsorption: &6{absorption}"
+          - " &fHealth: &c{health} {heart}"
+          - " &fAbsorption: &c{absorption}"
         item: "GOLDEN_APPLE"
         durability: 0
       opponent:
@@ -56,22 +56,22 @@ menus:
       armor:
         slots: [ 36, 37, 38, 39 ]
   spectator-teleport:
-    title: "&6&lSpectator Menu"
+    title: "&cSpectator Menu"
     buttons:
       match-info-button:
         slot: 4
         glass-durability: 15
-        name: "&6&lMatch Info"
+        name: "&cMatch Info"
         lore:
-          - " &f● &6Kit: &f{kit}"
-          - " &f● &6Arena: &f{arena}"
-          - " &f● &6Players: &f{players}"
+          - " &f● &cKit: &f{kit}"
+          - " &f● &cArena: &f{arena}"
+          - " &f● &cPlayers: &f{players}"
       spectator-teleport-button:
         name: "{player-color}{username}"
         lore:
-          - " &f● &6Ping: &f{ping}ms"
-          - " &f● &6Team: &f{team}"
-          - " &f● &6ELO: &f{elo}"
+          - " &f● &cPing: &f{ping}ms"
+          - " &f● &cTeam: &f{team}"
+          - " &f● &cELO: &f{elo}"
           - ""
-          - "&6&lLEFT-CLICK &fto teleport to this player."
-          - "&6&lRIGHT-CLICK &fto view their statistics."
+          - "&cLEFT-CLICK &fto teleport to this player."
+          - "&cRIGHT-CLICK &fto view their statistics."

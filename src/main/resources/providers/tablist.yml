@@ -1,10 +1,13 @@
 tablist:
   enabled: true
   header:
+    - "&7+&m                                                                                                                    &7+"
     - ""
-    - "&6&lRevere Network"
+    - "&b&lSea Network"
+    - "&c❤ &fThanks for play with us &c❤"
     - ""
   footer:
     - ""
-    - "&fPlaying with &6&lAlley &fdeveloped by &6&lRevere Inc."
+    - "&fYou are playing &cPractice &fat &cseapvp.us"
     - ""
+    - "&7+&m                                                                                                                    &7+"
