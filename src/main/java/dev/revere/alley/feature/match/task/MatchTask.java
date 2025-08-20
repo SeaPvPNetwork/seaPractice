@@ -14,6 +14,8 @@ import org.bukkit.Sound;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import static dev.revere.alley.feature.match.menu.SpectatorTeleportMenu.getBrand;
+
 /**
  * @author Remi
  * @project Alley
@@ -46,8 +48,14 @@ public class MatchTask extends BukkitRunnable {
                 if (this.stage == 0) {
                     AlleyPlugin.getInstance().getServer().getScheduler().runTask(AlleyPlugin.getInstance(), this.match::handleRoundStart);
 
+                    // me acabo de dar cuenta q el pl no diferencia entre players jaja lol
+                    //String brand = getBrand(this.gamePlayer.getTeamPlayer());
+                    //String brand = getBrand(this.gamePlayer.getTeamPlayer());
+
                     this.match.setState(MatchState.RUNNING);
                     this.match.sendMessage(CC.translate("&aMatch has started. Good luck!"));
+                    //this.match.sendMessage(CC.translate("&f• &CMy brand: &f" + myBrand));
+                    //this.match.sendMessage(CC.translate("&f• &CEnemy brand: &f" + enemyBrand));
 
                     this.sendTitleStarted();
                     this.playSoundStarted();

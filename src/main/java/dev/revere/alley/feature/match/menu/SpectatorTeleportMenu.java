@@ -65,7 +65,7 @@ public class SpectatorTeleportMenu extends PaginatedMenu {
         return buttons;
     }
 
-    private static String getBrand(Player player) {
+    public static String getBrand(Player player) {
         IPlayerData data = VulcanAPI.Factory.getApi().getPlayerData(player);
         return (data != null && data.getClientBrand() != null) ? data.getClientBrand() : "Unknown brand";
     }
