@@ -67,6 +67,8 @@ public class CommandUtility {
         Logger.logTimeWithAction("registered", "Commands", () -> {
             new AlleyCommand();
 
+            new CreditsCommand();
+
             new AdventureCommand();
             new CreativeCommand();
             new SurvivalCommand();
