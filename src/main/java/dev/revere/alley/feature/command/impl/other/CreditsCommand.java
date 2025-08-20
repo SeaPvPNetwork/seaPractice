@@ -12,10 +12,12 @@ import org.bukkit.entity.Player;
  * @date 22/06/2025
  */
 public class CreditsCommand extends BaseCommand {
-    @CommandData(name = "credits")
+    @CommandData(name = "credits", aliases = {"emmy", "remi", "revere"} )
     @Override
     public void onCommand(CommandArgs command) {
         Player player = command.getPlayer();
+        player.sendMessage(CC.translate("&f"));
+        player.sendMessage(CC.translate("&7&m                                                   "));
         player.sendMessage(CC.translate("&cPractice &7- &fRank, win and be the best."));
         player.sendMessage(CC.translate("&f"));
         player.sendMessage(CC.translate("&fThis core is a fork from &6Alley"));
@@ -25,5 +27,7 @@ public class CreditsCommand extends BaseCommand {
         player.sendMessage(CC.translate("&f"));
         player.sendMessage(CC.translate("&6Alley &fis available on GitHub"));
         player.sendMessage(CC.translate("&8&nhttps://github.com/RevereInc/alley-practice/"));
+        player.sendMessage(CC.translate("&7&m                                                   "));
+        player.sendMessage(CC.translate("&f"));
     }
 }

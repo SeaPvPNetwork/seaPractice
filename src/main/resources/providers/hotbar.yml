@@ -67,7 +67,7 @@ hotbar-items:
         slot: 0
 
   LAYOUT_EDITOR:
-    display-name: "&cLayout Editor &7(Right Click)"
+    display-name: "&cInventory Editor &7(Right Click)"
     lore:
       - "&7Customize your kit layouts."
     material: BOOK
