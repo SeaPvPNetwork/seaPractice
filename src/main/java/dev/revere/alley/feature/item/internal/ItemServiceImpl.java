@@ -56,7 +56,7 @@ public class ItemServiceImpl implements ItemService {
 
         this.GOLDEN_HEAD_TEXTURE = config.getString(path + ".texture", TexturesConstant.GOLDEN_STEVE_SKIN);
 
-        String name = config.getString(path + ".name", "&6Golden Head");
+        String name = config.getString(path + ".name", "&cGolden Head");
         List<String> lore = config.getStringList(path + ".lore");
 
         this.goldenHead = new ItemBuilder(Material.SKULL_ITEM)
@@ -75,7 +75,7 @@ public class ItemServiceImpl implements ItemService {
                 new PotionEffect(PotionEffectType.ABSORPTION, 20 * 120, 0)  // Absorption I for 2 minutes
         ).forEach(player::addPotionEffect);
 
-        player.sendMessage(CC.translate("&aYou've consumed a &6&lGolden Head&a!"));
+        player.sendMessage(CC.translate("&aYou've consumed a &c&lGolden Head&a!"));
 
         if (player.getGameMode() == GameMode.CREATIVE) {
             return;

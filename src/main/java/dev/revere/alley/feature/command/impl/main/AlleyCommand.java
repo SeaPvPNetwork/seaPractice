@@ -38,21 +38,21 @@ public class AlleyCommand extends BaseCommand {
 
         Arrays.asList(
                 "",
-                "     &6&lAlley Practice",
-                "      &f│ Authors: &6" + this.plugin.getDescription().getAuthors().toString().replace("[", "").replace("]", ""),
-                "      &f│ Version: &6" + this.plugin.getDescription().getVersion(),
+                "     &c&lAlley Practice",
+                "      &f│ Authors: &c" + this.plugin.getDescription().getAuthors().toString().replace("[", "").replace("]", ""),
+                "      &f│ Version: &c" + this.plugin.getDescription().getVersion(),
                 "",
-                "     &6&lDescription:",
+                "     &c&lDescription:",
                 "      &f│ " + this.plugin.getDescription().getDescription(),
                 ""
         ).forEach(line -> sender.sendMessage(CC.translate(line)));
 
         if (sender.hasPermission(this.plugin.getService(PluginConstant.class).getAdminPermissionPrefix())) {
             Arrays.asList(
-                    "     &6&lAdmin Help",
-                    "      &f│ /alley reload &7- &6Reloads the bootstrap.",
-                    "      &f│ /alley debug &7- &6Database Debugging.",
-                    "      &f│ /alley server &7- &6Core Hook Info.",
+                    "     &c&lAdmin Help",
+                    "      &f│ /alley reload &7- &cReloads the bootstrap.",
+                    "      &f│ /alley debug &7- &cDatabase Debugging.",
+                    "      &f│ /alley server &7- &cCore Hook Info.",
                     ""
             ).forEach(line -> sender.sendMessage(CC.translate(line)));
         }

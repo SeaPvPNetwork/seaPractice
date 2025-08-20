@@ -47,7 +47,7 @@ public class QueuesMenuModern extends Menu {
     public String getTitle(Player player) {
         ProfileService profileService = AlleyPlugin.getInstance().getService(ProfileService.class);
         Profile profile = profileService.getProfile(player.getUniqueId());
-        return "&6&l" + profile.getQueueType().getMenuTitle();
+        return "&c&l" + profile.getQueueType().getMenuTitle();
     }
 
     /**
@@ -64,34 +64,34 @@ public class QueuesMenuModern extends Menu {
         ProfileService profileService = AlleyPlugin.getInstance().getService(ProfileService.class);
         Profile profile = profileService.getProfile(player.getUniqueId());
 
-        buttons.put(2, new QueuesButtonModern("&6&lUnranked", Material.DIAMOND_SWORD, 0, Arrays.asList(
+        buttons.put(2, new QueuesButtonModern("&c&lUnranked", Material.DIAMOND_SWORD, 0, Arrays.asList(
                 CC.MENU_BAR,
                 "&7Casual 1v1s with",
                 "&7no loss penalty.",
                 "",
-                "&6│ &fPlayers: &6" + queueService.getPlayerCountOfGameType("Unranked"),
+                "&c│ &fPlayers: &c" + queueService.getPlayerCountOfGameType("Unranked"),
                 "",
                 this.getLore(profile, QueueType.UNRANKED),
                 CC.MENU_BAR
         )));
 
-        buttons.put(4, new QueuesButtonModern("&6&lUnranked Duos", Material.GOLD_SWORD, 0, Arrays.asList(
+        buttons.put(4, new QueuesButtonModern("&c&lUnranked Duos", Material.GOLD_SWORD, 0, Arrays.asList(
                 CC.MENU_BAR,
                 "&7Casual 2v2s with",
                 "&7no penalty loss",
                 "",
-                "&6│ &fPlayers: &6" + queueService.getPlayerCountOfGameType("Duos"),
+                "&c│ &fPlayers: &c" + queueService.getPlayerCountOfGameType("Duos"),
                 "",
                 this.getLore(profile, QueueType.DUOS),
                 CC.MENU_BAR
         )));
 
-        buttons.put(6, new QueuesButtonModern("&6&lFFA", Material.GOLD_AXE, 0, Arrays.asList(
+        buttons.put(6, new QueuesButtonModern("&c&lFFA", Material.GOLD_AXE, 0, Arrays.asList(
                 CC.MENU_BAR,
                 "&7Free for all with",
                 "&7infinity respawns.",
                 "",
-                "&6│ &fPlayers: &6" + queueService.getPlayerCountOfGameType("FFA"),
+                "&c│ &fPlayers: &c" + queueService.getPlayerCountOfGameType("FFA"),
                 "",
                 this.getLore(profile, QueueType.FFA),
                 CC.MENU_BAR

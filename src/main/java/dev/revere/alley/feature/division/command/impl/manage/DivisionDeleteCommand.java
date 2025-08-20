@@ -21,7 +21,7 @@ public class DivisionDeleteCommand extends BaseCommand {
         String[] args = command.getArgs();
 
         if (args.length < 1) {
-            player.sendMessage(CC.translate("&6Usage: &e/division delete &6<name>"));
+            player.sendMessage(CC.translate("&cUsage: &e/division delete &c<name>"));
             return;
         }
 
@@ -34,6 +34,6 @@ public class DivisionDeleteCommand extends BaseCommand {
         }
 
         divisionService.deleteDivision(division.getName());
-        player.sendMessage(CC.translate("&aSuccessfully deleted the division named &6" + name + "&a."));
+        player.sendMessage(CC.translate("&aSuccessfully deleted the division named &c" + name + "&a."));
     }
 }

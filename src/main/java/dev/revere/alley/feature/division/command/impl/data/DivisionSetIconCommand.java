@@ -21,7 +21,7 @@ public class DivisionSetIconCommand extends BaseCommand {
         String[] args = command.getArgs();
 
         if (args.length < 1) {
-            player.sendMessage(CC.translate("&6Usage: &e/division seticon &6<name>"));
+            player.sendMessage(CC.translate("&cUsage: &e/division seticon &c<name>"));
             return;
         }
 
@@ -40,6 +40,6 @@ public class DivisionSetIconCommand extends BaseCommand {
         division.setIcon(player.getItemInHand().getType());
         division.setDurability(player.getItemInHand().getDurability());
         divisionService.saveDivision(division);
-        player.sendMessage(CC.translate("&aSuccessfully set the icon for the division &6" + division.getDisplayName() + " &ato " + player.getItemInHand().getType().name() + ":" + player.getItemInHand().getDurability() + "&a."));
+        player.sendMessage(CC.translate("&aSuccessfully set the icon for the division &c" + division.getDisplayName() + " &ato " + player.getItemInHand().getType().name() + ":" + player.getItemInHand().getDurability() + "&a."));
     }
 }

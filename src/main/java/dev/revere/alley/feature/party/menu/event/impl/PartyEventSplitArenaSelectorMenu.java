@@ -24,7 +24,7 @@ public class PartyEventSplitArenaSelectorMenu extends PaginatedMenu {
 
     @Override
     public String getPrePaginatedTitle(Player player) {
-        return "&6&lSelect an arena";
+        return "&c&lSelect an arena";
     }
 
     @Override

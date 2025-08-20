@@ -38,13 +38,13 @@ public class TankIngot extends Ability {
             Profile profile = profileService.getProfile(player.getUniqueId());
 
             if (profile.getCooldown(TankIngot.class).onCooldown(player)) {
-                player.sendMessage(CC.translate("&fYou are on &6&lTank Ingot &7cooldown for &4" + DurationFormatter.getRemaining(profile.getCooldown(TankIngot.class).getRemainingMillis(player), true, true)));
+                player.sendMessage(CC.translate("&fYou are on &c&lTank Ingot &7cooldown for &4" + DurationFormatter.getRemaining(profile.getCooldown(TankIngot.class).getRemainingMillis(player), true, true)));
                 player.updateInventory();
                 return;
             }
 
             if (profile.getGlobalCooldown(GlobalCooldown.PARTNER_ITEM).onCooldown(player)) {
-                player.sendMessage(CC.translate("&fYou are on &6&lPartner Item &fcooldown for &6" + DurationFormatter.getRemaining(profile.getGlobalCooldown(GlobalCooldown.PARTNER_ITEM).getRemainingMillis(player), true, true)));
+                player.sendMessage(CC.translate("&fYou are on &c&lPartner Item &fcooldown for &c" + DurationFormatter.getRemaining(profile.getGlobalCooldown(GlobalCooldown.PARTNER_ITEM).getRemainingMillis(player), true, true)));
                 player.updateInventory();
                 return;
             }

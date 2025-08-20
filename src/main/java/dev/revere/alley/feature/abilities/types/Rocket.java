@@ -39,14 +39,14 @@ public class Rocket extends Ability {
             }
 
             if (profile.getCooldown(Rocket.class).onCooldown(player)) {
-                player.sendMessage(CC.translate("&fYou are on &6&lRocket &7cooldown for &4" + DurationFormatter.getRemaining(profile.getCooldown(Rocket.class).getRemainingMillis(player), true, true)));
+                player.sendMessage(CC.translate("&fYou are on &c&lRocket &7cooldown for &4" + DurationFormatter.getRemaining(profile.getCooldown(Rocket.class).getRemainingMillis(player), true, true)));
                 player.updateInventory();
                 event.setCancelled(true);
                 return;
             }
 
             if (profile.getGlobalCooldown(GlobalCooldown.PARTNER_ITEM).onCooldown(player)) {
-                player.sendMessage(CC.translate("&fYou are on &6&lPartner Item &fcooldown for &6" + DurationFormatter.getRemaining(profile.getGlobalCooldown(GlobalCooldown.PARTNER_ITEM).getRemainingMillis(player), true, true)));
+                player.sendMessage(CC.translate("&fYou are on &c&lPartner Item &fcooldown for &c" + DurationFormatter.getRemaining(profile.getGlobalCooldown(GlobalCooldown.PARTNER_ITEM).getRemainingMillis(player), true, true)));
                 player.updateInventory();
                 event.setCancelled(true);
                 return;

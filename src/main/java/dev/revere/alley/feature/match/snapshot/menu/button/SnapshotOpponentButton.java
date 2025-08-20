@@ -33,8 +33,8 @@ public class SnapshotOpponentButton extends Button {
         }
 
         return new ItemBuilder(Material.PAPER)
-                .name(CC.translate("&6View Opponent"))
-                .lore("&7Click to view &6" + opponentSnapshot.getUsername() + "'s &7inventory.")
+                .name(CC.translate("&cView Opponent"))
+                .lore("&7Click to view &c" + opponentSnapshot.getUsername() + "'s &7inventory.")
                 .hideMeta()
                 .build();
     }

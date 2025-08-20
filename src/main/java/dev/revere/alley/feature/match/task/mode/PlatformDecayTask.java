@@ -160,7 +160,7 @@ public class PlatformDecayTask extends BukkitRunnable {
             sendMessageAndSound("&e&lWARNING! &eThe arena has shrunk by half!", Sound.WITHER_HURT);
             notifiedAt50 = true;
         } else if (remainingPercentage <= 75 && !notifiedAt75) {
-            sendMessageAndSound("&6The arena has begun to crumble...", Sound.DIG_STONE);
+            sendMessageAndSound("&cThe arena has begun to crumble...", Sound.DIG_STONE);
             notifiedAt75 = true;
         }
     }

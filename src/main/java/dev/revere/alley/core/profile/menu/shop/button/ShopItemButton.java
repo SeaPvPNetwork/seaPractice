@@ -39,14 +39,14 @@ public class ShopItemButton extends Button {
         if (hasPermission) {
             lore.add("&aYou already own this item.");
         } else {
-            lore.add(" &fPrice: &6$" + cosmetic.getPrice());
+            lore.add(" &fPrice: &c$" + cosmetic.getPrice());
             lore.add("");
             lore.add("&aClick to purchase.");
         }
         lore.add(CC.MENU_BAR);
 
         return new ItemBuilder(cosmetic.getIcon())
-                .name("&6&l" + cosmetic.getName())
+                .name("&c&l" + cosmetic.getName())
                 .lore(lore)
                 .hideMeta()
                 .build();
@@ -73,7 +73,7 @@ public class ShopItemButton extends Button {
         FileConfiguration config = AlleyPlugin.getInstance().getService(ConfigService.class).getSettingsConfig();
         Bukkit.dispatchCommand(Bukkit.getConsoleSender(), config.get("command.grant-cosmetic-permission-command").toString().replace("{player}", player.getName()).replace("%permission%", cosmetic.getPermission()));
 
-        player.sendMessage(CC.translate("&aSuccessfully purchased the &6" + cosmetic.getName() + " &acosmetic!"));
+        player.sendMessage(CC.translate("&aSuccessfully purchased the &c" + cosmetic.getName() + " &acosmetic!"));
         this.playSuccess(player);
     }
 }

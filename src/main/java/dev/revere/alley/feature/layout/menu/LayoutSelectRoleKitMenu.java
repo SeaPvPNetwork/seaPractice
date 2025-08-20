@@ -31,7 +31,7 @@ public class LayoutSelectRoleKitMenu extends Menu {
 
     @Override
     public String getTitle(Player player) {
-        return "&6&lSelect a Role";
+        return "&c&lSelect a Role";
     }
 
     @Override

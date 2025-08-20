@@ -63,7 +63,7 @@ public class KitCommand extends BaseCommand {
         }
 
         sender.sendMessage("");
-        sender.sendMessage(CC.translate("&6&lKit Commands &8(&7Page &f" + page + "&7/&f" + this.pages.length + "&8)"));
+        sender.sendMessage(CC.translate("&c&lKit Commands &8(&7Page &f" + page + "&7/&f" + this.pages.length + "&8)"));
         for (String string : this.pages[page - 1]) {
             sender.sendMessage(CC.translate(string));
         }
@@ -78,46 +78,46 @@ public class KitCommand extends BaseCommand {
 
     private final String[][] pages = {
             {
-                    " &f● &6/kit list &7| View all kits",
-                    " &f● &6/kit create &8(&7kitName&8) &7| Create a kit",
-                    " &f● &6/kit delete &8(&7kitName&8) &7| Delete a kit",
-                    " &f● &6/kit toggle &8(&7kitName&8) &7| Toggle a kit",
-                    " &f● &6/kit view &8(&7kitName&8) &7| View a kit",
+                    " &f● &c/kit list &7| View all kits",
+                    " &f● &c/kit create &8(&7kitName&8) &7| Create a kit",
+                    " &f● &c/kit delete &8(&7kitName&8) &7| Delete a kit",
+                    " &f● &c/kit toggle &8(&7kitName&8) &7| Toggle a kit",
+                    " &f● &c/kit view &8(&7kitName&8) &7| View a kit",
                     "",
-                    "&fUse &6/kithelper &ffor other useful commands."
+                    "&fUse &c/kithelper &ffor other useful commands."
             },
             {
-                    " &f● &6/kit settings &7| View all existing kit settings",
-                    " &f● &6/kit viewsettings &8(&7kitName&8) &7| View settings of a kit",
-                    " &f● &6/kit setsetting &8(&7kitName&8) &8(&7setting&8) &8(&7enabled&8) &7| Set kit setting"
+                    " &f● &c/kit settings &7| View all existing kit settings",
+                    " &f● &c/kit viewsettings &8(&7kitName&8) &7| View settings of a kit",
+                    " &f● &c/kit setsetting &8(&7kitName&8) &8(&7setting&8) &8(&7enabled&8) &7| Set kit setting"
             },
             {
-                    " &f● &6/kit setcategory &8(&7kitName&8) &8(&7category&8) &7| Set category of a kit",
-                    " &f● &6/kit setdescription &8(&7kitName&8) &8(&7description&8) &7| Set description of a kit",
-                    " &f● &6/kit setdisclaimer &8(&7kitName&8) &8(&7disclaimer&8) &7| Set disclaimer",
-                    " &f● &6/kit setdisplayname &8(&7kitName&8) &8(&7displayname&8) &7| Set display-name of a kit",
-                    " &f● &6/kit setmenutitle &8(&7kitName&8) &8(&7title&8) &7| Set menu title of a kit",
-                    " &f● &6/kit seteditable &8(&7kitName&8) &8(&7true/false&8) &7| Set if a kit is editable",
-                    " &f● &6/kit setprofile &8(&7kitName&8) &8(&7profileName&8) &7| Set kb profile of a kit",
-                    " &f● &6/kit seticon &8(&7kitName&8) &7| Set icon of a kit"
+                    " &f● &c/kit setcategory &8(&7kitName&8) &8(&7category&8) &7| Set category of a kit",
+                    " &f● &c/kit setdescription &8(&7kitName&8) &8(&7description&8) &7| Set description of a kit",
+                    " &f● &c/kit setdisclaimer &8(&7kitName&8) &8(&7disclaimer&8) &7| Set disclaimer",
+                    " &f● &c/kit setdisplayname &8(&7kitName&8) &8(&7displayname&8) &7| Set display-name of a kit",
+                    " &f● &c/kit setmenutitle &8(&7kitName&8) &8(&7title&8) &7| Set menu title of a kit",
+                    " &f● &c/kit seteditable &8(&7kitName&8) &8(&7true/false&8) &7| Set if a kit is editable",
+                    " &f● &c/kit setprofile &8(&7kitName&8) &8(&7profileName&8) &7| Set kb profile of a kit",
+                    " &f● &c/kit seticon &8(&7kitName&8) &7| Set icon of a kit"
             },
             {
-                    " &f● &6/kit setinv &8(&7kitName&8) &7| Set inventory of a kit",
-                    " &f● &6/kit getinv &8(&7kitName&8) &7| Get inventory of a kit"
+                    " &f● &c/kit setinv &8(&7kitName&8) &7| Set inventory of a kit",
+                    " &f● &c/kit getinv &8(&7kitName&8) &7| Get inventory of a kit"
             },
             {
-                    " &f● &6/kit addpotion &8(&7kitName&8) &7| Set potion effects of a kit",
-                    " &f● &6/kit removepotion &8(&7kitName&8) &7| Remove potion effects of a kit",
-                    " &f● &6/kit clearpotions &8(&7kitName&8) &7| Clear potion effects of a kit"
+                    " &f● &c/kit addpotion &8(&7kitName&8) &7| Set potion effects of a kit",
+                    " &f● &c/kit removepotion &8(&7kitName&8) &7| Remove potion effects of a kit",
+                    " &f● &c/kit clearpotions &8(&7kitName&8) &7| Clear potion effects of a kit"
             },
             {
-                    " &f● &6/kit setraidingrolekit &8(&7kitName&8) &8(&7role&8) &8(&7roleKitName&8) &7| Set raiding role kit",
-                    " &f● &6/kit removeraidingrolekit &8(&7kitName&8) &8(&7role&8) &8(&7roleKitName&8) &7| Remove raiding role kit"
+                    " &f● &c/kit setraidingrolekit &8(&7kitName&8) &8(&7role&8) &8(&7roleKitName&8) &7| Set raiding role kit",
+                    " &f● &c/kit removeraidingrolekit &8(&7kitName&8) &8(&7role&8) &8(&7roleKitName&8) &7| Remove raiding role kit"
             },
             {
-                    " &f● &6/kit resetlayouts &8(&7kitName&8) &7| Reset all profile layouts",
-                    " &f● &6/kit saveall &7| Save all kits",
-                    " &f● &6/kit save &8(&7kitName&8) &7| Save a kit"
+                    " &f● &c/kit resetlayouts &8(&7kitName&8) &7| Reset all profile layouts",
+                    " &f● &c/kit saveall &7| Save all kits",
+                    " &f● &c/kit save &8(&7kitName&8) &7| Save a kit"
             }
     };
 }

@@ -30,7 +30,7 @@ public class FFASetArenaCommand extends BaseCommand {
         String[] args = command.getArgs();
 
         if (args.length < 1) {
-            sender.sendMessage(CC.translate("&6Usage: &e/ffa setarena &6<arenaName>"));
+            sender.sendMessage(CC.translate("&cUsage: &e/ffa setarena &c<arenaName>"));
             return;
         }
 
@@ -62,6 +62,6 @@ public class FFASetArenaCommand extends BaseCommand {
         kit.setFfaArenaName(arena.getName());
         kitService.saveKit(kit);
         this.plugin.getService(FFAService.class).reloadFFAKits();
-        sender.sendMessage(CC.translate("&aFFA arena has been set for kit &6" + kit.getName() + "&a!"));
+        sender.sendMessage(CC.translate("&aFFA arena has been set for kit &c" + kit.getName() + "&a!"));
     }
 }

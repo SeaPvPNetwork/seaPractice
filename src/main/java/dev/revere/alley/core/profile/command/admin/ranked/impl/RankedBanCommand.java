@@ -24,7 +24,7 @@ public class RankedBanCommand extends BaseCommand {
         String[] args = command.getArgs();
 
         if (args.length < 1) {
-            player.sendMessage(CC.translate("&6Usage: &e/ranked ban &6<player>"));
+            player.sendMessage(CC.translate("&cUsage: &e/ranked ban &c<player>"));
             return;
         }
 

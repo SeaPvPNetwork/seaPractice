@@ -33,10 +33,10 @@ public class PartyChatCommand extends BaseCommand {
         if (args.length == 0) {
             if (profile.getProfileData().getSettingData().getChatChannel().equals(ChatChannel.PARTY.toString())) {
                 profile.getProfileData().getSettingData().setChatChannel(ChatChannel.GLOBAL.toString());
-                player.sendMessage(CC.translate("&aSet your chat channel to &6global&a."));
+                player.sendMessage(CC.translate("&aSet your chat channel to &cglobal&a."));
             } else {
                 profile.getProfileData().getSettingData().setChatChannel(ChatChannel.PARTY.toString());
-                player.sendMessage(CC.translate("&aSet your chat channel to &6party&a."));
+                player.sendMessage(CC.translate("&aSet your chat channel to &cparty&a."));
             }
             return;
         }

@@ -37,13 +37,13 @@ public class Scrambler extends Ability {
             if (!isAbility(damager.getItemInHand())) return;
 
             if (profile.getCooldown(Scrambler.class).onCooldown(damager)) {
-                damager.sendMessage(CC.translate("&fYou are on &6&lScrambler &7cooldown for &4" + DurationFormatter.getRemaining(profile.getCooldown(Scrambler.class).getRemainingMillis(damager), true, true)));
+                damager.sendMessage(CC.translate("&fYou are on &c&lScrambler &7cooldown for &4" + DurationFormatter.getRemaining(profile.getCooldown(Scrambler.class).getRemainingMillis(damager), true, true)));
                 damager.updateInventory();
                 return;
             }
 
             if (profile.getGlobalCooldown(GlobalCooldown.PARTNER_ITEM).onCooldown(damager)) {
-                damager.sendMessage(CC.translate("&fYou are on &6&lPartner Item &fcooldown for &6" + DurationFormatter.getRemaining(profile.getGlobalCooldown(GlobalCooldown.PARTNER_ITEM).getRemainingMillis(damager), true, true)));
+                damager.sendMessage(CC.translate("&fYou are on &c&lPartner Item &fcooldown for &c" + DurationFormatter.getRemaining(profile.getGlobalCooldown(GlobalCooldown.PARTNER_ITEM).getRemainingMillis(damager), true, true)));
                 damager.updateInventory();
                 return;
             }

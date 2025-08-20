@@ -61,6 +61,6 @@ public class CosmeticSetCommand extends BaseCommand {
         }
 
         profile.getProfileData().getCosmeticData().setSelected(cosmetic);
-        player.sendMessage(CC.translate("&aSuccessfully set &6" + cosmetic.getName() + " " + StringUtil.formatEnumName(cosmeticType) + " &aas the active cosmetic for &6" + target.getName()));
+        player.sendMessage(CC.translate("&aSuccessfully set &c" + cosmetic.getName() + " " + StringUtil.formatEnumName(cosmeticType) + " &aas the active cosmetic for &c" + target.getName()));
     }
 }

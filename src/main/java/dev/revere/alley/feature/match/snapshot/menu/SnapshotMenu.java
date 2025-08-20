@@ -33,7 +33,7 @@ public class SnapshotMenu extends Menu {
 
     @Override
     public String getTitle(Player player) {
-        String title = AlleyPlugin.getInstance().getService(ConfigService.class).getMenusConfig().getString("menus.snapshot-menu.title", "&6&l{name}'s Inventory");
+        String title = AlleyPlugin.getInstance().getService(ConfigService.class).getMenusConfig().getString("menus.snapshot-menu.title", "&c&l{name}'s Inventory");
         return title.replace("{name}", this.snapshot.getUsername());
     }
 

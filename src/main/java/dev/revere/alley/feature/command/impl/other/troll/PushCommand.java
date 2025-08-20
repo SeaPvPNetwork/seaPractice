@@ -19,7 +19,7 @@ public class PushCommand extends BaseCommand {
         String[] args = command.getArgs();
 
         if (args.length < 2) {
-            player.sendMessage(CC.translate("&6Usage: &e/push &6<player> <value>"));
+            player.sendMessage(CC.translate("&cUsage: &e/push &c<player> <value>"));
             return;
         }
 
@@ -47,7 +47,7 @@ public class PushCommand extends BaseCommand {
 
         target.setVelocity(player.getLocation().getDirection().multiply(value));
 
-        player.sendMessage(CC.translate("&fYou've pushed &6" + target.getName()));
-        target.sendMessage(CC.translate("&fYou've been pushed by &6" + player.getName()));
+        player.sendMessage(CC.translate("&fYou've pushed &c" + target.getName()));
+        target.sendMessage(CC.translate("&fYou've been pushed by &c" + player.getName()));
     }
 }

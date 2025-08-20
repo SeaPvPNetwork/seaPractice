@@ -27,7 +27,7 @@ public class CustomItemsGoldenHeadCommand extends BaseCommand {
         String[] args = command.getArgs();
 
         if (args.length < 1) {
-            player.sendMessage(CC.translate("&6Usage: &e/customitems goldenhead &6<amount>"));
+            player.sendMessage(CC.translate("&cUsage: &e/customitems goldenhead &c<amount>"));
             return;
         }
 

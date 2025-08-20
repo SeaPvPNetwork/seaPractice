@@ -24,7 +24,7 @@ public class KitRemoveRaidingRoleKitCommand extends BaseCommand {
         String[] args = command.getArgs();
 
         if (args.length < 3) {
-            sender.sendMessage(CC.translate("&6Usage: &e/kit removeraidingrolekit &6<kitName> <role> <kitName>"));
+            sender.sendMessage(CC.translate("&cUsage: &e/kit removeraidingrolekit &c<kitName> <role> <kitName>"));
             return;
         }
 
@@ -32,12 +32,12 @@ public class KitRemoveRaidingRoleKitCommand extends BaseCommand {
         KitService kitService = this.plugin.getService(KitService.class);
         Kit kit = kitService.getKit(kitName);
         if (kit == null) {
-            sender.sendMessage(CC.translate("&cThe &6" + kitName + " &ckit does not exist."));
+            sender.sendMessage(CC.translate("&cThe &c" + kitName + " &ckit does not exist."));
             return;
         }
 
         if (!kit.isSettingEnabled(KitSettingRaiding.class)) {
-            sender.sendMessage(CC.translate("&cThe &6" + kit.getName() + " &ckit does not have &6base raiding &csetting enabled."));
+            sender.sendMessage(CC.translate("&cThe &c" + kit.getName() + " &ckit does not have &cbase raiding &csetting enabled."));
             return;
         }
 
@@ -53,24 +53,24 @@ public class KitRemoveRaidingRoleKitCommand extends BaseCommand {
         String roleKitName = args[2];
         Kit roleKit = kitService.getKit(roleKitName);
         if (roleKit == null) {
-            sender.sendMessage(CC.translate("&cThe &6" + roleKitName + " &ckit does not exist."));
+            sender.sendMessage(CC.translate("&cThe &c" + roleKitName + " &ckit does not exist."));
             return;
         }
 
         if (roleKit.isEnabled()) {
-            sender.sendMessage(CC.translate("&cThe &6" + roleKitName + " &ckit is currently enabled. Please disable it before setting it as a raiding role kit."));
+            sender.sendMessage(CC.translate("&cThe &c" + roleKitName + " &ckit is currently enabled. Please disable it before setting it as a raiding role kit."));
             return;
         }
 
         BaseRaidingService raidingService = this.plugin.getService(BaseRaidingService.class);
 
         if (raidingService.getRaidingKitByRole(kit, role) == null) {
-            sender.sendMessage(CC.translate("&cThe &6" + kit.getName() + " &ckit does not have a raiding kit mapped for the &6" + role.name() + " &crole."));
+            sender.sendMessage(CC.translate("&cThe &c" + kit.getName() + " &ckit does not have a raiding kit mapped for the &c" + role.name() + " &crole."));
             return;
         }
 
         raidingService.removeRaidingKitMapping(kit, role);
 
-        sender.sendMessage(CC.translate("&aSuccessfully removed the &6" + role + " &araiding role kit from &6" + roleKit.getName() + "&a for the &6" + kit.getName() + " &akit."));
+        sender.sendMessage(CC.translate("&aSuccessfully removed the &c" + role + " &araiding role kit from &c" + roleKit.getName() + "&a for the &c" + kit.getName() + " &akit."));
     }
 }

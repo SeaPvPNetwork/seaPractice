@@ -21,7 +21,7 @@ public class Logger {
     private final static ConsoleCommandSender consoleSender;
     private static final Map<UUID, Exception> storedExceptions;
 
-    private static final String PHASE_HEADER_PREFIX = "&6&l--- ";
+    private static final String PHASE_HEADER_PREFIX = "&c&l--- ";
     private static final String PHASE_HEADER_SUFFIX = " ---";
     private static final String TASK_PREFIX_SUCCESS = "&a✔  &f";
     private static final String TASK_PREFIX_FAIL = "&c✖ &f";
@@ -137,8 +137,8 @@ public class Logger {
         } finally {
             long end = System.currentTimeMillis();
             String prefix = success ? TASK_PREFIX_SUCCESS : TASK_PREFIX_FAIL;
-            String message = success ? "&fSuccessfully initialized &6" : "&cFailed to initialize &6";
-            consoleSender.sendMessage(CC.translate(prefix + message + taskName + " &fin &6" + (end - start) + "ms&f."));
+            String message = success ? "&fSuccessfully initialized &c" : "&cFailed to initialize &c";
+            consoleSender.sendMessage(CC.translate(prefix + message + taskName + " &fin &c" + (end - start) + "ms&f."));
         }
     }
     /**
@@ -158,8 +158,8 @@ public class Logger {
         } finally {
             long end = System.currentTimeMillis();
             String prefix = success ? TASK_PREFIX_SUCCESS : TASK_PREFIX_FAIL;
-            String message = success ? "&fSuccessfully ran &6" : "&cFailed to run &6";
-            consoleSender.sendMessage(CC.translate( prefix + message + runnableTaskName + " &fin &6" + (end - start) + "ms&f."));
+            String message = success ? "&fSuccessfully ran &c" : "&cFailed to run &c";
+            consoleSender.sendMessage(CC.translate( prefix + message + runnableTaskName + " &fin &c" + (end - start) + "ms&f."));
         }
     }
 
@@ -181,8 +181,8 @@ public class Logger {
         } finally {
             long runtime = System.currentTimeMillis() - start;
             String prefix = success ? TASK_PREFIX_SUCCESS : TASK_PREFIX_FAIL;
-            String message = success ? "&fSuccessfully " + action + "&f the &6" : "&cFailed to " + action + "&f the &6";
-            consoleSender.sendMessage(CC.translate(prefix + message + task + " &fin &6" + runtime + "ms&f."));
+            String message = success ? "&fSuccessfully " + action + "&f the &c" : "&cFailed to " + action + "&f the &c";
+            consoleSender.sendMessage(CC.translate(prefix + message + task + " &fin &c" + runtime + "ms&f."));
         }
     }
 

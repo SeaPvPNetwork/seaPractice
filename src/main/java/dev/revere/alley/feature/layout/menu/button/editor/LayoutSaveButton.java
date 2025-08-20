@@ -28,7 +28,7 @@ public class LayoutSaveButton extends Button {
     @Override
     public ItemStack getButtonItem(Player player) {
         return new ItemBuilder(Material.WOOL)
-                .name("&6&lSave")
+                .name("&c&lSave")
                 .durability(13)
                 .lore(
                         CC.MENU_BAR,

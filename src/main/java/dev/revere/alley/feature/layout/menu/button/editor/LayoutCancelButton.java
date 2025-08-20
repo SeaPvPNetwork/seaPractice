@@ -21,7 +21,7 @@ public class LayoutCancelButton extends Button {
     @Override
     public ItemStack getButtonItem(Player player) {
         return new ItemBuilder(Material.WOOL)
-                .name("&6&lCancel")
+                .name("&c&lCancel")
                 .durability(14)
                 .lore(
                         CC.MENU_BAR,

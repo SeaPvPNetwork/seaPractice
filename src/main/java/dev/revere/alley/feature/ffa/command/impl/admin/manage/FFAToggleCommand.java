@@ -22,7 +22,7 @@ public class FFAToggleCommand extends BaseCommand {
         String[] args = command.getArgs();
 
         if (args.length < 1) {
-            player.sendMessage(CC.translate("&6Usage: &e/ffa toggle &6<kitName>"));
+            player.sendMessage(CC.translate("&cUsage: &e/ffa toggle &c<kitName>"));
             return;
         }
 
@@ -44,7 +44,7 @@ public class FFAToggleCommand extends BaseCommand {
 
         kitService.saveKit(kit);
         ffaService.reloadFFAKits();
-        player.sendMessage(CC.translate("&aFFA mode has been " + (ffaEnabled ? "&aenabled" : "&cdisabled") + " for kit &6" + kit.getName() + "&a!"));
+        player.sendMessage(CC.translate("&aFFA mode has been " + (ffaEnabled ? "&aenabled" : "&cdisabled") + " for kit &c" + kit.getName() + "&a!"));
         player.sendMessage(CC.translate("&7Additionally, all FFA matches have been reloaded."));
     }
 }

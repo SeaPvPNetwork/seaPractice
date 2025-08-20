@@ -20,11 +20,11 @@ public class FFAListCommand extends BaseCommand {
         FFAService ffaService = this.plugin.getService(FFAService.class);
 
         player.sendMessage("");
-        player.sendMessage(CC.translate("     &6&lFFA Match List &f(" + ffaService.getMatches().size() + "&f)"));
+        player.sendMessage(CC.translate("     &c&lFFA Match List &f(" + ffaService.getMatches().size() + "&f)"));
         if (ffaService.getMatches().isEmpty()) {
             player.sendMessage(CC.translate("      &f● &cNo Matches available."));
         }
-        ffaService.getMatches().forEach(match -> player.sendMessage(CC.translate("      &f● &6" + match.getKit().getDisplayName() + " &f(" + (match.getPlayers().size() + "/" + match.getMaxPlayers()) + "&f)")));
+        ffaService.getMatches().forEach(match -> player.sendMessage(CC.translate("      &f● &c" + match.getKit().getDisplayName() + " &f(" + (match.getPlayers().size() + "/" + match.getMaxPlayers()) + "&f)")));
         player.sendMessage("");
     }
 }

@@ -22,7 +22,7 @@ public class KitToggleCommand extends BaseCommand {
         String[] args = command.getArgs();
 
         if (args.length < 1) {
-            sender.sendMessage(CC.translate("&6Usage: &e/kit toggle &6<kitName>"));
+            sender.sendMessage(CC.translate("&cUsage: &e/kit toggle &c<kitName>"));
             return;
         }
 
@@ -52,6 +52,6 @@ public class KitToggleCommand extends BaseCommand {
         kit.setEnabled(!kit.isEnabled());
         kitService.saveKit(kit);
         String status = kit.isEnabled() ? CC.translate("&aenabled") : CC.translate("&cdisabled");
-        sender.sendMessage(CC.translate("&aSuccessfully " + status + " &athe kit &6" + kit.getName() + "&a."));
+        sender.sendMessage(CC.translate("&aSuccessfully " + status + " &athe kit &c" + kit.getName() + "&a."));
     }
 }

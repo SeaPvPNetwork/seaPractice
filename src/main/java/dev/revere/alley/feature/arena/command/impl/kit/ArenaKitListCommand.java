@@ -38,7 +38,7 @@ public class ArenaKitListCommand extends BaseCommand {
         String[] args = command.getArgs();
 
         if (args.length < 1) {
-            player.sendMessage(CC.translate("&6Usage: &e/arena kitlist &6<arenaName>"));
+            player.sendMessage(CC.translate("&cUsage: &e/arena kitlist &c<arenaName>"));
             return;
         }
 
@@ -51,11 +51,11 @@ public class ArenaKitListCommand extends BaseCommand {
         }
 
         player.sendMessage("");
-        player.sendMessage(CC.translate("     &6&l" + arenaName + " Kit List &f(" + arena.getKits().size() + "&f)"));
+        player.sendMessage(CC.translate("     &c&l" + arenaName + " Kit List &f(" + arena.getKits().size() + "&f)"));
         if (arena.getKits().isEmpty()) {
             player.sendMessage(CC.translate("      &f● &cNo Arena Kits available."));
         }
-        arena.getKits().forEach(kit -> player.sendMessage(CC.translate("      &f● &6" + kit)));
+        arena.getKits().forEach(kit -> player.sendMessage(CC.translate("      &f● &c" + kit)));
         player.sendMessage("");
     }
 }

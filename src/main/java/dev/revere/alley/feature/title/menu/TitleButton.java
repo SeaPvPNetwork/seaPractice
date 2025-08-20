@@ -32,7 +32,7 @@ public class TitleButton extends Button {
 
         if (!this.profile.getProfileData().getUnlockedTitles().contains(this.title.getKit().getName())) {
             return new ItemBuilder(Material.STAINED_GLASS_PANE)
-                    .name("&6&l" + this.title.getKit().getName())
+                    .name("&c&l" + this.title.getKit().getName())
                     .lore(
                             this.progress()
                     )
@@ -42,7 +42,7 @@ public class TitleButton extends Button {
         }
 
         return new ItemBuilder(this.title.getKit().getIcon())
-                .name("&6&l" + this.title.getKit().getName())
+                .name("&c&l" + this.title.getKit().getName())
                 .lore(
                         CC.MENU_BAR,
                         " &a&lUNLOCKED",
@@ -70,7 +70,7 @@ public class TitleButton extends Button {
         }
 
         this.profile.getProfileData().setSelectedTitle(this.title.getKit().getName());
-        player.sendMessage(CC.translate("&aYou have selected the &6" + this.title.getKit().getName() + " &atitle."));
+        player.sendMessage(CC.translate("&aYou have selected the &c" + this.title.getKit().getName() + " &atitle."));
     }
 
     /**
@@ -85,7 +85,7 @@ public class TitleButton extends Button {
                 CC.MENU_BAR,
                 " &c&lLOCKED",
                 "",
-                String.format(" &fUnlock &6%s &fwith %d more %s.",
+                String.format(" &fUnlock &c%s &fwith %d more %s.",
                         progress.getNextRankName(),
                         progress.getWinsRequired(),
                         progress.getWinOrWins()

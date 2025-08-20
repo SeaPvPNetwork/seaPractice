@@ -23,7 +23,7 @@ public class MatchInfoCommand extends BaseCommand {
         String[] args = command.getArgs();
 
         if (args.length == 0) {
-            sender.sendMessage(CC.translate("&6Usage: &e/match info &6<player>"));
+            sender.sendMessage(CC.translate("&cUsage: &e/match info &c<player>"));
             return;
         }
 

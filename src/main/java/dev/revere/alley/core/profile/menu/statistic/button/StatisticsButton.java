@@ -25,7 +25,7 @@ public class StatisticsButton extends Button {
     @Override
     public ItemStack getButtonItem(Player player) {
         return new ItemBuilder(Material.PAPER)
-                .name("&6&lYour Statistics")
+                .name("&c&lYour Statistics")
                 .lore(
                         CC.MENU_BAR,
                         "&7Your statistics are displayed here.",

@@ -27,7 +27,7 @@ public class UnbreakableCommand extends BaseCommand {
         String[] args = command.getArgs();
 
         if (args.length < 1) {
-            player.sendMessage(CC.translate("&6Usage: &e/unbreakable &6<true|false>"));
+            player.sendMessage(CC.translate("&cUsage: &e/unbreakable &c<true|false>"));
             return;
         }
 
@@ -42,6 +42,6 @@ public class UnbreakableCommand extends BaseCommand {
         ItemStack unbreakAbleItem = ReflectionUtility.setUnbreakable(item, unbreakable);
         player.setItemInHand(unbreakAbleItem);
 
-        player.sendMessage(CC.translate("&aSuccessfully set the unbreakable state of the item to &6" + unbreakable + "&a."));
+        player.sendMessage(CC.translate("&aSuccessfully set the unbreakable state of the item to &c" + unbreakable + "&a."));
     }
 }

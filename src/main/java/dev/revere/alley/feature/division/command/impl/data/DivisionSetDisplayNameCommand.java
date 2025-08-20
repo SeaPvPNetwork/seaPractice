@@ -21,7 +21,7 @@ public class DivisionSetDisplayNameCommand extends BaseCommand {
         String[] args = command.getArgs();
 
         if (args.length < 2) {
-            player.sendMessage(CC.translate("&6Usage: &e/division setdisplayname &6<name> <displayName>"));
+            player.sendMessage(CC.translate("&cUsage: &e/division setdisplayname &c<name> <displayName>"));
             return;
         }
 
@@ -35,6 +35,6 @@ public class DivisionSetDisplayNameCommand extends BaseCommand {
         String displayName = args[1];
         division.setDisplayName(displayName);
         divisionService.saveDivision(division);
-        player.sendMessage(CC.translate("&aSuccessfully set the display name of the division &6" + division.getName() + " &ato &6" + displayName + "&a."));
+        player.sendMessage(CC.translate("&aSuccessfully set the display name of the division &c" + division.getName() + " &ato &c" + displayName + "&a."));
     }
 }

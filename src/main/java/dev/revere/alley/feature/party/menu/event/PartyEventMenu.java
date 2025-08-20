@@ -30,7 +30,7 @@ import java.util.Map;
 public class PartyEventMenu extends Menu {
     @Override
     public String getTitle(Player player) {
-        return "&6&lChoose a party event type";
+        return "&c&lChoose a party event type";
     }
 
     @Override
@@ -39,7 +39,7 @@ public class PartyEventMenu extends Menu {
 
         buttons.put(11, new PartyEventButton(
                 Material.DIAMOND_SWORD, 0,
-                "&6&lTeam split",
+                "&c&lTeam split",
                 Arrays.asList(
                         CC.MENU_BAR,
                         "&7Split the party into",
@@ -53,7 +53,7 @@ public class PartyEventMenu extends Menu {
 
         buttons.put(13, new PartyEventButton(
                 Material.GOLD_AXE, 0,
-                "&6&lFree for all",
+                "&c&lFree for all",
                 Arrays.asList(
                         CC.MENU_BAR,
                         "&7Every player fights",

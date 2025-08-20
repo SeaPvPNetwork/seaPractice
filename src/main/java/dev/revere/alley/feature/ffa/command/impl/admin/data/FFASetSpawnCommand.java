@@ -22,7 +22,7 @@ public class FFASetSpawnCommand extends BaseCommand {
         String[] args = command.getArgs();
 
         if (args.length < 1) {
-            player.sendMessage(CC.translate("&6Usage: &e/ffa setspawn &6<arenaName>"));
+            player.sendMessage(CC.translate("&cUsage: &e/ffa setspawn &c<arenaName>"));
             return;
         }
 
@@ -39,6 +39,6 @@ public class FFASetSpawnCommand extends BaseCommand {
         }
 
         arena.setPos1(player.getLocation());
-        player.sendMessage(CC.translate("&aFFA spawn position has been set for arena &6" + arena.getName() + "&a!"));
+        player.sendMessage(CC.translate("&aFFA spawn position has been set for arena &c" + arena.getName() + "&a!"));
     }
 }

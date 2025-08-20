@@ -45,11 +45,11 @@ public class CosmeticListCommand extends BaseCommand {
             }
 
             String friendlyTypeName = StringUtil.formatEnumName(type);
-            String header = String.format("     &6&l%s &f(%d)", friendlyTypeName, cosmetics.size());
+            String header = String.format("     &c&l%s &f(%d)", friendlyTypeName, cosmetics.size());
             player.sendMessage(CC.translate(header));
 
             for (Cosmetic cosmetic : cosmetics) {
-                player.sendMessage(CC.translate("      &f● &6" + cosmetic.getName()));
+                player.sendMessage(CC.translate("      &f● &c" + cosmetic.getName()));
             }
         }
 

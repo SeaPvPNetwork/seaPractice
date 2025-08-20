@@ -318,9 +318,9 @@ public class DefaultMatch extends Match {
         String progressLine;
 
         if (progress.isMaxRank() && progress.getCurrentWins() >= progress.getWinsForNextTier()) {
-            progressLine = " &6&l● &fCONGRATULATIONS! You have reached the maximum rank!";
+            progressLine = " &c&l● &fCONGRATULATIONS! You have reached the maximum rank!";
         } else {
-            progressLine = String.format(" &6&l● &fUnlock &6%s &fwith %d more %s!",
+            progressLine = String.format(" &c&l● &fUnlock &c%s &fwith %d more %s!",
                     progress.getNextRankName(),
                     progress.getWinsRequired(),
                     progress.getWinOrWins()
@@ -328,11 +328,11 @@ public class DefaultMatch extends Match {
         }
 
         Arrays.asList(
-                "&6&lProgress",
+                "&c&lProgress",
                 progressLine,
                 "  &7(" + progress.getProgressBar(12, "■") + "&7) " + progress.getProgressPercentage(),
-                " &6&l● &fDaily Streak: &6" + "N/A" + " &f(Best: " + "N/A" + ")",
-                " &6&l● &fWin Streak: &6" + "N/A" + " &f(Best: " + "N/A" + ")",
+                " &c&l● &fDaily Streak: &c" + "N/A" + " &f(Best: " + "N/A" + ")",
+                " &c&l● &fWin Streak: &c" + "N/A" + " &f(Best: " + "N/A" + ")",
                 ""
         ).forEach(line -> winner.sendMessage(CC.translate(line)));
     }

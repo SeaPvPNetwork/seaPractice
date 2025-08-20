@@ -121,7 +121,7 @@ public class MatchTask extends BukkitRunnable {
         this.match.getParticipants().forEach(gameParticipant -> gameParticipant.getPlayers().forEach(matchGamePlayer -> {
             AlleyPlugin.getInstance().getService(ReflectionService.class).getReflectionService(TitleReflectionServiceImpl.class).sendTitle(
                     matchGamePlayer.getTeamPlayer(),
-                    "&6&lMatch started",
+                    "&c&lMatch started",
                     "&fGood Luck!"
             );
         }));
@@ -131,8 +131,8 @@ public class MatchTask extends BukkitRunnable {
         this.match.getParticipants().forEach(gameParticipant -> gameParticipant.getPlayers().forEach(matchGamePlayer -> {
             AlleyPlugin.getInstance().getService(ReflectionService.class).getReflectionService(TitleReflectionServiceImpl.class).sendTitle(
                     matchGamePlayer.getTeamPlayer(),
-                    "&6&lMatch",
-                    "&fStarts in &6" + this.stage + "s",
+                    "&c&lMatch",
+                    "&fStarts in &c" + this.stage + "s",
                     0, 23, 20
             );
         }));

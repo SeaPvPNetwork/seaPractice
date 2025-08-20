@@ -30,7 +30,7 @@ public class PartyEventSplitButton extends Button {
     @Override
     public ItemStack getButtonItem(Player player) {
         return new ItemBuilder(this.kit.getIcon())
-                .name("&6&l" + this.kit.getDisplayName())
+                .name("&c&l" + this.kit.getDisplayName())
                 .lore(
                         CC.MENU_BAR,
                         "&aClick to select!",

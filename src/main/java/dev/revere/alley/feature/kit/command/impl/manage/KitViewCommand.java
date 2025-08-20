@@ -23,7 +23,7 @@ public class KitViewCommand extends BaseCommand {
         String[] args = command.getArgs();
 
         if (args.length < 1) {
-            player.sendMessage(CC.translate("&6Usage: &e/kit view &6<kitName>"));
+            player.sendMessage(CC.translate("&cUsage: &e/kit view &c<kitName>"));
             return;
         }
 
@@ -34,17 +34,17 @@ public class KitViewCommand extends BaseCommand {
         }
 
         player.sendMessage("");
-        player.sendMessage(CC.translate("&6&lKit " + kit.getName() + " &f(" + (kit.isEnabled() ? "&aEnabled" : "&cDisabled") + "&f)"));
-        player.sendMessage(CC.translate(" &f● &6Display Name: &f" + kit.getDisplayName()));
-        player.sendMessage(CC.translate(" &f● &6Name: &f" + kit.getName()));
-        player.sendMessage(CC.translate(" &f● &6Icon: &f" + kit.getIcon().name().toLowerCase() + " &7(" + kit.getDurability() + ")"));
-        player.sendMessage(CC.translate(" &f● &6Disclaimer: &f" + kit.getDisclaimer()));
-        player.sendMessage(CC.translate(" &f● &6Description: &f" + kit.getDescription()));
-        player.sendMessage(CC.translate(" &f● &6FFA: &f" + (kit.isFfaEnabled() ? "&aEnabled" : "&cDisabled")));
+        player.sendMessage(CC.translate("&c&lKit " + kit.getName() + " &f(" + (kit.isEnabled() ? "&aEnabled" : "&cDisabled") + "&f)"));
+        player.sendMessage(CC.translate(" &f● &cDisplay Name: &f" + kit.getDisplayName()));
+        player.sendMessage(CC.translate(" &f● &cName: &f" + kit.getName()));
+        player.sendMessage(CC.translate(" &f● &cIcon: &f" + kit.getIcon().name().toLowerCase() + " &7(" + kit.getDurability() + ")"));
+        player.sendMessage(CC.translate(" &f● &cDisclaimer: &f" + kit.getDisclaimer()));
+        player.sendMessage(CC.translate(" &f● &cDescription: &f" + kit.getDescription()));
+        player.sendMessage(CC.translate(" &f● &cFFA: &f" + (kit.isFfaEnabled() ? "&aEnabled" : "&cDisabled")));
         player.spigot().sendMessage(ClickableUtil.createComponent(
                 "  &a(Click here to view the kit settings)",
                 "/kit viewsettings " + kit.getName(),
-                "&7Click to view the settings of the kit &6" + kit.getName())
+                "&7Click to view the settings of the kit &c" + kit.getName())
         );
         player.sendMessage("");
     }

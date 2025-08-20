@@ -25,7 +25,7 @@ public class LayoutMenu extends Menu {
 
     @Override
     public String getTitle(Player player) {
-        return "&6&lLayout Editor";
+        return "&c&lLayout Editor";
     }
 
     @Override

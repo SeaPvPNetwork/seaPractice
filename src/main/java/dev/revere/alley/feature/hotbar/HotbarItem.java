@@ -39,7 +39,7 @@ public class HotbarItem {
      */
     public HotbarItem(String name) {
         this.name = name;
-        this.displayName = "&6&l" + name + " &7(Right-Click)";
+        this.displayName = "&c&l" + name + " &7(Right-Click)";
         this.lore = Collections.singletonList("&f" + name + " hotbar item.");
 
         this.material = Material.STONE;

@@ -23,7 +23,7 @@ public class SpectateCommand extends BaseCommand {
         String[] args = command.getArgs();
 
         if (args.length == 0) {
-            player.sendMessage(CC.translate("&6Usage: &e/spectate &6<player>"));
+            player.sendMessage(CC.translate("&cUsage: &e/spectate &c<player>"));
             return;
         }
 

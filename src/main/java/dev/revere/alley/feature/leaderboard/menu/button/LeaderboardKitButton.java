@@ -76,7 +76,7 @@ public class LeaderboardKitButton extends Button {
                     String rankPrefix;
                     switch (currentRank) {
                         case 1:
-                            rankPrefix = "&6&l✫" + currentRank;
+                            rankPrefix = "&c&l✫" + currentRank;
                             break;
                         case 2:
                             rankPrefix = "&7&l✫" + currentRank;
@@ -85,7 +85,7 @@ public class LeaderboardKitButton extends Button {
                             rankPrefix = "&c&l✫" + currentRank;
                             break;
                         default:
-                            rankPrefix = "&6" + currentRank + ".";
+                            rankPrefix = "&c" + currentRank + ".";
                             break;
                     }
 

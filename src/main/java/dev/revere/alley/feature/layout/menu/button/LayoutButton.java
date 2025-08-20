@@ -29,7 +29,7 @@ public class LayoutButton extends Button {
     @Override
     public ItemStack getButtonItem(Player player) {
         return new ItemBuilder(this.kit.getIcon())
-                .name("&6&l" + this.kit.getDisplayName())
+                .name("&c&l" + this.kit.getDisplayName())
                 .durability(this.kit.getDurability())
                 .lore(
                         CC.MENU_BAR,

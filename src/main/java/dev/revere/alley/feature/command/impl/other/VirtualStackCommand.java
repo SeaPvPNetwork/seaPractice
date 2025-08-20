@@ -28,7 +28,7 @@ public class VirtualStackCommand extends BaseCommand {
         String[] args = command.getArgs();
 
         if (args.length < 1) {
-            player.sendMessage(CC.translate("&6Usage: &e/virtualstack &6<amount> &7[bypassLimit]"));
+            player.sendMessage(CC.translate("&cUsage: &e/virtualstack &c<amount> &7[bypassLimit]"));
             player.sendMessage(CC.translate("&7Example: /virtualstack 127"));
             player.sendMessage(CC.translate("&7To bypass stack size limits, use: '/virtualstack 130 true'"));
             return;
@@ -56,7 +56,7 @@ public class VirtualStackCommand extends BaseCommand {
 
         try {
             this.plugin.getService(ReflectionService.class).getReflectionService(VirtualStackReflectionServiceImpl.class).setVirtualStackAmount(player, amount);
-            player.sendMessage(CC.translate("&aSuccessfully set the virtual stack amount to &6" + amount + "&a."));
+            player.sendMessage(CC.translate("&aSuccessfully set the virtual stack amount to &c" + amount + "&a."));
         } catch (Exception exception) {
             Logger.logException("Failed to set virtual stack amount", exception);
         }

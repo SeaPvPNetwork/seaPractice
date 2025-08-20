@@ -196,7 +196,7 @@ public class DefaultFFAMatch extends FFAMatch {
         this.plugin.getService(CombatService.class).resetCombatLog(player);
 
         this.getPlayers().forEach(ffaPlayer -> ffaPlayer.getPlayer().sendMessage(CC.translate(
-                "&6" + profile.getFancyName() + " &ahas been killed by &6" + killerProfile.getFancyName() + "&a."))
+                "&c" + profile.getFancyName() + " &ahas been killed by &c" + killerProfile.getFancyName() + "&a."))
         );
         this.sendKillstreakAlertMessage(killer);
 

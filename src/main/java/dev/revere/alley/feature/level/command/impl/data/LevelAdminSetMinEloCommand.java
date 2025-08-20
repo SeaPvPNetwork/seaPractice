@@ -21,7 +21,7 @@ public class LevelAdminSetMinEloCommand extends BaseCommand {
         String[] args = command.getArgs();
 
         if (args.length < 2) {
-            sender.sendMessage(CC.translate("&6Usage: &e/leveladmin setminelo &6<levelName> <minElo>"));
+            sender.sendMessage(CC.translate("&cUsage: &e/leveladmin setminelo &c<levelName> <minElo>"));
             return;
         }
 
@@ -48,6 +48,6 @@ public class LevelAdminSetMinEloCommand extends BaseCommand {
 
         level.setMinElo(minElo);
         levelService.saveLevel(level);
-        sender.sendMessage(CC.translate("&aMinimum Elo for level &6" + levelName + " &aset to &6" + minElo + "&a!"));
+        sender.sendMessage(CC.translate("&aMinimum Elo for level &c" + levelName + " &aset to &c" + minElo + "&a!"));
     }
 }

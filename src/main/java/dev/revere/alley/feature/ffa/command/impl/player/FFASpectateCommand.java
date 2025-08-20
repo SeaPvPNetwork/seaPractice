@@ -25,7 +25,7 @@ public class FFASpectateCommand extends BaseCommand {
         String[] args = command.getArgs();
 
         if (args.length < 1) {
-            player.sendMessage(CC.translate("&6Usage: &e/spectateffa &6<ffaKit>"));
+            player.sendMessage(CC.translate("&cUsage: &e/spectateffa &c<ffaKit>"));
             return;
         }
 

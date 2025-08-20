@@ -168,7 +168,7 @@ public class MatchDamageListener implements Listener {
                         finalHealth = Math.max(0, finalHealth);
 
                         if (finalHealth > 0) {
-                            attacker.sendMessage(CC.translate(AlleyPlugin.getInstance().getService(CoreAdapter.class).getCore().getPlayerColor(damaged) + damaged.getName() + " &7&l" + Symbol.ARROW_R + " &6" + String.format("%.1f", finalHealth) + " &c" + Symbol.HEART));
+                            attacker.sendMessage(CC.translate(AlleyPlugin.getInstance().getService(CoreAdapter.class).getCore().getPlayerColor(damaged) + damaged.getName() + " &7&l" + Symbol.ARROW_R + " &c" + String.format("%.1f", finalHealth) + " &c" + Symbol.HEART));
                         }
                     }
 

@@ -22,7 +22,7 @@ public class LayoutResetItemsButton extends Button {
     @Override
     public ItemStack getButtonItem(Player player) {
         return new ItemBuilder(Material.WOOL)
-                .name("&6&lReset Items")
+                .name("&c&lReset Items")
                 .durability(4)
                 .lore(
                         CC.MENU_BAR,

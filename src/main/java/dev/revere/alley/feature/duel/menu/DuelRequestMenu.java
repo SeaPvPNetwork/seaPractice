@@ -28,7 +28,7 @@ public class DuelRequestMenu extends Menu {
 
     @Override
     public String getTitle(Player player) {
-        return "&6&lDuel " + this.targetPlayer.getName();
+        return "&c&lDuel " + this.targetPlayer.getName();
     }
 
     @Override

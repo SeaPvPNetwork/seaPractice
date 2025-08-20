@@ -23,7 +23,7 @@ public class ArenaPasteTestCommand extends BaseCommand {
         String[] args = command.getArgs();
 
         if (args.length < 1) {
-            player.sendMessage(CC.translate("&6Usage: &e/arena paste &6<schematicName>"));
+            player.sendMessage(CC.translate("&cUsage: &e/arena paste &c<schematicName>"));
             return;
         }
 

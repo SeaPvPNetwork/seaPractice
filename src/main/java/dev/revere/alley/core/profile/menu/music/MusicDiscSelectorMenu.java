@@ -25,7 +25,7 @@ import java.util.Map;
 public class MusicDiscSelectorMenu extends Menu {
     @Override
     public String getTitle(Player player) {
-        return "&6&lSongs";
+        return "&c&lSongs";
     }
 
     @Override

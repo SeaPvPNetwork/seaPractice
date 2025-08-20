@@ -28,7 +28,7 @@ public class MatchHistoryViewMenu extends PaginatedMenu {
 
     @Override
     public String getPrePaginatedTitle(Player player) {
-        return "&6&l" + this.kit.getName() + " Match History";
+        return "&c&l" + this.kit.getName() + " Match History";
     }
 
     @Override

@@ -46,28 +46,28 @@ public class GlobalStatButton extends Button {
 
         return new ItemBuilder(Material.SKULL_ITEM)
                 .setSkull(target.getName())
-                .name("&6&l" + target.getName() + " &r&7┃ &fStats")
+                .name("&c&l" + target.getName() + " &r&7┃ &fStats")
                 .lore(
                         CC.MENU_BAR,
                         "&7Showing global data.",
                         "",
-                        "&6&lUnranked",
-                        "&6│ &fWins: &6" + profile.getProfileData().getUnrankedWins(),
-                        "&6│ &fLosses: &6" + profile.getProfileData().getUnrankedLosses(),
+                        "&c&lUnranked",
+                        "&c│ &fWins: &c" + profile.getProfileData().getUnrankedWins(),
+                        "&c│ &fLosses: &c" + profile.getProfileData().getUnrankedLosses(),
                         "",
-                        "&6&lRanked",
-                        "&6│ &fWins: &6" + profile.getProfileData().getRankedWins(),
-                        "&6│ &fLosses: &6" + profile.getProfileData().getRankedLosses(),
-                        "&6│ &fElo: &6" + profile.getProfileData().getElo(),
+                        "&c&lRanked",
+                        "&c│ &fWins: &c" + profile.getProfileData().getRankedWins(),
+                        "&c│ &fLosses: &c" + profile.getProfileData().getRankedLosses(),
+                        "&c│ &fElo: &c" + profile.getProfileData().getElo(),
                         "",
-                        "&6&lFFA",
-                        "&6│ &fKills: &6" + ffaKills,
-                        "&6│ &fDeaths: &6" + ffaDeaths,
+                        "&c&lFFA",
+                        "&c│ &fKills: &c" + ffaKills,
+                        "&c│ &fDeaths: &c" + ffaDeaths,
                         "",
-                        "&6&lAccount",
-                        "&6│ &fRank: &6" + coreAdapter.getCore().getRankColor(target.getPlayer()) + coreAdapter.getCore().getRankName(target.getPlayer()),
-                        "&6│ &fCoins: &6$" + profile.getProfileData().getCoins(),
-                        "&6│ &fLevel: &6" + levelService.getLevel(profile.getProfileData().getGlobalLevel()).getDisplayName(),
+                        "&c&lAccount",
+                        "&c│ &fRank: &c" + coreAdapter.getCore().getRankColor(target.getPlayer()) + coreAdapter.getCore().getRankName(target.getPlayer()),
+                        "&c│ &fCoins: &c$" + profile.getProfileData().getCoins(),
+                        "&c│ &fLevel: &c" + levelService.getLevel(profile.getProfileData().getGlobalLevel()).getDisplayName(),
                         CC.MENU_BAR
 
                 )

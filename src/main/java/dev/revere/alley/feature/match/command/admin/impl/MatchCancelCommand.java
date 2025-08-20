@@ -23,7 +23,7 @@ public class MatchCancelCommand extends BaseCommand {
         String[] args = command.getArgs();
 
         if (args.length != 1) {
-            player.sendMessage(CC.translate("&6Usage: &e/match cancel &6<player>"));
+            player.sendMessage(CC.translate("&cUsage: &e/match cancel &c<player>"));
             return;
         }
 
@@ -44,6 +44,6 @@ public class MatchCancelCommand extends BaseCommand {
         profile.getMatch().setState(MatchState.ENDING_MATCH);
         profile.getMatch().getRunnable().setStage(4);
 
-        player.sendMessage(CC.translate("&aYou have ended the match for &6" + target.getName() + "&a."));
+        player.sendMessage(CC.translate("&aYou have ended the match for &c" + target.getName() + "&a."));
     }
 }

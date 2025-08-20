@@ -30,9 +30,9 @@ public class PartyEventSplitArenaSelectorButton extends Button {
     @Override
     public ItemStack getButtonItem(Player player) {
         return new ItemBuilder(Material.PAPER)
-                .name("&6&l" + this.arena.getName())
+                .name("&c&l" + this.arena.getName())
                 .lore(
-                        " &f● &6Kit: &f" + this.kit.getDisplayName(),
+                        " &f● &cKit: &f" + this.kit.getDisplayName(),
                         "",
                         "&aClick to select!"
                 )

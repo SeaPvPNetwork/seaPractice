@@ -69,7 +69,7 @@ public class MusicServiceImpl implements MusicService {
         sendPlaySoundPacket(player, disc, jukeboxLocation);
 
         String formattedDuration = TimeUtil.formatTimeFromSeconds(disc.getDuration());
-        String message = CC.translate("&7[&6♬&7] &fNow playing: &6" + disc.getTitle() + " &7(" + formattedDuration + ")");
+        String message = CC.translate("&7[&c♬&7] &fNow playing: &c" + disc.getTitle() + " &7(" + formattedDuration + ")");
         player.sendMessage(message);
 
         MusicSession session = new MusicSession(disc, jukeboxLocation);

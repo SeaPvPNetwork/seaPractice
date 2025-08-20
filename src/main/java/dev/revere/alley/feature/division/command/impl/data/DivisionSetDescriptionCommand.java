@@ -23,7 +23,7 @@ public class DivisionSetDescriptionCommand extends BaseCommand {
         String[] args = command.getArgs();
 
         if (args.length < 2) {
-            player.sendMessage(CC.translate("&6Usage: &e/division setdescription &6<name> <description>"));
+            player.sendMessage(CC.translate("&cUsage: &e/division setdescription &c<name> <description>"));
             return;
         }
 
@@ -37,6 +37,6 @@ public class DivisionSetDescriptionCommand extends BaseCommand {
         String description = String.join(" ", Arrays.copyOfRange(args, 1, args.length));
         division.setDescription(description);
         divisionService.saveDivision(division);
-        player.sendMessage(CC.translate("&aSuccessfully set the description of the division named &6" + division.getDisplayName() + "&a to &6" + description + "&a."));
+        player.sendMessage(CC.translate("&aSuccessfully set the description of the division named &c" + division.getDisplayName() + "&a to &c" + description + "&a."));
     }
 }

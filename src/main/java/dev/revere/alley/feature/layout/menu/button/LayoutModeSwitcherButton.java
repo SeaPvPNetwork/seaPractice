@@ -23,7 +23,7 @@ public class LayoutModeSwitcherButton extends Button {
     @Override
     public ItemStack getButtonItem(Player player) {
         return new ItemBuilder(Material.ARROW)
-                .name("&6&l" + this.kitCategory.getName() + " Modes")
+                .name("&c&l" + this.kitCategory.getName() + " Modes")
                 .lore(
                         CC.MENU_BAR,
                         ("&f " + this.kitCategory.getDescription()),

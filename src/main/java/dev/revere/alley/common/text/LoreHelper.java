@@ -20,7 +20,7 @@ public class LoreHelper {
      * @return A formatted string indicating whether the feature is toggled or not.
      */
     public String displayToggled(boolean value) {
-        String returnValue = value ? "&a&l✔ &6Toggled" : "&c&l✘ &cNot Toggled";
+        String returnValue = value ? "&a&l✔ &cToggled" : "&c&l✘ &cNot Toggled";
         return ChatColor.translateAlternateColorCodes('&', "&f&l│ " + returnValue);
     }
     /**
@@ -29,7 +29,7 @@ public class LoreHelper {
      * @param value The boolean value to represent.
      */
     public String displayEnabled(boolean value) {
-        String returnValue = value ? "&6Enabled" : "&cDisabled";
+        String returnValue = value ? "&cEnabled" : "&cDisabled";
         return ChatColor.translateAlternateColorCodes('&', "&f&l│ " + returnValue);
     }
 
@@ -39,7 +39,7 @@ public class LoreHelper {
      * @param value The boolean value to represent.
      */
     public String displayShown(boolean value) {
-        String returnValue = value ? "&6Shown" : "&cHidden";
+        String returnValue = value ? "&cShown" : "&cHidden";
         return ChatColor.translateAlternateColorCodes('&', "&f&l│ " + returnValue);
     }
 
@@ -50,7 +50,7 @@ public class LoreHelper {
      */
     public String displayStatus(boolean value) {
         String returnValue = value ? "&aEnabled" : "&cDisabled";
-        return ChatColor.translateAlternateColorCodes('&', "&f● &6Status: &f" + returnValue);
+        return ChatColor.translateAlternateColorCodes('&', "&f● &cStatus: &f" + returnValue);
     }
 
     /**

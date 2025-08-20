@@ -28,7 +28,7 @@ public class CosmeticTypeMenu extends Menu {
     @Override
     public String getTitle(Player player) {
         String friendlyName = StringUtil.formatEnumName(cosmeticType);
-        return "&6&l" + friendlyName;
+        return "&c&l" + friendlyName;
     }
 
     @Override

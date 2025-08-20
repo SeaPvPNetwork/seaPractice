@@ -24,7 +24,7 @@ public class HotbarDeleteCommand extends BaseCommand {
         String[] args = command.getArgs();
 
         if (args.length < 1) {
-            player.sendMessage(CC.translate("&6Usage: &e/hotbar delete &6<name>"));
+            player.sendMessage(CC.translate("&cUsage: &e/hotbar delete &c<name>"));
             return;
         }
 

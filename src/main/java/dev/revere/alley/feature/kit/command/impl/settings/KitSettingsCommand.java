@@ -20,11 +20,11 @@ public class KitSettingsCommand extends BaseCommand {
         KitSettingService kitSettingService = this.plugin.getService(KitSettingService.class);
 
         player.sendMessage("");
-        player.sendMessage(CC.translate("&6&lKit Settings List &f(" + kitSettingService.getSettings().size() + "&f)"));
+        player.sendMessage(CC.translate("&c&lKit Settings List &f(" + kitSettingService.getSettings().size() + "&f)"));
         if (kitSettingService.getSettings().isEmpty()) {
             player.sendMessage(CC.translate(" &f● &cNo Kit Settings available."));
         }
-        kitSettingService.getSettings().forEach(setting -> player.sendMessage(CC.translate(" &f● &6" + setting.getName() + " &8(&7" + setting.getDescription() + "&7)")));
+        kitSettingService.getSettings().forEach(setting -> player.sendMessage(CC.translate(" &f● &c" + setting.getName() + " &8(&7" + setting.getDescription() + "&7)")));
         player.sendMessage("");
     }
 }

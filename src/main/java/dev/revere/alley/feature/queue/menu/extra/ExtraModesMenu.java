@@ -26,7 +26,7 @@ public class ExtraModesMenu extends Menu {
 
     @Override
     public String getTitle(Player player) {
-        return "&6&l" + this.queueType.getMenuTitle();
+        return "&c&l" + this.queueType.getMenuTitle();
     }
 
     @Override

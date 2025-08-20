@@ -25,7 +25,7 @@ public class MusicDiscSelectorButton extends Button {
     @Override
     public ItemStack getButtonItem(Player player) {
         return new ItemBuilder(this.disc.getMaterial())
-                .name("&6&l" + this.disc.getTitle())
+                .name("&c&l" + this.disc.getTitle())
                 .lore(
                         CC.MENU_BAR,
                         LoreHelper.displayToggled(this.profile.getProfileData().getMusicData().isDiscSelected(this.disc.name())),
@@ -49,10 +49,10 @@ public class MusicDiscSelectorButton extends Button {
 
         if (musicData.isDiscSelected(this.disc.name())) {
             musicData.removeDisc(this.disc.name());
-            player.sendMessage(CC.translate("&cYou have removed &6" + this.disc.getTitle() + "&c from your music selection."));
+            player.sendMessage(CC.translate("&cYou have removed &c" + this.disc.getTitle() + "&c from your music selection."));
         } else {
             musicData.addDisc(this.disc.name());
-            player.sendMessage(CC.translate("&aYou have added &6" + this.disc.getTitle() + "&a to your music selection."));
+            player.sendMessage(CC.translate("&aYou have added &c" + this.disc.getTitle() + "&a to your music selection."));
         }
 
         this.playNeutral(player);

@@ -36,7 +36,7 @@ public class DuelOtherPartyButton extends Button {
         List<String> lore = getLore();
 
         ItemStack itemStack = new ItemBuilder(new ItemStack(Material.SKULL_ITEM, 1, (short) 3))
-                .name("&6&l" + party.getLeader().getName() + "'s Party")
+                .name("&c&l" + party.getLeader().getName() + "'s Party")
                 .lore(lore)
                 .build();
         SkullMeta meta = (SkullMeta) itemStack.getItemMeta();
@@ -57,11 +57,11 @@ public class DuelOtherPartyButton extends Button {
     private @NotNull List<String> getLore() {
         List<String> lore = new ArrayList<>();
         lore.add(CC.MENU_BAR);
-        lore.add(" &6Members: &f(" + party.getMembers().size() + ")");
+        lore.add(" &cMembers: &f(" + party.getMembers().size() + ")");
         for (UUID memberId : party.getMembers()) {
             Player member = Bukkit.getPlayer(memberId);
             if (member != null) {
-                lore.add("&6│ &f" + member.getName());
+                lore.add("&c│ &f" + member.getName());
             }
         }
         lore.add("");

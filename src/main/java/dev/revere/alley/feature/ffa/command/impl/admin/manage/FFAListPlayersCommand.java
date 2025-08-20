@@ -33,11 +33,11 @@ public class FFAListPlayersCommand extends BaseCommand {
         }
 
         player.sendMessage("");
-        player.sendMessage(CC.translate("     &6&l" + match.getKit().getDisplayName() + " Player List &f(" + match.getPlayers().size() + "&f)"));
+        player.sendMessage(CC.translate("     &c&l" + match.getKit().getDisplayName() + " Player List &f(" + match.getPlayers().size() + "&f)"));
         if (match.getPlayers().isEmpty()) {
             player.sendMessage(CC.translate("      &f● &cNo Players available."));
         }
-        match.getPlayers().forEach(participant -> player.sendMessage(CC.translate("      &f● &6" + participant.getName())));
+        match.getPlayers().forEach(participant -> player.sendMessage(CC.translate("      &f● &c" + participant.getName())));
         player.sendMessage("");
     }
 }

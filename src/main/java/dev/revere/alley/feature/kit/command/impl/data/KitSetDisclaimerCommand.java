@@ -24,7 +24,7 @@ public class KitSetDisclaimerCommand extends BaseCommand {
         String[] args = command.getArgs();
 
         if (args.length < 2) {
-            sender.sendMessage(CC.translate("&6Usage: &e/kit setdisclaimer &6<kitName> <disclaimer>"));
+            sender.sendMessage(CC.translate("&cUsage: &e/kit setdisclaimer &c<kitName> <disclaimer>"));
             return;
         }
 

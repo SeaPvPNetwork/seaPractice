@@ -111,7 +111,7 @@ public class BedMatch extends DefaultMatch {
      * @param opponent The opponent whose bed was destroyed.
      */
     public void alertBedDestruction(Player breaker, GameParticipant<MatchGamePlayer> opponent) {
-        String destructionMessage = "&6&lBED DESTRUCTION!";
+        String destructionMessage = "&c&lBED DESTRUCTION!";
         String subMessage = getBreakMessage(breaker, opponent);
 
         this.sendMessage(

@@ -22,7 +22,7 @@ public class ToggleLobbyMusicButton extends Button {
     public ItemStack getButtonItem(Player player) {
         Profile profile = AlleyPlugin.getInstance().getService(ProfileService.class).getProfile(player.getUniqueId());
         return new ItemBuilder(Material.EMERALD)
-                .name("&6&lLobby Music")
+                .name("&c&lLobby Music")
                 .lore(
                         CC.MENU_BAR,
                         LoreHelper.displayEnabled(profile.getProfileData().getSettingData().isLobbyMusicEnabled()),

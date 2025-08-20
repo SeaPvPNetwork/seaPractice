@@ -22,7 +22,7 @@ public class KitSetEditableCommand extends BaseCommand {
         String[] args = command.getArgs();
 
         if (args.length < 1) {
-            sender.sendMessage(CC.translate("&6Usage: &e/kit seteditable &6<name> <true/false>"));
+            sender.sendMessage(CC.translate("&cUsage: &e/kit seteditable &c<name> <true/false>"));
             return;
         }
 

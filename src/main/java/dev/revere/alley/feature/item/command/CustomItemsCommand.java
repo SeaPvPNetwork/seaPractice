@@ -24,8 +24,8 @@ public class CustomItemsCommand extends BaseCommand {
     public void onCommand(CommandArgs command) {
         Arrays.asList(
                 "",
-                "&6&lCustom Items Commands Help:",
-                " &f● &6/customitems goldenhead &8(&7amount&8) &7| Gives you a golden head",
+                "&c&lCustom Items Commands Help:",
+                " &f● &c/customitems goldenhead &8(&7amount&8) &7| Gives you a golden head",
                 ""
         ).forEach(line -> command.getPlayer().sendMessage(CC.translate(line)));
     }

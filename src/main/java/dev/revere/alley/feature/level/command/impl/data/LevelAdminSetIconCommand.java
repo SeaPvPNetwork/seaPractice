@@ -22,7 +22,7 @@ public class LevelAdminSetIconCommand extends BaseCommand {
         String[] args = command.getArgs();
 
         if (args.length < 1) {
-            player.sendMessage(CC.translate("&6Usage: &e/leveladmin seticon &6<levelName>"));
+            player.sendMessage(CC.translate("&cUsage: &e/leveladmin seticon &c<levelName>"));
             return;
         }
 
@@ -44,6 +44,6 @@ public class LevelAdminSetIconCommand extends BaseCommand {
         level.setMaterial(iconMaterial);
         level.setDurability(durability);
         levelService.saveLevel(level);
-        player.sendMessage(CC.translate("&aSuccessfully set the icon for level &6" + levelName + " &ato " + iconMaterial.name() + "&a!"));
+        player.sendMessage(CC.translate("&aSuccessfully set the icon for level &c" + levelName + " &ato " + iconMaterial.name() + "&a!"));
     }
 }

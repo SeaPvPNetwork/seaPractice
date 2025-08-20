@@ -40,7 +40,7 @@ public class QueuesMenuDefault extends Menu {
      */
     @Override
     public String getTitle(Player player) {
-        return "&6&lSolo Unranked Queues";
+        return "&c&lSolo Unranked Queues";
     }
 
     /**
@@ -55,29 +55,29 @@ public class QueuesMenuDefault extends Menu {
 
         QueueService queueService = AlleyPlugin.getInstance().getService(QueueService.class);
 
-        buttons.put(11, new QueuesButtonDefault("&6&lSolos", Material.DIAMOND_SWORD, 0, Arrays.asList(
+        buttons.put(11, new QueuesButtonDefault("&c&lSolos", Material.DIAMOND_SWORD, 0, Arrays.asList(
                 "&7Casual 1v1s with",
                 "&7no loss penalty.",
                 "",
-                "&6Players: &f" + queueService.getPlayerCountOfGameType("Unranked"),
+                "&cPlayers: &f" + queueService.getPlayerCountOfGameType("Unranked"),
                 "",
                 "&aClick to play!"
         )));
 
-        buttons.put(13, new QueuesButtonDefault("&6&lBots", Material.GOLD_SWORD, 0, Arrays.asList(
+        buttons.put(13, new QueuesButtonDefault("&c&lBots", Material.GOLD_SWORD, 0, Arrays.asList(
                 "&7Practice against bots",
                 "&7to improve your skills.",
                 "",
-                "&6Players: &f" + queueService.getPlayerCountOfGameType("Bots"),
+                "&cPlayers: &f" + queueService.getPlayerCountOfGameType("Bots"),
                 "",
                 "&aClick to play!"
         )));
 
-        buttons.put(15, new QueuesButtonDefault("&6&lFFA", Material.GOLD_AXE, 0, Arrays.asList(
+        buttons.put(15, new QueuesButtonDefault("&c&lFFA", Material.GOLD_AXE, 0, Arrays.asList(
                 "&7Free for all with",
                 "&7infinity respawns.",
                 "",
-                "&6Players: &f" + queueService.getPlayerCountOfGameType("FFA"),
+                "&cPlayers: &f" + queueService.getPlayerCountOfGameType("FFA"),
                 "",
                 "&aClick to play!"
         )));

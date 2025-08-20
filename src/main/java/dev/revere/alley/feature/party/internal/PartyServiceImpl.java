@@ -146,7 +146,7 @@ public class PartyServiceImpl implements PartyService {
 
         Arrays.asList(
                 "",
-                "&6&lParty Created &a" + Symbol.TICK,
+                "&c&lParty Created &a" + Symbol.TICK,
                 " &7Type /p for help.",
                 ""
         ).forEach(line -> player.sendMessage(CC.translate(line)));
@@ -160,7 +160,7 @@ public class PartyServiceImpl implements PartyService {
             return;
         }
 
-        party.notifyParty("&6&lParty &7&l" + Symbol.ARROW_R + " &6" + leader.getName() + " &cdisbanded the party.");
+        party.notifyParty("&c&lParty &7&l" + Symbol.ARROW_R + " &c" + leader.getName() + " &cdisbanded the party.");
 
         for (UUID memberId : new ArrayList<>(party.getMembers())) {
             Player member = Bukkit.getPlayer(memberId);
@@ -296,8 +296,8 @@ public class PartyServiceImpl implements PartyService {
         }
 
         party.getBannedPlayers().remove(target.getUniqueId());
-        party.notifyParty(CC.translate("&6" + target.getName() + " &ahas been unbanned from the party and is now able to join again."));
-        target.sendMessage(CC.translate("&aYou have been unbanned from &6" + party.getLeader().getName() + "'s &aparty."));
+        party.notifyParty(CC.translate("&c" + target.getName() + " &ahas been unbanned from the party and is now able to join again."));
+        target.sendMessage(CC.translate("&aYou have been unbanned from &c" + party.getLeader().getName() + "'s &aparty."));
     }
 
     @Override
@@ -330,7 +330,7 @@ public class PartyServiceImpl implements PartyService {
         }
 
         if (party.getBannedPlayers().contains(player.getUniqueId())) {
-            player.sendMessage(CC.translate("&cYou are banned from &6" + leader.getName() + "&c's party."));
+            player.sendMessage(CC.translate("&cYou are banned from &c" + leader.getName() + "&c's party."));
             return;
         }
 
@@ -395,9 +395,9 @@ public class PartyServiceImpl implements PartyService {
         this.partyRequests.add(request);
 
         target.sendMessage("");
-        target.sendMessage(CC.translate("&6&lParty Invitation"));
-        target.sendMessage(CC.translate("&f&l ● &fFrom: &6" + sender.getName()));
-        target.sendMessage(CC.translate("&f&l ● &fPlayers: &6" + party.getMembers().size() + "&f/&630")); //TODO: Implement party size limit with permissions ect...
+        target.sendMessage(CC.translate("&c&lParty Invitation"));
+        target.sendMessage(CC.translate("&f&l ● &fFrom: &c" + sender.getName()));
+        target.sendMessage(CC.translate("&f&l ● &fPlayers: &c" + party.getMembers().size() + "&f/&c30")); //TODO: Implement party size limit with permissions ect...
         target.spigot().sendMessage(this.getClickable(sender));
         target.sendMessage("");
     }
@@ -431,7 +431,7 @@ public class PartyServiceImpl implements PartyService {
     public void announceParty(Party party) {
         Bukkit.getOnlinePlayers().forEach(player -> {
             player.sendMessage("");
-            player.sendMessage(CC.translate("&6&l" + party.getLeader().getName() + " &a&lis inviting you to join &6&ltheir &a&lparty!"));
+            player.sendMessage(CC.translate("&c&l" + party.getLeader().getName() + " &a&lis inviting you to join &c&ltheir &a&lparty!"));
             player.spigot().sendMessage(this.getClickable(party.getLeader()));
             player.sendMessage("");
         });
@@ -478,7 +478,7 @@ public class PartyServiceImpl implements PartyService {
         return ClickableUtil.createComponent(
                 " &a(Click to accept)",
                 "/party accept " + sender.getName(),
-                "&aClick to accept &6" + sender.getName() + "&a's party invitation."
+                "&aClick to accept &c" + sender.getName() + "&a's party invitation."
         );
     }
 }

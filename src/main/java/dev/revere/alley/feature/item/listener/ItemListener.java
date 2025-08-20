@@ -64,12 +64,12 @@ public class ItemListener implements Listener {
         CooldownService cooldownService = AlleyPlugin.getInstance().getService(CooldownService.class);
         Optional<Cooldown> optionalCooldown = Optional.ofNullable(cooldownService.getCooldown(player.getUniqueId(), cooldownType));
         if (optionalCooldown.isPresent() && optionalCooldown.get().isActive()) {
-            player.sendMessage(CC.translate("&cYou must wait " + optionalCooldown.get().remainingTimeInMinutes() + " &cbefore consuming another &6&lGolden Head&c."));
+            player.sendMessage(CC.translate("&cYou must wait " + optionalCooldown.get().remainingTimeInMinutes() + " &cbefore consuming another &c&lGolden Head&c."));
             return true;
         }
 
         Cooldown cooldown = optionalCooldown.orElseGet(() -> {
-            Cooldown newCooldown = new Cooldown(cooldownType, () -> player.sendMessage(CC.translate("&aYou can now use &6&lGolden Head&a's again.")));
+            Cooldown newCooldown = new Cooldown(cooldownType, () -> player.sendMessage(CC.translate("&aYou can now use &c&lGolden Head&a's again.")));
             cooldownService.addCooldown(player.getUniqueId(), cooldownType, newCooldown);
             return newCooldown;
         });

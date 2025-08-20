@@ -47,8 +47,8 @@ public class MatchRespawnTask extends BukkitRunnable {
 
         AlleyPlugin.getInstance().getService(ReflectionService.class).getReflectionService(TitleReflectionServiceImpl.class).sendTitle(
                 player,
-                "&6&lRespawn",
-                "&fRespawning in &6" + this.count + "s",
+                "&c&lRespawn",
+                "&fRespawning in &c" + this.count + "s",
                 0, 23, 20
         );
 

@@ -32,7 +32,7 @@ public class HotbarListCommand extends BaseCommand {
             return;
         }
 
-        player.sendMessage(CC.translate("&6Hotbar Items:"));
+        player.sendMessage(CC.translate("&cHotbar Items:"));
         for (HotbarItem item : hotbarItems) {
             player.sendMessage(CC.translate(" &e• &f" + item.getName()));
         }

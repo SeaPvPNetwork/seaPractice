@@ -27,7 +27,7 @@ public class PageButton extends Button {
         if (this.offset > 0) {
             if (MenuUtil.hasNext(player, offset, this.menu)) {
                 return new ItemBuilder(Material.MELON)
-                        .name("&6&lNext Page &7" + (this.menu.getPage() + "/" + this.menu.getPages(player)))
+                        .name("&c&lNext Page &7" + (this.menu.getPage() + "/" + this.menu.getPages(player)))
                         .lore(
                                 CC.MENU_BAR,
                                 "&7Right-Click:",
@@ -53,7 +53,7 @@ public class PageButton extends Button {
         } else {
             if (MenuUtil.hasPrevious(offset, this.menu)) {
                 return new ItemBuilder(Material.SPECKLED_MELON)
-                        .name("&6&lLast Page &7" + (this.menu.getPage() + "/" + this.menu.getPages(player)))
+                        .name("&c&lLast Page &7" + (this.menu.getPage() + "/" + this.menu.getPages(player)))
                         .lore(
                                 CC.MENU_BAR,
                                 "&7Right-Click:",

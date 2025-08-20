@@ -73,7 +73,7 @@ public class Alley {
      */
     public void runOnEnableCallbacks() {
         if (this.onEnableCallbacks.isEmpty()) {
-            Bukkit.getConsoleSender().sendMessage(CC.translate("&f[&6AlleyAPI&f] No external code registered to be executed on enable."));
+            Bukkit.getConsoleSender().sendMessage(CC.translate("&f[&cAlleyAPI&f] No external code registered to be executed on enable."));
             return;
         }
 
@@ -88,7 +88,7 @@ public class Alley {
      */
     public void runOnDisableCallbacks() {
         if (this.onDisableCallbacks.isEmpty()) {
-            Bukkit.getConsoleSender().sendMessage(CC.translate("&f[&6AlleyAPI&f] No external code registered to be executed on disable."));
+            Bukkit.getConsoleSender().sendMessage(CC.translate("&f[&cAlleyAPI&f] No external code registered to be executed on disable."));
             return;
         }
 

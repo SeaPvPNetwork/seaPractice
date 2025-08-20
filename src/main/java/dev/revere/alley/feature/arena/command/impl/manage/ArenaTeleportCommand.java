@@ -38,7 +38,7 @@ public class ArenaTeleportCommand extends BaseCommand {
         String[] args = command.getArgs();
 
         if (args.length < 1) {
-            player.sendMessage(CC.translate("&6Usage: &e/arena teleport &6<arenaName>"));
+            player.sendMessage(CC.translate("&cUsage: &e/arena teleport &c<arenaName>"));
             return;
         }
 

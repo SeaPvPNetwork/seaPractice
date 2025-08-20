@@ -128,7 +128,7 @@ public class DivisionServiceImpl implements DivisionService {
 
     @Override
     public void createDivision(String name, int requiredWins) {
-        Division division = new Division(name, "&6&l" + name, "The " + name + " Division", 0, Material.DIRT, Arrays.asList(
+        Division division = new Division(name, "&c&l" + name, "The " + name + " Division", 0, Material.DIRT, Arrays.asList(
                 new DivisionTier("I", requiredWins),
                 new DivisionTier("II", (int) (requiredWins * 1.25)),
                 new DivisionTier("III", (int) (requiredWins * 1.5)),

@@ -737,7 +737,7 @@ public abstract class Match {
 
         ProfileService profileService = AlleyPlugin.getInstance().getService(ProfileService.class);
         Profile profile = profileService.getProfile(player.getUniqueId());
-        this.notifyAll("&6" + profile.getFancyName() + " &fis now spectating the match.");
+        this.notifyAll("&c" + profile.getFancyName() + " &fis now spectating the match.");
     }
 
     /**
@@ -765,7 +765,7 @@ public abstract class Match {
         this.spectators.remove(player.getUniqueId());
 
         if (notify) {
-            this.notifyAll("&6" + profile.getFancyName() + " &fis no longer spectating the match.");
+            this.notifyAll("&c" + profile.getFancyName() + " &fis no longer spectating the match.");
         }
     }
 
@@ -862,8 +862,8 @@ public abstract class Match {
                 .skip(3)
                 .forEach(player -> remainingSpectators.add(player.getEntityId()));
 
-        this.sendMessage("&6&lSpectators: &f" + String.join(", ", firstThreeSpectatorNames) +
-                (remainingSpectators.isEmpty() ? "" : " &7(and &6" + remainingSpectators.size() + " &7more...)"));
+        this.sendMessage("&c&lSpectators: &f" + String.join(", ", firstThreeSpectatorNames) +
+                (remainingSpectators.isEmpty() ? "" : " &7(and &c" + remainingSpectators.size() + " &7more...)"));
 
         this.spectators.forEach(uuid -> {
             Player player = this.plugin.getServer().getPlayer(uuid);
@@ -1206,7 +1206,7 @@ public abstract class Match {
 
 
     private void sendPlayerVersusPlayerMessage() {
-        String prefix = CC.translate("&7[&6Match&7] &r");
+        String prefix = CC.translate("&7[&cMatch&7] &r");
 
         if (this.isTeamMatch()) {
             GameParticipant<MatchGamePlayer> participantA = this.getParticipants().get(0);
@@ -1215,13 +1215,13 @@ public abstract class Match {
             int teamSizeA = participantA.getPlayerSize();
             int teamSizeB = participantB.getPlayerSize();
 
-            String message = CC.translate(prefix + "&6" + participantA.getLeader().getUsername() + "'s Team &7(&a" + teamSizeA + "&7) &avs &6" + participantB.getLeader().getUsername() + "'s Team &7(&a" + teamSizeB + "&7)");
+            String message = CC.translate(prefix + "&c" + participantA.getLeader().getUsername() + "'s Team &7(&a" + teamSizeA + "&7) &avs &c" + participantB.getLeader().getUsername() + "'s Team &7(&a" + teamSizeB + "&7)");
             this.sendMessage(message);
         } else {
             GameParticipant<MatchGamePlayer> participant = this.getParticipants().get(0);
             GameParticipant<MatchGamePlayer> opponent = this.getParticipants().get(1);
 
-            String message = CC.translate(prefix + "&6" + participant.getLeader().getUsername() + " &avs &6" + opponent.getLeader().getUsername());
+            String message = CC.translate(prefix + "&c" + participant.getLeader().getUsername() + " &avs &c" + opponent.getLeader().getUsername());
             this.sendMessage(message);
         }
     }
@@ -1297,6 +1297,6 @@ public abstract class Match {
         Profile profile = profileService.getProfile(player.getUniqueId());
         int coins = profile.getProfileData().getCoins();
 
-        player.sendMessage(CC.translate(" &7(&a+&6" + coins + "&f&7)"));
+        player.sendMessage(CC.translate(" &7(&a+&c" + coins + "&f&7)"));
     }
 }

@@ -63,11 +63,11 @@ public class PartyInviteCommand extends BaseCommand {
         }
 
         if (party.getMembers().contains(targetPlayer.getUniqueId())) {
-            player.sendMessage(CC.translate("&6" + targetPlayer.getName() + " &cis already in your party."));
+            player.sendMessage(CC.translate("&c" + targetPlayer.getName() + " &cis already in your party."));
             return;
         }
 
         partyService.sendInvite(party, player, targetPlayer);
-        party.notifyParty("&6" + targetPlayer.getName() + " &awas invited to the party by &6" + player.getName() + "&a.");
+        party.notifyParty("&c" + targetPlayer.getName() + " &awas invited to the party by &c" + player.getName() + "&a.");
     }
 }

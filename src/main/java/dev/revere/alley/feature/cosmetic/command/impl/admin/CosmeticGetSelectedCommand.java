@@ -36,7 +36,7 @@ public class CosmeticGetSelectedCommand extends BaseCommand {
         }
 
         Profile profile = this.plugin.getService(ProfileService.class).getProfile(target.getUniqueId());
-        player.sendMessage(CC.translate("     &6&lSelected Cosmetics for " + target.getName()));
+        player.sendMessage(CC.translate("     &c&lSelected Cosmetics for " + target.getName()));
 
         ProfileCosmeticData cosmeticData = profile.getProfileData().getCosmeticData();
 
@@ -45,7 +45,7 @@ public class CosmeticGetSelectedCommand extends BaseCommand {
 
             String friendlyTypeName = StringUtil.formatEnumName(type);
 
-            player.sendMessage(CC.translate(String.format("      &f● &6%s: &f%s", friendlyTypeName, selectedName)));
+            player.sendMessage(CC.translate(String.format("      &f● &c%s: &f%s", friendlyTypeName, selectedName)));
         }
     }
 }

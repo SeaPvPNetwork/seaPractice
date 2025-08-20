@@ -118,6 +118,6 @@ public class TitleServiceImpl implements TitleService {
     private String getPrefixBasedOnHighestDivision(Kit kit) {
         Division highestDivision = AlleyPlugin.getInstance().getService(DivisionService.class).getHighestDivision();
 
-        return "&6&l" + kit.getName().toUpperCase() + " " + highestDivision.getName().toUpperCase();
+        return "&c&l" + kit.getName().toUpperCase() + " " + highestDivision.getName().toUpperCase();
     }
 }

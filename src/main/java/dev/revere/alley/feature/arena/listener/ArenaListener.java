@@ -46,7 +46,7 @@ public class ArenaListener implements Listener {
                 int getBlockZ = clickedBlock.getLocation().getBlockZ();
 
                 String coordinates = getBlockX + " | " + getBlockY + " | " + getBlockZ;
-                String message = locationType == 1 ? "&aSet minimum location to &6" + coordinates : "&aSet maximum location to &6" + coordinates;
+                String message = locationType == 1 ? "&aSet minimum location to &c" + coordinates : "&aSet maximum location to &c" + coordinates;
 
                 player.sendMessage(CC.translate(message));
             }

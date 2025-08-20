@@ -23,7 +23,7 @@ public class KitResetLayoutsCommand extends BaseCommand {
         String[] args = command.getArgs();
 
         if (args.length < 1) {
-            sender.sendMessage(CC.translate("&6Usage: &e/kit resetlayouts &b<kitName>"));
+            sender.sendMessage(CC.translate("&cUsage: &e/kit resetlayouts &b<kitName>"));
             return;
         }
 

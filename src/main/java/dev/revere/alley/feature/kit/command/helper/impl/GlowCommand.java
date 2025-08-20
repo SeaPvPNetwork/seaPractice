@@ -27,7 +27,7 @@ public class GlowCommand extends BaseCommand {
         String[] args = command.getArgs();
 
         if (args.length < 1) {
-            player.sendMessage(CC.translate("&6Usage: &e/glow &6<true|false>"));
+            player.sendMessage(CC.translate("&cUsage: &e/glow &c<true|false>"));
             return;
         }
 
@@ -42,6 +42,6 @@ public class GlowCommand extends BaseCommand {
         ItemStack result = ReflectionUtility.setGlowing(item, glow);
         player.setItemInHand(result);
 
-        player.sendMessage(CC.translate("&aGlow has been &6" + (glow ? "enabled" : "disabled") + "&a for your item."));
+        player.sendMessage(CC.translate("&aGlow has been &c" + (glow ? "enabled" : "disabled") + "&a for your item."));
     }
 }

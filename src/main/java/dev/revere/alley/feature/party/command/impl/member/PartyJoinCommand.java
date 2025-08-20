@@ -22,7 +22,7 @@ public class PartyJoinCommand extends BaseCommand {
         String[] args = command.getArgs();
 
         if (args.length < 1) {
-            player.sendMessage(CC.translate("&6Usage: &e/party join &6<player>"));
+            player.sendMessage(CC.translate("&cUsage: &e/party join &c<player>"));
             return;
         }
 

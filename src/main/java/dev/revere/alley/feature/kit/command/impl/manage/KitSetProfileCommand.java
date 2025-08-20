@@ -21,7 +21,7 @@ public class KitSetProfileCommand extends BaseCommand {
         String[] args = command.getArgs();
 
         if (args.length < 2) {
-            player.sendMessage(CC.translate("&6Usage: &e/kit setprofile &6<kitName> <profileName>"));
+            player.sendMessage(CC.translate("&cUsage: &e/kit setprofile &c<kitName> <profileName>"));
             return;
         }
 
@@ -34,6 +34,6 @@ public class KitSetProfileCommand extends BaseCommand {
 
         kit.setKnockbackProfile(args[1]);
         kitService.saveKit(kit);
-        player.sendMessage(CC.translate("&aSuccessfully set profile for &6" + kit.getName() + "&a!"));
+        player.sendMessage(CC.translate("&aSuccessfully set profile for &c" + kit.getName() + "&a!"));
     }
 }

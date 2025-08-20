@@ -23,7 +23,7 @@ import java.util.Map;
 public class CosmeticsMenu extends Menu {
     @Override
     public String getTitle(Player player) {
-        return "&6&lCosmetics";
+        return "&c&lCosmetics";
     }
 
     @Override

@@ -51,7 +51,7 @@ public class QueueProfile {
         this.ticks++;
 
         if (player != null) {
-            String message = "&6" + this.queue.getQueueType() + " " + this.queue.getKit().getDisplayName() + " &7│ &f" + TimeUtil.getFormattedElapsedTime(getElapsedTime());
+            String message = "&c" + this.queue.getQueueType() + " " + this.queue.getKit().getDisplayName() + " &7│ &f" + TimeUtil.getFormattedElapsedTime(getElapsedTime());
             ReflectionService reflectionService = AlleyPlugin.getInstance().getService(ReflectionService.class);
             reflectionService.getReflectionService(ActionBarReflectionServiceImpl.class).sendMessage(player, message);
         }
@@ -64,8 +64,8 @@ public class QueueProfile {
             if (player != null) {
                 Arrays.asList(
                         "",
-                        "&6&l" + this.queue.getKit().getDisplayName(),
-                        " &f● &6Ping Range: &fN/A",
+                        "&c&l" + this.queue.getKit().getDisplayName(),
+                        " &f● &cPing Range: &fN/A",
                         "   &7Searching for match...",
                         ""
                 ).forEach(line -> player.sendMessage(CC.translate(line)));
@@ -84,9 +84,9 @@ public class QueueProfile {
             if (player != null) {
                 Arrays.asList(
                         "",
-                        "&6&l" + this.queue.getKit().getDisplayName() + " &6&l" + Symbol.RANKED_STAR + "Ranked",
-                        " &f● &6ELO Range: &f" + this.getMinimumElo() + " &7&l" + Symbol.ARROW_R + "&f " + this.getMaximumElo(),
-                        " &f● &6Ping Range: &fN/A",
+                        "&c&l" + this.queue.getKit().getDisplayName() + " &c&l" + Symbol.RANKED_STAR + "Ranked",
+                        " &f● &cELO Range: &f" + this.getMinimumElo() + " &7&l" + Symbol.ARROW_R + "&f " + this.getMaximumElo(),
+                        " &f● &cPing Range: &fN/A",
                         "   " + (this.range == this.MAX_RANGE ? "&c&lRANGE LIMIT REACHED..." : "&7Searching for match..."),
                         ""
                 ).forEach(line -> player.sendMessage(CC.translate(line)));

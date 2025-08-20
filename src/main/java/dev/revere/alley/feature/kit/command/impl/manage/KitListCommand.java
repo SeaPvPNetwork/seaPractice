@@ -20,11 +20,11 @@ public class KitListCommand extends BaseCommand {
         KitService kitService = this.plugin.getService(KitService.class);
 
         sender.sendMessage("");
-        sender.sendMessage(CC.translate("     &6&lKit List &f(" + kitService.getKits().size() + "&f)"));
+        sender.sendMessage(CC.translate("     &c&lKit List &f(" + kitService.getKits().size() + "&f)"));
         if (kitService.getKits().isEmpty()) {
             sender.sendMessage(CC.translate("      &f● &cNo Kits available."));
         }
-        kitService.getKits().forEach(kit -> sender.sendMessage(CC.translate("      &f● &6" + kit.getDisplayName() + " &f(" + (kit.isEnabled() ? "&aEnabled" : "&cDisabled") + "&f)")));
+        kitService.getKits().forEach(kit -> sender.sendMessage(CC.translate("      &f● &c" + kit.getDisplayName() + " &f(" + (kit.isEnabled() ? "&aEnabled" : "&cDisabled") + "&f)")));
         sender.sendMessage("");
     }
 }

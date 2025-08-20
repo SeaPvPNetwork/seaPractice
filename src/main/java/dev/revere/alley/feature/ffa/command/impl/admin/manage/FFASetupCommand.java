@@ -25,7 +25,7 @@ public class FFASetupCommand extends BaseCommand {
         String[] args = command.getArgs();
 
         if (args.length < 4) {
-            player.sendMessage(CC.translate("&6Usage: &e/ffa setup &6<kitName> <arenaName> <maxPlayers> <menu-slot>"));
+            player.sendMessage(CC.translate("&cUsage: &e/ffa setup &c<kitName> <arenaName> <maxPlayers> <menu-slot>"));
             return;
         }
 
@@ -82,6 +82,6 @@ public class FFASetupCommand extends BaseCommand {
         kitService.saveKit(kit);
 
         //this.bootstrap.getService(IProfileService.class).loadProfiles();
-        player.sendMessage(CC.translate("&aFFA match has been created with the kit &6" + kit.getName() + "&a!"));
+        player.sendMessage(CC.translate("&aFFA match has been created with the kit &c" + kit.getName() + "&a!"));
     }
 }

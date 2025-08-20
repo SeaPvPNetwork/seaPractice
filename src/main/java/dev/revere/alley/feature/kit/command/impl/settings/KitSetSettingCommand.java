@@ -23,7 +23,7 @@ public class KitSetSettingCommand extends BaseCommand {
         String[] args = command.getArgs();
 
         if (args.length != 3) {
-            player.sendMessage(CC.translate("&6Usage: &e/kit setsetting &6<kit> <setting> <true/false>"));
+            player.sendMessage(CC.translate("&cUsage: &e/kit setsetting &c<kit> <setting> <true/false>"));
             return;
         }
 

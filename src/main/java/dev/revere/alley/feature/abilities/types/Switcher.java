@@ -50,14 +50,14 @@ public class Switcher extends Ability {
             Profile profile = profileService.getProfile(shooter.getUniqueId());
 
             if (profile.getCooldown(Switcher.class).onCooldown(shooter)) {
-                shooter.sendMessage(CC.translate("&fYou are on &6&lSwitcher &7cooldown for &4" + DurationFormatter.getRemaining(profile.getCooldown(Switcher.class).getRemainingMillis(shooter), true, true)));
+                shooter.sendMessage(CC.translate("&fYou are on &c&lSwitcher &7cooldown for &4" + DurationFormatter.getRemaining(profile.getCooldown(Switcher.class).getRemainingMillis(shooter), true, true)));
                 shooter.updateInventory();
                 event.setCancelled(true);
                 return;
             }
 
             if(profile.getGlobalCooldown(GlobalCooldown.PARTNER_ITEM).onCooldown(shooter)){
-                shooter.sendMessage(CC.translate("&fYou are on &6&lPartner Item &fcooldown for &6" + DurationFormatter.getRemaining(profile.getGlobalCooldown(GlobalCooldown.PARTNER_ITEM).getRemainingMillis(shooter), true, true)));
+                shooter.sendMessage(CC.translate("&fYou are on &c&lPartner Item &fcooldown for &c" + DurationFormatter.getRemaining(profile.getGlobalCooldown(GlobalCooldown.PARTNER_ITEM).getRemainingMillis(shooter), true, true)));
                 shooter.updateInventory();
                 event.setCancelled(true);
                 return;

@@ -22,7 +22,7 @@ public class ChatCommand extends BaseCommand {
         String[] args = command.getArgs();
 
         if (args.length < 1) {
-            player.sendMessage(CC.translate("&6Usage: &e/chat &6<chat-channel>"));
+            player.sendMessage(CC.translate("&cUsage: &e/chat &c<chat-channel>"));
             player.sendMessage(CC.translate("&cAvailable chat channels: " + ChatChannel.getChatChannelsSorted()));
             return;
         }
@@ -30,7 +30,7 @@ public class ChatCommand extends BaseCommand {
         ProfileService profileService = this.plugin.getService(ProfileService.class);
         Profile profile = profileService.getProfile(player.getUniqueId());
         if (ChatChannel.getExactChatChannel(args[0], true) == null) {
-            player.sendMessage(CC.translate("&cThe chat channel &6" + args[0] + " &cdoes not exist."));
+            player.sendMessage(CC.translate("&cThe chat channel &c" + args[0] + " &cdoes not exist."));
             return;
         }
 
@@ -40,6 +40,6 @@ public class ChatCommand extends BaseCommand {
         }
 
         profile.getProfileData().getSettingData().setChatChannel(ChatChannel.getExactChatChannel(args[0], true));
-        player.sendMessage(CC.translate("&aSet your chat channel to &6" + args[0] + "&a."));
+        player.sendMessage(CC.translate("&aSet your chat channel to &c" + args[0] + "&a."));
     }
 }

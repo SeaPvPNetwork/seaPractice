@@ -43,8 +43,8 @@ public class LevelButton extends Button {
                         CC.MENU_BAR,
                         " &c&lLOCKED",
                         "",
-                        " &fUnlock with &6" + requiredElo + " &fmore Elo!",
-                        " &fCurrent Elo: &6" + this.profile.getProfileData().getElo(),
+                        " &fUnlock with &c" + requiredElo + " &fmore Elo!",
+                        " &fCurrent Elo: &c" + this.profile.getProfileData().getElo(),
                         CC.MENU_BAR
                 )
                 .durability(14)

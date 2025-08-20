@@ -107,7 +107,7 @@ public class ActionBarReflectionServiceImpl implements Reflection {
 
         ChatColor nameColor = AlleyPlugin.getInstance().getService(ProfileService.class).getProfile(target.getUniqueId()).getNameColor();
 
-        String template = config.getString(path + ".message-format", "&6{name-color}{target} &f{health-bar}");
+        String template = config.getString(path + ".message-format", "&c{name-color}{target} &f{health-bar}");
         String message = CC.translate(
                 template
                         .replace("{target}", target.getName())

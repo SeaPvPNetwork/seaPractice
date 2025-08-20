@@ -22,7 +22,7 @@ public class KitViewSettingsCommand extends BaseCommand {
         String[] args = command.getArgs();
 
         if (args.length < 1) {
-            sender.sendMessage(CC.translate("&6Usage: &e/kit viewsettings &6<kitName>"));
+            sender.sendMessage(CC.translate("&cUsage: &e/kit viewsettings &c<kitName>"));
             return;
         }
 
@@ -33,8 +33,8 @@ public class KitViewSettingsCommand extends BaseCommand {
         }
 
         sender.sendMessage("");
-        sender.sendMessage(CC.translate("&6&lKit Settings for " + kit.getName()));
-        kit.getKitSettings().forEach(setting -> sender.sendMessage(CC.translate(" &f● &6" + setting.getName() + " &f(" + (setting.isEnabled() ? "&aEnabled" : "&cDisabled") + "&f)")));
+        sender.sendMessage(CC.translate("&c&lKit Settings for " + kit.getName()));
+        kit.getKitSettings().forEach(setting -> sender.sendMessage(CC.translate(" &f● &c" + setting.getName() + " &f(" + (setting.isEnabled() ? "&aEnabled" : "&cDisabled") + "&f)")));
         sender.sendMessage("");
     }
 }

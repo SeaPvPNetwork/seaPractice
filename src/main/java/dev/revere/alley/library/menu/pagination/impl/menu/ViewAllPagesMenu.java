@@ -21,7 +21,7 @@ public class ViewAllPagesMenu extends Menu {
 
     @Override
     public String getTitle(Player player) {
-        return "&6&lSelect A Page";
+        return "&c&lSelect A Page";
     }
 
     @Override

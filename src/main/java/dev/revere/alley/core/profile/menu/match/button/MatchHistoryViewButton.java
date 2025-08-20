@@ -44,7 +44,7 @@ public class MatchHistoryViewButton extends Button {
             DateFormatter dateFormatter = new DateFormatter(DateFormat.DATE_PLUS_TIME, matchDataSolo.getCreationTime());
             String date = dateFormatter.getDateFormat().format(dateFormatter.getDate());
 
-            String rankedStatus = matchDataSolo.isRanked() ? "&6Ranked" : "&9Unranked";
+            String rankedStatus = matchDataSolo.isRanked() ? "&cRanked" : "&9Unranked";
 
             Kit kit = AlleyPlugin.getInstance().getService(KitService.class).getKit(matchDataSolo.getKit());
             Arena arena = AlleyPlugin.getInstance().getService(ArenaService.class).getArenaByName(matchDataSolo.getArena());
@@ -55,13 +55,13 @@ public class MatchHistoryViewButton extends Button {
                     .lore(
                             "&7" + date,
                             "",
-                            "&6&lParticipants",
+                            "&c&lParticipants",
                             " &f● Winner: &a" + winnerName,
                             " &f● Loser: &c" + loserName,
                             "",
-                            "&6&lMatch Details",
-                            " &f● Kit: &6" + kit.getDisplayName(),
-                            " &f● Arena: &6" + arena.getDisplayName(),
+                            "&c&lMatch Details",
+                            " &f● Kit: &c" + kit.getDisplayName(),
+                            " &f● Arena: &c" + arena.getDisplayName(),
                             "",
                             "&aClick to view more details!"
                     )

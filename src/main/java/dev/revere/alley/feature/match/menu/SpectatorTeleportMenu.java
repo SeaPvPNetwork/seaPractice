@@ -102,7 +102,7 @@ public class SpectatorTeleportMenu extends PaginatedMenu {
                 );
             }
 
-            String name = this.config.getString(this.path + ".buttons.spectator-teleport-button.name", "&6{username}")
+            String name = this.config.getString(this.path + ".buttons.spectator-teleport-button.name", "&c{username}")
                     .replace("{username}", this.gamePlayer.getUsername())
                     .replace("{player-color}", String.valueOf(profile.getNameColor())
                     );
@@ -142,7 +142,7 @@ public class SpectatorTeleportMenu extends PaginatedMenu {
 
             FileConfiguration config = AlleyPlugin.getInstance().getService(ConfigService.class).getMenusConfig();
             String path = "menus.spectator-teleport.buttons.match-info-button";
-            String name = config.getString(path + ".name", "&6&lMatch Info");
+            String name = config.getString(path + ".name", "&c&lMatch Info");
             List<String> lore = config.getStringList(path + ".lore");
             if (lore.isEmpty()) {
                 lore = Collections.singletonList(

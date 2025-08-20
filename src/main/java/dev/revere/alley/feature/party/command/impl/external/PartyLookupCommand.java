@@ -23,7 +23,7 @@ public class PartyLookupCommand extends BaseCommand {
         String[] args = command.getArgs();
 
         if (args.length < 1) {
-            player.sendMessage(CC.translate("&6Usage: &e/party lookup &6<player>"));
+            player.sendMessage(CC.translate("&cUsage: &e/party lookup &c<player>"));
             return;
         }
 
@@ -40,11 +40,11 @@ public class PartyLookupCommand extends BaseCommand {
         }
 
         Arrays.asList(
-                "&6&l" + party.getLeader().getName() + "'s Party",
-                " &f● &6Leader: &f" + party.getLeader().getName(),
-                " &f● &6Members: &f" + party.getMembers().size(),
-                " &f● &6Status: &f" + (party.getState().getName()),
-                " &f● &6Privacy: &f" + (party.getState().getDescription()
+                "&c&l" + party.getLeader().getName() + "'s Party",
+                " &f● &cLeader: &f" + party.getLeader().getName(),
+                " &f● &cMembers: &f" + party.getMembers().size(),
+                " &f● &cStatus: &f" + (party.getState().getName()),
+                " &f● &cPrivacy: &f" + (party.getState().getDescription()
                 )).forEach(msg -> player.sendMessage(CC.translate(msg)));
     }
 }

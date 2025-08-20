@@ -35,19 +35,19 @@ public class LeaderboardMenu extends Menu {
 
         switch (profile.getLeaderboardType()) {
             case RANKED:
-                return "&6&lRanked Leaderboards";
+                return "&c&lRanked Leaderboards";
             case UNRANKED:
-                return "&6&lUnranked Leaderboards";
+                return "&c&lUnranked Leaderboards";
             case UNRANKED_MONTHLY:
-                return "&6&lMonthly Leaderboards";
+                return "&c&lMonthly Leaderboards";
             case FFA:
-                return "&6&lFFA Leaderboards";
+                return "&c&lFFA Leaderboards";
             case TOURNAMENT:
-                return "&6&lTournament Leaderboards";
+                return "&c&lTournament Leaderboards";
             case WIN_STREAK:
-                return "&6&lWin Streak Leaderboards";
+                return "&c&lWin Streak Leaderboards";
             default:
-                return "&6&lLeaderboards";
+                return "&c&lLeaderboards";
         }
     }
 

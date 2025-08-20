@@ -114,7 +114,7 @@ public abstract class KillMessagePack extends BaseCosmetic {
             lore.add("&7" + this.getDescription());
         } else {
             for (String message : displayable) {
-                lore.add(CC.translate("&f- &6" + message.replace("{victim}", "victim").replace("{killer}", "killer")));
+                lore.add(CC.translate("&f- &c" + message.replace("{victim}", "victim").replace("{killer}", "killer")));
             }
         }
         return lore;

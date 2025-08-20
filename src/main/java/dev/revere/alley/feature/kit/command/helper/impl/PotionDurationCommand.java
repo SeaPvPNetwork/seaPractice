@@ -25,7 +25,7 @@ public class PotionDurationCommand extends BaseCommand {
         String[] args = command.getArgs();
 
         if (args.length < 1) {
-            player.sendMessage(CC.translate("&6Usage: &e/potionduration &6<duration/infinite>"));
+            player.sendMessage(CC.translate("&cUsage: &e/potionduration &c<duration/infinite>"));
             return;
         }
 
@@ -53,7 +53,7 @@ public class PotionDurationCommand extends BaseCommand {
             potionMeta.addCustomEffect(newEffect, true);
             itemInHand.setItemMeta(potionMeta);
 
-            player.sendMessage(CC.translate("&aPotion duration updated to &6infinite&a."));
+            player.sendMessage(CC.translate("&aPotion duration updated to &cinfinite&a."));
             return;
         }
 
@@ -82,6 +82,6 @@ public class PotionDurationCommand extends BaseCommand {
         itemInHand.setItemMeta(potionMeta);
 
         String seconds = duration == 1 ? "second" : "seconds";
-        player.sendMessage(CC.translate("&aPotion duration updated to &6" + duration + " &a" + seconds + "."));
+        player.sendMessage(CC.translate("&aPotion duration updated to &c" + duration + " &a" + seconds + "."));
     }
 }

@@ -104,8 +104,8 @@ public class RepositoryCleanupTask extends BukkitRunnable {
                 return;
             }
 
-            partyRequest.getSender().sendMessage(CC.translate("&cYour party request to &6" + partyRequest.getSender().getName() + " &chas expired."));
-            partyRequest.getTarget().sendMessage(CC.translate("&cThe party request from &6" + partyRequest.getTarget().getName() + " &chas expired."));
+            partyRequest.getSender().sendMessage(CC.translate("&cYour party request to &c" + partyRequest.getSender().getName() + " &chas expired."));
+            partyRequest.getTarget().sendMessage(CC.translate("&cThe party request from &c" + partyRequest.getTarget().getName() + " &chas expired."));
         });
     }
 }

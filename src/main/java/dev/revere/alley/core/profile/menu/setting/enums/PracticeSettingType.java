@@ -15,7 +15,7 @@ import java.util.function.Function;
  * @since 21/04/2025
  */
 public enum PracticeSettingType {
-    PARTY_MESSAGES(10, "&6&lToggle Party Messages", Material.FEATHER,
+    PARTY_MESSAGES(10, "&c&lToggle Party Messages", Material.FEATHER,
             settings -> Arrays.asList(
                     CC.MENU_BAR,
                     "&7See party chat messages.",
@@ -27,7 +27,7 @@ public enum PracticeSettingType {
             )
     ),
 
-    PARTY_INVITES(11, "&6&lToggle Party Invites", Material.NAME_TAG,
+    PARTY_INVITES(11, "&c&lToggle Party Invites", Material.NAME_TAG,
             settings -> Arrays.asList(
                     CC.MENU_BAR,
                     "&7Receive party invites.",
@@ -39,7 +39,7 @@ public enum PracticeSettingType {
             )
     ),
 
-    SIDEBAR_VISIBILITY(12, "&6&lSidebar Visibility", Material.CARPET, 5,
+    SIDEBAR_VISIBILITY(12, "&c&lSidebar Visibility", Material.CARPET, 5,
             settings -> Arrays.asList(
                     CC.MENU_BAR,
                     "&7See the scoreboard.",
@@ -51,7 +51,7 @@ public enum PracticeSettingType {
             )
     ),
 
-    TAB_VISIBILITY(13, "&6&lTablist Visibility", Material.ITEM_FRAME,
+    TAB_VISIBILITY(13, "&c&lTablist Visibility", Material.ITEM_FRAME,
             settings -> Arrays.asList(
                     CC.MENU_BAR,
                     "&7See the tablist.",
@@ -63,20 +63,20 @@ public enum PracticeSettingType {
             )
     ),
 
-    WORLD_TIME(14, "&6&lWorld time", Material.WATCH, settings -> Arrays.asList(
+    WORLD_TIME(14, "&c&lWorld time", Material.WATCH, settings -> Arrays.asList(
             CC.MENU_BAR,
             "&7Change your world time.",
             "",
             formatTime("Default", settings.isDefaultTime(), "&a&l"),
             formatTime("Day", settings.isDayTime(), "&e&l"),
-            formatTime("Sunset", settings.isSunsetTime(), "&6&l"),
+            formatTime("Sunset", settings.isSunsetTime(), "&c&l"),
             formatTime("Night", settings.isNightTime(), "&4&l"),
             "",
             "&aClick to toggle.",
             CC.MENU_BAR
     )),
 
-    SCOREBOARD_LINES(19, "&6&lShow Scoreboard Lines", Material.STRING,
+    SCOREBOARD_LINES(19, "&c&lShow Scoreboard Lines", Material.STRING,
             settings -> Arrays.asList(
                     CC.MENU_BAR,
                     "&7Show scoreboard lines.",
@@ -88,7 +88,7 @@ public enum PracticeSettingType {
             )
     ),
 
-    PROFANITY_FILTER(20, "&6&lProfanity Filter", Material.ROTTEN_FLESH,
+    PROFANITY_FILTER(20, "&c&lProfanity Filter", Material.ROTTEN_FLESH,
             settings -> Arrays.asList(
                     CC.MENU_BAR,
                     "&7Hide rude and offensive words.",
@@ -100,7 +100,7 @@ public enum PracticeSettingType {
             )
     ),
 
-    DUEL_REQUESTS(21, "&6&lDuel Requests", Material.DIAMOND_SWORD,
+    DUEL_REQUESTS(21, "&c&lDuel Requests", Material.DIAMOND_SWORD,
             settings -> Arrays.asList(
                     CC.MENU_BAR,
                     "&7Receive duel requests.",
@@ -111,7 +111,7 @@ public enum PracticeSettingType {
                     CC.MENU_BAR
             )
     ),
-    SERVER_TITLES(22, "&6&lServer Titles", Material.PAPER,
+    SERVER_TITLES(22, "&c&lServer Titles", Material.PAPER,
             settings -> Arrays.asList(
                     CC.MENU_BAR,
                     "&7Display titles sent by the server.",
@@ -123,7 +123,7 @@ public enum PracticeSettingType {
             )
     ),
 
-    MATCH_SETTINGS(16, "&6&lMatch Settings", Material.BOOK,
+    MATCH_SETTINGS(16, "&c&lMatch Settings", Material.BOOK,
             settings -> Arrays.asList(
                     CC.MENU_BAR,
                     "&7Adjust your match settings.",
@@ -133,7 +133,7 @@ public enum PracticeSettingType {
             )
     ),
 
-    COSMETICS(25, "&6&lCosmetics", Material.NETHER_STAR,
+    COSMETICS(25, "&c&lCosmetics", Material.NETHER_STAR,
             settings -> Arrays.asList(
                     CC.MENU_BAR,
                     "&7Customize your cosmetics.",
@@ -143,7 +143,7 @@ public enum PracticeSettingType {
             )
     ),
 
-    LOBBY_MUSIC(34, "&6&lLobby Music", Material.JUKEBOX,
+    LOBBY_MUSIC(34, "&c&lLobby Music", Material.JUKEBOX,
             settings -> Arrays.asList(
                     CC.MENU_BAR,
                     "&7Customize your lobby music.",

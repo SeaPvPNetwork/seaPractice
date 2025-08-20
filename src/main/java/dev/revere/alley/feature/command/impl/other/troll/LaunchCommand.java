@@ -20,7 +20,7 @@ public class LaunchCommand extends BaseCommand {
         String[] args = command.getArgs();
 
         if (args.length == 0) {
-            player.sendMessage(CC.translate("&6Usage: &e/launch &6<player> &7| &6all"));
+            player.sendMessage(CC.translate("&cUsage: &e/launch &c<player> &7| &call"));
             return;
         }
 
@@ -37,6 +37,6 @@ public class LaunchCommand extends BaseCommand {
         }
 
         target.setVelocity(new Vector(0, 1, 0).multiply(15));
-        player.sendMessage(CC.translate("&fYou've launched &6" + target.getName()));
+        player.sendMessage(CC.translate("&fYou've launched &c" + target.getName()));
     }
 }
