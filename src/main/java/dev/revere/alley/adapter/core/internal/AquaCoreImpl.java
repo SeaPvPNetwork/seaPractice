@@ -80,7 +80,7 @@ public class AquaCoreImpl implements Core {
 
         String selectedTitle = CC.translate(AlleyPlugin.getInstance().getService(ProfileService.class).getProfile(player.getUniqueId()).getProfileData().getSelectedTitle());
 
-        if (player.hasPermission("alley.chat.color")) {
+        if (player.hasPermission("practice.chat.color")) {
             eventMessage = CC.translate(eventMessage);
         }
 

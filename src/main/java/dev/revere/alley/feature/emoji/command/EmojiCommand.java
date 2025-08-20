@@ -22,7 +22,7 @@ public class EmojiCommand extends BaseCommand {
         new EmojiListCommand();
     }
 
-    @CommandData(name = "emoji", aliases = "emojis", permission = "alley.donator.chat.symbol", usage = "/emoji", description = "Help guide for emojis")
+    @CommandData(name = "emoji", aliases = "emojis", permission = "practice.donator.chat.symbol", usage = "/emoji", description = "Help guide for emojis")
     @Override
     public void onCommand(CommandArgs command) {
         Player player = command.getPlayer();

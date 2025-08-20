@@ -76,7 +76,7 @@ public class DuelRequestMenu extends Menu {
         public void clicked(Player player, ClickType clickType) {
             if (clickType != ClickType.LEFT) return;
 
-            if (player.hasPermission("alley.duel.arena.selector")) {
+            if (player.hasPermission("practice.duel.arena.selector")) {
                 new DuelArenaSelectorMenu(this.targetPlayer, this.kit).openMenu(player);
                 return;
             }

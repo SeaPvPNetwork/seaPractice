@@ -97,7 +97,7 @@ public interface Core {
 
         String selectedTitle = CC.translate(profile.getProfileData().getSelectedTitle());
 
-        if (player.hasPermission("alley.chat.color")) {
+        if (player.hasPermission("practice.chat.color")) {
             eventMessage = CC.translate(eventMessage);
         }
 

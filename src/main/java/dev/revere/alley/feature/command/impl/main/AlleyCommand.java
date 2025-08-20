@@ -19,7 +19,7 @@ import java.util.List;
  */
 public class AlleyCommand extends BaseCommand {
     @SuppressWarnings("unused")
-    @CompleterData(name = "alley")
+    @CompleterData(name = "practicecore")
     public List<String> alleyCompleter(CommandArgs command) {
         List<String> completion = new ArrayList<>();
         if (command.getArgs().length == 1 && command.getPlayer().hasPermission(this.getAdminPermission())) {
@@ -31,14 +31,14 @@ public class AlleyCommand extends BaseCommand {
         return completion;
     }
 
-    @CommandData(name = "alley", aliases = {"apractice", "aprac", "practice", "prac", "emmy", "remi", "revere"}, inGameOnly = false)
+    @CommandData(name = "practicecore", aliases = {"apractice", "aprac", "practice", "prac", "emmy", "remi", "revere"}, inGameOnly = false)
     @Override
     public void onCommand(CommandArgs command) {
         CommandSender sender = command.getSender();
 
         Arrays.asList(
                 "",
-                "     &c&lAlley Practice",
+                "     &c&lPractice Core Practice",
                 "      &f│ Authors: &c" + this.plugin.getDescription().getAuthors().toString().replace("[", "").replace("]", ""),
                 "      &f│ Version: &c" + this.plugin.getDescription().getVersion(),
                 "",
@@ -50,9 +50,9 @@ public class AlleyCommand extends BaseCommand {
         if (sender.hasPermission(this.plugin.getService(PluginConstant.class).getAdminPermissionPrefix())) {
             Arrays.asList(
                     "     &c&lAdmin Help",
-                    "      &f│ /alley reload &7- &cReloads the bootstrap.",
-                    "      &f│ /alley debug &7- &cDatabase Debugging.",
-                    "      &f│ /alley server &7- &cCore Hook Info.",
+                    "      &f│ /practicecore reload &7- &cReloads the bootstrap.",
+                    "      &f│ /practicecore debug &7- &cDatabase Debugging.",
+                    "      &f│ /practicecore server &7- &cCore Hook Info.",
                     ""
             ).forEach(line -> sender.sendMessage(CC.translate(line)));
         }

@@ -14,7 +14,7 @@ import org.bukkit.entity.Player;
  */
 public class InvSeeCommand extends BaseCommand {
     @Override
-    @CommandData(name = "invsee", aliases = {"seeinventory", "seeinv"}, permission = "alley.command.invsee")
+    @CommandData(name = "invsee", aliases = {"seeinventory", "seeinv"}, permission = "practice.command.invsee")
     public void onCommand(CommandArgs command) {
         Player player = command.getPlayer();
         String[] args = command.getArgs();

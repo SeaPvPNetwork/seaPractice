@@ -12,7 +12,7 @@ import org.bukkit.entity.Player;
  * @date 28/10/2024 - 09:15
  */
 public class RemoveEnchantsCommand extends BaseCommand {
-    @CommandData(name = "removeenchants", aliases = "enchantsremovement", permission = "alley.command.removeenchants")
+    @CommandData(name = "removeenchants", aliases = "enchantsremovement", permission = "practice.command.removeenchants")
     @Override
     public void onCommand(CommandArgs command) {
         Player player = command.getPlayer();

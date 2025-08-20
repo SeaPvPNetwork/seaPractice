@@ -31,7 +31,7 @@ import java.util.Locale;
 public class AlleyDebugCommand extends BaseCommand {
 
     @Override
-    @CommandData(name = "alley.debug", isAdminOnly = true, usage = "/alley debug <memory/instance/profile/profileData>", description = "Displays debug information for development purposes.")
+    @CommandData(name = "practice.debug", isAdminOnly = true, usage = "/practicecore debug <memory/instance/profile/profileData>", description = "Displays debug information for development purposes.")
     public void onCommand(CommandArgs command) {
         Player player = command.getPlayer();
         String[] args = command.getArgs();
@@ -39,7 +39,7 @@ public class AlleyDebugCommand extends BaseCommand {
         Profile profile = profileService.getProfile(player.getUniqueId());
 
         if (args.length < 1) {
-            player.sendMessage(CC.translate("&cUsage: &e/alley debug &c<memory/instance/profile/profiledata>"));
+            player.sendMessage(CC.translate("&cUsage: &e/practicecore debug &c<memory/instance/profile/profiledata>"));
             return;
         }
 
@@ -57,7 +57,7 @@ public class AlleyDebugCommand extends BaseCommand {
                 this.sendProfileData(profile, player);
                 break;
             default:
-                player.sendMessage(CC.translate("&cUsage: &e/alley debug &c<memory/instance/profile/profileData>"));
+                player.sendMessage(CC.translate("&cUsage: &e/practicecore debug &c<memory/instance/profile/profileData>"));
                 break;
         }
     }
@@ -76,7 +76,7 @@ public class AlleyDebugCommand extends BaseCommand {
 
         Arrays.asList(
                 "",
-                "     &c&lAlley &7│ &fMemory Information",
+                "     &c&lPractice Core &7│ &fMemory Information",
                 "      &f│ Max Memory: &c" + this.formatNumber((int) (maxMemory / 1024 / 1024)) + "MB",
                 "      &f│ Allocated Memory: &c" + this.formatNumber((int) (allocatedMemory / 1024 / 1024)) + "MB",
                 "      &f│ Free Memory: &c" + this.formatNumber((int) (freeMemory / 1024 / 1024)) + "MB",
@@ -93,7 +93,7 @@ public class AlleyDebugCommand extends BaseCommand {
     private void sendInstanceInfo(Player player) {
         Arrays.asList(
                 "",
-                "     &c&lAlley &7│ &fInstance Information",
+                "     &c&lPractice Core &7│ &fInstance Information",
                 "      &f│ Profiles: &c" + this.formatNumber(this.plugin.getService(ProfileService.class).getProfiles().size()),
                 "      &f│ Matches: &c" + this.formatNumber(this.plugin.getService(MatchService.class).getMatches().size()),
                 "      &f│ Queues: &c" + this.formatNumber(this.plugin.getService(QueueService.class).getQueues().size()),

@@ -13,7 +13,7 @@ import org.bukkit.util.Vector;
  * @date 6/19/2024
  */
 public class LaunchCommand extends BaseCommand {
-    @CommandData(name = "launch", permission = "alley.command.troll.launch", description = "Launch a player", usage = "/launch <player> | all")
+    @CommandData(name = "launch", permission = "practice.command.troll.launch", description = "Launch a player", usage = "/launch <player> | all")
     @Override
     public void onCommand(CommandArgs command) {
         Player player = command.getPlayer();

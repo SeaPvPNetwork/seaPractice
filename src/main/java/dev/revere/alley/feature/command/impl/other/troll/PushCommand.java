@@ -12,7 +12,7 @@ import org.bukkit.entity.Player;
  * @date 25/06/2024 - 20:26
  */
 public class PushCommand extends BaseCommand {
-    @CommandData(name = "push", permission = "alley.command.troll.push", usage = "push <player> <value>", description = "Push a player")
+    @CommandData(name = "push", permission = "practice.command.troll.push", usage = "push <player> <value>", description = "Push a player")
     @Override
     public void onCommand(CommandArgs command) {
         Player player = command.getPlayer();

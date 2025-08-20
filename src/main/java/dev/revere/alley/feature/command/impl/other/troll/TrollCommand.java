@@ -18,7 +18,7 @@ import java.lang.reflect.Method;
  */
 public class TrollCommand extends BaseCommand {
     @Override
-    @CommandData(name = "troll", aliases = "playertroll", inGameOnly = false, permission = "alley.command.troll.demo-menu")
+    @CommandData(name = "troll", aliases = "playertroll", inGameOnly = false, permission = "practice.command.troll.demo-menu")
     public void onCommand(CommandArgs command) {
         CommandSender sender = command.getSender();
         String[] args = command.getArgs();

@@ -17,7 +17,7 @@ import java.util.Arrays;
  * @since 26/04/2025
  */
 public class AlleyCoreCommand extends BaseCommand {
-    @CommandData(name = "alley.server", isAdminOnly = true, inGameOnly = false)
+    @CommandData(name = "practice.server", isAdminOnly = true, inGameOnly = false)
     @Override
     public void onCommand(CommandArgs command) {
         CommandSender sender = command.getSender();

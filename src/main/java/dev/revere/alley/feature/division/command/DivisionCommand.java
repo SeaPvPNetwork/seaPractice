@@ -40,7 +40,7 @@ public class DivisionCommand extends BaseCommand {
     public void onCommand(CommandArgs command) {
         Player player = command.getPlayer();
 
-        if (player.hasPermission("alley.admin")) {
+        if (player.hasPermission("practice.admin")) {
             player.sendMessage(" ");
             player.sendMessage(CC.translate("&c&lDivision Commands Help:"));
             player.sendMessage(CC.translate(" &f● &c/division create &8(&7divisionName&8) &8(&7requiredWins&8) &7| Create a division"));

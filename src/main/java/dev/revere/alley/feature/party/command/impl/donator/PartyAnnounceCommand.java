@@ -23,7 +23,7 @@ import java.util.Optional;
  * @date 17/11/2024 - 11:16
  */
 public class PartyAnnounceCommand extends BaseCommand {
-    @CommandData(name = "party.announce", aliases = {"p.announce"}, permission = "alley.donator.party.announce")
+    @CommandData(name = "party.announce", aliases = {"p.announce"}, permission = "practice.donator.party.announce")
     @Override
     public void onCommand(CommandArgs command) {
         Player player = command.getPlayer();

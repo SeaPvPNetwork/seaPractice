@@ -78,7 +78,7 @@ public class PlayerUtil {
      * @param player the player to start flying.
      */
     public boolean canFly(Player player) {
-        return inLobby(player) && player.hasPermission("alley.donator.fly");
+        return inLobby(player) && player.hasPermission("practice.donator.fly");
     }
 
     /**

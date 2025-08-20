@@ -30,7 +30,7 @@ public class MatchStartCommand extends BaseCommand {
         List<String> completion = new ArrayList<>();
         Player player = command.getPlayer();
 
-        if (player.hasPermission("alley.admin")) {
+        if (player.hasPermission("practice.admin")) {
             switch (command.getArgs().length) {
                 case 1:
                 case 2:

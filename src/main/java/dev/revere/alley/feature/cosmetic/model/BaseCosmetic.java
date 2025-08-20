@@ -46,7 +46,7 @@ public abstract class BaseCosmetic implements Cosmetic {
      */
     @Override
     public String getPermission() {
-        return String.format("alley.cosmetic.%s.%s", this.type.getPermissionKey(), this.permission);
+        return String.format("practice.cosmetic.%s.%s", this.type.getPermissionKey(), this.permission);
     }
 
     /**

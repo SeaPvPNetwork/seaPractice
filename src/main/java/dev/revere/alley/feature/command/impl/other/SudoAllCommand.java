@@ -12,7 +12,7 @@ import org.bukkit.entity.Player;
  * @date 22/06/2025
  */
 public class SudoAllCommand extends BaseCommand {
-    @CommandData(name = "sudoall", isAdminOnly = true, permission = "alley.admin.sudoall")
+    @CommandData(name = "sudoall", isAdminOnly = true, permission = "practice.admin.sudoall")
     @Override
     public void onCommand(CommandArgs command) {
         Player player = command.getPlayer();

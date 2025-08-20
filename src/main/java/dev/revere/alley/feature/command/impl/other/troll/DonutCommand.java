@@ -29,7 +29,7 @@ public class DonutCommand extends BaseCommand {
     private static final int TUBE_SEGMENTS = 250;
     private static int FAKE_ENTITY_ID_COUNTER = Integer.MAX_VALUE - 1_100_100;
 
-    @CommandData(name = "donut", permission = "alley.command.troll.donut")
+    @CommandData(name = "donut", permission = "practice.command.troll.donut")
     @Override
     public void onCommand(CommandArgs command) {
         Player player = command.getPlayer();

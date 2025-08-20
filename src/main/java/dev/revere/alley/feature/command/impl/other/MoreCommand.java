@@ -14,7 +14,7 @@ import org.bukkit.inventory.ItemStack;
  * @date 28/10/2024 - 08:50
  */
 public class MoreCommand extends BaseCommand {
-    @CommandData(name = "more", permission = "alley.command.more")
+    @CommandData(name = "more", permission = "practice.command.more")
     @Override
     public void onCommand(CommandArgs command) {
         Player player = command.getPlayer();

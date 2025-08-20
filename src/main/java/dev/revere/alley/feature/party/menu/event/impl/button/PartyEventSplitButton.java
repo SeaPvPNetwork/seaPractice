@@ -45,7 +45,7 @@ public class PartyEventSplitButton extends Button {
     public void clicked(Player player, ClickType clickType) {
         if (clickType != ClickType.LEFT) return;
 
-        if (player.hasPermission("alley.party.arena.selector")) {
+        if (player.hasPermission("practice.party.arena.selector")) {
             new PartyEventSplitArenaSelectorMenu(this.kit).openMenu(player);
             return;
         }

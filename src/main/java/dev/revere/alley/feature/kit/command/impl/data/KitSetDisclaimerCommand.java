@@ -17,7 +17,7 @@ import java.util.Arrays;
  * @date 08/10/2024 - 19:41
  */
 public class KitSetDisclaimerCommand extends BaseCommand {
-    @CommandData(name = "kit.setdisclaimer", permission = "alley.kit.setdisclaimer", inGameOnly = false)
+    @CommandData(name = "kit.setdisclaimer", permission = "practice.kit.setdisclaimer", inGameOnly = false)
     @Override
     public void onCommand(CommandArgs command) {
         CommandSender sender = command.getSender();

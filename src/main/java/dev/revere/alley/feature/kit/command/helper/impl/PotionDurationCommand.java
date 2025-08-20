@@ -18,7 +18,7 @@ import org.bukkit.potion.PotionEffectType;
  * @date 03/11/2024 - 20:28
  */
 public class PotionDurationCommand extends BaseCommand {
-    @CommandData(name = "potionduration", permission = "alley.command.potionduration")
+    @CommandData(name = "potionduration", permission = "practice.command.potionduration")
     @Override
     public void onCommand(CommandArgs command) {
         Player player = command.getPlayer();

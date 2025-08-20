@@ -16,7 +16,7 @@ import org.bukkit.entity.Player;
  * @date 15/09/2024 - 11:39
  */
 public class MatchInfoCommand extends BaseCommand {
-    @CommandData(name = "match.info", permission = "alley.command.match.info", inGameOnly = false)
+    @CommandData(name = "match.info", permission = "practice.command.match.info", inGameOnly = false)
     @Override
     public void onCommand(CommandArgs command) {
         CommandSender sender = command.getSender();

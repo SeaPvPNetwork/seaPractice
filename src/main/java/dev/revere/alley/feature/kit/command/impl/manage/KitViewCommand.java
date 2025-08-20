@@ -16,7 +16,7 @@ import org.bukkit.entity.Player;
  * @date 08/10/2024 - 19:56
  */
 public class KitViewCommand extends BaseCommand {
-    @CommandData(name = "kit.view", permission = "alley.admin.view")
+    @CommandData(name = "kit.view", permission = "practice.admin.view")
     @Override
     public void onCommand(CommandArgs command) {
         Player player = command.getPlayer();

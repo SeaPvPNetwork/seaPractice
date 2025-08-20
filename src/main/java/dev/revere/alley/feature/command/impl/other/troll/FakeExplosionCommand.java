@@ -13,7 +13,7 @@ import org.bukkit.entity.Player;
  */
 public class FakeExplosionCommand extends BaseCommand {
     @Override
-    @CommandData(name = "fakeexplosion", permission = "alley.command.troll.fakeexplosion", usage = "fakeexplosion", description = "Fake an explosion")
+    @CommandData(name = "fakeexplosion", permission = "practice.command.troll.fakeexplosion", usage = "fakeexplosion", description = "Fake an explosion")
     public void onCommand(CommandArgs command) {
         Player player = command.getPlayer();
         String[] args = command.getArgs();

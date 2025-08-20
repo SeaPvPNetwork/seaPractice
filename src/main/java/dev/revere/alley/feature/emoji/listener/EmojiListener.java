@@ -20,7 +20,7 @@ public class EmojiListener implements Listener {
         Player player = event.getPlayer();
         String message = event.getMessage();
 
-        if (!player.hasPermission("alley.donator.chat.symbol")) {
+        if (!player.hasPermission("practice.donator.chat.symbol")) {
             return;
         }
 
