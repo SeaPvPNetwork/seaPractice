@@ -147,6 +147,14 @@
 
     <dependencies>
         <dependency>
+            <groupId>me.frep.vulcan.api</groupId>
+            <artifactId>VulcanAPI</artifactId>
+            <version>1.0.0</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/libs/VulcanAPI.jar</systemPath>
+        </dependency>
+
+        <dependency>
             <groupId>org.bstats</groupId>
             <artifactId>bstats-bukkit</artifactId>
             <version>3.0.2</version>

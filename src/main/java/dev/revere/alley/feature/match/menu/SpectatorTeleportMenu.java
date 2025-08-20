@@ -15,6 +15,8 @@ import dev.revere.alley.common.item.ItemBuilder;
 import dev.revere.alley.common.reflect.utility.ReflectionUtility;
 import dev.revere.alley.common.text.CC;
 import lombok.AllArgsConstructor;
+import me.frep.vulcan.api.VulcanAPI;
+import me.frep.vulcan.api.data.IPlayerData;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -39,23 +41,19 @@ public class SpectatorTeleportMenu extends PaginatedMenu {
     @Override
     public String getPrePaginatedTitle(Player player) {
         return this.config.getString(this.path + ".title", "&cERROR");
-
     }
 
     @Override
     public Map<Integer, Button> getGlobalButtons(Player player) {
         Map<Integer, Button> buttons = new HashMap<>();
-
         this.addGlassHeader(buttons, this.config.getInt(this.path + ".buttons.match-info-button.glass-durability", 15));
         buttons.put(this.config.getInt(this.path + ".buttons.match-info-button.slot", 4), new MatchInfoButton(this.match));
-
         return buttons;
     }
 
     @Override
     public Map<Integer, Button> getAllPagesButtons(Player player) {
         Map<Integer, Button> buttons = new HashMap<>();
-
         List<GameParticipant<MatchGamePlayer>> participants = this.match.getParticipants();
 
         participants.forEach(participant ->
@@ -67,11 +65,15 @@ public class SpectatorTeleportMenu extends PaginatedMenu {
         return buttons;
     }
 
+    private static String getBrand(Player player) {
+        IPlayerData data = VulcanAPI.Factory.getApi().getPlayerData(player);
+        return (data != null && data.getClientBrand() != null) ? data.getClientBrand() : "Unknown brand";
+    }
+
     @AllArgsConstructor
     private static class SpectatorTeleportButton extends Button {
         private final FileConfiguration config = AlleyPlugin.getInstance().getService(ConfigService.class).getMenusConfig();
         private final String path = "menus.spectator-teleport";
-
         private final MatchGamePlayer gamePlayer;
 
         @Override
@@ -82,15 +84,15 @@ public class SpectatorTeleportMenu extends PaginatedMenu {
             List<String> lore = new ArrayList<>();
             List<String> configLore = this.config.getStringList(this.path + ".buttons.spectator-teleport-button.lore");
             if (configLore.isEmpty()) {
-                configLore = Collections.singletonList(
-                        "&cSomething went wrong with your config."
-                );
+                configLore = Collections.singletonList("&cSomething went wrong with your config.");
             }
 
             int ping = ReflectionUtility.getPing(this.gamePlayer.getTeamPlayer());
             ChatColor team = match.getTeamColor(match.getParticipant(this.gamePlayer.getTeamPlayer()));
             String teamColor = team.name();
             int elo = match.isRanked() ? profile.getProfileData().getRankedKitData().get(match.getKit().getName()).getElo() : -1;
+
+            String brand = getBrand(this.gamePlayer.getTeamPlayer());
 
             for (String line : configLore) {
                 lore.add(line
@@ -99,13 +101,13 @@ public class SpectatorTeleportMenu extends PaginatedMenu {
                         .replace("{ping}", String.valueOf(ping))
                         .replace("{team}", team + teamColor)
                         .replace("{elo}", String.valueOf(elo))
+                        .replace("{brand}", brand)
                 );
             }
 
             String name = this.config.getString(this.path + ".buttons.spectator-teleport-button.name", "&c{username}")
                     .replace("{username}", this.gamePlayer.getUsername())
-                    .replace("{player-color}", String.valueOf(profile.getNameColor())
-                    );
+                    .replace("{player-color}", String.valueOf(profile.getNameColor()));
 
             return new ItemBuilder(Material.SKULL_ITEM)
                     .setSkull(this.gamePlayer.getUsername())
@@ -145,9 +147,7 @@ public class SpectatorTeleportMenu extends PaginatedMenu {
             String name = config.getString(path + ".name", "&c&lMatch Info");
             List<String> lore = config.getStringList(path + ".lore");
             if (lore.isEmpty()) {
-                lore = Collections.singletonList(
-                        "&cSomething went wrong with your config."
-                );
+                lore = Collections.singletonList("&cSomething went wrong with your config.");
             }
 
             List<String> replacedLore = new ArrayList<>();
@@ -156,6 +156,7 @@ public class SpectatorTeleportMenu extends PaginatedMenu {
                         .replace("{kit}", this.match.getKit().getName())
                         .replace("{arena}", this.match.getArena().getName())
                         .replace("{players}", String.valueOf(playerParticipantSize))
+                        .replace("{player-brand}", getBrand(player))
                 );
             }
 

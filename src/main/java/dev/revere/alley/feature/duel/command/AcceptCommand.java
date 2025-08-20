@@ -9,7 +9,10 @@ import dev.revere.alley.feature.duel.DuelRequestService;
 import dev.revere.alley.core.profile.ProfileService;
 import dev.revere.alley.core.profile.Profile;
 import dev.revere.alley.common.text.CC;
+import me.frep.vulcan.api.data.IPlayerData;
 import org.bukkit.entity.Player;
+import me.frep.vulcan.api.VulcanAPI;
+import me.frep.vulcan.api.data.*;
 
 /**
  * @author Emmy
@@ -48,6 +51,6 @@ public class AcceptCommand extends BaseCommand {
         }
 
         duelRequestService.acceptPendingRequest(duelRequest);
-        player.sendMessage(CC.translate("&aYou have accepted the duel request from " + target.getName() + "."));
+        player.sendMessage(CC.translate("&fYou have &aaccepted &fthe duel request from &c" + target.getName() + "&f."));
     }
 }

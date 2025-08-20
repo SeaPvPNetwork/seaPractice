@@ -72,6 +72,7 @@ menus:
           - " &f● &cPing: &f{ping}ms"
           - " &f● &cTeam: &f{team}"
           - " &f● &cELO: &f{elo}"
+          - " &f● &cBrand: &f{brand}"
           - ""
           - "&cLEFT-CLICK &fto teleport to this player."
           - "&cRIGHT-CLICK &fto view their statistics."
