@@ -16,7 +16,7 @@ return-pearl: true
 tp-with-taliban-disabled: true
 
 
-Message: '&cInvalid Pearl'
-Invalid-Pearl-Message: false
+Message: '&fYour &3Pearl &fgot refused due to &cinvalid position&f!'
+Invalid-Pearl-Message: true
 invalid-if-block-in-front: true
 Invalid-Pearl-Remove-Timer: true

@@ -79,10 +79,10 @@ public class StatisticsMenu extends Menu {
             List<String> lore = new ArrayList<>(Arrays.asList(
                     CC.MENU_BAR,
                     "&c&lUnranked &c⭐" + profileUnrankedKitData.getDivision().getName() + " " + profileUnrankedKitData.getTier().getName(),
-                    "&c│ &fWins: &c" + profileUnrankedKitData.getWins(),
+                    "&7│ &fWins: &c" + profileUnrankedKitData.getWins(),
                     //"&f● &cLosses: &f" + profileUnrankedKitData.getLosses(),
                     "",
-                    "&c│ &fWin Streak: " + "&cN/A",
+                    "&7│ &fWin Streak: " + "&cN/A",
                     "    &fBest: " + "&cN/A" + " &7(N/A Daily)"
             ));
 
@@ -90,9 +90,9 @@ public class StatisticsMenu extends Menu {
                 lore.addAll(Arrays.asList(
                         "",
                         "&c&lRanked",
-                        "&c│ &fWins: &c" + profileRankedKitData.getWins(),
+                        "&7│ &fWins: &c" + profileRankedKitData.getWins(),
                         //"&f● &cLosses: &f" + profileRankedKitData.getLosses(),
-                        "&c│ &fElo: &c" + profileRankedKitData.getElo()
+                        "&7│ &fElo: &c" + profileRankedKitData.getElo()
                 ));
             }
 

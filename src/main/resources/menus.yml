@@ -11,44 +11,44 @@ menus:
       hits:
         name: "&cHits: {hits}"
         lore:
-          - " &fCritical: &c{critical_hits}"
-          - " &fBlocked: &c{blocked_hits}"
-          - " &fBest Combo: &c{longest_combo}"
+          - " &fCritical: &f{critical_hits}"
+          - " &fBlocked: &f{blocked_hits}"
+          - " &fBest Combo: &f{longest_combo}"
           - ""
           - "&cPlayer"
-          - " &fW-Taps: &c{w_taps}"
+          - " &fW-Taps: &f{w_taps}"
         item: "DIAMOND_SWORD"
         durability: 0
       potions:
         name: "&cHealth Potions"
         lore:
-          - " &fRemaining: &c{potions_remaining}"
-          - " &fThrown: &c{potions_thrown}"
-          - " &fWasted: &c{potions_wasted}{heart}"
-          - " &fMissed: &c{potions_missed}"
-          - " &fAccuracy: &c{potion_accuracy}"
+          - " &fRemaining: &f{potions_remaining}"
+          - " &fThrown: &f{potions_thrown}"
+          - " &fWasted: &f{potions_wasted}{heart}"
+          - " &fMissed: &f{potions_missed}"
+          - " &fAccuracy: &f{potion_accuracy}"
         item: "POTION"
         durability: 16421
       potion_effects:
         name: "&cPotion Effects"
         empty-lore:
           - " &cNone."
-        lore-header: " &fActive Effects: &c{count}"
+        lore-header: " &fActive Effects: &f{count}"
         effect-line: " &7{effect}"
         item: "BREWING_STAND_ITEM"
         durability: 0
       food:
         name: "&cFood Level"
         lore:
-          - " &fLevel: &c{food_level}"
-          - " &fSaturation: &c{saturation}"
+          - " &fLevel: &f{food_level}"
+          - " &fSaturation: &f{saturation}"
         item: "COOKED_BEEF"
         durability: 0
       health:
         name: "&cHealth"
         lore:
-          - " &fHealth: &c{health} {heart}"
-          - " &fAbsorption: &c{absorption}"
+          - " &fHealth: &f{health} {heart}"
+          - " &fAbsorption: &f{absorption}"
         item: "GOLDEN_APPLE"
         durability: 0
       opponent:

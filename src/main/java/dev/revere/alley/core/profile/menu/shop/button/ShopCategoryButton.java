@@ -53,8 +53,8 @@ public class ShopCategoryButton extends Button {
         lore.add(CC.MENU_BAR);
         lore.add(String.format("&7%s", description));
         lore.add("");
-        lore.add(String.format("&c│ &fUnlocked: &c%d/%d &7(%d%%)", ownedCount, totalCount, percentage));
-        lore.add(String.format("&c│ &fBalance: &c$%d", balance));
+        lore.add(String.format("&7│ &fUnlocked: &c%d/%d &7(%d%%)", ownedCount, totalCount, percentage));
+        lore.add(String.format("&7│ &fBalance: &c$%d", balance));
         lore.add("");
         lore.add("&aClick to view.");
         lore.add(CC.MENU_BAR);

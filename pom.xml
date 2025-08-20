@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>dev.revere.alley</groupId>
-    <artifactId>Alley</artifactId>
+    <artifactId>PracticeCore</artifactId>
     <packaging>jar</packaging>
 
     <name>Alley</name>

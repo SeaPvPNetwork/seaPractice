@@ -60,8 +60,8 @@ public class RankedButton extends Button {
             );
         }
         Collections.addAll(lore,
-                "&c│ &rPlaying: &c" + this.queue.getQueueFightCount(),
-                "&c│ &rQueueing: &c" + this.queue.getProfiles().size(),
+                "&7│ &cPlaying: &c" + this.queue.getQueueFightCount(),
+                "&7│ &cQueueing: &c" + this.queue.getProfiles().size(),
                 "",
                 "&f&lYour ELO: &c" + AlleyPlugin.getInstance().getService(ProfileService.class).getProfile(player.getUniqueId()).getProfileData().getRankedKitData().get(kit.getName()).getElo(),
                 " &f1. &cNULL &f- &cN/A",

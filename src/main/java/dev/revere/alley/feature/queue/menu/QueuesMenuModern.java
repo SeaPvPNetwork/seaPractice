@@ -69,7 +69,7 @@ public class QueuesMenuModern extends Menu {
                 "&7Casual 1v1s with",
                 "&7no loss penalty.",
                 "",
-                "&c│ &fPlayers: &c" + queueService.getPlayerCountOfGameType("Unranked"),
+                "&7│ &fPlayers: &c" + queueService.getPlayerCountOfGameType("Unranked"),
                 "",
                 this.getLore(profile, QueueType.UNRANKED),
                 CC.MENU_BAR
@@ -80,7 +80,7 @@ public class QueuesMenuModern extends Menu {
                 "&7Casual 2v2s with",
                 "&7no penalty loss",
                 "",
-                "&c│ &fPlayers: &c" + queueService.getPlayerCountOfGameType("Duos"),
+                "&7│ &fPlayers: &c" + queueService.getPlayerCountOfGameType("Duos"),
                 "",
                 this.getLore(profile, QueueType.DUOS),
                 CC.MENU_BAR
@@ -91,7 +91,7 @@ public class QueuesMenuModern extends Menu {
                 "&7Free for all with",
                 "&7infinity respawns.",
                 "",
-                "&c│ &fPlayers: &c" + queueService.getPlayerCountOfGameType("FFA"),
+                "&7│ &fPlayers: &c" + queueService.getPlayerCountOfGameType("FFA"),
                 "",
                 this.getLore(profile, QueueType.FFA),
                 CC.MENU_BAR
