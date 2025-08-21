@@ -52,22 +52,22 @@ public class PartyCommand extends BaseCommand {
         Player player = command.getPlayer();
         player.sendMessage("");
         player.sendMessage(CC.translate("&c&lParty Commands Help:"));
-        player.sendMessage(CC.translate(" &f● &c/party create &7| Create a party"));
-        player.sendMessage(CC.translate(" &f● &c/party disband &7| Disband a party"));
-        player.sendMessage(CC.translate(" &f● &c/party leave &7| Leave a party"));
-        player.sendMessage(CC.translate(" &f● &c/party join &8(&7player&8) &7| Join a public party"));
-        player.sendMessage(CC.translate(" &f● &c/party info &7| Get information about your party"));
-        player.sendMessage(CC.translate(" &f● &c/party chat &8(&7message&8) &7| Chat with your party"));
-        player.sendMessage(CC.translate(" &f● &c/party accept &8(&7player&8) &7| Accept a party invite"));
-        player.sendMessage(CC.translate(" &f● &c/party invite &8(&7player&8) &7| Invite a player to your party"));
-        player.sendMessage(CC.translate(" &f● &c/party kick &8(&7player&8) &7| Kick a player out of your party"));
-        player.sendMessage(CC.translate(" &f● &c/party open &7| Open your party to the public"));
-        player.sendMessage(CC.translate(" &f● &c/party close &7| Close your party to the public"));
-        player.sendMessage(CC.translate(" &f● &c/party ban &8(&7player&8) &7| Ban a player from your party"));
-        player.sendMessage(CC.translate(" &f● &c/party unban &8(&7player&8) &7| Unban a player from your party"));
-        player.sendMessage(CC.translate(" &f● &c/party banlist &7| List all banned players in your party"));
-        player.sendMessage(CC.translate(" &f● &c/party announce &8(&7message&8) &7| Public invitation to your party"));
-        player.sendMessage(CC.translate(" &f● &c/party lookup &8(&7player&8) &7| Lookup a player's party"));
+        player.sendMessage(CC.translate(" &c● &f/party create &7| Create a party"));
+        player.sendMessage(CC.translate(" &c● &f/party disband &7| Disband a party"));
+        player.sendMessage(CC.translate(" &c● &f/party leave &7| Leave a party"));
+        player.sendMessage(CC.translate(" &c● &f/party join &8(&7player&8) &7| Join a public party"));
+        player.sendMessage(CC.translate(" &c● &f/party info &7| Get information about your party"));
+        player.sendMessage(CC.translate(" &c● &f/party chat &8(&7message&8) &7| Chat with your party"));
+        player.sendMessage(CC.translate(" &c● &f/party accept &8(&7player&8) &7| Accept a party invite"));
+        player.sendMessage(CC.translate(" &c● &f/party invite &8(&7player&8) &7| Invite a player to your party"));
+        player.sendMessage(CC.translate(" &c● &f/party kick &8(&7player&8) &7| Kick a player out of your party"));
+        player.sendMessage(CC.translate(" &c● &f/party open &7| Open your party to the public"));
+        player.sendMessage(CC.translate(" &c● &f/party close &7| Close your party to the public"));
+        player.sendMessage(CC.translate(" &c● &f/party ban &8(&7player&8) &7| Ban a player from your party"));
+        player.sendMessage(CC.translate(" &c● &f/party unban &8(&7player&8) &7| Unban a player from your party"));
+        player.sendMessage(CC.translate(" &c● &f/party banlist &7| List all banned players in your party"));
+        player.sendMessage(CC.translate(" &c● &f/party announce &8(&7message&8) &7| Public invitation to your party"));
+        player.sendMessage(CC.translate(" &c● &f/party lookup &8(&7player&8) &7| Lookup a player's party"));
         player.sendMessage("");
     }
 }

@@ -77,30 +77,30 @@ public class ArenaCommand extends BaseCommand {
 
     private final String[][] pages = {
             {
-                    " &f● &c/arena list &7| List all arenas",
-                    " &f● &c/arena create &8(&7arenaName&8) &7| Create an arena",
-                    " &f● &c/arena delete &8(&7arenaName&8) &7| Delete an arena",
-                    " &f● &c/arena toggle &8(&7arenaName&8) &7| Enable or Disable an Arena",
-                    " &f● &c/arena view &8(&7arenaName&8) &7| View arena information",
-                    " &f● &c/arena teleport &8(&7arenaName&8) &7| Teleport to an arena",
-                    " &f● &c/arena tool &7| Get the Arena Selection tool"
+                    " &c● &f/arena list &7| List all arenas",
+                    " &c● &f/arena create &8(&7arenaName&8) &7| Create an arena",
+                    " &c● &f/arena delete &8(&7arenaName&8) &7| Delete an arena",
+                    " &c● &f/arena toggle &8(&7arenaName&8) &7| Enable or Disable an Arena",
+                    " &c● &f/arena view &8(&7arenaName&8) &7| View arena information",
+                    " &c● &f/arena teleport &8(&7arenaName&8) &7| Teleport to an arena",
+                    " &c● &f/arena tool &7| Get the Arena Selection tool"
             },
             {
-                    " &f● &c/arena setdisplayname &8(&7arenaName&8) &8(&7displayname&8) &7| Set display-name of an arena",
-                    " &f● &c/arena setcenter &8(&7arenaName&8) &7| Set center position",
-                    " &f● &c/arena setcuboid &8(&7arenaName&8) &7| Set min and max position",
-                    " &f● &c/arena setspawn &8(&7arenaName&8) &8<&7pos1/pos2&8> &7| Set spawn positions",
-                    " &f● &c/arena setportal &8(&7arenaName&8) &8<&71/2&8> &7| Set portal positions",
-                    " &f● &c/arena setheightlimit &8(&7arenaName&8) &7| Set height limit for standalone arenas",
-                    " &f● &c/arena setvoidlevel &8(&7arenaName&8) &7| Set void level for standalone arenas"
+                    " &c● &f/arena setdisplayname &8(&7arenaName&8) &8(&7displayname&8) &7| Set display-name of an arena",
+                    " &c● &f/arena setcenter &8(&7arenaName&8) &7| Set center position",
+                    " &c● &f/arena setcuboid &8(&7arenaName&8) &7| Set min and max position",
+                    " &c● &f/arena setspawn &8(&7arenaName&8) &8<&7pos1/pos2&8> &7| Set spawn positions",
+                    " &c● &f/arena setportal &8(&7arenaName&8) &8<&71/2&8> &7| Set portal positions",
+                    " &c● &f/arena setheightlimit &8(&7arenaName&8) &7| Set height limit for standalone arenas",
+                    " &c● &f/arena setvoidlevel &8(&7arenaName&8) &7| Set void level for standalone arenas"
             },
             {
-                    " &f● &c/arena kitlist &8(&7arenaName&8) &7| List all kits for an arena",
-                    " &f● &c/arena addkit &8(&7arenaName&8) &8(&7kitName&8) &7| Add a kit to an arena",
-                    " &f● &c/arena removekit &8(&7arenaName&8) &8(&7kitName&8) &7| Remove arena kit"
+                    " &c● &f/arena kitlist &8(&7arenaName&8) &7| List all kits for an arena",
+                    " &c● &f/arena addkit &8(&7arenaName&8) &8(&7kitName&8) &7| Add a kit to an arena",
+                    " &c● &f/arena removekit &8(&7arenaName&8) &8(&7kitName&8) &7| Remove arena kit"
             },
             {
-                    " &f● &c/arena saveall &7| Save all arenas"
+                    " &c● &f/arena saveall &7| Save all arenas"
             },
     };
 }

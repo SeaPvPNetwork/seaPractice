@@ -61,10 +61,10 @@ public class PlaytimeCommand extends BaseCommand {
         List<String> messages = new ArrayList<>();
         messages.add("");
         messages.add("&c&l" + targetPlayer.getName() + "'s Playtime");
-        messages.add("  &f&l● &cDays: &f" + days);
-        messages.add("  &f&l● &cHours: &f" + hours);
-        messages.add("  &f&l● &cMinutes: &f" + minutes);
-        messages.add("  &f&l● &cSeconds: &f" + seconds);
+        messages.add("  &f&l● &cDays: &c" + days);
+        messages.add("  &f&l● &cHours: &c" + hours);
+        messages.add("  &f&l● &cMinutes: &c" + minutes);
+        messages.add("  &f&l● &cSeconds: &c" + seconds);
         messages.add("");
         messages.add("&fTheir first join was on &c" + firstJoinFormatted.setFancy(ChatColor.AQUA, ChatColor.WHITE) + "&f.");
         messages.add("");

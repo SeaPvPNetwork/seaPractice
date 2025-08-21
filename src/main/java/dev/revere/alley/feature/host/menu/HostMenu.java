@@ -33,8 +33,8 @@ public class HostMenu extends Menu {
                 "&fHost an event with different",
                 "&funique implementations.",
                 "",
-                " &f● &cTypes: &7Sumo",
-                " &f● &cMore soon...",
+                " &c● &fTypes: &7Sumo",
+                " &c● &fMore soon...",
                 "",
                 "&aClick to host!"
         )));

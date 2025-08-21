@@ -11,44 +11,44 @@ menus:
       hits:
         name: "&cHits: {hits}"
         lore:
-          - " &fCritical: &f{critical_hits}"
-          - " &fBlocked: &f{blocked_hits}"
-          - " &fBest Combo: &f{longest_combo}"
+          - " &fCritical: &c{critical_hits}"
+          - " &fBlocked: &c{blocked_hits}"
+          - " &fBest Combo: &c{longest_combo}"
           - ""
           - "&cPlayer"
-          - " &fW-Taps: &f{w_taps}"
+          - " &fW-Taps: &c{w_taps}"
         item: "DIAMOND_SWORD"
         durability: 0
       potions:
         name: "&cHealth Potions"
         lore:
-          - " &fRemaining: &f{potions_remaining}"
-          - " &fThrown: &f{potions_thrown}"
-          - " &fWasted: &f{potions_wasted}{heart}"
-          - " &fMissed: &f{potions_missed}"
-          - " &fAccuracy: &f{potion_accuracy}"
+          - " &fRemaining: &c{potions_remaining}"
+          - " &fThrown: &c{potions_thrown}"
+          - " &fWasted: &c{potions_wasted}{heart}"
+          - " &fMissed: &c{potions_missed}"
+          - " &fAccuracy: &c{potion_accuracy}"
         item: "POTION"
         durability: 16421
       potion_effects:
         name: "&cPotion Effects"
         empty-lore:
           - " &cNone."
-        lore-header: " &fActive Effects: &f{count}"
+        lore-header: " &fActive Effects: &c{count}"
         effect-line: " &7{effect}"
         item: "BREWING_STAND_ITEM"
         durability: 0
       food:
         name: "&cFood Level"
         lore:
-          - " &fLevel: &f{food_level}"
-          - " &fSaturation: &f{saturation}"
+          - " &fLevel: &c{food_level}"
+          - " &fSaturation: &c{saturation}"
         item: "COOKED_BEEF"
         durability: 0
       health:
         name: "&cHealth"
         lore:
-          - " &fHealth: &f{health} {heart}"
-          - " &fAbsorption: &f{absorption}"
+          - " &fHealth: &c{health} {heart}"
+          - " &fAbsorption: &c{absorption}"
         item: "GOLDEN_APPLE"
         durability: 0
       opponent:
@@ -63,16 +63,16 @@ menus:
         glass-durability: 15
         name: "&cMatch Info"
         lore:
-          - " &f● &cKit: &f{kit}"
-          - " &f● &cArena: &f{arena}"
-          - " &f● &cPlayers: &f{players}"
+          - " &c● &fKit: &c{kit}"
+          - " &c● &fArena: &c{arena}"
+          - " &c● &fPlayers: &c{players}"
       spectator-teleport-button:
         name: "{player-color}{username}"
         lore:
-          - " &f● &cPing: &f{ping}ms"
-          - " &f● &cTeam: &f{team}"
-          - " &f● &cELO: &f{elo}"
-          - " &f● &cBrand: &f{brand}"
+          - " &c● &fPing: &c{ping}ms"
+          - " &c● &fTeam: &c{team}"
+          - " &c● &fELO: &c{elo}"
+          - " &c● &fBrand: &c{brand}"
           - ""
           - "&cLEFT-CLICK &fto teleport to this player."
           - "&cRIGHT-CLICK &fto view their statistics."

@@ -34,9 +34,9 @@ public class CosmeticCommand extends BaseCommand {
 
         player.sendMessage(" ");
         player.sendMessage(CC.translate("&c&lCosmetic Commands Help:"));
-        player.sendMessage(CC.translate(" &f● &c/cosmetic list &7| List all cosmetics"));
-        player.sendMessage(CC.translate(" &f● &c/cosmetic get &8(&7player&8)  &7| Get selected cosmetics"));
-        player.sendMessage(CC.translate(" &f● &c/cosmetic set &8(&7player&8) &8(&7cosmetic&8)  &7| Set active cosmetic"));
+        player.sendMessage(CC.translate(" &c● &f/cosmetic list &7| List all cosmetics"));
+        player.sendMessage(CC.translate(" &c● &f/cosmetic get &8(&7player&8)  &7| Get selected cosmetics"));
+        player.sendMessage(CC.translate(" &c● &f/cosmetic set &8(&7player&8) &8(&7cosmetic&8)  &7| Set active cosmetic"));
         player.sendMessage("");
 
     }

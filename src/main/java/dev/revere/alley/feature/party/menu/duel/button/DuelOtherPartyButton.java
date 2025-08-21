@@ -57,7 +57,7 @@ public class DuelOtherPartyButton extends Button {
     private @NotNull List<String> getLore() {
         List<String> lore = new ArrayList<>();
         lore.add(CC.MENU_BAR);
-        lore.add(" &cMembers: &f(" + party.getMembers().size() + ")");
+        lore.add(" &cMembers: &c(" + party.getMembers().size() + ")");
         for (UUID memberId : party.getMembers()) {
             Player member = Bukkit.getPlayer(memberId);
             if (member != null) {

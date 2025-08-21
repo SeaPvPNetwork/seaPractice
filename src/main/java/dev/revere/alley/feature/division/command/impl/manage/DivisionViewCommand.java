@@ -37,10 +37,10 @@ public class DivisionViewCommand extends BaseCommand {
         Arrays.asList(
                 "",
                 "&c&lDivision &f(" + division.getDisplayName() + ")",
-                " &f● &cName: &f" + division.getDisplayName(),
-                " &f● &cTiers: &f" + division.getTiers().size(),
-                " &f● &cDescription: &f" + division.getDescription(),
-                " &f● &cRequired Wins: &f" + division.getTiers().get(0).getRequiredWins(),
+                " &c● &fName: &c" + division.getDisplayName(),
+                " &c● &fTiers: &c" + division.getTiers().size(),
+                " &c● &fDescription: &c" + division.getDescription(),
+                " &c● &fRequired Wins: &c" + division.getTiers().get(0).getRequiredWins(),
                 ""
         ).forEach(line -> player.sendMessage(CC.translate(line)));
     }

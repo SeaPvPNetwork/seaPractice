@@ -64,8 +64,8 @@ public class DuelRequestsMenu extends PaginatedMenu {
         public ItemStack getButtonItem(Player player) {
             return new ItemBuilder(Material.PAPER).name("&c&l" + this.duelRequest.getSender().getName()).durability(0).hideMeta()
                     .lore(
-                            "&fKit: &f" + this.duelRequest.getKit().getDisplayName(),
-                            "&fArena: &f" + this.duelRequest.getArena().getDisplayName(),
+                            "&fKit: &c" + this.duelRequest.getKit().getDisplayName(),
+                            "&fArena: &c" + this.duelRequest.getArena().getDisplayName(),
                             "",
                             "&fExpires in: &c" + this.duelRequest.getRemainingTimeFormatted(),
                             "",

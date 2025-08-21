@@ -862,7 +862,7 @@ public abstract class Match {
                 .skip(3)
                 .forEach(player -> remainingSpectators.add(player.getEntityId()));
 
-        this.sendMessage("&c&lSpectators: &f" + String.join(", ", firstThreeSpectatorNames) +
+        this.sendMessage("&c&lSpectators: &c" + String.join(", ", firstThreeSpectatorNames) +
                 (remainingSpectators.isEmpty() ? "" : " &7(and &c" + remainingSpectators.size() + " &7more...)"));
 
         this.spectators.forEach(uuid -> {

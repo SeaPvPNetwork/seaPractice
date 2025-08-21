@@ -79,21 +79,21 @@ public class FFACommand extends BaseCommand {
 
     private final String[][] pages = {
             {
-                    " &f● &c/ffa setup &8(&7ffaName&8) &8(&7arenaName&8) &8(&7maxPlayers&8) &8(&7menuSlot&8) &7| Set up a new FFA match",
-                    " &f● &c/ffa toggle &8(&7ffaName&8) &7| Enable or disable an FFA arena",
-                    " &f● &c/ffa list &7| List current FFA matches",
-                    " &f● &c/ffa listplayers &8(&7ffaName&8) &7| List all players playing ffa",
+                    " &c● &f/ffa setup &8(&7ffaName&8) &8(&7arenaName&8) &8(&7maxPlayers&8) &8(&7menuSlot&8) &7| Set up a new FFA match",
+                    " &c● &f/ffa toggle &8(&7ffaName&8) &7| Enable or disable an FFA arena",
+                    " &c● &f/ffa list &7| List current FFA matches",
+                    " &c● &f/ffa listplayers &8(&7ffaName&8) &7| List all players playing ffa",
             },
             {
-                    " &f● &c/ffa maxplayers &8(&7ffaName&8) &8(&7amount&8) &7| Set the max player count.",
-                    " &f● &c/ffa safezone &8(&7kitName&8) &8(&7pos1/pos2&8) &7| Set the spawn safezone bounds",
-                    " &f● &c/ffa setspawn &8(&7ffaName&8) &7| Set the spawn location for an FFA arena",
-                    " &f● &c/ffa setarena &8(&7ffaName&8) &7| Set arena of a ffa match",
-                    " &f● &c/ffa setslot &8(&7ffaName&8) &8(&7slotNumber&8) &7| Set menu slot"
+                    " &c● &f/ffa maxplayers &8(&7ffaName&8) &8(&7amount&8) &7| Set the max player count.",
+                    " &c● &f/ffa safezone &8(&7kitName&8) &8(&7pos1/pos2&8) &7| Set the spawn safezone bounds",
+                    " &c● &f/ffa setspawn &8(&7ffaName&8) &7| Set the spawn location for an FFA arena",
+                    " &c● &f/ffa setarena &8(&7ffaName&8) &7| Set arena of a ffa match",
+                    " &c● &f/ffa setslot &8(&7ffaName&8) &8(&7slotNumber&8) &7| Set menu slot"
             },
             {
-                    " &f● &c/ffa add &8(&7playerName&8) &8(&7ffaName&8) &7| Add a player",
-                    " &f● &c/ffa kick &8(&7playerName&8) &7| Kick a player"
+                    " &c● &f/ffa add &8(&7playerName&8) &8(&7ffaName&8) &7| Add a player",
+                    " &c● &f/ffa kick &8(&7playerName&8) &7| Kick a player"
             }
     };
 }

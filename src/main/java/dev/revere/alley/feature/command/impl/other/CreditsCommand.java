@@ -18,10 +18,10 @@ public class CreditsCommand extends BaseCommand {
         Player player = command.getPlayer();
         player.sendMessage(CC.translate("&f"));
         player.sendMessage(CC.translate("&7&m                                                   "));
-        player.sendMessage(CC.translate("&cPractice &7- &fRank, win and be the best."));
+        player.sendMessage(CC.translate("&cPractice &7- &fImprove, win and be the best."));
         player.sendMessage(CC.translate("&f"));
         player.sendMessage(CC.translate("&fThis core is a fork from &6Alley"));
-        player.sendMessage(CC.translate("&fAdapted for &bSeaPvP&f by &bdiamondclass"));
+        player.sendMessage(CC.translate("&fModified for &bSeaPvP&f by &bdiamondclass"));
         player.sendMessage(CC.translate("&f"));
         player.sendMessage(CC.translate("&f• &7Authors: &cEmmy&7, &cRemi&7 - &cRevere Inc."));
         player.sendMessage(CC.translate("&f"));

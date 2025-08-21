@@ -34,7 +34,7 @@ public class ArenaListCommand extends BaseCommand {
         player.sendMessage(CC.translate("     &c&lArena List &f(" + arenaService.getArenas().size() + "&f)"));
 
         if (arenaService.getArenas().isEmpty()) {
-            player.sendMessage(CC.translate("      &f● &cNo arenas available."));
+            player.sendMessage(CC.translate("      &c● &fNo arenas available."));
             return;
         }
 

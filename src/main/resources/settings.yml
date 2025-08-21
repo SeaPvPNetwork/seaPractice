@@ -38,7 +38,7 @@ kit:
 blocked-crafting-items: []
 profanity-filter:
   add-default-words: false
-  staff-notification-format: '&c[S] &f(&cPractice: &fProfanity Detected) &c{player}&f:
+  staff-notification-format: '&c[S] &f(&cPractice: &cProfanity Detected) &c{player}&f:
     &7{message}'
   filtered-words:
   - shit

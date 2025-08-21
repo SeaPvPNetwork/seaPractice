@@ -22,8 +22,8 @@ public class RankedCommand extends BaseCommand {
         Arrays.asList(
                 " ",
                 "&c&lRanked Commands Help:",
-                " &f● &c/ranked ban &8(&7player&8) &7| Ban a player from ranked matches.",
-                " &f● &c/ranked unban &8(&7player&8) &7| Unban a player from ranked matches.",
+                " &c● &f/ranked ban &8(&7player&8) &7| Ban a player from ranked matches.",
+                " &c● &f/ranked unban &8(&7player&8) &7| Unban a player from ranked matches.",
                 " "
         ).forEach(message -> player.sendMessage(CC.translate(message)));
     }

@@ -22,9 +22,9 @@ public class ServiceCommand extends BaseCommand {
         Arrays.asList(
                 "",
                 "&c&lService Commands",
-                " &f● &c/service menu &7| &fOpens the service menu.",
-                " &f● &c/service allowqueue &8(&7true/false&8) &7| &fAllow/disallow queueing.",
-                " &f● &c/service togglecrafting &7| &fEnable/Disable crafting for an item.",
+                " &c● &f/service menu &7| &fOpens the service menu.",
+                " &c● &f/service allowqueue &8(&7true/false&8) &7| &fAllow/disallow queueing.",
+                " &c● &f/service togglecrafting &7| &fEnable/Disable crafting for an item.",
                 ""
         ).forEach(line -> player.sendMessage(CC.translate(line)));
     }

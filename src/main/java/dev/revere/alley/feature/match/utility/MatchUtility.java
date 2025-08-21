@@ -151,7 +151,7 @@ public class MatchUtility {
         String loserTeamName = loserParticipant.getLeader().getUsername();
 
         match.sendMessage("");
-        match.sendMessage(CC.translate("&aWinner Team: &f" + winnerTeamName));
+        match.sendMessage(CC.translate("&aWinner Team: &c" + winnerTeamName));
 
         for (MatchGamePlayer player : winnerParticipant.getAllPlayers()) {
             String playerName = player.getUsername();
@@ -165,7 +165,7 @@ public class MatchUtility {
         }
 
         match.sendMessage("");
-        match.sendMessage(CC.translate("&cLoser Team: &f" + loserTeamName));
+        match.sendMessage(CC.translate("&cLoser Team: &c" + loserTeamName));
 
         for (MatchGamePlayer player : loserParticipant.getAllPlayers()) {
             String playerName = player.getUsername();

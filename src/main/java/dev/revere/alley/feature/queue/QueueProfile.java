@@ -65,7 +65,7 @@ public class QueueProfile {
                 Arrays.asList(
                         "",
                         "&c&l" + this.queue.getKit().getDisplayName(),
-                        " &f● &cPing Range: &fN/A",
+                        " &c● &fPing Range: &cN/A",
                         "   &7Searching for match...",
                         ""
                 ).forEach(line -> player.sendMessage(CC.translate(line)));
@@ -85,8 +85,8 @@ public class QueueProfile {
                 Arrays.asList(
                         "",
                         "&c&l" + this.queue.getKit().getDisplayName() + " &c&l" + Symbol.RANKED_STAR + "Ranked",
-                        " &f● &cELO Range: &f" + this.getMinimumElo() + " &7&l" + Symbol.ARROW_R + "&f " + this.getMaximumElo(),
-                        " &f● &cPing Range: &fN/A",
+                        " &c● &fELO Range: &c" + this.getMinimumElo() + " &7&l" + Symbol.ARROW_R + "&f " + this.getMaximumElo(),
+                        " &c● &fPing Range: &cN/A",
                         "   " + (this.range == this.MAX_RANGE ? "&c&lRANGE LIMIT REACHED..." : "&7Searching for match..."),
                         ""
                 ).forEach(line -> player.sendMessage(CC.translate(line)));

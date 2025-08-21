@@ -23,10 +23,10 @@ public class LevelAdminListCommand extends BaseCommand {
         sender.sendMessage("");
         sender.sendMessage(CC.translate("     &c&lLevel List &f(" + levelService.getLevels().size() + "&f)"));
         if (levelService.getLevels().isEmpty()) {
-            sender.sendMessage(CC.translate("      &f● &cNo levels available."));
+            sender.sendMessage(CC.translate("      &c● &fNo levels available."));
         } else {
             levelService.getLevels()
-                    .forEach(level -> sender.sendMessage(CC.translate("      &f● &c" + level.getDisplayName() + " &f(" + level.getMinElo() + " - " + level.getMaxElo() + " elo)")));
+                    .forEach(level -> sender.sendMessage(CC.translate("      &c● &f" + level.getDisplayName() + " &f(" + level.getMinElo() + " - " + level.getMaxElo() + " elo)")));
         }
         sender.sendMessage("");
     }

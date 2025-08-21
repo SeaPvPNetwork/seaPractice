@@ -22,9 +22,9 @@ public class FFAListCommand extends BaseCommand {
         player.sendMessage("");
         player.sendMessage(CC.translate("     &c&lFFA Match List &f(" + ffaService.getMatches().size() + "&f)"));
         if (ffaService.getMatches().isEmpty()) {
-            player.sendMessage(CC.translate("      &f● &cNo Matches available."));
+            player.sendMessage(CC.translate("      &c● &fNo Matches available."));
         }
-        ffaService.getMatches().forEach(match -> player.sendMessage(CC.translate("      &f● &c" + match.getKit().getDisplayName() + " &f(" + (match.getPlayers().size() + "/" + match.getMaxPlayers()) + "&f)")));
+        ffaService.getMatches().forEach(match -> player.sendMessage(CC.translate("      &c● &f" + match.getKit().getDisplayName() + " &f(" + (match.getPlayers().size() + "/" + match.getMaxPlayers()) + "&f)")));
         player.sendMessage("");
     }
 }

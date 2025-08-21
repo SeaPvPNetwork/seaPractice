@@ -23,12 +23,12 @@ public class KitHelperCommand extends BaseCommand {
         Arrays.asList(
                 "",
                 "&c&lKit Helper Commands Help:",
-                " &f● &c/enchant &8(&7enchantment&8) &8(&7level&8) &7| &fEnchant item in hand.",
-                " &f● &c/glow &8(&7true|false&8) &7| &fSet item glow.",
-                " &f● &c/potionduration &8(&7duration&8) &7| &fSet duration of a potion.",
-                " &f● &c/removeenchants &7| &fRemoves enchants from item.",
-                " &f● &c/rename &8(&7name&8) &7| &fRename item in hand.",
-                " &f● &c/unbreakable &8(&7true|false&8) &7| &fSet item unbreakable.",
+                " &c● &f/enchant &8(&7enchantment&8) &8(&7level&8) &7| &fEnchant item in hand.",
+                " &c● &f/glow &8(&7true|false&8) &7| &fSet item glow.",
+                " &c● &f/potionduration &8(&7duration&8) &7| &fSet duration of a potion.",
+                " &c● &f/removeenchants &7| &fRemoves enchants from item.",
+                " &c● &f/rename &8(&7name&8) &7| &fRename item in hand.",
+                " &c● &f/unbreakable &8(&7true|false&8) &7| &fSet item unbreakable.",
                 ""
         ).forEach(message -> command.getSender().sendMessage(CC.translate(message)));
     }

@@ -32,7 +32,7 @@ public class PartyEventSplitArenaSelectorButton extends Button {
         return new ItemBuilder(Material.PAPER)
                 .name("&c&l" + this.arena.getName())
                 .lore(
-                        " &f● &cKit: &f" + this.kit.getDisplayName(),
+                        " &c● &fKit: &c" + this.kit.getDisplayName(),
                         "",
                         "&aClick to select!"
                 )

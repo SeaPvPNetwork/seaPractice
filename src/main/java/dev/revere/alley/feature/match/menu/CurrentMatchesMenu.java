@@ -85,9 +85,9 @@ public class CurrentMatchesMenu extends PaginatedMenu {
             return new ItemBuilder(match.getKit().getIcon()).name("&c&l" + match.getParticipants().get(0).getLeader().getUsername() + " &7vs &c&l" + match.getParticipants().get(1).getLeader().getUsername()).durability(match.getKit().getDurability()).hideMeta()
                     .lore(
                             CC.MENU_BAR,
-                            " &f● &cArena: &f" + match.getArena().getName(),
-                            " &f● &cKit: &f" + match.getKit().getDisplayName(),
-                            " &f● &cQueue: &f" + (match.getQueue() == null ? "None" : match.getQueue().getQueueType()),
+                            " &c● &fArena: &c" + match.getArena().getName(),
+                            " &c● &fKit: &c" + match.getKit().getDisplayName(),
+                            " &c● &fQueue: &c" + (match.getQueue() == null ? "None" : match.getQueue().getQueueType()),
                             " ",
                             "&aClick to spectate.",
                             CC.MENU_BAR
@@ -129,7 +129,7 @@ public class CurrentMatchesMenu extends PaginatedMenu {
         public ItemStack getButtonItem(Player player) {
             return new ItemBuilder(Material.CARPET)
                     .name("&c&lRefresh")
-                    .lore(" &f● &cPress to refresh the matches")
+                    .lore(" &c● &fPress to refresh the matches")
                     .durability(2)
                     .build();
         }

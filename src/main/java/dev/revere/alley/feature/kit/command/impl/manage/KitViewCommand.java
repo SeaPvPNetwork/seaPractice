@@ -35,12 +35,12 @@ public class KitViewCommand extends BaseCommand {
 
         player.sendMessage("");
         player.sendMessage(CC.translate("&c&lKit " + kit.getName() + " &f(" + (kit.isEnabled() ? "&aEnabled" : "&cDisabled") + "&f)"));
-        player.sendMessage(CC.translate(" &f● &cDisplay Name: &f" + kit.getDisplayName()));
-        player.sendMessage(CC.translate(" &f● &cName: &f" + kit.getName()));
-        player.sendMessage(CC.translate(" &f● &cIcon: &f" + kit.getIcon().name().toLowerCase() + " &7(" + kit.getDurability() + ")"));
-        player.sendMessage(CC.translate(" &f● &cDisclaimer: &f" + kit.getDisclaimer()));
-        player.sendMessage(CC.translate(" &f● &cDescription: &f" + kit.getDescription()));
-        player.sendMessage(CC.translate(" &f● &cFFA: &f" + (kit.isFfaEnabled() ? "&aEnabled" : "&cDisabled")));
+        player.sendMessage(CC.translate(" &c● &fDisplay Name: &c" + kit.getDisplayName()));
+        player.sendMessage(CC.translate(" &c● &fName: &c" + kit.getName()));
+        player.sendMessage(CC.translate(" &c● &fIcon: &c" + kit.getIcon().name().toLowerCase() + " &7(" + kit.getDurability() + ")"));
+        player.sendMessage(CC.translate(" &c● &fDisclaimer: &c" + kit.getDisclaimer()));
+        player.sendMessage(CC.translate(" &c● &fDescription: &c" + kit.getDescription()));
+        player.sendMessage(CC.translate(" &c● &fFFA: &c" + (kit.isFfaEnabled() ? "&aEnabled" : "&cDisabled")));
         player.spigot().sendMessage(ClickableUtil.createComponent(
                 "  &a(Click here to view the kit settings)",
                 "/kit viewsettings " + kit.getName(),

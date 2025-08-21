@@ -63,14 +63,14 @@ public class LevelAdminCommand extends BaseCommand {
         Arrays.asList(
                 "",
                 "&c&lLevel Admin Commands Help:",
-                " &f● &c/leveladmin create &8(&7levelName&8) &8(&7minElo&8) &8(&7maxElo&8) &7| Create a new level",
-                " &f● &c/leveladmin delete &8(&7levelName&8) &7| Delete a level",
-                " &f● &c/leveladmin list &7| List all levels",
-                " &f● &c/leveladmin view &8(&7levelName&8) &7| View level info",
-                " &f● &c/leveladmin setminelo &8(&7levelName&8) &8(&7minElo&8) &7| Set minimum Elo for a level",
-                " &f● &c/leveladmin setmaxelo &8(&7levelName&8) &8(&7maxElo&8) &7| Set maximum Elo for a level",
-                " &f● &c/leveladmin setdisplayname &8(&7levelName&8) &8(&7displayName&8) &7| Set display name for a level",
-                " &f● &c/leveladmin seticon &8(&7levelName&8) &7| Set material for a level",
+                " &c● &f/leveladmin create &8(&7levelName&8) &8(&7minElo&8) &8(&7maxElo&8) &7| Create a new level",
+                " &c● &f/leveladmin delete &8(&7levelName&8) &7| Delete a level",
+                " &c● &f/leveladmin list &7| List all levels",
+                " &c● &f/leveladmin view &8(&7levelName&8) &7| View level info",
+                " &c● &f/leveladmin setminelo &8(&7levelName&8) &8(&7minElo&8) &7| Set minimum Elo for a level",
+                " &c● &f/leveladmin setmaxelo &8(&7levelName&8) &8(&7maxElo&8) &7| Set maximum Elo for a level",
+                " &c● &f/leveladmin setdisplayname &8(&7levelName&8) &8(&7displayName&8) &7| Set display name for a level",
+                " &c● &f/leveladmin seticon &8(&7levelName&8) &7| Set material for a level",
                 ""
         ).forEach(line -> command.getSender().sendMessage(CC.translate(line)));
     }

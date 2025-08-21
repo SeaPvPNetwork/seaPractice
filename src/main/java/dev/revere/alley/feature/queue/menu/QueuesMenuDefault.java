@@ -59,7 +59,7 @@ public class QueuesMenuDefault extends Menu {
                 "&7Casual 1v1s with",
                 "&7no loss penalty.",
                 "",
-                "&cPlayers: &f" + queueService.getPlayerCountOfGameType("Unranked"),
+                "&cPlayers: &c" + queueService.getPlayerCountOfGameType("Unranked"),
                 "",
                 "&aClick to play!"
         )));
@@ -68,7 +68,7 @@ public class QueuesMenuDefault extends Menu {
                 "&7Practice against bots",
                 "&7to improve your skills.",
                 "",
-                "&cPlayers: &f" + queueService.getPlayerCountOfGameType("Bots"),
+                "&cPlayers: &c" + queueService.getPlayerCountOfGameType("Bots"),
                 "",
                 "&aClick to play!"
         )));
@@ -77,7 +77,7 @@ public class QueuesMenuDefault extends Menu {
                 "&7Free for all with",
                 "&7infinity respawns.",
                 "",
-                "&cPlayers: &f" + queueService.getPlayerCountOfGameType("FFA"),
+                "&cPlayers: &c" + queueService.getPlayerCountOfGameType("FFA"),
                 "",
                 "&aClick to play!"
         )));

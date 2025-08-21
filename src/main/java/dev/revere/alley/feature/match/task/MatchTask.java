@@ -54,8 +54,8 @@ public class MatchTask extends BukkitRunnable {
 
                     this.match.setState(MatchState.RUNNING);
                     this.match.sendMessage(CC.translate("&aMatch has started. Good luck!"));
-                    //this.match.sendMessage(CC.translate("&f• &CMy brand: &f" + myBrand));
-                    //this.match.sendMessage(CC.translate("&f• &CEnemy brand: &f" + enemyBrand));
+                    //this.match.sendMessage(CC.translate("&f• &CMy brand: &c" + myBrand));
+                    //this.match.sendMessage(CC.translate("&f• &CEnemy brand: &c" + enemyBrand));
 
                     this.sendTitleStarted();
                     this.playSoundStarted();

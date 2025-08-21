@@ -32,7 +32,7 @@ public class ArenaPasteTestCommand extends BaseCommand {
         File schematicFile = schematicService.getSchematicFile(schematicName);
 
         if (!schematicFile.exists()) {
-            player.sendMessage(CC.translate("&cSchematic file not found: &f" + schematicName + ".schematic"));
+            player.sendMessage(CC.translate("&cSchematic file not found: &c" + schematicName + ".schematic"));
             return;
         }
 

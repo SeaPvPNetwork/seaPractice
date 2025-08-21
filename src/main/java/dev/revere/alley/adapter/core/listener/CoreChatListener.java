@@ -32,8 +32,8 @@ public class CoreChatListener implements Listener {
             filterService.notifyStaff(event.getMessage(), player);
         }
 
-        String format = core.getChatFormat(player, event.getMessage(), CC.translate("&7: &f"));
-        String censoredFormat = core.getChatFormat(player, filterService.censorWords(event.getMessage()), CC.translate("&7: &f"));
+        String format = core.getChatFormat(player, event.getMessage(), CC.translate("&7: &c"));
+        String censoredFormat = core.getChatFormat(player, filterService.censorWords(event.getMessage()), CC.translate("&7: &c"));
 
         Bukkit.getConsoleSender().sendMessage(format);
 

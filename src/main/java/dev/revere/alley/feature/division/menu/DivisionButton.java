@@ -30,7 +30,7 @@ public class DivisionButton extends Button {
                 .name("&c&l" + this.division.getDisplayName() + " Division")
                 .lore(
                         CC.MENU_BAR,
-                        "&f&l● &cTiers: &f" + this.division.getTiers().size(),
+                        "&f&l● &cTiers: &c" + this.division.getTiers().size(),
                         "  &7▶ (" + this.division.getTiers().get(0).getRequiredWins() + " - " + this.division.getTotalWins() + " Wins)",
                         "",
                         " &fFor each kit, you will have",

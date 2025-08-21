@@ -49,7 +49,7 @@ public class CosmeticListCommand extends BaseCommand {
             player.sendMessage(CC.translate(header));
 
             for (Cosmetic cosmetic : cosmetics) {
-                player.sendMessage(CC.translate("      &f● &c" + cosmetic.getName()));
+                player.sendMessage(CC.translate("      &c● &f" + cosmetic.getName()));
             }
         }
 

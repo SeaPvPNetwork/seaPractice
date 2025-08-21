@@ -27,7 +27,7 @@ public class RemoveEnchantsCommand extends BaseCommand {
             return;
         }
 
-        player.sendMessage(CC.translate("&cEnchantsments: &f" + player.getInventory().getItemInHand().getEnchantments().keySet()));
+        player.sendMessage(CC.translate("&cEnchantsments: &c" + player.getInventory().getItemInHand().getEnchantments().keySet()));
 
         player.getInventory().getItemInHand().getEnchantments().keySet().forEach(enchant -> {
             player.getInventory().getItemInHand().removeEnchantment(enchant);

@@ -27,9 +27,9 @@ public class QueueCommand extends BaseCommand {
 
         sender.sendMessage(" ");
         sender.sendMessage(CC.translate("&c&lQueue Commands Help:"));
-        sender.sendMessage(CC.translate(" &f● &c/queue force &8(&7player&8) &8(&7kit&8) &8<&7ranked&8> &7| Force a player into a queue"));
-        //sender.sendMessage(CC.translate(" &f● &c/queue remove &8(&7player&8) &7| Remove a player from queue"));
-        sender.sendMessage(CC.translate(" &f● &c/queue reload &7| Reload the queues"));
+        sender.sendMessage(CC.translate(" &c● &f/queue force &8(&7player&8) &8(&7kit&8) &8<&7ranked&8> &7| Force a player into a queue"));
+        //sender.sendMessage(CC.translate(" &c● &f/queue remove &8(&7player&8) &7| Remove a player from queue"));
+        sender.sendMessage(CC.translate(" &c● &f/queue reload &7| Reload the queues"));
         sender.sendMessage("");
     }
 }
