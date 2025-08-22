@@ -60,8 +60,8 @@ public class UnrankedButton extends Button {
         }
 
         Collections.addAll(lore,
-                "&7│ &cPlaying: &c" + this.queue.getQueueFightCount(),
-                "&7│ &cQueueing: &c" + this.queue.getTotalPlayerCount(),
+                "&7│ &fPlaying: &c" + this.queue.getQueueFightCount(),
+                "&7│ &fQueueing: &c" + this.queue.getTotalPlayerCount(),
                 "",
                 "&f&lDaily Streak: &cN/A",
                 " &f1. &cNULL &f- &cN/A",
